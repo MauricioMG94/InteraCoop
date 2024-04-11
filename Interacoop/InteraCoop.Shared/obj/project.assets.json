@@ -8,19 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ADMON\\.nuget\\packages\\": {}
+    "C:\\Users\\cristian.jaimes\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
       "projectName": "InteraCoop.Shared",
-      "projectPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
-      "packagesPath": "C:\\Users\\ADMON\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\obj\\",
+      "projectPath": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
+      "packagesPath": "C:\\Users\\cristian.jaimes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Shared\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ADMON\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cristian.jaimes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +33,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
