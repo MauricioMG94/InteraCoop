@@ -1,4 +1,5 @@
 ﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
+using InteraCoop.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InteraCoop.Backend.Controllers
@@ -10,6 +11,28 @@ namespace InteraCoop.Backend.Controllers
         public GenericController(IGenericUnitOfWork<T> unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        [HttpGet]
+        public virtual async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("totalPages")]
+        public virtual async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetTotalPagesAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
         }
 
         [HttpGet("full")]

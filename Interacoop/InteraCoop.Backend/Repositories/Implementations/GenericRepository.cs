@@ -2,6 +2,8 @@
 using InteraCoop.Backend.Data;
 using InteraCoop.Shared.Responses;
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
+using InteraCoop.Backend.Helpers;
+using InteraCoop.Shared.Dtos;
 
 namespace InteraCoop.Backend.UnitsOfWork.Implementations
 {
@@ -14,6 +16,31 @@ namespace InteraCoop.Backend.UnitsOfWork.Implementations
         {
             _context = context;
             _entity = _context.Set<T>();
+        }
+
+        public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
+        {
+            var queryable = _entity.AsQueryable();
+
+            return new ActionResponse<IEnumerable<T>>
+            {
+                WasSuccess = true,
+                Result = await queryable
+                    .Paginate(pagination)
+                    .ToListAsync()
+            };
+        }
+
+        public virtual async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination)
+        {
+            var queryable = _entity.AsQueryable();
+            var count = await queryable.CountAsync();
+            int totalPages = (int)Math.Ceiling((double)count / pagination.RecordsNumber);
+            return new ActionResponse<int>
+            {
+                WasSuccess = true,
+                Result = totalPages
+            };
         }
 
         public virtual async Task<ActionResponse<T>> AddAsync(T entity)

@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using InteraCoop.Shared.Entities;
-using InteraCoop.Shared.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace InteraCoop.Shared.Entities
+namespace InteraCoop.Shared.Dtos
 {
-    public class Product : IEntityWithName
+    public class ProductDto
     {
         public int Id { get; set; }
 
@@ -26,6 +29,5 @@ namespace InteraCoop.Shared.Entities
 
         [Display(Name = "Tasa")]
         public double? Rate { get; set; }
-
     }
 }
