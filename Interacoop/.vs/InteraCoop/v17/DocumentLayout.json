@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.frontend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.frontend\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.frontend\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.frontend\\repositories\\httpresponsewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\repositories\\httpresponsewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.shared\\entities\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|solutionrelative:interacoop.shared\\entities\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.shared\\entities\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|solutionrelative:interacoop.shared\\entities\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.shared\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|solutionrelative:interacoop.shared\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\controllers\\countriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,18 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\migrations\\20240413035714_addcountriesentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\migrations\\20240413035714_addcountriesentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.backend\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.shared\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|solutionrelative:interacoop.shared\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|d:\\especializacion\\construccion de software\\proyectointeracoop\\interacoop\\interacoop.shared\\entities\\interaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,7 +94,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "RelativeToolTip": "InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAgwCgAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T14:53:49.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\IRepository.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Repositories\\IRepository.cs",
+              "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\IRepository.cs",
+              "RelativeToolTip": "InteraCoop.Frontend\\Repositories\\IRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T14:48:28.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HttpResponseWrapper.cs",
+              "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\HttpResponseWrapper.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Repositories\\HttpResponseWrapper.cs",
+              "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\HttpResponseWrapper.cs",
+              "RelativeToolTip": "InteraCoop.Frontend\\Repositories\\HttpResponseWrapper.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAcwCkAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T14:10:36.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Program.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Program.cs",
+              "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Frontend\\Program.cs",
+              "RelativeToolTip": "InteraCoop.Frontend\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T14:07:57.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\City.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\City.cs",
+              "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\City.cs",
+              "RelativeToolTip": "InteraCoop.Shared\\Entities\\City.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T14:01:55.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "State.cs",
+              "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\State.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\State.cs",
+              "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\State.cs",
+              "RelativeToolTip": "InteraCoop.Shared\\Entities\\State.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T14:00:25.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "CountriesController.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\Controllers\\CountriesController.cs",
               "RelativeDocumentMoniker": "InteraCoop.Backend\\Controllers\\CountriesController.cs",
@@ -83,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "20240413035714_AddCountriesEntity.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\Migrations\\20240413035714_AddCountriesEntity.cs",
               "RelativeDocumentMoniker": "InteraCoop.Backend\\Migrations\\20240413035714_AddCountriesEntity.cs",
@@ -91,25 +193,24 @@
               "RelativeToolTip": "InteraCoop.Backend\\Migrations\\20240413035714_AddCountriesEntity.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAzwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-13T03:57:14.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-13T03:57:14.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\Program.cs",
               "RelativeDocumentMoniker": "InteraCoop.Backend\\Program.cs",
               "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\Program.cs",
               "RelativeToolTip": "InteraCoop.Backend\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-13T03:51:15.46Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\appsettings.json",
               "RelativeDocumentMoniker": "InteraCoop.Backend\\appsettings.json",
@@ -122,33 +223,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DataContext.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "InteraCoop.Backend\\Data\\DataContext.cs",
               "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\Data\\DataContext.cs",
               "RelativeToolTip": "InteraCoop.Backend\\Data\\DataContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAbAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-13T03:27:38.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Country.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\Country.cs",
               "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\Country.cs",
               "ToolTip": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\Country.cs",
               "RelativeToolTip": "InteraCoop.Shared\\Entities\\Country.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAQAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-13T03:28:33.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "Opportunity.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\Opportunity.cs",
               "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\Opportunity.cs",
@@ -156,12 +257,11 @@
               "RelativeToolTip": "InteraCoop.Shared\\Entities\\Opportunity.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-13T01:54:10.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-13T01:54:10.024Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "Interaction.cs",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\Entities\\Interaction.cs",
               "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\Interaction.cs",
@@ -169,12 +269,11 @@
               "RelativeToolTip": "InteraCoop.Shared\\Entities\\Interaction.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAAwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-13T01:53:19.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-13T01:53:19.055Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "InteraCoop.Shared.csproj",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
               "RelativeDocumentMoniker": "InteraCoop.Shared\\InteraCoop.Shared.csproj",
@@ -187,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "InteraCoop.Backend.csproj",
               "DocumentMoniker": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Backend\\InteraCoop.Backend.csproj",
               "RelativeDocumentMoniker": "InteraCoop.Backend\\InteraCoop.Backend.csproj",
