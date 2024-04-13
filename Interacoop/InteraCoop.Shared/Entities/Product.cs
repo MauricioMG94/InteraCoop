@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Interfaces;
 
 namespace InteraCoop.Shared.Entities
 {
-    public class Product
+    public class Product : IEntityWithName
     {
         public int Id { get; set; }
 
