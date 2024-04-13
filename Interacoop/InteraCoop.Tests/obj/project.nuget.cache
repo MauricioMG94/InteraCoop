@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "PAfKMAD2V/U9xYsZo5Qa6rF+vR4bin7hAbCyJta6Ouq/czI7yLjwcmB3FFK1SkPjo+t4iJd6x0LrA12GMmC0Hg==",
+  "dgSpecHash": "UmpIwra94Jlmh0yC9ueYet5HUDSBVmsoKYPbwzzD4Ibxz2MJR55/+8T7t8Opc1yySJFFJcrPsF3EftBd9z6QqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj",
+  "projectFilePath": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ADMON\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\mstest.testadapter\\3.1.1\\mstest.testadapter.3.1.1.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\mstest.testframework\\3.1.1\\mstest.testframework.3.1.1.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
-    "C:\\Users\\ADMON\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\mstest.testadapter\\3.1.1\\mstest.testadapter.3.1.1.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\mstest.testframework\\3.1.1\\mstest.testframework.3.1.1.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
+    "C:\\Users\\ASUS X509L\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {}
+    "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {
+    "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
+        "projectUniqueName": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
         "projectName": "InteraCoop.Frontend",
-        "projectPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
-        "packagesPath": "C:\\Users\\ADMON\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Frontend\\obj\\",
+        "projectPath": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
+        "packagesPath": "C:\\Users\\ASUS X509L\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ADMON\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS X509L\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,13 +61,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )",
+              "version": "[8.0.4, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )",
+              "version": "[8.0.4, )",
               "autoReferenced": true
             }
           },
@@ -81,7 +85,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[8.0.2, 8.0.2]"
+              "version": "[8.0.4, 8.0.4]"
             }
           ],
           "frameworkReferences": {
@@ -89,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
