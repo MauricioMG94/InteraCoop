@@ -20,7 +20,7 @@ namespace InteraCoop.Frontend.Pages.Countries
             if (response.Error)
             {
                 var message = await response.GetErrorMessageAsync();
-                await sweetAlertService.FireAsync("Error", message);
+                await sweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
 
