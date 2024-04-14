@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Clients\ClientCreate.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CurrieTechnologies.Razor.SweetAlert2" Version="5.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.2" PrivateAssets="all" />
@@ -14,6 +18,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InteraCoop.Shared\InteraCoop.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Clients\ClientCreate.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Clients\ClientCreate.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Clients\ClientCreate.razor" />
   </ItemGroup>
 
 </Project>

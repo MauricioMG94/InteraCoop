@@ -1,0 +1,34 @@
+﻿@page "/clients"
+
+<h3>Clientes</h3>
+<div class="mb-3">
+    <a class="btn btn-primary" href="/clients/create">Nuevo cliente</a>
+</div>
+<GenericList MyList="Clients">
+    <Body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Clientes</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var client in Clients!)
+                {
+                    <tr>
+                        <td>@client.Name</td>
+                        <td>@client.DocumentType</td>
+                        <td>@client.Document</td>
+                        <td>@client.Telephone</td>
+                        <td>@client.Address</td>
+                        <td>
+                            <a href="/clients/edit/@client.Id" class="btn btn-warning">Editar</a>
+                            <button @onclick=@(()=> DeleteAsync(client)) class="btn btn-danger">Borrar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenericList>

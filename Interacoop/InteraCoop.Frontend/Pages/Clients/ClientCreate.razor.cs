@@ -3,12 +3,12 @@ using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components;
 
-namespace InteraCoop.Frontend.Pages.Countries
+namespace InteraCoop.Frontend.Pages.Clients
 {
-    public partial class CountryCreate
+    public partial class ClientCreate
     {
-        private Country country = new();
-        private CountryForm? countryForm;
+        private Client client = new();
+        private ClientForm? clientForm;
 
         [Inject] public IRepository Repository { get; set; } = null!;
         [Inject] public SweetAlertService SweetAlertService { get; set; } = null!;
@@ -16,7 +16,7 @@ namespace InteraCoop.Frontend.Pages.Countries
 
         private async Task CreateAsync()
         {
-            var response = await Repository.PostAsync("api/countries", country);
+            var response = await Repository.PostAsync("api/clients", client);
             if (response.Error)
             {
                 var message = await response.GetErrorMessageAsync();
@@ -37,8 +37,8 @@ namespace InteraCoop.Frontend.Pages.Countries
 
         private void Return()
         {
-            countryForm!.FormPostedSuccessfully = true;
-            NavigationManager.NavigateTo("/countries");
+            clientForm!.FormPostedSuccessfully = true;
+            NavigationManager.NavigateTo("/clients");
         }
     }
 }

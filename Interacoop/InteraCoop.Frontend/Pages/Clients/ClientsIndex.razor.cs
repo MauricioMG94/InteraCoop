@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
-using CurrieTechnologies.Razor.SweetAlert2;
+using Microsoft.AspNetCore.Components;
 using System.Net;
 
-namespace InteraCoop.Frontend.Pages.Countries
+namespace InteraCoop.Frontend.Pages.Clients
 {
-    public partial class CountriesIndex
+    public partial class ClientsIndex
     {
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
-        public List<Country>? Countries { get; set; }
+        public List<Client>? Clients { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -20,22 +20,22 @@ namespace InteraCoop.Frontend.Pages.Countries
 
         private async Task LoadAsync()
         {
-            var responseHttp = await Repository.GetAsync<List<Country>>("api/countries");
+            var responseHttp = await Repository.GetAsync<List<Client>>("api/clients");
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
-            Countries = responseHttp.Response;
+            Clients = responseHttp.Response;
         }
 
-        private async Task DeleteAsync(Country country)
+        private async Task DeleteAsync(Client client)
         {
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
                 Title = "Confirmacion",
-                Text = $"¿Estas seguro de eliminar el pais:{country.Name}?",
+                Text = $"¿Estas seguro de eliminar el cliente:{client.Name}?",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true
             });
@@ -45,17 +45,17 @@ namespace InteraCoop.Frontend.Pages.Countries
                 return;
             }
 
-            var responseHttp = await Repository.DeleteAsync<Country>($"api/countries/{country.Id}");
+            var responseHttp = await Repository.DeleteAsync<Client>($"api/clients/{client.Id}");
             if (responseHttp.Error)
             {
-                if(responseHttp.HttpResponseMessage.StatusCode==HttpStatusCode.NotFound)
+                if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
                 {
-                    NavigationManager.NavigateTo("/countries");
+                    NavigationManager.NavigateTo("/clients");
                 }
                 else
                 {
                     var messageError = await responseHttp.GetErrorMessageAsync();
-                    await SweetAlertService.FireAsync("Error", messageError,SweetAlertIcon.Error);
+                    await SweetAlertService.FireAsync("Error", messageError, SweetAlertIcon.Error);
                 }
                 return;
             }
