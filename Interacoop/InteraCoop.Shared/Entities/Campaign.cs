@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace InteraCoop.Shared.Entities
 {
@@ -13,7 +8,7 @@ namespace InteraCoop.Shared.Entities
 
         [Display(Name = "Identificador de producto")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public string ProductId { get; set; } = null!;
+        public string CampaignId { get; set; } = null!;
 
         [Display(Name = "Nombre de la campaña")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
@@ -39,13 +34,8 @@ namespace InteraCoop.Shared.Entities
         [Required(ErrorMessage = "La {0} es requerida.")]
         public DateTime EndDate { get; set; }
 
-        [Display(Name = "Fecha de auditoria")]
-        [Required(ErrorMessage = "La {0} es requerida.")]
-        public DateTime AuditDate { get; set; }
-
-        [Display(Name = "Usuario de auditoria")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public string AuditUser { get; set; } = null!;
+        [Display(Name = "Productos")]
+        public ICollection<Product>? ProductsList { get; set; }
 
     }
 }

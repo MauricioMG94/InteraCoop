@@ -1,4 +1,5 @@
-﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
+﻿using InteraCoop.Backend.UnitsOfWork.Implementations;
+using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -27,8 +28,19 @@ namespace InteraCoop.Backend.Controllers
             return BadRequest();
         }
 
+        [HttpGet("totalPages")]
+        public override async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _productsUnitOfWork.GetTotalPagesAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
         [HttpPost("new")]
-        public async Task<IActionResult> PostFullAsync(ProductDto productDTO)
+        public async Task<IActionResult> PostAsync(ProductDto productDTO)
         {
             var action = await _productsUnitOfWork.AddAsync(productDTO);
             if (action.WasSuccess)
@@ -39,7 +51,7 @@ namespace InteraCoop.Backend.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> PutFullAsync(ProductDto productDTO)
+        public async Task<IActionResult> PutAsync(ProductDto productDTO)
         {
             var action = await _productsUnitOfWork.UpdateAsync(productDTO);
             if (action.WasSuccess)
