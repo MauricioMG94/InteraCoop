@@ -3,6 +3,56 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 .vs
+
+# Archivos de salida de compilación y artefactos generados
+Interacoop/InteraCoop.Backend/obj/
+Interacoop/InteraCoop.Frontend/obj/
+Interacoop/InteraCoop.Shared/obj/
+Interacoop/InteraCoop.Tests/obj/
+
+# Archivos específicos dentro de la carpeta obj
+Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.AssemblyInfo.cs
+Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.AssemblyInfoInputs.cache
+Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.GeneratedMSBuildEditorConfig.editorconfig  
+Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.assets.cache
+Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.csproj.AssemblyReference.cache
+Interacoop/InteraCoop.Backend/obj/InteraCoop.Backend.csproj.nuget.dgspec.json
+Interacoop/InteraCoop.Backend/obj/InteraCoop.Backend.csproj.nuget.g.props
+Interacoop/InteraCoop.Backend/obj/project.assets.json
+Interacoop/InteraCoop.Backend/obj/project.nuget.cache
+
+# Archivos específicos dentro de la carpeta obj de InteraCoop.Frontend
+Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.AssemblyInfo.cs
+Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.AssemblyInfoInputs.cache
+Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.GeneratedMSBuildEditorConfig.editorconfig
+Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.assets.cache
+Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.csproj.AssemblyReference.cache
+Interacoop/InteraCoop.Frontend/obj/InteraCoop.Frontend.csproj.nuget.dgspec.json
+Interacoop/InteraCoop.Frontend/obj/InteraCoop.Frontend.csproj.nuget.g.props
+Interacoop/InteraCoop.Frontend/obj/project.assets.json
+Interacoop/InteraCoop.Frontend/obj/project.nuget.cache
+
+# Archivos específicos dentro de la carpeta obj de InteraCoop.Shared
+Interacoop/InteraCoop.Shared/obj/Debug/net8.0/InteraCoop.Shared.AssemblyInfo.cs
+Interacoop/InteraCoop.Shared/obj/Debug/net8.0/InteraCoop.Shared.AssemblyInfoInputs.cache
+Interacoop/InteraCoop.Shared/obj/Debug/net8.0/InteraCoop.Shared.GeneratedMSBuildEditorConfig.editorconfig    
+Interacoop/InteraCoop.Shared/obj/Debug/net8.0/InteraCoop.Shared.assets.cache
+Interacoop/InteraCoop.Shared/obj/InteraCoop.Shared.csproj.nuget.dgspec.json
+Interacoop/InteraCoop.Shared/obj/InteraCoop.Shared.csproj.nuget.g.props
+Interacoop/InteraCoop.Shared/obj/project.assets.json
+Interacoop/InteraCoop.Shared/obj/project.nuget.cache
+
+# Archivos específicos dentro de la carpeta obj de InteraCoop.Tests
+Interacoop/InteraCoop.Tests/obj/Debug/net8.0/InteraCoop.Tests.AssemblyInfo.cs
+Interacoop/InteraCoop.Tests/obj/Debug/net8.0/InteraCoop.Tests.AssemblyInfoInputs.cache
+Interacoop/InteraCoop.Tests/obj/Debug/net8.0/InteraCoop.Tests.GeneratedMSBuildEditorConfig.editorconfig      
+Interacoop/InteraCoop.Tests/obj/Debug/net8.0/InteraCoop.Tests.assets.cache
+Interacoop/InteraCoop.Tests/obj/Debug/net8.0/InteraCoop.Tests.csproj.AssemblyReference.cache
+Interacoop/InteraCoop.Tests/obj/InteraCoop.Tests.csproj.nuget.dgspec.json
+Interacoop/InteraCoop.Tests/obj/InteraCoop.Tests.csproj.nuget.g.props
+Interacoop/InteraCoop.Tests/obj/project.assets.json
+Interacoop/InteraCoop.Tests/obj/project.nuget.cache
+
 # User-specific files
 *.rsuser
 *.suo
