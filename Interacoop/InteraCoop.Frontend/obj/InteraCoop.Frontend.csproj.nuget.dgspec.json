@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {}
+    "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\TestGit\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {
+    "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\TestGit\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
+        "projectUniqueName": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\TestGit\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
         "projectName": "InteraCoop.Frontend",
-        "projectPath": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
-        "packagesPath": "C:\\Users\\ASUS X509L\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Interacoop\\Interacoop\\InteraCoop.Frontend\\obj\\",
+        "projectPath": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\TestGit\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\InteraCoop.Frontend.csproj",
+        "packagesPath": "C:\\Users\\cristian.jaimes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\TestGit\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS X509L\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cristian.jaimes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,13 +62,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )",
+              "version": "[8.0.2, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )",
+              "version": "[8.0.2, )",
               "autoReferenced": true
             }
           },
@@ -85,7 +86,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[8.0.4, 8.0.4]"
+              "version": "[8.0.2, 8.0.2]"
             }
           ],
           "frameworkReferences": {
@@ -93,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

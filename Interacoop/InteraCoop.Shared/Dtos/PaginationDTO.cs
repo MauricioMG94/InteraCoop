@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace InteraCoop.Shared.Dtos
 {
-    internal class PaginationDTO
+    public class PaginationDTO
     {
 
         public int Id { get; set; }
