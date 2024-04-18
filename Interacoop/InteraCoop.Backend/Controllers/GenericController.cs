@@ -78,17 +78,5 @@ namespace InteraCoop.Backend.Controllers
             }
             return BadRequest();
         }
-
-        [HttpGet("full")]
-        public virtual async Task<IActionResult> GetFullAsync()
-        {
-            var action = await _unitOfWork.GetAsync();
-            if (action.WasSuccess)
-            {
-                return Ok(action.Result);
-
-            }
-            return BadRequest();
-        }
     }
 }

@@ -1,4 +1,6 @@
 using InteraCoop.Backend.Data;
+using InteraCoop.Backend.Repositories.Implementations;
+using InteraCoop.Backend.Repositories.Interfaces;
 using InteraCoop.Backend.UnitsOfWork.Implementations;
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using Microsoft.EntityFrameworkCore;
