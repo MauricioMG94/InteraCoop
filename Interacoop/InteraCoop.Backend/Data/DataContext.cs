@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InteraCoop.Shared.Entities;
+using System.Collections.Generic;
 
 namespace InteraCoop.Backend.Data
 {
@@ -11,8 +12,9 @@ namespace InteraCoop.Backend.Data
         public DbSet<Client> Clients { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<State> States { get; set; }
-        
 
+        public DbSet<Campaign> Campaigns { get; set; }
+        public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

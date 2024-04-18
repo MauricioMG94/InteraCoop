@@ -5,15 +5,23 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=LocalConnection"));
-builder.Services.AddScoped(typeof(IGenericUnitOfWork<>),typeof(GenericUnitOfWork<>));
-builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
+
+builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
+builder.Services.AddScoped<IProductsUnitOfWork, ProductsUnitOfWork>();
+
+builder.Services.AddScoped<ICampaignsRepository, CampaignsRepository>();
+builder.Services.AddScoped<ICampaignsUnitOfWork, CampaignsUnitOfWork>();
+
+
 
 var app = builder.Build();
 app.UseCors(x => x
@@ -22,7 +30,6 @@ app.UseCors(x => x
 .SetIsOriginAllowed(origin => true)
 .AllowCredentials());
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
