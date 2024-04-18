@@ -26,6 +26,11 @@ builder.Services.AddScoped<ICampaignsUnitOfWork, CampaignsUnitOfWork>();
 
 
 var app = builder.Build();
+app.UseCors(x => x
+.AllowAnyMethod()
+.AllowAnyHeader()
+.SetIsOriginAllowed(origin => true)
+.AllowCredentials());
 
 if (app.Environment.IsDevelopment())
 {
