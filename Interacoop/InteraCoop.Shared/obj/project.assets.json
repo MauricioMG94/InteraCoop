@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMON\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
       "projectName": "InteraCoop.Shared",
-      "projectPath": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Shared\\obj\\",
+      "projectPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\InteraCoop.Shared.csproj",
+      "packagesPath": "C:\\Users\\ADMON\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMON\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

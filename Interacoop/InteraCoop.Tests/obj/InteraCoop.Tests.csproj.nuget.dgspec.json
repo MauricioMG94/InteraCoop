@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj": {}
+    "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj": {}
   },
   "projects": {
-    "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj": {
+    "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj",
         "projectName": "InteraCoop.Tests",
-        "projectPath": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "D:\\especializacion\\construccion de software\\ProyectoInteracoop\\Interacoop\\InteraCoop.Tests\\obj\\",
+        "projectPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Tests\\InteraCoop.Tests.csproj",
+        "packagesPath": "C:\\Users\\ADMON\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMON\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

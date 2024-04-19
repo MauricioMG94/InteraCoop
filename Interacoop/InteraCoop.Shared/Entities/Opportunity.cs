@@ -12,21 +12,16 @@ namespace InteraCoop.Shared.Entities
         public int Id
         { get; set; }
 
-        [Display(Name = "Id de interacción")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public int InteractionId
-        { get; set; }
-
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         [MaxLength(30, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
-        public string State
+        public string Status
         { get; set; } = null!;
 
         [Display(Name = " Observaciones de la oportunidad")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
-        public string ObservationsOpportunity
+        public string OpportunityObservations
         { get; set; } = null!;
 
         [Display(Name = "Fecha de registro")]
@@ -39,11 +34,6 @@ namespace InteraCoop.Shared.Entities
         public DateTime EstimatedAcquisitionDate
         { get; set; }
 
-        [Display(Name = "Id de campaña")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public int CampaignId
-        { get; set; }
-
         [Display(Name = "Fecha de auditoría")]
         [DataType(DataType.Date)]
         public DateTime AuditDate
@@ -54,6 +44,12 @@ namespace InteraCoop.Shared.Entities
         [MaxLength(30, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         public string AuditUser
         { get; set; } = null!;
+
+        [Display(Name = "Campaña")]
+        public ICollection<Campaign>? CampaingsList { get; set; }
+
+        //[Display(Name = "Interacción")]
+        //public ICollection<Interaction>? InteractionsList { get; set; }
 
     }
 }

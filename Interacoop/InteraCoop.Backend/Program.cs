@@ -23,6 +23,9 @@ builder.Services.AddScoped<IProductsUnitOfWork, ProductsUnitOfWork>();
 builder.Services.AddScoped<ICampaignsRepository, CampaignsRepository>();
 builder.Services.AddScoped<ICampaignsUnitOfWork, CampaignsUnitOfWork>();
 
+builder.Services.AddScoped<IOpportunitiesRepository, OpportunitiesRepository>();
+builder.Services.AddScoped<IOpportunitiesUnitOfWork, OpportunitiesUnitOfWork>();
+
 
 
 var app = builder.Build();

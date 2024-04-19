@@ -22,7 +22,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<Opportunity>> GetAsync(int id)
         {
             var opportunity = await _context.Opportunities
-                .Include(x => x.InteractionsList!)
+                //.Include(x => x.InteractionsList!)
                 .Include(x => x.CampaingsList!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -44,7 +44,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Opportunities
-                .Include(x => x.InteractionsList)
+                //.Include(x => x.InteractionsList)
                 .Include(x => x.CampaingsList)
                 .AsQueryable();
 
@@ -88,17 +88,17 @@ namespace InteraCoop.Backend.Repositories.Implementations
                     OpportunityObservations = opportunityDto.OpportunityObservations,
                     RecordDate = opportunityDto.RecordDate,
                     EstimatedAcquisitionDate = opportunityDto.EstimatedAcquisitionDate,
-                    InteractionsList = new List<Interaction>(),
+                    //InteractionsList = new List<Interaction>(),
                     CampaingsList = new List<Campaign>(),
                 };
-                foreach (var interactionId in opportunityDto.InteractionsIds!)
-                {
-                    var interaction = await _context.Interactions.FirstOrDefaultAsync(x => x.Id == interactionId);
-                    if (interaction != null)
-                    {
-                        newOpportunity.InteractionsList.Add(interaction);
-                    }
-                }
+                //foreach (var interactionId in opportunityDto.InteractionsIds!)
+                //{
+                //    var interaction = await _context.Interactions.FirstOrDefaultAsync(x => x.Id == interactionId);
+                //    if (interaction != null)
+                //    {
+                //        newOpportunity.InteractionsList.Add(interaction);
+                //    }
+                //}
                 foreach (var campaingId in opportunityDto.CampaingsIds!)
                 {
                     var campaing = await _context.Campaigns.FirstOrDefaultAsync(x => x.Id == campaingId);
@@ -138,7 +138,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             try
             {
                 var opportunity = await _context.Opportunities
-                    .Include(x => x.InteractionsList)
+                    //.Include(x => x.InteractionsList)
                     .Include(x => x.CampaingsList)
                     .FirstOrDefaultAsync(x => x.Id == opportunityDto.Id);
                 if (opportunity == null)
@@ -157,17 +157,17 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 opportunity.InteractionsList = new List<Interaction>();
                 opportunity.CampaingsList = new List<Campaign>();
 
-                if (opportunityDto.InteractionsIds != null)
-                {
-                    foreach (var interactionId in opportunityDto.InteractionsIds)
-                    {
-                        var interaction = await _context.Interactions.FindAsync(interactionId);
-                        if (interaction != null)
-                        {
-                            opportunity.InteractionsList.Add(interaction);
-                        }
-                    }
-                }
+                //if (opportunityDto.InteractionsIds != null)
+                //{
+                //    foreach (var interactionId in opportunityDto.InteractionsIds)
+                //    {
+                //        var interaction = await _context.Interactions.FindAsync(interactionId);
+                //        if (interaction != null)
+                //        {
+                //            opportunity.InteractionsList.Add(interaction);
+                //        }
+                //    }
+                //}
                 if (opportunityDto.CampaingsIds != null)
                 {
                     foreach (var campaingId in opportunityDto.CampaingsIds)
@@ -208,7 +208,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<Opportunity>> DeleteAsync(int id)
         {
             var opportunity = await _context.Opportunities
-                .Include(x => x.InteractionsList)
+                //.Include(x => x.InteractionsList)
                 .Include(x => x.CampaingsList)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (opportunity == null)
@@ -221,7 +221,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             }
             try
             {
-                _context.Interactions.RemoveRange(opportunity.InteractionsList!);
+                //_context.Interactions.RemoveRange(opportunity.InteractionsList!);
                 _context.Campaigns.RemoveRange(opportunity.CampaingsList!);
                 _context.Opportunities.Remove(opportunity);
                 await _context.SaveChangesAsync();
