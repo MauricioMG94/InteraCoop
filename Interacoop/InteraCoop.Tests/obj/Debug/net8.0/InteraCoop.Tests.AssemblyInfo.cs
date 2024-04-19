@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InteraCoop.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eabdc3fce926f5c5d7e98936972015fb60884f68")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7a506705ab5ef9556e111ed612562b24ff66e42")]
 [assembly: System.Reflection.AssemblyProductAttribute("InteraCoop.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InteraCoop.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
