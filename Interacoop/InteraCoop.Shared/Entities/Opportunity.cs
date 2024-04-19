@@ -29,11 +29,6 @@ namespace InteraCoop.Shared.Entities
         public DateTime EstimatedAcquisitionDate
         { get; set; }
 
-        [Display(Name = "Fecha de auditoría")]
-        [DataType(DataType.Date)]
-        public DateTime AuditDate
-        { get; set; }
-
         [Display(Name = "Campaña")]
         public ICollection<Campaign>? CampaingsList { get; set; }
 
