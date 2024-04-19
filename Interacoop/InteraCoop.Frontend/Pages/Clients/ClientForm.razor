@@ -1,0 +1,31 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label>Cliente:</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Client.Name" />
+            <ValidationMessage For="@(()=> Client.Name)" />
+        </div>
+@*          <div>
+            <InputText class="form-control" @bind-Value="@Client.Document" />
+            <ValidationMessage For="@(()=> Client.Document)" />
+        </div>
+        <div>
+            <InputText class="form-control" @bind-Value="@Client.DocumentType" />
+            <ValidationMessage For="@(()=> Client.DocumentType)" />
+        </div>
+        <div>
+            <InputText class="form-control" @bind-Value="@Client.Telephone" />
+            <ValidationMessage For="@(()=> Client.Telephone)" />
+        </div>
+        <div>
+            <InputText class="form-control" @bind-Value="@Client.Address" />
+            <ValidationMessage For="@(()=> Client.Address)" />
+        </div>  *@
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar cambios</button>
+    <button class="btn btn-success" @onclick="ReturnAction">Regresar</button>
+</EditForm>
+
