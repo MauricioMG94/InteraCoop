@@ -29,7 +29,7 @@ namespace InteraCoop.Shared.Dtos
         [DataType(DataType.Date)]
         public DateTime EstimatedAcquisitionDate
         { get; set; }
-        public List<int>? InteractionsIds { get; set; }
+        //public List<int>? InteractionsIds { get; set; }
         public List<int>? CampaingsIds { get; set; }
     }
 }

@@ -154,7 +154,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 opportunity.OpportunityObservations = opportunityDto.OpportunityObservations;
                 opportunity.RecordDate = opportunity.RecordDate;
                 opportunity.EstimatedAcquisitionDate = opportunity.EstimatedAcquisitionDate;
-                opportunity.InteractionsList = new List<Interaction>();
+                //opportunity.InteractionsList = new List<Interaction>();
                 opportunity.CampaingsList = new List<Campaign>();
 
                 //if (opportunityDto.InteractionsIds != null)

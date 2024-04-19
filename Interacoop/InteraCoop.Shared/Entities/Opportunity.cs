@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace InteraCoop.Shared.Entities
 {
@@ -38,12 +33,6 @@ namespace InteraCoop.Shared.Entities
         [DataType(DataType.Date)]
         public DateTime AuditDate
         { get; set; }
-
-        [Display(Name = "Usuario de auditoría")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        [MaxLength(30, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
-        public string AuditUser
-        { get; set; } = null!;
 
         [Display(Name = "Campaña")]
         public ICollection<Campaign>? CampaingsList { get; set; }

@@ -152,6 +152,158 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InteraCoop.Backend.Controllers.OpportunitiesController",
+    "Method": "GetAsync",
+    "RelativePath": "api/Opportunities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RecordsNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.Opportunity, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "PutAsync",
+    "RelativePath": "api/Opportunities",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "InteraCoop.Shared.Entities.Opportunity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.OpportunitiesController",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/Opportunities/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.OpportunitiesController",
+    "Method": "GetAsync",
+    "RelativePath": "api/Opportunities/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.Opportunity, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAsync",
+    "RelativePath": "api/Opportunities/full",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.OpportunitiesController",
+    "Method": "PostAsync",
+    "RelativePath": "api/Opportunities/new",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "opportunityDto",
+        "Type": "InteraCoop.Shared.Dtos.OpportunityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.OpportunitiesController",
+    "Method": "GetPagesAsync",
+    "RelativePath": "api/Opportunities/totalPages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RecordsNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.OpportunitiesController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/Opportunities/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "opportunityDto",
+        "Type": "InteraCoop.Shared.Dtos.OpportunityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InteraCoop.Backend.Controllers.ProductsController",
     "Method": "GetAsync",
     "RelativePath": "api/Products",
