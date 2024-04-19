@@ -18,7 +18,6 @@ namespace InteraCoop.Backend.Data
         public DbSet<Interaction> Interactions { get; set; }    
         public DbSet<Opportunity> Opportunities { get; set; }   
 
-        public DbSet<Product> Opportunities { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
