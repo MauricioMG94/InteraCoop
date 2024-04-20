@@ -153,8 +153,11 @@ namespace InteraCoop.Backend.Migrations
                 b.Property<DateTime>("EndDate")
                     .HasColumnType("datetime2");
 
-                b.Property<DateTime>("StartDate")
-                    .HasColumnType("datetime2");
+                    b.Property<int?>("OpportunityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                 b.Property<string>("Status")
                     .IsRequired()
@@ -162,8 +165,96 @@ namespace InteraCoop.Backend.Migrations
 
                 b.HasKey("Id");
 
-                b.ToTable("Campaigns");
-            });
+                    b.HasIndex("OpportunityId");
+
+                    b.ToTable("Campaigns");
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Interaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("AuditDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AuditUser")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ClientIdentifier")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("InteractionCreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InteractionType")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("ObservationsInteraction")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Office")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Interactions");
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("EstimatedAcquisitionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OpportunityObservations")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("RecordDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Opportunities");
+                });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Product", b =>
             {
@@ -203,6 +294,13 @@ namespace InteraCoop.Backend.Migrations
                 b.ToTable("Products");
             });
 
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Campaign", b =>
+                {
+                    b.HasOne("InteraCoop.Shared.Entities.Opportunity", null)
+                        .WithMany("CampaingsList")
+                        .HasForeignKey("OpportunityId");
+                });
+
             modelBuilder.Entity("InteraCoop.Shared.Entities.Product", b =>
             {
                 b.HasOne("InteraCoop.Shared.Entities.Campaign", null)
@@ -211,9 +309,14 @@ namespace InteraCoop.Backend.Migrations
             });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Campaign", b =>
-            {
-                b.Navigation("ProductsList");
-            });
+                {
+                    b.Navigation("ProductsList");
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>
+                {
+                    b.Navigation("CampaingsList");
+                });
 #pragma warning restore 612, 618
         }
     }

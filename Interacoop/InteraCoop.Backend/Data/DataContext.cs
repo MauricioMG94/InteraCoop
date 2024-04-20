@@ -15,6 +15,9 @@ namespace InteraCoop.Backend.Data
 
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Interaction> Interactions { get; set; }    
+        public DbSet<Opportunity> Opportunities { get; set; }   
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
