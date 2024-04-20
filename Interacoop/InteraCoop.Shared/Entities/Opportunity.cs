@@ -32,8 +32,5 @@ namespace InteraCoop.Shared.Entities
         [Display(Name = "Campaña")]
         public ICollection<Campaign>? CampaingsList { get; set; }
 
-        //[Display(Name = "Interacción")]
-        //public ICollection<Interaction>? InteractionsList { get; set; }
-
     }
 }
