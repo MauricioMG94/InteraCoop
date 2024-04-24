@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InteraCoop.Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7a506705ab5ef9556e111ed612562b24ff66e42")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+142252694e1f5e9641cdfae86408a40f7f061c27")]
 [assembly: System.Reflection.AssemblyProductAttribute("InteraCoop.Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InteraCoop.Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

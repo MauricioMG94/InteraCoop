@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|c:\\users\\admon\\desktop\\interacoop\\interacoop\\interacoop.shared\\entities\\opportunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|solutionrelative:interacoop.shared\\entities\\opportunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|c:\\users\\admon\\desktop\\interacoop\\interacoop\\interacoop.backend\\migrations\\20240419201833_initialdbopportunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\migrations\\20240419201833_initialdbopportunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,12 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -35,14 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Opportunity.cs",
-              "DocumentMoniker": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "ToolTip": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "RelativeToolTip": "InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAwCQAAAAAAAAA",
+              "Title": "20240419201833_InitialDbOpportunity.cs",
+              "DocumentMoniker": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Backend\\Migrations\\20240419201833_InitialDbOpportunity.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Backend\\Migrations\\20240419201833_InitialDbOpportunity.cs",
+              "ToolTip": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Backend\\Migrations\\20240419201833_InitialDbOpportunity.cs",
+              "RelativeToolTip": "InteraCoop.Backend\\Migrations\\20240419201833_InitialDbOpportunity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T22:25:00.25Z",
+              "WhenOpened": "2024-04-24T01:38:34.02Z",
               "EditorCaption": ""
             }
           ]
