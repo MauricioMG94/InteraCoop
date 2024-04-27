@@ -4,22 +4,11 @@ namespace InteraCoop.Frontend.Shared
 {
     public partial class Pagination
     {
-        private List<PageModel> links = new();
-
+        private List<PageModel> links = null!;
         [Parameter] public int CurrentPage { get; set; } = 1;
-        [Parameter] public int TotalPages { get; set; }
+        [Parameter] public int TotalPages { get; set; } = 1;
         [Parameter] public int Radio { get; set; } = 10;
         [Parameter] public EventCallback<int> SelectedPage { get; set; }
-
-        private async Task InternalSelectedPage(PageModel pageModel)
-        {
-            if (pageModel.Page == CurrentPage || pageModel.Page == 0)
-            {
-                return;
-            }
-
-            await SelectedPage.InvokeAsync(pageModel.Page);
-        }
 
         protected override void OnParametersSet()
         {
@@ -77,12 +66,20 @@ namespace InteraCoop.Frontend.Shared
             });
         }
 
+        private async Task InternalSelectedPage(PageModel pageModel)
+        {
+            if (pageModel.Page == CurrentPage || pageModel.Page == 0)
+            {
+                return;
+            }
+            await SelectedPage.InvokeAsync(pageModel.Page);
+        }
+
         private class PageModel
         {
-            public string Text { get; set; } = null!;
+            public String Text { get; set; } = null!;
             public int Page { get; set; }
-            public bool Enable { get; set; } = true;
-            public bool Active { get; set; } = false;
+            public bool Enable { get; set; }
         }
     }
 }

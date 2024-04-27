@@ -1,0 +1,50 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
+
+<EditForm EditContext="editContext" OnValidSubmit="OnDataAnnotationsValidatedAsync">
+    <DataAnnotationsValidator />
+
+    <div class="card">
+        <div class="card-header">
+            <span>
+                <i class="oi oi-star" /> Crear Nueva Oportunidad
+                <a class="btn btn-sm btn-success float-end" href="/opportunities"><i class="oi oi-arrow-thick-left" /> Regresar</a>
+                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label>Estado:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Opportunity.Status" />
+                            <ValidationMessage For="@(() => Opportunity.Status)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Observaciones:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Opportunity.OpportunityObservations" />
+                            <ValidationMessage For="@(() => Opportunity.OpportunityObservations)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha de adquisición</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Opportunity.EstimatedAcquisitionDate" />
+                            <ValidationMessage For="@(() => Opportunity.EstimatedAcquisitionDate)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label>Campaña:</label>
+                        <div>
+                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
