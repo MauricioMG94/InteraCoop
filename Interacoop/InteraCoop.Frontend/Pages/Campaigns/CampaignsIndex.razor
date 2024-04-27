@@ -1,0 +1,98 @@
+﻿@page "/campaigns"
+
+<div class="card">
+    <div class="card-header">
+        <span>
+            <i class="oi oi-star"></i> Campañas
+            <a class="btn btn-sm btn-primary float-end" href="/campaign/create">
+                <i class="oi oi-plus"></i> Nueva Campaña
+            </a>
+        </span>
+    </div>
+
+    <div class="card-body">
+        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+            <div>
+                <input style="width: 400px;" type="text" class="form-control" id="titulo"
+                       placeholder="Buscar campaña..." @bind-value="Filter" />
+            </div>
+            <div class="mx-1">
+                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync">
+                    <i class="oi oi-layers"></i> Filtrar
+                </button>
+                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync">
+                    <i class="oi oi-ban"></i> Limpiar
+                </button>
+            </div>
+        </div>
+        <Pagination CurrentPage="currentPage" TotalPages="totalPages" SelectedPage="SelectedPageAsync" />
+
+        <GenericList MyList="Campaigns">
+
+            <Body>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id Campaña</th>
+                            <th>Nombre de campaña</th>
+                            <th>Tipo de campaña</th>
+                            <th>Estado de campaña</th>
+                            <th>Descripción</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de fin</th>
+                            <th>Productos asociados</th>
+                            <th style="width:168px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var campaign in Campaigns!)
+                        {
+                            <tr>
+                                <td>
+                                    @campaign.CampaignId
+                                </td>
+                                <td>
+                                    @campaign.CampaignName
+                                </td>
+                                <td>
+                                    @campaign.CampaignType
+                                </td>
+                                <td>
+                                    @campaign.Status
+                                </td>
+                                <td>
+                                    @campaign.Description
+                                </td>
+                                <td>
+                                    @campaign.StartDate
+                                </td>
+                                <td>
+                                    @campaign.EndDate
+                                </td>
+                                <td>
+                                    @if (campaign.ProductsList != null)
+                                    {
+                                        @foreach (var product in campaign.ProductsList)
+                                        {
+                                            <span>@product.Id</span>
+
+                                            <br />
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    <a href="/campaign/edit/@campaign.Id" class="btn btn-warning btn-sm">
+                                        <i class="oi oi-pencil"></i> Editar
+                                    </a>
+                                    <button class="btn btn-danger btn-sm" @onclick="@(() => Delete(campaign.Id))">
+                                        <i class="oi oi-trash"></i> Borrar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </Body>
+        </GenericList>
+    </div>
+</div>

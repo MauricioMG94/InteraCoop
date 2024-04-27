@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\",
+  "WorkspaceRootPath": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|c:\\users\\admon\\desktop\\interacoop\\interacoop\\interacoop.shared\\entities\\opportunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F481DCC6-0BBB-4BEC-B319-E6B030BE73A1}|InteraCoop.Shared\\InteraCoop.Shared.csproj|solutionrelative:interacoop.shared\\entities\\opportunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|c:\\users\\cristian.jaimes\\desktop\\esp\\4. construccion_del_software\\interacoop\\interacoop\\interacoop.frontend\\pages\\campaigns\\campaignedit.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\pages\\campaigns\\campaignedit.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|c:\\users\\cristian.jaimes\\desktop\\esp\\4. construccion_del_software\\interacoop\\interacoop\\interacoop.frontend\\pages\\campaigns\\campaignedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\pages\\campaigns\\campaignedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|c:\\users\\cristian.jaimes\\desktop\\esp\\4. construccion_del_software\\interacoop\\interacoop\\interacoop.backend\\repositories\\implementations\\campaignsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0CADC6E-C867-42ED-A76F-268D60364093}|InteraCoop.Backend\\InteraCoop.Backend.csproj|solutionrelative:interacoop.backend\\repositories\\implementations\\campaignsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|c:\\users\\cristian.jaimes\\desktop\\esp\\4. construccion_del_software\\interacoop\\interacoop\\interacoop.frontend\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC62C2A2-0A22-4162-B1D0-E05487DB6977}|InteraCoop.Frontend\\InteraCoop.Frontend.csproj|solutionrelative:interacoop.frontend\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,15 +26,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -34,15 +46,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Opportunity.cs",
-              "DocumentMoniker": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "RelativeDocumentMoniker": "InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "ToolTip": "C:\\Users\\ADMON\\Desktop\\InteraCoop\\InteraCoop\\InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "RelativeToolTip": "InteraCoop.Shared\\Entities\\Opportunity.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAwCQAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "CampaignsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Backend\\Repositories\\Implementations\\CampaignsRepository.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Backend\\Repositories\\Implementations\\CampaignsRepository.cs",
+              "ToolTip": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Backend\\Repositories\\Implementations\\CampaignsRepository.cs",
+              "RelativeToolTip": "InteraCoop.Backend\\Repositories\\Implementations\\CampaignsRepository.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwCkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T22:25:00.25Z",
+              "WhenOpened": "2024-04-27T01:55:34.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "RelativeToolTip": "InteraCoop.Frontend\\Repositories\\Repository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T01:53:46.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CampaignEdit.razor",
+              "DocumentMoniker": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor",
+              "ToolTip": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor",
+              "RelativeToolTip": "InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-27T01:48:16.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CampaignEdit.razor.cs",
+              "DocumentMoniker": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor.cs",
+              "RelativeDocumentMoniker": "InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor.cs",
+              "ToolTip": "C:\\Users\\cristian.jaimes\\Desktop\\ESP\\4. Construccion_del_Software\\InteraCoop\\Interacoop\\InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor.cs",
+              "RelativeToolTip": "InteraCoop.Frontend\\Pages\\Campaigns\\CampaignEdit.razor.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAmwDYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T01:48:21.559Z",
               "EditorCaption": ""
             }
           ]

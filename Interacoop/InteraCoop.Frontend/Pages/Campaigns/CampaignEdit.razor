@@ -1,0 +1,10 @@
+﻿@page "/campaign/edit/{CampaignId:int}"
+
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    <CampaignForm @ref="campaignForm" Campaign="campaignDto" selectedCampaigns="selectedCampaigns" nonSelectedCampaigns="nonSelectedCampaigns" OnValidSubmit="SaveChangesAsync" ReturnAction="Return"/>
+}

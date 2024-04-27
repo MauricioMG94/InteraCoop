@@ -465,3 +465,4 @@ C:\Users\ADMON\Desktop\InteraCoop\InteraCoop\InteraCoop.Backend\obj\Debug\net8.0
 C:\Users\ADMON\Desktop\InteraCoop\InteraCoop\InteraCoop.Backend\obj\Debug\net8.0\InteraCoop.Backend.pdb
 C:\Users\ADMON\Desktop\InteraCoop\InteraCoop\InteraCoop.Backend\obj\Debug\net8.0\InteraCoop.Backend.genruntimeconfig.cache
 C:\Users\ADMON\Desktop\InteraCoop\InteraCoop\InteraCoop.Backend\obj\Debug\net8.0\ref\InteraCoop.Backend.dll
+C:\Users\cristian.jaimes\Desktop\ESP\4. Construccion_del_Software\InteraCoop\Interacoop\InteraCoop.Backend\obj\Debug\net8.0\InteraCoop.Backend.sourcelink.json
