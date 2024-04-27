@@ -43,7 +43,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Opportunities
-                .Include(x => x.CampaingsList)
+                .Include(x => x.CampaingsList!)
+                .ThenInclude(c => c.ProductsList)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
@@ -140,8 +141,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
 
                 opportunity.Status = opportunityDto.Status;
                 opportunity.OpportunityObservations = opportunityDto.OpportunityObservations;
-                opportunity.RecordDate = opportunity.RecordDate;
-                opportunity.EstimatedAcquisitionDate = opportunity.EstimatedAcquisitionDate;
+                opportunity.RecordDate =opportunityDto.RecordDate;
+                opportunity.EstimatedAcquisitionDate = opportunityDto.EstimatedAcquisitionDate;
                 opportunity.CampaingsList = new List<Campaign>();
                 if (opportunityDto.CampaingsIds != null)
                 {
