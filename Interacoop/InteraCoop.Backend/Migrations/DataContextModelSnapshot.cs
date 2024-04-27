@@ -61,6 +61,9 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Id")
+                        .IsUnique();
+
                     b.HasIndex("OpportunityId");
 
                     b.ToTable("Campaigns");
@@ -273,6 +276,9 @@ namespace InteraCoop.Backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CampaignId");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Products");
                 });

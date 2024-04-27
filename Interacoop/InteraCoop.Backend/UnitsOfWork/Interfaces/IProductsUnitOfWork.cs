@@ -7,6 +7,7 @@ namespace InteraCoop.Backend.UnitsOfWork.Interfaces
     public interface IProductsUnitOfWork
     {
 
+        Task<IEnumerable<Product>> GetAllAsync();
         Task<ActionResponse<IEnumerable<Product>>> GetAsync(PaginationDTO pagination);
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
         Task<ActionResponse<Product>> DeleteAsync(int id);

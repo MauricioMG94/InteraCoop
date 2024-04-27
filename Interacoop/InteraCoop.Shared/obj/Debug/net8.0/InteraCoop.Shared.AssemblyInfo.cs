@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InteraCoop.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e64922569936b76d9c5eddd57c2b027b3d8b100")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6509d99c878694422b493ee56a2abba0853fbf75")]
 [assembly: System.Reflection.AssemblyProductAttribute("InteraCoop.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InteraCoop.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

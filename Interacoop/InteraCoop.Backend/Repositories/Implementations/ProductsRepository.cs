@@ -18,6 +18,13 @@ namespace InteraCoop.Backend.Repositories.Implementations
             _context = context;
         }
 
+        public async Task<IEnumerable<Product>> GetAllAsync()
+        {
+            return await _context.Products
+                .OrderBy(c => c.Name)
+                .ToListAsync();
+        }
+
         public override async Task<ActionResponse<IEnumerable<Product>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Products
@@ -164,5 +171,6 @@ namespace InteraCoop.Backend.Repositories.Implementations
                  WasSuccess = true,
             };
         }
+        
     }
 }

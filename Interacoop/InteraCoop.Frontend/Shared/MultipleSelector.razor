@@ -1,0 +1,30 @@
+﻿<div class="multiple-selector">
+    <div class="row">
+        <div class="col-6">
+            <ul class="selectable-ul">
+                @foreach (var item in NonSelected)
+                {
+                    <li class="list-group-item" @onclick=@(() => Select(item))>@item.Value</li>
+                }
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul class="selectable-ul">
+                @foreach (var item in Selected)
+                {
+                    <li class="list-group-item" @onclick=@(() => Unselect(item))>@item.Value</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="selector-multiple-botones mt-3">
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-primary btn-sm" @onclick="SelectAll">@addAllText</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-danger btn-sm" @onclick="UnselectAll">@removeAllText</button>
+            </div>
+        </div>
+    </div>
+</div>

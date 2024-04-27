@@ -1,0 +1,78 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
+
+<EditForm EditContext="editContext" OnValidSubmit="OnDataAnnotationsValidatedAsync">
+    <DataAnnotationsValidator />
+
+    <div class="card">
+        <div class="card-header">
+            <span>
+                <i class="oi oi-star" /> Crear Nueva Campaña
+                <a class="btn btn-sm btn-success float-end" href="/campaigns"><i class="oi oi-arrow-thick-left" /> Regresar</a>
+                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label>Identificador de Campaña:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Campaign.CampaignId" />
+                            <ValidationMessage For="@(() => Campaign.CampaignId)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Nombre:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Campaign.CampaignName" />
+                            <ValidationMessage For="@(() => Campaign.CampaignName)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Tipo de Campaña:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Campaign.CampaignType" />
+                            <ValidationMessage For="@(() => Campaign.CampaignType)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Estado:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Campaign.Status" />
+                            <ValidationMessage For="@(() => Campaign.Status)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Descripción</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Campaign.Description" />
+                            <ValidationMessage For="@(() => Campaign.Description)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha de inicio</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Campaign.StartDate" />
+                            <ValidationMessage For="@(() => Campaign.StartDate)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha de finalización</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Campaign.EndDate" />
+                            <ValidationMessage For="@(() => Campaign.EndDate)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label>Productos:</label>
+                        <div>
+                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>

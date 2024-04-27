@@ -1,0 +1,10 @@
+﻿@page "/campaign/create"
+
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    <CampaignForm @ref="campaignForm" Campaign="campaign" nonSelectedCampaigns="nonSelectedCampaigns" OnValidSubmit="CreateAsync" ReturnAction="Return" />
+}

@@ -17,7 +17,13 @@ namespace InteraCoop.Backend.Controllers
             _productsUnitOfWork = productsUnitOfWork;
         }
 
-     
+        [HttpGet("all")]
+        public async Task<IActionResult> GetComboAsync()
+        {
+            return Ok(await _productsUnitOfWork.GetAllAsync());
+        }
+
+
         [HttpGet("totalPages")]
         public override async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
         {
