@@ -37,7 +37,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 WasSuccess = true,
                 Result = campaign
             };
-            
+
         }
 
         public override async Task<ActionResponse<IEnumerable<Campaign>>> GetAsync(PaginationDTO pagination)
@@ -86,37 +86,43 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 var newCampaign = new Campaign
                 {
                     CampaignId = campaignDto.CampaignId,
-                    CampaignName = campaignDto.CampaignName, 
+                    CampaignName = campaignDto.CampaignName,
                     CampaignType = campaignDto.CampaignType,
                     Status = campaignDto.Status,
                     Description = campaignDto.Description,
                     StartDate = campaignDto.StartDate,
-                    EndDate = campaignDto.EndDate,
-                    ProductsList = new List<Product>(),
+                    EndDate = campaignDto.EndDate
                 };
+
                 foreach (var productId in campaignDto.ProductsIds!)
                 {
                     var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId);
                     if (product != null)
                     {
+                        if (newCampaign.ProductsList == null)
+                        {
+                            newCampaign.ProductsList = new List<Product>();
+                        }
                         newCampaign.ProductsList.Add(product);
                     }
                 }
+
                 _context.Add(newCampaign);
                 await _context.SaveChangesAsync();
+
                 return new ActionResponse<Campaign>
-                    {
-                        WasSuccess = true,
-                        Result = newCampaign
-                    };
-                }
-                catch (DbUpdateException)
                 {
-                    return new ActionResponse<Campaign>
-                    {
-                        WasSuccess = false,
-                        Message = "Ya existe una campaña con el mismo nombre."
-                    };
+                    WasSuccess = true,
+                    Result = newCampaign
+                };
+            }
+            catch (DbUpdateException)
+            {
+                return new ActionResponse<Campaign>
+                {
+                    WasSuccess = false,
+                    Message = "Ya existe una campaña con el mismo nombre."
+                };
             }
             catch (Exception exception)
             {

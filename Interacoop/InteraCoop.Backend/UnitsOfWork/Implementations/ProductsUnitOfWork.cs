@@ -26,6 +26,6 @@ namespace InteraCoop.Backend.UnitsOfWork.Implementations
 
         public override async Task<ActionResponse<Product>> DeleteAsync(int id) => await _productsRepository.DeleteAsync(id);
 
-
+        public async Task<IEnumerable<Product>> GetAllAsync() => await _productsRepository.GetAllAsync();
     }
 }
