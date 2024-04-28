@@ -115,7 +115,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
             {
                 if (responseHttp.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    NavigationManager.NavigateTo("/");
+                    NavigationManager.NavigateTo("/opportunities");
                     return;
                 }
 
