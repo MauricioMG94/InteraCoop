@@ -25,6 +25,18 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 .ToListAsync();
         }
 
+        public async override Task<ActionResponse<IEnumerable<Product>>> GetAsync()
+        {
+            var products = await _context.Products
+                .OrderBy(c => c.Name)
+                .ToListAsync();
+            return new ActionResponse<IEnumerable<Product>>
+            {
+                WasSuccess = true,
+                Result = products
+            };
+        }
+
         public override async Task<ActionResponse<IEnumerable<Product>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Products

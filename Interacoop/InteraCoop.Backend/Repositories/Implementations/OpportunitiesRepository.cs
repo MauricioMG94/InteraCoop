@@ -40,6 +40,18 @@ namespace InteraCoop.Backend.Repositories.Implementations
             };
         }
 
+        public async override Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync()
+        {
+            var opportunities = await _context.Opportunities
+                .OrderBy(c => c.Status)
+                .ToListAsync();
+            return new ActionResponse<IEnumerable<Opportunity>>
+            {
+                WasSuccess = true,
+                Result = opportunities
+            };
+        }
+
         public override async Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Opportunities
@@ -140,8 +152,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
 
                 opportunity.Status = opportunityDto.Status;
                 opportunity.OpportunityObservations = opportunityDto.OpportunityObservations;
-                opportunity.RecordDate = opportunity.RecordDate;
-                opportunity.EstimatedAcquisitionDate = opportunity.EstimatedAcquisitionDate;
+                opportunity.RecordDate = opportunityDto.RecordDate;
+                opportunity.EstimatedAcquisitionDate = opportunityDto.EstimatedAcquisitionDate;
                 opportunity.CampaingsList = new List<Campaign>();
                 if (opportunityDto.CampaingsIds != null)
                 {

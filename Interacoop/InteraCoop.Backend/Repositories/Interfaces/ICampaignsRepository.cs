@@ -10,6 +10,8 @@ namespace InteraCoop.Backend.Repositories.Interfaces
 
         Task<ActionResponse<IEnumerable<Campaign>>> GetAsync(PaginationDTO pagination);
 
+        Task<ActionResponse<IEnumerable<Campaign>>> GetAsync();
+
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
 
         Task<ActionResponse<Campaign>> DeleteAsync(int id);

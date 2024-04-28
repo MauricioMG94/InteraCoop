@@ -1,0 +1,87 @@
+﻿@page "/opportunities"
+
+<div class="card">
+    <div class="card-header">
+        <span>
+            <i class="oi oi-star"></i> Oportunidades
+            <a class="btn btn-sm btn-primary float-end" href="/opportunity/create">
+                <i class="oi oi-plus"></i> Nueva Oportunidad
+            </a>
+        </span>
+    </div>
+
+    <div class="card-body">
+        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+            <div>
+                <input style="width: 400px;" type="text" class="form-control" id="titulo" placeholder="Buscar por estado..." @bind-value="Filter" />
+            </div>
+            <div class="mx-1">
+                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync"><i class="bi bi-funnel" /> Filtrar</button>
+                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync"><i class="bi bi-x-circle" /> Limpiar</button>
+            </div>
+        </div>
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"></Pagination>
+
+        <GenericList MyList="Opportunities">
+
+            <Body>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Estado</th>
+                            <th>Observaciones</th>
+                            <th>Fecha de registro</th>
+                            <th>Fecha estimada</th>
+                            <th>Campaña</th>
+                            <th style="width:168px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var opportunity in Opportunities!)
+                        {
+                            <tr>
+                                <td>
+                                    @opportunity.Id
+                                </td>
+                                <td>
+                                    @opportunity.Status
+                                </td>
+                                <td>
+                                    @opportunity.OpportunityObservations
+                                </td>
+                                <td>
+                                    @opportunity.RecordDate
+                                </td>
+                                <td>
+                                    @opportunity.EstimatedAcquisitionDate
+                                </td>
+                                <td>
+                                    @if (opportunity.CampaingsList!= null)
+                                    {
+                                        @foreach (var campaign in opportunity.CampaingsList)
+                                        {
+                                            <span>@campaign.CampaignName</span>
+
+                                            <br />
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    <a href="/opportunity/edit/@opportunity.Id" class="btn btn-warning btn-sm">
+                                        <i class="oi oi-pencil"></i> Editar
+                                    </a>
+                                    <button class="btn btn-danger btn-sm" @onclick="@(() => Delete(opportunity.Id))">
+                                        <i class="oi oi-trash"></i> Borrar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </Body>
+        </GenericList>
+    </div>
+</div>

@@ -28,16 +28,27 @@ namespace InteraCoop.Backend.Controllers
             return NoContent();
         }
 
-        //[HttpGet]
-        //public override async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
-        //{
-        //    var response = await _opportunitiesUnitOfWork.GetAsync(pagination);
-        //    if (response.WasSuccess)
-        //    {
-        //        return Ok(response.Result);
-        //    }
-        //    return BadRequest();
-        //}
+        [HttpGet("full")]
+        public override async Task<IActionResult> GetAsync()
+        {
+            var action = await _opportunitiesUnitOfWork.GetAsync();
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet]
+        public override async Task<IActionResult> GetAsync(PaginationDTO pagination)
+        {
+            var action = await _opportunitiesUnitOfWork.GetAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest(action);
+        }
 
         [HttpGet("totalPages")]
         public override async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination){

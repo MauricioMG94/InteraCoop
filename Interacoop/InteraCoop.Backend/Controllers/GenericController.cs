@@ -6,14 +6,13 @@ namespace InteraCoop.Backend.Controllers
 {
     public class GenericController<T> : Controller where T : class
     {
-        private IGenericUnitOfWork<T> _unitOfWork;
-
+        private readonly IGenericUnitOfWork<T> _unitOfWork;
         public GenericController(IGenericUnitOfWork<T> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet("full")]
         public virtual async Task<IActionResult> GetAsync()
         {
             var action = await _unitOfWork.GetAsync();
@@ -21,7 +20,29 @@ namespace InteraCoop.Backend.Controllers
             {
                 return Ok(action.Result);
             }
-            return BadRequest();    
+            return BadRequest();
+        }
+
+        [HttpGet]
+        public virtual async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("TotalPages")]
+        public virtual async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetTotalPagesAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest(action);
         }
 
         [HttpGet("{id}")]
@@ -60,23 +81,13 @@ namespace InteraCoop.Backend.Controllers
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> DeleteAsync(int id)
         {
-           var action= await _unitOfWork.DeleteAsync(id);
+            var action = await _unitOfWork.DeleteAsync(id);
             if (action.WasSuccess)
             {
-                return NoContent();                
+                return NoContent();
             }
-            return BadRequest(action.Message);
-        }
+            return BadRequest(action.Message); ;
 
-        [HttpGet("totalPages")]
-        public virtual async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
-        {
-            var action = await _unitOfWork.GetTotalPagesAsync(pagination);
-            if (action.WasSuccess)
-            {
-                return Ok(action.Result);
-            }
-            return BadRequest();
         }
     }
 }
