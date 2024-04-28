@@ -21,6 +21,7 @@ namespace InteraCoop.Backend.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Product>().HasIndex(x => x.Id).IsUnique();
+            modelBuilder.Entity<Opportunity>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<Campaign>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
             modelBuilder.Entity<City>().HasIndex(x => new {x.StateId,x.Name}).IsUnique();

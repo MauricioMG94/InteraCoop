@@ -2,6 +2,7 @@
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components;
+using System.Net;
 
 namespace InteraCoop.Frontend.Pages.Opportunities
 {
@@ -113,14 +114,15 @@ namespace InteraCoop.Frontend.Pages.Opportunities
 
             if (responseHttp.Error)
             {
-                if (responseHttp.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
                 {
                     NavigationManager.NavigateTo("/opportunities");
-                    return;
                 }
-
-                var mensajeError = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+                else
+                {
+                    var mensajeError = await responseHttp.GetErrorMessageAsync();
+                    await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+                }                
                 return;
             }
 
