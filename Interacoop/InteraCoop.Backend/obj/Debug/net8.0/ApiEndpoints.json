@@ -137,6 +137,111 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.City, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAsync",
+    "RelativePath": "api/Cities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.City, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "PostAsync",
+    "RelativePath": "api/Cities",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "InteraCoop.Shared.Entities.City",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.City, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "PutAsync",
+    "RelativePath": "api/Cities",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "InteraCoop.Shared.Entities.City",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.City, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAsync",
+    "RelativePath": "api/Cities/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.City, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/Cities/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.City, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPagesAsync",
+    "RelativePath": "api/Cities/totalPages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RecordsNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.Client, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAsync",
     "RelativePath": "api/Clients",
@@ -242,7 +347,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.Country, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "InteraCoop.Backend.Controllers.CountriesController",
     "Method": "GetAsync",
     "RelativePath": "api/Countries",
     "HttpMethod": "GET",
@@ -284,7 +389,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.Country, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "InteraCoop.Backend.Controllers.CountriesController",
     "Method": "GetAsync",
     "RelativePath": "api/Countries/{id}",
     "HttpMethod": "GET",
@@ -626,6 +731,111 @@
         "Name": "productDTO",
         "Type": "InteraCoop.Shared.Dtos.ProductDto",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.StatesController",
+    "Method": "GetAsync",
+    "RelativePath": "api/States",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.State, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "PostAsync",
+    "RelativePath": "api/States",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "InteraCoop.Shared.Entities.State",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.State, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "PutAsync",
+    "RelativePath": "api/States",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "InteraCoop.Shared.Entities.State",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.StatesController",
+    "Method": "GetAsync",
+    "RelativePath": "api/States/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.State, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/States/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InteraCoop.Backend.Controllers.GenericController\u00601[[InteraCoop.Shared.Entities.State, InteraCoop.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPagesAsync",
+    "RelativePath": "api/States/totalPages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RecordsNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Filter",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

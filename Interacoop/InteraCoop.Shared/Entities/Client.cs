@@ -37,7 +37,7 @@ namespace InteraCoop.Shared.Entities
         public String Address { get; set; } = null!;
 
         public DateTime RegistryDate { get; set; }
-        public DateTime AuditAddress { get; set; }
+        public DateTime AuditUpdate { get; set; }
         public String AuditUser { get; set; } = null!;
     }
 }

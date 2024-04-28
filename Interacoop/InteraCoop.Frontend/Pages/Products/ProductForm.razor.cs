@@ -25,9 +25,7 @@ namespace InteraCoop.Frontend.Pages.Products
         protected override void OnInitialized()
         {
             editContext = new(Product);
-
         }
-
         private async Task OnBeforeInternalNavigation(LocationChangingContext context)
         {
             var formWasEdited = editContext.IsModified();

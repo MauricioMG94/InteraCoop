@@ -6,24 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InteraCoop.Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class initialDb : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Cities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cities", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Clients",
                 columns: table => new
@@ -37,7 +24,7 @@ namespace InteraCoop.Backend.Migrations
                     Telephone = table.Column<int>(type: "int", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RegistryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AuditAddress = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AuditUpdate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AuditUser = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -103,11 +90,18 @@ namespace InteraCoop.Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CountryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_States", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_States_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,7 +126,28 @@ namespace InteraCoop.Backend.Migrations
                         name: "FK_Campaigns_Opportunities_OpportunityId",
                         column: x => x.OpportunityId,
                         principalTable: "Opportunities",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    StateId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cities_States_StateId",
+                        column: x => x.StateId,
+                        principalTable: "States",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,7 +171,8 @@ namespace InteraCoop.Backend.Migrations
                         name: "FK_Products_Campaigns_CampaignId",
                         column: x => x.CampaignId,
                         principalTable: "Campaigns",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -169,6 +185,12 @@ namespace InteraCoop.Backend.Migrations
                 name: "IX_Campaigns_OpportunityId",
                 table: "Campaigns",
                 column: "OpportunityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cities_StateId_Name",
+                table: "Cities",
+                columns: new[] { "StateId", "Name" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_Name",
@@ -192,6 +214,12 @@ namespace InteraCoop.Backend.Migrations
                 table: "Products",
                 column: "Id",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_States_CountryId_Name",
+                table: "States",
+                columns: new[] { "CountryId", "Name" },
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -204,9 +232,6 @@ namespace InteraCoop.Backend.Migrations
                 name: "Clients");
 
             migrationBuilder.DropTable(
-                name: "Countries");
-
-            migrationBuilder.DropTable(
                 name: "Interactions");
 
             migrationBuilder.DropTable(
@@ -217,6 +242,9 @@ namespace InteraCoop.Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Campaigns");
+
+            migrationBuilder.DropTable(
+                name: "Countries");
 
             migrationBuilder.DropTable(
                 name: "Opportunities");

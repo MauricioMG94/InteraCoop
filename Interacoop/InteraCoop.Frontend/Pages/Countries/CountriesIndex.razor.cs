@@ -8,9 +8,13 @@ namespace InteraCoop.Frontend.Pages.Countries
 {
     public partial class CountriesIndex
     {
+        private int currentPage = 1;
+        private int totalPages;
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+        [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
+        [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public List<Country>? Countries { get; set; }
 
         protected override async Task OnInitializedAsync()
@@ -18,26 +22,84 @@ namespace InteraCoop.Frontend.Pages.Countries
             await LoadAsync();
         }
 
-        private async Task LoadAsync()
+        private async Task SelectedPageAsync(int page)
         {
-            var responseHttp = await Repository.GetAsync<List<Country>>("api/countries");
+            currentPage = page;
+            await LoadAsync(page);
+        }
+
+        private async Task LoadAsync(int page = 1)
+        {
+            if (!string.IsNullOrWhiteSpace(Page))
+            {
+                page = Convert.ToInt32(Page);
+            }
+
+            var ok = await LoadListAsync(page);
+            if (ok)
+            {
+                await LoadPagesAsync();
+            }
+        }
+
+        private async Task<bool> LoadListAsync(int page)
+        {
+            var url = $"api/countries?page={page}";
+            if (!string.IsNullOrEmpty(Filter))
+            {
+                url += $"&filter={Filter}";
+            }
+
+            var responseHttp = await Repository.GetAsync<List<Country>>(url);
+            if (responseHttp.Error)
+            {
+                var message = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+                return false;
+            }
+            Countries = responseHttp.Response;
+            return true;
+        }
+
+        private async Task LoadPagesAsync()
+        {
+            var url = "api/countries/totalPages";
+            if (!string.IsNullOrEmpty(Filter))
+            {
+                url += $"?filter={Filter}";
+            }
+
+            var responseHttp = await Repository.GetAsync<int>(url);
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
-            Countries = responseHttp.Response;
+            totalPages = responseHttp.Response;
         }
 
-        private async Task DeleteAsync(Country country)
+        private async Task CleanFilterAsync()
+        {
+            Filter = string.Empty;
+            await ApplyFilterAsync();
+        }
+
+        private async Task ApplyFilterAsync()
+        {
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
+        }
+
+        private async Task DeleteAsycn(Country country)
         {
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
-                Title = "Confirmacion",
-                Text = $"¿Estas seguro de eliminar el pais:{country.Name}?",
+                Title = "Confirmación",
+                Text = $"¿Estas seguro de querer borrar el país: {country.Name}?",
                 Icon = SweetAlertIcon.Question,
-                ShowCancelButton = true
+                ShowCancelButton = true,
             });
             var confirm = string.IsNullOrEmpty(result.Value);
             if (confirm)
@@ -48,17 +110,18 @@ namespace InteraCoop.Frontend.Pages.Countries
             var responseHttp = await Repository.DeleteAsync<Country>($"api/countries/{country.Id}");
             if (responseHttp.Error)
             {
-                if(responseHttp.HttpResponseMessage.StatusCode==HttpStatusCode.NotFound)
+                if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
                 {
                     NavigationManager.NavigateTo("/countries");
                 }
                 else
                 {
-                    var messageError = await responseHttp.GetErrorMessageAsync();
-                    await SweetAlertService.FireAsync("Error", messageError,SweetAlertIcon.Error);
+                    var mensajeError = await responseHttp.GetErrorMessageAsync();
+                    await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
                 }
                 return;
             }
+
             await LoadAsync();
             var toast = SweetAlertService.Mixin(new SweetAlertOptions
             {
@@ -67,7 +130,7 @@ namespace InteraCoop.Frontend.Pages.Countries
                 ShowConfirmButton = true,
                 Timer = 3000
             });
-            await toast.FireAsync(icon: SweetAlertIcon.Success, message: "Registro borrado con exito.");
+            await toast.FireAsync(icon: SweetAlertIcon.Success, message: "Registro borrado con éxito.");
         }
     }
 }
