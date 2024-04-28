@@ -35,6 +35,7 @@
                             <th>Observaciones</th>
                             <th>Fecha de registro</th>
                             <th>Fecha estimada</th>
+                            <th>Campaña</th>
                             <th style="width:168px"></th>
                         </tr>
                     </thead>
@@ -56,6 +57,17 @@
                                 </td>
                                 <td>
                                     @opportunity.EstimatedAcquisitionDate
+                                </td>
+                                <td>
+                                    @if (opportunity.CampaingsList!= null)
+                                    {
+                                        @foreach (var campaign in opportunity.CampaingsList)
+                                        {
+                                            <span>@campaign.CampaignName</span>
+
+                                            <br />
+                                        }
+                                    }
                                 </td>
                                 <td>
                                     <a href="/opportunity/edit/@opportunity.Id" class="btn btn-warning btn-sm">
