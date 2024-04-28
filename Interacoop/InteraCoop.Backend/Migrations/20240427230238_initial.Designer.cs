@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InteraCoop.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240426160335_initialDb")]
-    partial class initialDb
+    [Migration("20240427230238_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,7 +85,13 @@ namespace InteraCoop.Backend.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StateId", "Name")
+                        .IsUnique();
 
                     b.ToTable("Cities");
                 });
@@ -102,7 +108,7 @@ namespace InteraCoop.Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("AuditAddress")
+                    b.Property<DateTime>("AuditUpdate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("AuditUser")
@@ -294,12 +300,18 @@ namespace InteraCoop.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId", "Name")
+                        .IsUnique();
 
                     b.ToTable("States");
                 });
@@ -308,14 +320,38 @@ namespace InteraCoop.Backend.Migrations
                 {
                     b.HasOne("InteraCoop.Shared.Entities.Opportunity", null)
                         .WithMany("CampaingsList")
-                        .HasForeignKey("OpportunityId");
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.City", b =>
+                {
+                    b.HasOne("InteraCoop.Shared.Entities.State", "State")
+                        .WithMany("Cities")
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("State");
                 });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Product", b =>
                 {
                     b.HasOne("InteraCoop.Shared.Entities.Campaign", null)
                         .WithMany("ProductsList")
-                        .HasForeignKey("CampaignId");
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.State", b =>
+                {
+                    b.HasOne("InteraCoop.Shared.Entities.Country", "Country")
+                        .WithMany("States")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Campaign", b =>
@@ -323,9 +359,19 @@ namespace InteraCoop.Backend.Migrations
                     b.Navigation("ProductsList");
                 });
 
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Country", b =>
+                {
+                    b.Navigation("States");
+                });
+
             modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>
                 {
                     b.Navigation("CampaingsList");
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.State", b =>
+                {
+                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }
