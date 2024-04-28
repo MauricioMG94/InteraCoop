@@ -4,26 +4,27 @@ using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components;
 using System.Net;
 
-namespace InteraCoop.Frontend.Pages.Countries
+namespace InteraCoop.Frontend.Pages.States
 {
-    public partial class CountryDetails
+    public partial class StateDetails
     {
-        private Country? country;
-        private List<State>? states;
+        private State? state;
+        private List<City>? cities;
         private int currentPage = 1;
         private int totalPages;
-        [Inject] private IRepository Repository { get; set; } = null!;
-        [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
-        [Parameter] public int CountryId { get; set; }
+        [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+        [Inject] private IRepository Repository { get; set; } = null!;
+
+        [Parameter] public int StateId { get; set; }
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
 
         protected override async Task OnInitializedAsync()
         {
-            await LoadAsync();
+             await LoadAsync();
         }
-
         private async Task SelectedPageAsync(int page)
         {
             if (!string.IsNullOrWhiteSpace(Page))
@@ -37,10 +38,10 @@ namespace InteraCoop.Frontend.Pages.Countries
 
         private async Task LoadAsync(int page = 1)
         {
-            var ok = await LoadCountryAsync();
+            var ok = await LoadStateAsync();
             if (ok)
             {
-                ok = await LoadStatesAsync(page);
+                ok = await LoadCitiesAsync(page);
                 if (ok)
                 {
                     await LoadPagesAsync();
@@ -50,7 +51,7 @@ namespace InteraCoop.Frontend.Pages.Countries
 
         private async Task LoadPagesAsync()
         {
-            var url = $"api/states/totalPages?id={CountryId}";
+            var url = $"api/cities/totalPages?id={StateId}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
@@ -66,22 +67,22 @@ namespace InteraCoop.Frontend.Pages.Countries
             totalPages = responseHttp.Response;
         }
 
-        private async Task<bool> LoadStatesAsync(int page)
+        private async Task<bool> LoadCitiesAsync(int page)
         {
-            var url = $"api/states?id={CountryId}&page={page}";
+            var url = $"api/cities?id={StateId}&page={page}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
             }
 
-            var responseHttp = await Repository.GetAsync<List<State>>(url);
+            var responseHttp = await Repository.GetAsync<List<City>>(url);
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return false;
             }
-            states = responseHttp.Response;
+            cities = responseHttp.Response;
             return true;
         }
 
@@ -98,9 +99,9 @@ namespace InteraCoop.Frontend.Pages.Countries
             await SelectedPageAsync(page);
         }
 
-        private async Task<bool> LoadCountryAsync()
+        private async Task<bool> LoadStateAsync()
         {
-            var responseHttp = await Repository.GetAsync<Country>($"/api/countries/{CountryId}");
+            var responseHttp = await Repository.GetAsync<State>($"api/states/{StateId}");
             if (responseHttp.Error)
             {
                 if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
@@ -113,16 +114,16 @@ namespace InteraCoop.Frontend.Pages.Countries
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return false;
             }
-            country = responseHttp.Response;
+            state = responseHttp.Response;
             return true;
         }
 
-        private async Task DeleteAsync(State state)
+        private async Task DeleteAsync(City city)
         {
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
                 Title = "Confirmación",
-                Text = $"¿Realmente deseas eliminar el departamento/estado? {state.Name}",
+                Text = $"¿Realmente deseas eliminar la ciudad? {city.Name}",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true,
                 CancelButtonText = "No",
@@ -135,7 +136,7 @@ namespace InteraCoop.Frontend.Pages.Countries
                 return;
             }
 
-            var responseHttp = await Repository.DeleteAsync<State>($"/api/states/{state.Id}");
+            var responseHttp = await Repository.DeleteAsync<City>($"/api/cities/{city.Id}");
             if (responseHttp.Error)
             {
                 if (responseHttp.HttpResponseMessage.StatusCode != HttpStatusCode.NotFound)
