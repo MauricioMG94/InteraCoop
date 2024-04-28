@@ -9,6 +9,7 @@ namespace InteraCoop.Backend.UnitsOfWork.Interfaces
         Task<ActionResponse<Campaign>> GetAsync(int id);
 
         Task<ActionResponse<IEnumerable<Campaign>>> GetAsync(PaginationDTO pagination);
+        Task<ActionResponse<IEnumerable<Campaign>>> GetAsync();
 
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
 

@@ -9,6 +9,8 @@ namespace InteraCoop.Backend.Repositories.Interfaces
         Task<IEnumerable<Product>> GetAllAsync();
         Task<ActionResponse<IEnumerable<Product>>> GetAsync(PaginationDTO pagination);
 
+        Task<ActionResponse<IEnumerable<Product>>> GetAsync();
+
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
 
         Task<ActionResponse<Product>> AddAsync(ProductDto productDto);

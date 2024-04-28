@@ -40,6 +40,18 @@ namespace InteraCoop.Backend.Repositories.Implementations
 
         }
 
+        public async override Task<ActionResponse<IEnumerable<Campaign>>> GetAsync()
+        {
+            var campaigns = await _context.Campaigns
+                .OrderBy(c => c.CampaignName)
+                .ToListAsync();
+            return new ActionResponse<IEnumerable<Campaign>>
+            {
+                WasSuccess = true,
+                Result = campaigns
+            };
+        }
+
         public override async Task<ActionResponse<IEnumerable<Campaign>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Campaigns
