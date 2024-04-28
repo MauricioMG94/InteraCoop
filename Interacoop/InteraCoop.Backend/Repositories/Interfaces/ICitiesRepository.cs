@@ -4,11 +4,10 @@ using InteraCoop.Shared.Responses;
 
 namespace InteraCoop.Backend.Repositories.Interfaces
 {
-    public interface IStatesRepository
+    public interface ICitiesRepository
     {
-        Task<ActionResponse<State>> GetAsync(int id);
-        Task<ActionResponse<IEnumerable<State>>> GetAsync();
-        Task<ActionResponse<IEnumerable<State>>> GetAsync(PaginationDTO pagination);
+        Task<ActionResponse<IEnumerable<City>>> GetAsync(PaginationDTO pagination);
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
+        Task<IEnumerable<City>> GetComboAsync(int stateId);
     }
 }

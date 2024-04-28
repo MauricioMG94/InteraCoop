@@ -1,4 +1,5 @@
 ﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
+using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +16,21 @@ namespace InteraCoop.Backend.Controllers
             _countriesUnitOfWork = countriesUnitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet("full")]
         public override async Task<IActionResult> GetAsync()
         {
             var response = await _countriesUnitOfWork.GetAsync();
+            if (response.WasSuccess)
+            {
+                return Ok(response.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet]
+        public override async Task<IActionResult> GetAsync(PaginationDTO pagination)
+        {
+            var response = await _countriesUnitOfWork.GetAsync(pagination);
             if (response.WasSuccess)
             {
                 return Ok(response.Result);
@@ -35,6 +47,17 @@ namespace InteraCoop.Backend.Controllers
                 return Ok(response.Result);
             }
             return NotFound(response.Message);
+        }
+
+        [HttpGet("totalPages")]
+        public override async Task<IActionResult> GetPagesAsync([FromQuery]PaginationDTO pagination)
+        {
+            var response = await _countriesUnitOfWork.GetTotalPagesAsync(pagination);
+            if (response.WasSuccess)
+            {
+                return Ok(response.Result);
+            }
+            return BadRequest();
         }
     }
 }

@@ -4,12 +4,9 @@ using InteraCoop.Shared.Responses;
 
 namespace InteraCoop.Backend.UnitsOfWork.Interfaces
 {
-    public interface IStatesUnitOfWork
+    public interface IClientsUnitOfWork
     {
-        Task<ActionResponse<State>> GetAsync(int id);
-
-        Task<ActionResponse<IEnumerable<State>>> GetAsync();
-        Task<ActionResponse<IEnumerable<State>>> GetAsync(PaginationDTO pagination);
+        Task<ActionResponse<IEnumerable<Client>>> GetAsync(PaginationDTO pagination);
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
     }
 }

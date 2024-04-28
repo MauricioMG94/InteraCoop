@@ -1,6 +1,8 @@
 ﻿using InteraCoop.Backend.Data;
+using InteraCoop.Backend.Helpers;
 using InteraCoop.Backend.Repositories.Interfaces;
 using InteraCoop.Backend.UnitsOfWork.Implementations;
+using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +48,45 @@ namespace InteraCoop.Backend.Repositories.Implementations
             {
                 WasSuccess = true,
                 Result = countries
+            };
+        }
+
+        public override async Task<ActionResponse<IEnumerable<Country>>> GetAsync(PaginationDTO pagination)
+        {
+            var queryable = _context.Countries
+                .Include(x => x.States)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(pagination.Filter))
+            {
+                queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+            }
+
+            return new ActionResponse<IEnumerable<Country>>
+            {
+                WasSuccess = true,
+                Result = await queryable
+                .OrderBy(x => x.Name)
+                .Paginate(pagination)
+                .ToListAsync()
+            };
+        }
+
+        public override async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination)
+        {
+            var queryable = _context.Countries
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(pagination.Filter))
+            {
+                queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+            }
+            double count = await queryable.CountAsync();
+            int totalPages = (int)Math.Ceiling(count/pagination.RecordsNumber);
+            return new ActionResponse<int>
+            {
+                WasSuccess = true,
+                Result = totalPages
             };
         }
     }

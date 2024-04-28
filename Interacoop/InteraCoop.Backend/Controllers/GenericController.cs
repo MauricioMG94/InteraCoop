@@ -13,7 +13,7 @@ namespace InteraCoop.Backend.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet("full")]
         public virtual async Task<IActionResult> GetAsync()
         {
             var action = await _unitOfWork.GetAsync();
@@ -22,6 +22,17 @@ namespace InteraCoop.Backend.Controllers
                 return Ok(action.Result);
             }
             return BadRequest();    
+        }
+
+        [HttpGet]
+        public virtual async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
         }
 
         [HttpGet("{id}")]
