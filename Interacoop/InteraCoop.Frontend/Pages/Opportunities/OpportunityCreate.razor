@@ -1,0 +1,10 @@
+﻿@page "/opportunity/create"
+
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    <OpportunityForm @ref="opportunityForm" Opportunity="opportunity" nonSelectedOpportunities="nonSelectedOpportunities" OnValidSubmit="CreateAsync" ReturnAction="Return" />
+}

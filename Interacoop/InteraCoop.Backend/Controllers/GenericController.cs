@@ -6,8 +6,7 @@ namespace InteraCoop.Backend.Controllers
 {
     public class GenericController<T> : Controller where T : class
     {
-        private IGenericUnitOfWork<T> _unitOfWork;
-
+        private readonly IGenericUnitOfWork<T> _unitOfWork;
         public GenericController(IGenericUnitOfWork<T> unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -21,7 +20,19 @@ namespace InteraCoop.Backend.Controllers
             {
                 return Ok(action.Result);
             }
-            return BadRequest();    
+            return BadRequest();
+        }
+
+
+        [HttpGet("TotalPages")]
+        public virtual async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetTotalPagesAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest(action);
         }
 
         [HttpGet]
@@ -71,23 +82,13 @@ namespace InteraCoop.Backend.Controllers
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> DeleteAsync(int id)
         {
-           var action= await _unitOfWork.DeleteAsync(id);
+            var action = await _unitOfWork.DeleteAsync(id);
             if (action.WasSuccess)
             {
-                return NoContent();                
+                return NoContent();
             }
-            return BadRequest(action.Message);
-        }
+            return BadRequest(action.Message); ;
 
-        [HttpGet("totalPages")]
-        public virtual async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
-        {
-            var action = await _unitOfWork.GetTotalPagesAsync(pagination);
-            if (action.WasSuccess)
-            {
-                return Ok(action.Result);
-            }
-            return BadRequest();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace InteraCoop.Backend.Repositories.Interfaces
     {
         Task<ActionResponse<Opportunity>> GetAsync(int id);
         Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync(PaginationDTO pagination);
+        Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync();
         Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
         Task<ActionResponse<Opportunity>> DeleteAsync(int id);
         Task<ActionResponse<Opportunity>> UpdateAsync(OpportunityDto opportunity);

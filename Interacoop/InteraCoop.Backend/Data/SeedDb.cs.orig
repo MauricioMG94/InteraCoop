@@ -41,10 +41,9 @@ namespace InteraCoop.Backend.Data
                 _context.Clients.Add(new Client { City = 3, Name = "Lorena", Document = 13379, DocumentType = "CC", Telephone = 5529634, Address = "Cll 14 #40-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
                 _context.Clients.Add(new Client { City = 4, Name = "Blanca", Document = 24480, DocumentType = "CC", Telephone = 2659807, Address = "Cll 40 #130-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
 
-                await CheckCampaignProducts();
-                await CheckProductsAsync();
-                await CheckOpportunitiesAsync();
-            }
+            await CheckCampaignProducts();
+            await CheckProductsAsync();
+            await CheckOpportunitiesAsync();
         }
 
         private async Task CheckCampaignProducts()

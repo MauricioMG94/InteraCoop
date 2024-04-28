@@ -1,4 +1,5 @@
-﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
+﻿using InteraCoop.Backend.UnitsOfWork.Implementations;
+using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,28 @@ namespace InteraCoop.Backend.Controllers
             return NoContent();
         }
 
+
+        [HttpGet("full")]
+        public override async Task<IActionResult> GetAsync()
+        {
+            var action = await _campaignsUnitOfWork.GetAsync();
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet]
+        public override async Task<IActionResult> GetAsync(PaginationDTO pagination)
+        {
+            var action = await _campaignsUnitOfWork.GetAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest(action);
+        }
 
 
         [HttpGet("totalPages")]
