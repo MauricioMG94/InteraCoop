@@ -9,19 +9,8 @@ namespace InteraCoop.Shared.Entities
 {
     public class Interaction
     {
-
         public int Id
         { get; set; }
-
-        [Display(Name = "Identificador del cliente")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public int ClientIdentifier
-        { get; set; }
-
-        [Display(Name = "Código de usuario")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public string UserCode
-        { get; set; } = null!;
 
         [Display(Name = "Tipo de interacción")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
@@ -72,5 +61,12 @@ namespace InteraCoop.Shared.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         public string AuditUser
         { get; set; } = null!;
+
+        [Display(Name = "Cliente")]
+        public ICollection<Client>? ClientsList { get; set; }
+
+        // public ICollection<User>? UserList { get; set; }
+
+
     }
 }

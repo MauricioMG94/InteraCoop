@@ -1,6 +1,7 @@
 ﻿using InteraCoop.Backend.Controllers;
 using InteraCoop.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace InteraCoop.Backend.Data
 {
@@ -120,6 +121,9 @@ namespace InteraCoop.Backend.Data
             }
         }
 
+
+
+
         private async Task CheckOpportunitiesAsync()
         {
             if (!_context.Opportunities.Any())
@@ -153,5 +157,43 @@ namespace InteraCoop.Backend.Data
                 await _context.SaveChangesAsync();
             }
         }
+
+        private async Task CheckInteractionsAsync()
+        {
+            if (!_context.Interactions.Any())
+            {
+
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate =  DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address="Home", ObservationsInteraction="Funcion", Office="Home", AuditDate = new DateTime(2024, 06, 08), AuditUser ="Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+                _context.Interactions.Add(new Interaction { InteractionType = "Oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol" });
+
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }
