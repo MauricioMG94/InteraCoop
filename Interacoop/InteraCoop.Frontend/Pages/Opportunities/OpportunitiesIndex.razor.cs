@@ -116,11 +116,13 @@ namespace InteraCoop.Frontend.Pages.Opportunities
                 if (responseHttp.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     NavigationManager.NavigateTo("/opportunities");
-                    return;
-                }
 
-                var mensajeError = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+                }
+                else
+                {
+                    var mensajeError = await responseHttp.GetErrorMessageAsync();
+                    await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+                }
                 return;
             }
 
