@@ -65,7 +65,7 @@ namespace InteraCoop.Shared.Entities
         [Display(Name = "Cliente")]
         public ICollection<Client>? ClientsList { get; set; }
 
-        // public ICollection<User>? UserList { get; set; }
+         public ICollection<Campaign>? UserList { get; set; }
 
 
     }

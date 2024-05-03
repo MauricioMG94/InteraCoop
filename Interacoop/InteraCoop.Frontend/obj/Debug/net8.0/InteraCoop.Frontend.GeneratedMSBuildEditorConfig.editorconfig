@@ -13,115 +13,147 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = InteraCoop.Frontend
 build_property.RootNamespace = InteraCoop.Frontend
-build_property.ProjectDir = C:\Users\cristian.jaimes\Desktop\ESP\4. Construccion_del_Software\InteraCoop\Interacoop\InteraCoop.Frontend\
+build_property.ProjectDir = C:\Proyectos\Interacoop\Interacoop\InteraCoop.Frontend\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\cristian.jaimes\Desktop\ESP\4. Construccion_del_Software\InteraCoop\Interacoop\InteraCoop.Frontend
+build_property.MSBuildProjectDirectory = C:\Proyectos\Interacoop\Interacoop\InteraCoop.Frontend
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/App.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignCreate.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignCreate.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FtcGFpZ25zXENhbXBhaWduQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignDetails.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FtcGFpZ25zXENhbXBhaWduRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignEdit.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FtcGFpZ25zXENhbXBhaWduRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignForm.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FtcGFpZ25zXENhbXBhaWduRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignsIndex.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Campaigns/CampaignsIndex.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FtcGFpZ25zXENhbXBhaWduc0luZGV4LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Clients/ClientForm.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Clients/ClientForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50c1xDbGllbnRGb3JtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Clients/ClientsIndex.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Clients/ClientsIndex.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50c1xDbGllbnRzSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Counter.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountriesIndex.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountriesIndex.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRyaWVzXENvdW50cmllc0luZGV4LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountryCreate.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountryCreate.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRyaWVzXENvdW50cnlDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountryEdit.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountryEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRyaWVzXENvdW50cnlFZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountryForm.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Countries/CountryForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRyaWVzXENvdW50cnlGb3JtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Home.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductCreate.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Interactions/InteractionCreate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3Rpb25zXEludGVyYWN0aW9uQ3JlYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Interactions/InteractionEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3Rpb25zXEludGVyYWN0aW9uRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Interactions/InteractionForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3Rpb25zXEludGVyYWN0aW9uRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Interactions/InteractionIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3Rpb25zXEludGVyYWN0aW9uSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Opportunities/OpportunitiesIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3Bwb3J0dW5pdGllc1xPcHBvcnR1bml0aWVzSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Opportunities/OpportunityCreate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3Bwb3J0dW5pdGllc1xPcHBvcnR1bml0eUNyZWF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Opportunities/OpportunityEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3Bwb3J0dW5pdGllc1xPcHBvcnR1bml0eUVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Opportunities/OpportunityForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3Bwb3J0dW5pdGllc1xPcHBvcnR1bml0eUZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductCreate.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdENyZWF0ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductEdit.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdEVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductForm.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdEZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductsIndex.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Products/ProductsIndex.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdHNJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Pages/Weather.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Shared/GenericList.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Shared/GenericList.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEdlbmVyaWNMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Shared/Loading.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Shared/Loading.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvYWRpbmcucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Shared/MultipleSelector.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Shared/MultipleSelector.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE11bHRpcGxlU2VsZWN0b3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Shared/Pagination.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Shared/Pagination.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBhZ2luYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/_Imports.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Layout/MainLayout.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-cwinbxutil
 
-[C:/Users/cristian.jaimes/Desktop/ESP/4. Construccion_del_Software/InteraCoop/Interacoop/InteraCoop.Frontend/Layout/NavMenu.razor]
+[C:/Proyectos/Interacoop/Interacoop/InteraCoop.Frontend/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-ekawmwhf5j

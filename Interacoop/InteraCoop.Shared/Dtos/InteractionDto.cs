@@ -52,7 +52,7 @@ namespace InteraCoop.Shared.Dtos
         public string Office
         { get; set; } = null!;
 
-        [Display(Name = "Fecha de auditoria")]
+        [Display(Name = "Fecha de auditoría")]
         [DataType(DataType.Date)]
         public DateTime AuditDate
         { get; set; }
