@@ -1,15 +1,15 @@
-﻿using System;
+﻿using InteraCoop.Shared.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InteraCoop.Shared.Entities
+namespace InteraCoop.Shared.Dtos
 {
-    public class Interaction
+    public class InteractionDto
     {
-
         public int Id
         { get; set; }
 
@@ -52,7 +52,7 @@ namespace InteraCoop.Shared.Entities
         public string Office
         { get; set; } = null!;
 
-        [Display(Name = "Fecha de auditoria")]
+        [Display(Name = "Fecha de auditoría")]
         [DataType(DataType.Date)]
         public DateTime AuditDate
         { get; set; }
@@ -62,10 +62,8 @@ namespace InteraCoop.Shared.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         public string AuditUser
         { get; set; } = null!;
+        public List<int>? ClientsIds { get; set; }
+        // public ICollection<User>? UserIds { get; set; }//
 
-        [Display(Name = "Cliente")]
-        public ICollection<Client>? ClientsList { get; set; }
-
-        // public ICollection<Campaign>? UserList { get; set; }//
     }
 }
