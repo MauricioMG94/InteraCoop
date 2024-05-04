@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace InteraCoop.Backend.Data
 {
-    public class DataContext : DbContext 
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -14,18 +14,19 @@ namespace InteraCoop.Backend.Data
         public DbSet<State> States { get; set; }
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Interaction> Interactions { get; set; }    
-        public DbSet<Opportunity> Opportunities { get; set; }   
+        public DbSet<Interaction> Interactions { get; set; }
+        public DbSet<Opportunity> Opportunities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Product>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<Campaign>().HasIndex(x => x.Id).IsUnique();
+            modelBuilder.Entity<Interaction>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<Opportunity>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
-            modelBuilder.Entity<City>().HasIndex(x => new {x.StateId,x.Name}).IsUnique();
-            modelBuilder.Entity<State>().HasIndex(x => new {x.CountryId,x.Name}).IsUnique();
+            modelBuilder.Entity<City>().HasIndex(x => new { x.StateId, x.Name }).IsUnique();
+            modelBuilder.Entity<State>().HasIndex(x => new { x.CountryId, x.Name }).IsUnique();
             modelBuilder.Entity<Client>().HasIndex(x => x.Name).IsUnique();
             DisableCascadingDelete(modelBuilder);
         }

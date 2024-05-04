@@ -1,0 +1,11 @@
+﻿@page "/interaction/create"
+
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    <InteractionForm @ref="interactionForm" Interaction="interaction" nonSelectedInteractions="nonSelectedInteractions" OnValidSubmit="CreateAsync" ReturnAction="Return" />
+        
+}

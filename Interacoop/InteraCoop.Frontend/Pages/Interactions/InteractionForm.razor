@@ -1,0 +1,108 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
+
+<EditForm EditContext="editContext" OnValidSubmit="OnDataAnnotationsValidatedAsync">
+    <DataAnnotationsValidator />
+
+    <div class="card">
+        <div class="card-header">
+            <span>
+                <i class="oi oi-star" /> Crear Nueva Interacción
+                <a class="btn btn-sm btn-success float-end" href="/interactions"><i class="oi oi-arrow-thick-left" /> Regresar</a>
+                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-6">
+
+                    <div class="mb-3">
+                        <label>Tipo de Interacción:</label>
+                        <div>
+                            <InputText class="form-control" @bind-Value="@Interaction.InteractionType" />
+                            <ValidationMessage For="@(() => Interaction.InteractionType)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha de interacccion de creacion:</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.InteractionCreationDate" />
+                            <ValidationMessage For="@(() => Interaction.InteractionCreationDate)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha de inicio</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.StartDate" />
+                            <ValidationMessage For="@(() => Interaction.StartDate)" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Fecha fin</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.EndDate" />
+                            <ValidationMessage For="@(() => Interaction.EndDate)" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Dirección</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.Address" />
+                            <ValidationMessage For="@(() => Interaction.Address)" />
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label>Observaciones de la interacción</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.ObservationsInteraction" />
+                            <ValidationMessage For="@(() => Interaction.ObservationsInteraction)" />
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label>Oficina</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.Office" />
+                            <ValidationMessage For="@(() => Interaction.Office)" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label>Fecha de auditoria</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.AuditDate" />
+                            <ValidationMessage For="@(() => Interaction.AuditDate)" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label>Usuario de auditoría</label>
+                        <div>
+                            <InputDate class="form-control" @bind-Value="@Interaction.AuditUser" />
+                            <ValidationMessage For="@(() => Interaction.AuditUser)" />
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label>Cliente:</label>
+                        <div>
+                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>

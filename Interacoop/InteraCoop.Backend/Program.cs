@@ -42,6 +42,10 @@ builder.Services.AddScoped<ICitiesUnitOfWork, CitiesUnitOfWork>();
 builder.Services.AddScoped<IClientsRepository, ClientsRepository>();
 builder.Services.AddScoped<IClientsUnitOfWork, ClientsUnitOfWork>();
 
+builder.Services.AddScoped<IInteractionsRepository, InteractionsRepository>();
+builder.Services.AddScoped<IInteractionsUnitOfWork, InteractionsUnitOfWork>();
+
+
 var app = builder.Build();
 
 SeedData(app);
