@@ -20,6 +20,7 @@ namespace InteraCoop.Backend.Data
 
             await CheckCountriesAsync();
             await CheckClientsAsync();
+           
         }
 
         private async Task CheckClientsAsync()
@@ -44,7 +45,7 @@ namespace InteraCoop.Backend.Data
                 await CheckCampaignProducts();
                 await CheckProductsAsync();
                 await CheckOpportunitiesAsync();
-            }
+                await CheckInteractionsAsync();            }
         }
 
         private async Task CheckCampaignProducts()
@@ -528,15 +529,17 @@ namespace InteraCoop.Backend.Data
 
         private async Task CheckInteractionsAsync()
         {
-
-            var clients1 = new List<Client>
-         {
-             new Client { Name = "Ivan Mauricio Martinez ", Document = 1053124585, DocumentType = "CC", Telephone = 310845205, Address = "Calle 8# 125 - 125" },
-              new Client { Name = "Harold Aguirre Arcila ", Document = 100542255, DocumentType = "CC", Telephone = 310258364, Address = "Calle 84# 75 - 96" }
-         };
+                    
 
             if (!_context.Interactions.Any())
             {
+
+                var clients1 = new List<Client>
+                {
+                 new Client { City = 1, Name = "Claudia", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" },
+                 new Client { City = 2, Name = "Maria", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" }
+                };
+
                 _context.Interactions.Add(new Interaction { InteractionType = "Normal", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
 
                 _context.Interactions.Add(new Interaction { InteractionType = "Normal", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Oficina", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
@@ -562,10 +565,9 @@ namespace InteraCoop.Backend.Data
                 _context.Interactions.Add(new Interaction { InteractionType = "Normal", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 1", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
 
                 _context.Interactions.Add(new Interaction { InteractionType = "Normal", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home 3", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-
-
                 await _context.SaveChangesAsync();
             }
         }
+
     }
 }

@@ -95,6 +95,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
             loading = false;
         }
 
+       
         private async Task SaveChangesAsync()
         {
             var httpActionResponse = await Repository.PutAsync("/api/interactions/update", interactionDto);

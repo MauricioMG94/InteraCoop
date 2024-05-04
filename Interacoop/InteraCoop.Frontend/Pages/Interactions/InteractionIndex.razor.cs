@@ -1,4 +1,5 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
+using InteraCoop.Frontend.Pages.Interactions;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components;
@@ -19,7 +20,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
-        {
+        {                             
             await LoadAsync();
         }
 
@@ -109,24 +110,32 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 return;
             }
 
-            var responseHttp = await Repository.DeleteAsync<Opportunity>($"api/opportunities/{interactionId}");
+            var responseHttp = await Repository.DeleteAsync<Interaction>($"api/interactions/{interactionId}");
 
             if (responseHttp.Error)
             {
                 if (responseHttp.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    NavigationManager.NavigateTo("/");
-                    return;
-                }
+                    NavigationManager.NavigateTo("/interactions");
 
-                var mensajeError = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+                }
+                else
+                {
+                    var mensajeError = await responseHttp.GetErrorMessageAsync();
+                    await SweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+                }
                 return;
             }
 
-            await LoadAsync(1);
+            await LoadAsync();
+            var toast = SweetAlertService.Mixin(new SweetAlertOptions
+            {
+                Toast = true,
+                Position = SweetAlertPosition.BottomEnd,
+                ShowConfirmButton = true,
+                Timer = 3000
+            });
+            await toast.FireAsync(icon: SweetAlertIcon.Success, message: "Registro borrado con éxito.");
         }
-
-
     }
 }
