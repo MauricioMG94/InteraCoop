@@ -17,7 +17,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public bool FormPostedSuccessfully { get; set; } = false;
-
+        List<string> OpportunityStatus = new List<string>();
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
@@ -59,7 +59,24 @@ namespace InteraCoop.Frontend.Pages.Opportunities
                 return false;
             }
             Opportunities = responseHttp.Response;
+            GetUniqueStatusList(Opportunities);
             return true;
+        }
+
+        private List<string> GetUniqueStatusList(List<Opportunity>? opportunities)
+        { 
+
+            if (opportunities != null)
+            {
+                foreach (var opportunity in opportunities)
+                {
+                    if (!OpportunityStatus.Contains(opportunity.Status))
+                    {
+                        OpportunityStatus.Add(opportunity.Status);
+                    }
+                }
+            }
+            return OpportunityStatus;
         }
 
         private async Task LoadPagesAsync()
