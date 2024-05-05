@@ -9,25 +9,25 @@ namespace InteraCoop.Frontend.Pages.Campaigns
     {
         private int currentPage = 1;
         private int totalPages;
-
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
-
+        [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
+        [Parameter, SupplyParameterFromQuery]public string Filter { get; set; } = string.Empty;
+        [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Campaign>? Campaigns { get; set; }
-
-        [Parameter]
-        [SupplyParameterFromQuery]
-        public string Page { get; set; } = string.Empty;
-
-        [Parameter]
-        [SupplyParameterFromQuery]
-        public string Filter { get; set; } = string.Empty;
         public bool FormPostedSuccessfully { get; set; } = false;
-
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
+        }
+
+        private async Task SelectedRecordsNumberAsync(int recordsnumber)
+        {
+            RecordsNumber = recordsnumber;
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
         }
 
         private async Task SelectedPageAsync(int page)
@@ -50,9 +50,19 @@ namespace InteraCoop.Frontend.Pages.Campaigns
             }
         }
 
+        private void ValidateRecordsNumber()
+        {
+            if (RecordsNumber == 0)
+            {
+                RecordsNumber = 10;
+            }
+        }
+
         private async Task<bool> LoadListAsync(int page)
         {
-            var url = $"api/campaigns?page={page}";
+            ValidateRecordsNumber();
+            var url = $"api/campaigns?page={page}&recordsnumber={RecordsNumber}";
+
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
@@ -65,20 +75,18 @@ namespace InteraCoop.Frontend.Pages.Campaigns
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return false;
             }
+
             Campaigns = response.Response;
             return true;
         }
 
         private async Task LoadPagesAsync()
         {
-            var url = string.Empty;
-            if (string.IsNullOrEmpty(Filter))
+            var url = $"api/campaigns/totalPages?recordsnumber={RecordsNumber}";
+
+            if (!string.IsNullOrEmpty(Filter))
             {
-                url = $"api/campaigns/totalPages";
-            }
-            else
-            {
-                url = $"api/campaigns/totalPages?filter={Filter}";
+                url += $"&filter={Filter}";
             }
 
             var response = await Repository.GetAsync<int>(url);
@@ -88,6 +96,7 @@ namespace InteraCoop.Frontend.Pages.Campaigns
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
+
             totalPages = response.Response;
         }
 

@@ -4,12 +4,40 @@ namespace InteraCoop.Frontend.Shared
 {
     public partial class Pagination
     {
-        private List<PageModel> links = new();
-
+        private List<PageModel> links = [];
+        private List<OptionModel> options = [];
+        private int selectedOptionValue = 10;
         [Parameter] public int CurrentPage { get; set; } = 1;
         [Parameter] public int TotalPages { get; set; }
         [Parameter] public int Radio { get; set; } = 10;
         [Parameter] public EventCallback<int> SelectedPage { get; set; }
+        [Parameter] public EventCallback<int> RecordNumber { get; set; }
+
+        protected override void OnParametersSet()
+        {
+            BuildPages();
+            BuildOptions();
+        }
+
+        private void BuildOptions()
+        {
+            options =
+                [
+                new OptionModel { Value = 10, Name = "10" },
+                new OptionModel { Value = 25, Name = "25" },
+                new OptionModel { Value = 50, Name = "50" },
+                new OptionModel { Value = int.MaxValue, Name = "Todos" },
+                ];
+        }
+
+        private async Task InternalRecordsNumberSelected(ChangeEventArgs e)
+        {
+            if(e.Value != null)
+            {
+                selectedOptionValue = Convert.ToInt32(e.Value.ToString());
+            }
+            await RecordNumber.InvokeAsync(selectedOptionValue);
+        }
 
         private async Task InternalSelectedPage(PageModel pageModel)
         {
@@ -21,9 +49,9 @@ namespace InteraCoop.Frontend.Shared
             await SelectedPage.InvokeAsync(pageModel.Page);
         }
 
-        protected override void OnParametersSet()
+        private void BuildPages()
         {
-            links = new List<PageModel>();
+            links = [];
             var previousLinkEnable = CurrentPage != 1;
             var previousLinkPage = CurrentPage - 1;
 
@@ -75,6 +103,12 @@ namespace InteraCoop.Frontend.Shared
                 Page = linkNextPage,
                 Enable = linkNextEnable
             });
+        }
+
+        private class OptionModel
+        {
+            public string Name { get; set; } = null!;
+            public int Value { get; set; }
         }
 
         private class PageModel
