@@ -18,7 +18,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public bool FormPostedSuccessfully { get; set; } = false;
-
+        List<string> InteractionTypes = new List<string>();
         protected override async Task OnInitializedAsync()
         {                             
             await LoadAsync();
@@ -60,7 +60,24 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 return false;
             }
             Interactions = responseHttp.Response;
+            GetUniqueTypeList(Interactions);
             return true;
+        }
+
+        private List<string> GetUniqueTypeList(List<Interaction>? interactions)
+        {
+
+            if (interactions != null)
+            {
+                foreach (var interaction in interactions)
+                {
+                    if (!InteractionTypes.Contains(interaction.InteractionType))
+                    {
+                        InteractionTypes.Add(interaction.InteractionType);
+                    }
+                }
+            }
+            return InteractionTypes;
         }
 
         private async Task LoadPagesAsync()
