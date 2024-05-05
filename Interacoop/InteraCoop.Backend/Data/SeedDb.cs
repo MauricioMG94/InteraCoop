@@ -20,6 +20,8 @@ namespace InteraCoop.Backend.Data
 
             await CheckCountriesAsync();
             await CheckClientsAsync();
+            await CheckInteractionsAsync();
+            await CheckOpportunitiesAsync();
            
         }
 
@@ -536,8 +538,7 @@ namespace InteraCoop.Backend.Data
 
                 var clients1 = new List<Client>
                 {
-                 new Client { City = 1, Name = "Claudia", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" },
-                 new Client { City = 2, Name = "Maria", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" }
+                 new Client { City = 2, Name = "Marian", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" }
                 };
 
                 _context.Interactions.Add(new Interaction { InteractionType = "Normal", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
