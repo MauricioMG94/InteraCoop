@@ -28,6 +28,9 @@ namespace InteraCoop.Frontend.Pages.Interactions
 
             Interaction.InteractionCreationDate = DateTime.Today;
             Interaction.StartDate = DateTime.Today;
+            Interaction.EndDate = DateTime.Today;
+            Interaction.AuditDate = DateTime.Today;
+            Interaction.AuditUser = "Admin";
 
             selected = selectedInteractions.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.Name)).ToList();
             nonSelected = nonSelectedInteractions.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.Name)).ToList();
