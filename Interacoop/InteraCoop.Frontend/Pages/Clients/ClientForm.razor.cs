@@ -1,5 +1,5 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
-using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Dtos;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
@@ -10,7 +10,7 @@ namespace InteraCoop.Frontend.Pages.Clients
     {
         private EditContext editContext = null!;
 
-        [EditorRequired, Parameter] public Client Client { get; set; } = null!;
+        [EditorRequired, Parameter] public ClientDto Client { get; set; } = null!;
         [EditorRequired, Parameter] public EventCallback OnValidSubmit { get; set; }
         [EditorRequired, Parameter] public EventCallback ReturnAction { get; set; }
         [Inject] public SweetAlertService SweetAlertService { get; set; } = null!;

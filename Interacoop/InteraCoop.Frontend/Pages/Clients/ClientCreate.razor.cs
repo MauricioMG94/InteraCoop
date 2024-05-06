@@ -1,13 +1,13 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
-using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Dtos;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Clients
 {
     public partial class ClientCreate
     {
-        private Client client = new();
+        private ClientDto client = new();
         private ClientForm? clientForm;
 
         [Inject] public IRepository Repository { get; set; } = null!;

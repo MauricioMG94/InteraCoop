@@ -41,7 +41,7 @@
                         <td>@client.Telephone</td>
                         <td>@client.Address</td>
                         <td>
-                            <a href="/clients/edit/@client.Id" class="btn btn-warning">Editar</a>
+                            <a href="/client/edit/@client.Id" class="btn btn-warning">Editar</a>
                             <button @onclick=@(()=> DeleteAsync(client)) class="btn btn-danger">Borrar</button>
                         </td>
                     </tr>

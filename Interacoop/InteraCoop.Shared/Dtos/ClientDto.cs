@@ -1,13 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace InteraCoop.Shared.Entities
+namespace InteraCoop.Shared.Dtos
 {
-    public class Client
+    public class ClientDto
     {
         public int Id { get; set; }
 
         [Display(Name = "Ciudad")]
-        //[Required(ErrorMessage = "El campo {0} es requerido.")]
+        [Required(ErrorMessage = "El campo {0} es requerido.")]
         public int City { get; set; }
 
         [Display(Name = "Nombre cliente")]
@@ -34,6 +39,5 @@ namespace InteraCoop.Shared.Entities
         public DateTime RegistryDate { get; set; }
         public DateTime AuditUpdate { get; set; }
         public String AuditUser { get; set; } = null!;
-
     }
 }
