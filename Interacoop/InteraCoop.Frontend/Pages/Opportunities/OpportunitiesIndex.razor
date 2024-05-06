@@ -13,8 +13,8 @@
     <div class="card-body">
         <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
             <div>
-                <select class="form-control" style="width: 400px;" @bind="@Filter">
-                    <option value="">Seleccione un estado...</option>
+                <select class="form-select" style="width: 400px;" @bind="@Filter">
+                    <option value="">Seleccione un estado... </option>
                     @foreach (var status in OpportunityStatus)
                     {
                     <option value="@status">@status</option>
@@ -26,44 +26,40 @@
                 <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync"><i class="bi bi-x-circle" /> Limpiar</button>
             </div>
         </div>
-        <Pagination CurrentPage="currentPage"
-                    TotalPages="totalPages"
-                    SelectedPage="SelectedPageAsync"></Pagination>
-
         <GenericList MyList="Opportunities">
             <Body>
-                <table class="table table-striped">
+                <table class="table table-hover container">
                     <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Estado</th>
-                            <th>Observaciones</th>
-                            <th>Fecha de registro</th>
-                            <th>Fecha estimada</th>
-                            <th>Campaña</th>
-                            <th style="width:168px"></th>
+                        <tr class="table-secondary table-header table-row">
+                            <th style="width:5%">Id</th>
+                            <th style="width:10%">Estado</th>
+                            <th style="width:25%">Observaciones</th>
+                            <th style="width:15%">Fecha de registro</th>
+                            <th style="width:15%">Fecha estimada de adquisición</th>
+                            <th style="width:20%">Campaña asociada</th>
+                            <th style="width:10%"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var opportunity in Opportunities!)
                         {
-                            <tr>
-                                <td>
+                            <tr class="table-row">
+                                <td style="width:5%">
                                     @opportunity.Id
                                 </td>
-                                <td>
+                                <td style="width:10%">
                                     @opportunity.Status
                                 </td>
-                                <td>
+                                <td style="width:25%">
                                     @opportunity.OpportunityObservations
                                 </td>
-                                <td>
-                                    @opportunity.RecordDate
+                                <td style="width:15%">
+                                    @opportunity.RecordDate.ToString("dd/MM/yyyy")
                                 </td>
-                                <td>
-                                    @opportunity.EstimatedAcquisitionDate
+                                <td style="width:15%">
+                                    @opportunity.EstimatedAcquisitionDate.ToString("dd/MM/yyyy")
                                 </td>
-                                <td>
+                                <td style="width:20%">
                                     @if (opportunity.CampaingsList!= null)
                                     {
                                         @foreach (var campaign in opportunity.CampaingsList)
@@ -74,13 +70,17 @@
                                         }
                                     }
                                 </td>
-                                <td>
-                                    <a href="/opportunity/edit/@opportunity.Id" class="btn btn-warning btn-sm">
-                                        <i class="oi oi-pencil"></i> Editar
+                                <td style="width:10%">
+                                    <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm"
+                                       data-toggle="tooltip" title="Editar oportunidad">
+                                        <i class="bi bi-pencil"></i>
                                     </a>
-                                    <button class="btn btn-danger btn-sm" @onclick="@(() => Delete(opportunity.Id))">
-                                        <i class="oi oi-trash"></i> Borrar
+
+                                    <button class="btn btn-light btn-sm" @onclick="@(() => Delete(opportunity.Id))"
+                                            data-toggle="tooltip" title="Eliminar oportunidad">
+                                        <i class="bi bi-trash"></i>
                                     </button>
+
                                 </td>
                             </tr>
                         }
@@ -88,5 +88,9 @@
                 </table>
             </Body>
         </GenericList>
+
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"></Pagination>
     </div>
 </div>
