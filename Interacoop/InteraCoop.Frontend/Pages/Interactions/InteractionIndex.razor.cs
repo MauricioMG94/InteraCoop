@@ -15,6 +15,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
         public List<Interaction>? Interactions { get; set; }
+        [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public bool FormPostedSuccessfully { get; set; } = false;
@@ -28,6 +29,14 @@ namespace InteraCoop.Frontend.Pages.Interactions
         {
             currentPage = page;
             await LoadAsync(page);
+        }
+
+        private async Task SelectedRecordsNumberAsync(int recordsnumber)
+        {
+            RecordsNumber = recordsnumber;
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
         }
 
         private async Task LoadAsync(int page = 1)
@@ -44,9 +53,18 @@ namespace InteraCoop.Frontend.Pages.Interactions
             }
         }
 
+        private void ValidateRecordsNumber()
+        {
+            if (RecordsNumber == 0)
+            {
+                RecordsNumber = 10;
+            }
+        }
+
         private async Task<bool> LoadListAsync(int page)
         {
-            var url = $"api/interactions?page={page}";
+            ValidateRecordsNumber();
+            var url = $"api/interactions?page={page}&recordsnumber={RecordsNumber}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
@@ -64,6 +82,25 @@ namespace InteraCoop.Frontend.Pages.Interactions
             return true;
         }
 
+
+        private async Task LoadPagesAsync()
+        {
+            var url = $"api/interactions/totalPages?recordsnumber={RecordsNumber}";
+            if (!string.IsNullOrEmpty(Filter))
+            {
+                url += $"&filter={Filter}";
+            }
+
+            var responseHttp = await Repository.GetAsync<int>(url);
+            if (responseHttp.Error)
+            {
+                var message = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+                return;
+            }
+            totalPages = responseHttp.Response;
+        }
+
         private List<string> GetUniqueTypeList(List<Interaction>? interactions)
         {
 
@@ -78,24 +115,6 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 }
             }
             return InteractionTypes;
-        }
-
-        private async Task LoadPagesAsync()
-        {
-            var url = "api/interactions/totalPages";
-            if (!string.IsNullOrEmpty(Filter))
-            {
-                url += $"?filter={Filter}";
-            }
-
-            var responseHttp = await Repository.GetAsync<int>(url);
-            if (responseHttp.Error)
-            {
-                var message = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
-                return;
-            }
-            totalPages = responseHttp.Response;
         }
 
         private async Task CleanFilterAsync()

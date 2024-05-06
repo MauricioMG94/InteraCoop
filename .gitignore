@@ -489,3 +489,17 @@ FodyWeavers.xsd
 /Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.csproj.AssemblyReference.cache
 /Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/InteraCoop.Frontend.GeneratedMSBuildEditorConfig.editorconfig
 /Interacoop/InteraCoop.Shared/obj/project.nuget.cache
+/Interacoop/InteraCoop.Backend/bin/Debug/net8.0/InteraCoop.Backend.dll
+/Interacoop/InteraCoop.Backend/bin/Debug/net8.0/InteraCoop.Backend.exe
+/Interacoop/InteraCoop.Backend/bin/Debug/net8.0/InteraCoop.Backend.pdb
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/ApiEndpoints.json
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/apphost.exe
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.csproj.CoreCompileInputs.cache
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.csproj.FileListAbsolute.txt
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.dll
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.genruntimeconfig.cache
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.MvcApplicationPartsAssemblyInfo.cs
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/InteraCoop.Backend.pdb
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/ref/InteraCoop.Backend.dll
+/Interacoop/InteraCoop.Backend/obj/Debug/net8.0/refint/InteraCoop.Backend.dll
+/Interacoop/InteraCoop.Frontend/obj/Debug/net8.0/project.razor.vs.bin
