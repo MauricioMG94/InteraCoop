@@ -1,4 +1,80 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<div class="wrapper">
+    <nav id="sidebar" class="@SidebarCssClass">
+        <nav class="flex-column">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" @onclick="ToggleSidebar">
+                    <span class="bi bi-list" aria-hidden="true" data-bs-toggle="tooltip" title="Menu"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")"></p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Inicio"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Dashboard</p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/clients">
+                    <span class="bi bi-person-badge-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Clientes"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Clientes</p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/countries">
+                    <span class="bi bi-globe-americas-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Paises"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Paises</p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/products">
+                    <span class="bi bi-credit-card-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Productos"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Productos</p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/campaigns">
+                    <span class="bi bi-suitcase-lg-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Campañas"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Campañas</p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/opportunities">
+                    <span class="bi bi-briefcase-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Oportunidades"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Oportunidades</p>
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/interactions">
+                    <span class="bi bi-people-fill-nav-menu" aria-hidden="true" data-bs-toggle="tooltip" title="Interacciones"></span>
+                    <p style="display: @(CollapseSidebar ? "none" : "block")">Interacciones</p>
+                </NavLink>
+            </div>
+        </nav>
+    </nav>
+</div>
+
+@code {
+    private string SidebarCssClass => CollapseSidebar ? "active" : "";
+
+    [Parameter]
+    public bool CollapseSidebar { get; set; }
+
+    [Parameter]
+    public Action ToggleSidebar { get; set; }
+
+    private void InternalToggleSidebar()
+    {
+        ToggleSidebar?.Invoke();
+    }
+}
+
+
+
+
+
+
+
+@* <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">InteraCoop</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -57,3 +133,4 @@
         collapseNavMenu = !collapseNavMenu;
     }
 }
+ *@

@@ -13,6 +13,8 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
+
+        [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Opportunity>? Opportunities { get; set; }
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
@@ -29,6 +31,14 @@ namespace InteraCoop.Frontend.Pages.Opportunities
             await LoadAsync(page);
         }
 
+        private async Task SelectedRecordsNumberAsync(int recordsnumber)
+        {
+            RecordsNumber = recordsnumber;
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
+        }
+
         private async Task LoadAsync(int page = 1)
         {
             if (!string.IsNullOrWhiteSpace(Page))
@@ -43,9 +53,18 @@ namespace InteraCoop.Frontend.Pages.Opportunities
             }
         }
 
+        private void ValidateRecordsNumber()
+        {
+            if (RecordsNumber == 0)
+            {
+                RecordsNumber = 10;
+            }
+        }
+
         private async Task<bool> LoadListAsync(int page)
         {
-            var url = $"api/opportunities?page={page}";
+            ValidateRecordsNumber();
+            var url = $"api/opportunities?page={page}&recordsnumber={RecordsNumber}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
@@ -81,10 +100,10 @@ namespace InteraCoop.Frontend.Pages.Opportunities
 
         private async Task LoadPagesAsync()
         {
-            var url = "api/opportunities/totalPages";
+            var url = $"api/opportunities/totalPages?recordsnumber={RecordsNumber}";
             if (!string.IsNullOrEmpty(Filter))
             {
-                url += $"?filter={Filter}";
+                url += $"&filter={Filter}";
             }
 
             var responseHttp = await Repository.GetAsync<int>(url);
