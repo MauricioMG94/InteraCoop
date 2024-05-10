@@ -19,6 +19,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public bool FormPostedSuccessfully { get; set; } = false;
+
         List<string> OpportunityStatus = new List<string>();
         protected override async Task OnInitializedAsync()
         {

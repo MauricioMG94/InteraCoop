@@ -35,7 +35,7 @@
                                 <th class="col-1">Id</th>
                                 <th class="col-2">Tipo de interacción</th>
                                 <th class="col-3">Fecha de registro</th>
-                                <th class="col-4">Cliente</th>
+                                <th class="col-4">Cliente de Interacción</th>
                                 <th class="col-5">Acciones</th>
                             </tr>
                         </thead>
@@ -48,7 +48,9 @@
                                         @interaction.Id
                                     </td>
                                     <td class="col-2">
-                                        @interaction.InteractionType
+                                        <span class="badge text-bg-primary">
+                                            @interaction.InteractionType
+                                        </span>
                                     </td>
                                     <td class="col-3">
                                         @interaction.InteractionCreationDate.ToString("dd/MM/yyyy")
@@ -58,8 +60,7 @@
                                         {
                                             @foreach (var client in interaction.ClientsList)
                                             {
-                                                <span class="badge text-bg-primary">@client.Name</span>
-                                                <br />
+                                                @client.Name
                                             }
                                         }
                                     </td>
@@ -80,7 +81,7 @@
                                         <ul class="list-group list-group-flush">
 
                                             <li class="list-group-item card-subTitle">
-                                                Información de la Interacción:
+                                                Información de Interacción:
                                                 <div class="list-group-item subCard">
                                                     <span class="badge badge-pill badge-success">@interaction.InteractionType</span>
                                                     <div>
@@ -107,7 +108,7 @@
                                             </li>
 
                                             <li class="list-group-item card-subTitle">
-                                                Información del cliente:
+                                                Información de cliente:
                                                 @if (interaction.ClientsList != null && interaction.ClientsList.Any())
                                                 {
                                                     <div class="list-group">
