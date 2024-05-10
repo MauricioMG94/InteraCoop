@@ -4,9 +4,6 @@
     <div class="card-header">
         <span>
             <i class="bi bi-briefcase-fill-nav-menu"></i> Oportunidades
-@*             <a class="btn btn-sm btn-primary float-end btn-add" href="/opportunity/create" data-toggle="tooltip" title="Crear oportunidad">
-                <i class="bi bi-plus"></i> Oportunidad
-            </a> *@
         </span>
     </div>
 
@@ -32,10 +29,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-secondary table-header table-row">
-                                <th class="col-1">Id</th>
-                                <th class="col-2">Cliente</th>
+                                <th class="col-1">Id Oportunidad</th>
+                                <th class="col-2">Nombre de cliente</th>
                                 <th class="col-3">Fecha de registro</th>
-                                <th class="col-4">Estado</th>
+                                <th class="col-4">Estado de oportunidad</th>
                                 <th class="col-5">Acciones</th>
                             </tr>
                         </thead>
@@ -73,7 +70,7 @@
                                         <ul class="list-group list-group-flush">
 
                                             <li class="list-group-item card-subTitle">
-                                                 Información de la oportunidad:
+                                                 Información de oportunidad:
                                                 <div class="list-group-item subCard">
                                                 <span class="badge badge-pill badge-success">@opportunity.Status</span>
                                                     <div>
@@ -88,14 +85,14 @@
                                             </li>
 
                                             <li class="list-group-item card-subTitle">
-                                                Información de la interacción:
+                                                Información de interacción:
                                                 <div class="list-group-item subCard">
 
                                                 </div>
                                             </li>
 
                                             <li class="list-group-item card-subTitle">
-                                                Información de la campaña:
+                                                Información de campaña:
                                                 @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())
                                                 {
                                                     <div class="list-group">

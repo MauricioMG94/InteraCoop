@@ -3,71 +3,112 @@
 <div class="card">
     <div class="card-header">
         <span>
-            <i class="oi oi-star" /> Productos
-            <a class="btn btn-sm btn-primary float-end" href="/products/create"><i class="oi oi-plus" /> Nuevo Producto</a>
+            <i class="bi bi-briefcase-fill-nav-menu"></i> Productos
+            <a class="btn btn-sm btn-primary float-end btn-add" href="/products/create" data-toggle="tooltip" title="Crear producto">
+                <i class="bi bi-plus"></i> Producto
+            </a>
         </span>
     </div>
+
     <div class="card-body">
+        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+            <div>
+                <input style="width: 400px;" type="text" class="form-control" id="titulo" placeholder="Buscar producto..." @bind-value="Filter" />
+            </div>
+            <div class="mx-1">
+                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync" data-toggle="tooltip" title="Filtrar"><i class="bi bi-funnel" /></button>
+                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync" data-toggle="tooltip" title="Limpiar filtro"><i class="bi bi-arrow-clockwise" /></button>
+            </div>
+        </div>
         <GenericList MyList="Products">
             <Body>
-                <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
-                    <div>
-                        <input style="width: 400px;" type="text" class="form-control" id="titulo" placeholder="Buscar producto..." @bind-value="Filter" />
-                    </div>
-                    <div class="mx-1">
-                        <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync"><i class="oi oi-layers" /> Filtrar</button>
-                        <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync"><i class="oi oi-ban" /> Limpiar</button>
-                    </div>
+                <div class="table-container container-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-secondary table-header table-row">
+                                <th class="col-1">Id</th>
+                                <th class="col-2">Nombre de producto</th>
+                                <th class="col-3">Tipo de producto</th>
+                                <th class="col-4">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Products!)
+                            {
+                                <tr class="table-row" onclick="toggleExtraRow('@product.Id')">
+
+                                    <td class="col-1">
+                                        @product.Id
+                                    </td>
+                                    <td class="col-2">
+                                        @product.Name
+                                    </td>
+                                    <td class="col-3">
+                                        @product.ProductType
+                                    </td>
+                                    <td class="col-4">
+                                        <a href="/products/edit/@product.Id" class="btn btn-light btn-sm"
+                                           data-toggle="tooltip" title="Editar campaña">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button class="btn btn-light btn-sm" @onclick="@(() => Delete(product.Id))"
+                                                data-toggle="tooltip" title="Eliminar campaña">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr colspan="7" id="extraRow_@product.Id" class="extra-row" style="display: none;">
+                                    <div class="card" style="width: 100%;">
+                                        <ul class="list-group list-group-flush">
+
+                                            <li class="list-group-item card-subTitle">
+                                                Información de producto:
+                                                <div class="list-group-item subCard">
+                                                    <span class="badge badge-pill badge-success">@product.ProductType</span>
+                                                    <div>
+                                                        <span class="subtitle">Cupo:</span>
+                                                        <span> @product.Quota </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Plazo:</span>
+                                                        <span> @product.Term </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Valor:</span>
+                                                        <span> @product.Value </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Tasa:</span>
+                                                        <span> @product.Rate </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
-                <Pagination CurrentPage="currentPage"
-                            TotalPages="totalPages"
-                            SelectedPage="SelectedPageAsync" 
-                            RecordNumber="SelectedRecordsNumberAsync" />
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Cupo</th>
-                            <th>Plazo</th>
-                            <th>Valor</th>
-                            <th>Tasa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var product in Products!)
-                        {
-                            <tr>
-                                <td>
-                                    @product.Name
-                                </td>
-                                <td>
-                                    @product.ProductType
-                                </td>
-                                <td>
-                                    @($"{product.Quota:C2}")
-                                </td>
-                                <td>
-                                    @($"{product.Term:N2}")
-                                </td>
-                                <td>
-                                    @($"{product.Value:N2}")
-                                </td>
-                                <td>
-                                    @($"{product.Rate:N2}")
-                                </td>
-                                <td>
-                                    <a href="/products/edit/@product.Id" class="btn btn-warning btn-sm"><i class="oi oi-pencil" /> Editar</a>
-                                    <button class="btn btn-danger btn-sm" @onclick=@(() => Delete(product.Id))><i class="oi oi-trash" /> Borrar</button>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
             </Body>
         </GenericList>
+
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"
+                    RecordNumber="SelectedRecordsNumberAsync" />
     </div>
 </div>
+
+<script>
+    function toggleExtraRow(productId) {
+        var extraRow = document.getElementById("extraRow_" + productId);
+        if (extraRow.style.display === "none") {
+            extraRow.style.display = "block";
+        } else {
+            extraRow.style.display = "none";
+        }
+    }
+</script>
 

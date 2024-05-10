@@ -1,7 +1,5 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-
 }
 
 .card {
@@ -136,3 +134,71 @@ code {
 }
 
 
+/*body {
+    padding: 50px;
+    background: #fff;
+}*/
+
+.wrapper {
+    width: 70%;
+}
+
+.extra-row {
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
+}
+
+    .list-group-item + .list-group-item {
+        border-top-width: 1px !important;
+    }
+
+    .list-group-item:last-child {
+        border-bottom-right-radius: 8px !important; 
+        border-bottom-left-radius: 8px !important; 
+    }
+
+.text-bg-primary {
+    background-color: cornflowerblue;
+    min-width: 75px;
+    min-height: 16px;
+}
+
+.bi-trash::before {
+    color: #dc3545 !important;
+}
+
+.bi-pencil::before {
+    color: #ffc107 !important;
+}
+
+.plus-icon {
+    background-color: lightgreen;
+}
+
+.subCard {
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    position: relative;
+}
+
+.card-subTitle {
+    color: #7B879D;
+    padding: 16px;
+    font-size: 12px;
+}
+
+.subtitle {
+    color: #7B879D;
+    font-weight: 600;
+}
+
+.badge-success {
+    position: absolute;
+    right: 16px;
+    background-color: green;
+}
