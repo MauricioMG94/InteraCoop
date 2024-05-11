@@ -3,9 +3,9 @@
 <div class="card">
     <div class="card-header">
         <span>
-            <i class="oi oi-star"></i> Interactiones
-            <a class="btn btn-sm btn-primary float-end" href="/interaction/create">
-                <i class="oi oi-plus"></i> Nueva Interaccion
+            <i class="bi bi-briefcase-fill-nav-menu"></i> Interacciones
+            <a class="btn btn-sm btn-primary float-end btn-add" href="/interaction/create" data-toggle="tooltip" title="Crear interacción">
+                <i class="bi bi-plus"></i> Interacción
             </a>
         </span>
     </div>
@@ -13,8 +13,8 @@
     <div class="card-body">
         <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
             <div>
-                <select class="form-control" style="width: 400px;" @bind="@Filter">
-                    <option value="">Seleccione un tipo de interacción...</option>
+                <select class="form-select" style="width: 400px;" @bind="@Filter">
+                    <option value="">Tipo de interacción</option>
                     @foreach (var type in InteractionTypes)
                     {
                         <option value="@type">@type</option>
@@ -22,80 +22,173 @@
                 </select>
             </div>
             <div class="mx-1">
-                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync"><i class="bi bi-funnel" /> Filtrar</button>
-                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync"><i class="bi bi-x-circle" /> Limpiar</button>
+                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync" data-toggle="tooltip" title="Filtrar"><i class="bi bi-funnel" /></button>
+                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync" data-toggle="tooltip" title="Limpiar filtro"><i class="bi bi-arrow-clockwise" /></button>
             </div>
         </div>
-        <Pagination CurrentPage="currentPage"
-                    TotalPages="totalPages"
-                    SelectedPage="SelectedPageAsync"></Pagination>
-
         <GenericList MyList="Interactions">
-
             <Body>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Tipo de Interacción</th>
-                            <th>Fecha de creación de Interacción</th>
-                            <th>Dirección</th>
-                            <th>Observaciones de Interacción</th>
-                            <th>Oficina</th>
-                            <th>Usuario de Auditoría</th>
-                            <th>Cliente</th>
-                            <th style="width:168px"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var interaction in Interactions!)
-                        {
-                            <tr>
-                                <td>
-                                    @interaction.Id
-                                </td>
-                                <td>
-                                    @interaction.InteractionType
-                                </td>
-                                <td>
-                                    @interaction.InteractionCreationDate
-                                </td>
-                                <td>
-                                    @interaction.Address
-                                </td>
-                                <td>
-                                    @interaction.ObservationsInteraction
-                                </td>
-                                <td>
-                                    @interaction.Office
-                                </td>
-                                <td>
-                                    @interaction.AuditUser
-                                </td>
-                                <td>
-                                    @if (interaction.ClientsList != null)
-                                    {
-                                        @foreach (var Client in interaction.ClientsList)
-                                        {
-                                            <span>@Client.Name</span>
-
-                                            <br />
-                                        }
-                                    }
-                                </td>
-                                <td>
-                                    <a href="/interaction/edit/@interaction.Id" class="btn btn-warning btn-sm">
-                                        <i class="oi oi-pencil"></i> Editar
-                                    </a>
-                                    <button class="btn btn-danger btn-sm" @onclick="@(() => Delete(interaction.Id))">
-                                        <i class="oi oi-trash"></i> Borrar
-                                    </button>
-                                </td>
+                <div class="table-container container-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-secondary table-header table-row">
+                                <th class="col-1">Id</th>
+                                <th class="col-2">Tipo de interacción</th>
+                                <th class="col-3">Fecha de registro</th>
+                                <th class="col-4">Cliente de Interacción</th>
+                                <th class="col-5">Acciones</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var interaction in Interactions!)
+                            {
+                                <tr class="table-row" onclick="toggleExtraRow('@interaction.Id')">
+
+                                    <td class="col-1">
+                                        @interaction.Id
+                                    </td>
+                                    <td class="col-2">
+                                        <span class="badge text-bg-primary">
+                                            @interaction.InteractionType
+                                        </span>
+                                    </td>
+                                    <td class="col-3">
+                                        @interaction.InteractionCreationDate.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td class="col-4">
+                                        @if (interaction.ClientsList!= null)
+                                        {
+                                            @foreach (var client in interaction.ClientsList)
+                                            {
+                                                @client.Name
+                                            }
+                                        }
+                                    </td>
+                                    <td class="col-5">
+                                        <a href="/interaction/edit/@interaction.Id" class="btn btn-light btn-sm"
+                                           data-toggle="tooltip" title="Editar oportunidad">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-light btn-sm" @onclick="@(() => Delete(interaction.Id))"
+                                                data-toggle="tooltip" title="Eliminar oportunidad">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr colspan="7" id="extraRow_@interaction.Id" class="extra-row" style="display: none;">
+                                    <div class="card" style="width: 100%;">
+                                        <ul class="list-group list-group-flush">
+
+                                            <li class="list-group-item card-subTitle">
+                                                Información de Interacción:
+                                                <div class="list-group-item subCard">
+                                                    <span class="badge badge-pill badge-success">@interaction.InteractionType</span>
+                                                    <div>
+                                                        <span class="subtitle">Fecha de inicio:</span>
+                                                        <span> @interaction.StartDate.ToString("dd/MM/yyyy")</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Fecha de fin:</span>
+                                                        <span> @interaction.EndDate.ToString("dd/MM/yyyy")</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Observaciones:</span>
+                                                        <span> @interaction.ObservationsInteraction</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Oficina:</span>
+                                                        <span> @interaction.Office</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Dirección:</span>
+                                                        <span> @interaction.Address</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item card-subTitle">
+                                                Información de cliente:
+                                                @if (interaction.ClientsList != null && interaction.ClientsList.Any())
+                                                {
+                                                    <div class="list-group">
+                                                        @foreach (var client in interaction.ClientsList)
+                                                        {
+                                                            <div class="list-group-item subCard">
+                                                                <div>
+                                                                    <span class="subtitle">Nombre:</span>
+                                                                    <span>@client.Name</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="subtitle">Documento:</span>
+                                                                    <span>@client.DocumentType : @client.Document </span>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="subtitle">Ciudad:</span>
+                                                                    <span>@client.City</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="subtitle">Teléfono:</span>
+                                                                    <span>@client.Telephone</span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="list-group-item subCard">
+                                                        <a href="/interaction/edit/@interaction.Id" class="btn btn-light btn-sm">
+                                                            <i class="bi bi-plus plus-icon"></i>
+                                                        </a>
+                                                        <span class="subtitle">Añadir cliente</span>
+                                                    </div>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
             </Body>
         </GenericList>
+
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"
+                    RecordNumber="SelectedRecordsNumberAsync" />
     </div>
 </div>
+
+<script>
+    function toggleExtraRow(interactionId) {
+        var extraRow = document.getElementById("extraRow_" + interactionId);
+        if (extraRow.style.display === "none") {
+            extraRow.style.display = "block";
+        } else {
+            extraRow.style.display = "none";
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

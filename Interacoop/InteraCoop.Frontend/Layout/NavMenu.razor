@@ -1,59 +1,9 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">InteraCoop</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Inicio
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/clients">
-                <span class="bi bi-person-badge-fill-nav-menu" aria-hidden="true"></span> Clientes
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/countries">
-                <span class="bi bi-globe-americas-fill-nav-menu" aria-hidden="true"></span> Paises
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/products">
-                <span class="bi bi-credit-card-fill-nav-menu" aria-hidden="true"></span> Productos
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/campaigns">
-                <span class="bi bi-suitcase-lg-fill-nav-menu" aria-hidden="true"></span> Campañas
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/opportunities">
-                <span class="bi bi-briefcase-fill-nav-menu" aria-hidden="true"></span> Oportunidades
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/interactions">
-                <span class="bi bi-people-fill-nav-menu" aria-hidden="true"></span> Interacciones
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+﻿<MudNavMenu Bordered="true" Color="Color.Success" Margin="Margin.Normal">
+    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/clients" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Person4">Clientes</MudNavLink>
+    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/products" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.CreditCard">Productos</MudNavLink>
+    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/campaigns" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Work">Campañas</MudNavLink>
+    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/interactions" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.PeopleAlt">Interacciones</MudNavLink>
+    <MudNavGroup Class="my-2" Style="font-size: 0.9rem" Icon="@Icons.Material.Filled.AddModerator" Title="Útiles" Expanded="false">
+        <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/countries" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.SouthAmerica">Paises</MudNavLink>
+    </MudNavGroup>
+</MudNavMenu>

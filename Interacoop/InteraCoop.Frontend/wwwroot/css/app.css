@@ -2,6 +2,37 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.card {
+    font-family: 'lato', sans-serif;
+    font-size: 14px;
+}
+
+.card-body {
+    padding: 20px 20px;
+}
+
+.table-container {
+    margin: auto;
+    min-width: 100%;
+    padding: 20px 0px;
+}
+
+.table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.table-header {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 15px;
+}
+
+
 h1:focus {
     outline: none;
 }
@@ -100,4 +131,74 @@ a, .btn-link {
 
 code {
     color: #c02d76;
+}
+
+
+/*body {
+    padding: 50px;
+    background: #fff;
+}*/
+
+.wrapper {
+    width: 70%;
+}
+
+.extra-row {
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
+}
+
+    .list-group-item + .list-group-item {
+        border-top-width: 1px !important;
+    }
+
+    .list-group-item:last-child {
+        border-bottom-right-radius: 8px !important; 
+        border-bottom-left-radius: 8px !important; 
+    }
+
+.text-bg-primary {
+    background-color: cornflowerblue;
+    min-width: 75px;
+    min-height: 16px;
+}
+
+.bi-trash::before {
+    color: #dc3545 !important;
+}
+
+.bi-pencil::before {
+    color: #ffc107 !important;
+}
+
+.plus-icon {
+    background-color: lightgreen;
+}
+
+.subCard {
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    position: relative;
+}
+
+.card-subTitle {
+    color: #7B879D;
+    padding: 16px;
+    font-size: 12px;
+}
+
+.subtitle {
+    color: #7B879D;
+    font-weight: 600;
+}
+
+.badge-success {
+    position: absolute;
+    right: 16px;
+    background-color: green;
 }

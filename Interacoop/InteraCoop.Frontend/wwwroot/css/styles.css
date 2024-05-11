@@ -1,0 +1,36 @@
+﻿.card {
+    font-family: 'lato', sans-serif;
+    font-size: 14px;
+}
+
+.card-body {
+    padding: 20px 20px;
+}
+
+.table-container {
+    margin: auto;
+    min-width: 100%;
+    padding: 20px 0px;
+}
+
+.table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.table-header {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 15px;
+}
+
+.btn-add {
+    background-color: #0c1e35 !important;
+    border-color: #263F60 !important;
+}
+
+

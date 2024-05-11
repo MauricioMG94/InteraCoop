@@ -3,90 +3,166 @@
 <div class="card">
     <div class="card-header">
         <span>
-            <i class="oi oi-star"></i> Oportunidades
-            <a class="btn btn-sm btn-primary float-end" href="/opportunity/create">
-                <i class="oi oi-plus"></i> Nueva Oportunidad
-            </a>
+            <i class="bi bi-briefcase-fill-nav-menu"></i> Oportunidades
         </span>
     </div>
 
     <div class="card-body">
         <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
             <div>
-                <select class="form-control" style="width: 400px;" @bind="@Filter">
-                    <option value="">Seleccione un estado...</option>
+                <select class="form-select" style="width: 400px;" @bind="@Filter">
+                    <option value="">Estado de oportunidad </option>
                     @foreach (var status in OpportunityStatus)
                     {
-                    <option value="@status">@status</option>
+                        <option value="@status">@status</option>
                     }
                 </select>
             </div>
             <div class="mx-1">
-                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync"><i class="bi bi-funnel" /> Filtrar</button>
-                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync"><i class="bi bi-x-circle" /> Limpiar</button>
+                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync" data-toggle="tooltip" title="Filtrar"><i class="bi bi-funnel" /></button>
+                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync" data-toggle="tooltip" title="Limpiar filtro"><i class="bi bi-arrow-clockwise" /></button>
             </div>
         </div>
-        <Pagination CurrentPage="currentPage"
-                    TotalPages="totalPages"
-                    SelectedPage="SelectedPageAsync"></Pagination>
-
         <GenericList MyList="Opportunities">
             <Body>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Estado</th>
-                            <th>Observaciones</th>
-                            <th>Fecha de registro</th>
-                            <th>Fecha estimada</th>
-                            <th>Campaña</th>
-                            <th style="width:168px"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var opportunity in Opportunities!)
-                        {
-                            <tr>
-                                <td>
-                                    @opportunity.Id
-                                </td>
-                                <td>
-                                    @opportunity.Status
-                                </td>
-                                <td>
-                                    @opportunity.OpportunityObservations
-                                </td>
-                                <td>
-                                    @opportunity.RecordDate
-                                </td>
-                                <td>
-                                    @opportunity.EstimatedAcquisitionDate
-                                </td>
-                                <td>
-                                    @if (opportunity.CampaingsList!= null)
-                                    {
-                                        @foreach (var campaign in opportunity.CampaingsList)
-                                        {
-                                            <span>@campaign.CampaignName</span>
-
-                                            <br />
-                                        }
-                                    }
-                                </td>
-                                <td>
-                                    <a href="/opportunity/edit/@opportunity.Id" class="btn btn-warning btn-sm">
-                                        <i class="oi oi-pencil"></i> Editar
-                                    </a>
-                                    <button class="btn btn-danger btn-sm" @onclick="@(() => Delete(opportunity.Id))">
-                                        <i class="oi oi-trash"></i> Borrar
-                                    </button>
-                                </td>
+                <div class="table-container container-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-secondary table-header table-row">
+                                <th class="col-1">Id Oportunidad</th>
+                                <th class="col-2">Nombre de cliente</th>
+                                <th class="col-3">Fecha de registro</th>
+                                <th class="col-4">Estado de oportunidad</th>
+                                <th class="col-5">Acciones</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var opportunity in Opportunities!)
+                            {
+                                <tr class="table-row" onclick="toggleExtraRow('@opportunity.Id')">
+
+                                    <td class="col-1">
+                                        @opportunity.Id
+                                    </td>
+                                    <td class="col-2">
+                                        Cliente temporal
+                                    </td>
+                                    <td class="col-3">
+                                        @opportunity.RecordDate.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td class="col-4">
+                                        <span class="badge text-bg-primary">@opportunity.Status</span>
+                                    </td>
+                                    <td class="col-5">
+                                        <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm"
+                                           data-toggle="tooltip" title="Editar oportunidad">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-light btn-sm" @onclick="@(() => Delete(opportunity.Id))"
+                                                data-toggle="tooltip" title="Eliminar oportunidad">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr colspan="7" id="extraRow_@opportunity.Id" class="extra-row" style="display: none;">
+                                    <div class="card" style="width: 100%;">
+                                        <ul class="list-group list-group-flush">
+
+                                            <li class="list-group-item card-subTitle">
+                                                 Información de oportunidad:
+                                                <div class="list-group-item subCard">
+                                                <span class="badge badge-pill badge-success">@opportunity.Status</span>
+                                                    <div>
+                                                        <span class="subtitle">Fecha estimada de adquisición:</span>
+                                                        <span> @opportunity.EstimatedAcquisitionDate.ToString("dd/MM/yyyy")</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Observaciones:</span>
+                                                        <span> @opportunity.OpportunityObservations</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item card-subTitle">
+                                                Información de interacción:
+                                                <div class="list-group-item subCard">
+
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item card-subTitle">
+                                                Información de campaña:
+                                                @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())
+                                                {
+                                                    <div class="list-group">
+                                                        @foreach (var campaign in opportunity.CampaingsList)
+                                                        {
+                                                            <div class="list-group-item subCard">
+                                                                <span class="badge badge-pill badge-success">@campaign.Status</span>
+                                                                <div>
+                                                                    <span class="subtitle">Campaña:</span>
+                                                                    <span>@campaign.CampaignName</span>
+                                                                </div>
+                                                                <div>
+                                                                    @if (campaign.ProductsList != null && campaign.ProductsList.Any())
+                                                                    {
+                                                                       
+                                                                        @foreach (var product in campaign.ProductsList)
+                                                                            {
+                                                                            <div>
+                                                                                <span class="subtitle">Producto:</span>
+                                                                                <span>@product.Name</span>
+                                                                            </div>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div>
+                                                                            <span class="subtitle">Producto:</span>
+                                                                            <span>No hay productos.</span>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="list-group-item subCard">
+                                                        <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm">
+                                                            <i class="bi bi-plus plus-icon"></i>
+                                                        </a>
+                                                        <span class="subtitle">Añadir campaña</span>
+                                                    </div>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                
             </Body>
         </GenericList>
+
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"
+                    RecordNumber="SelectedRecordsNumberAsync" />
     </div>
 </div>
+
+<script>
+    function toggleExtraRow(opportunityId) {
+        var extraRow = document.getElementById("extraRow_" + opportunityId);
+        if (extraRow.style.display === "none") {
+            extraRow.style.display = "block";
+        } else {
+            extraRow.style.display = "none";
+        }
+    }
+</script>

@@ -13,6 +13,7 @@ namespace InteraCoop.Frontend.Pages.Clients
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+        [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public List<Client>? Clients { get; set; }
@@ -20,6 +21,14 @@ namespace InteraCoop.Frontend.Pages.Clients
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
+        }
+
+        private async Task SelectedRecordsNumberAsync(int recordsnumber)
+        {
+            RecordsNumber = recordsnumber;
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
         }
 
         private async Task SelectedPageAsync(int page)
@@ -42,9 +51,18 @@ namespace InteraCoop.Frontend.Pages.Clients
             }
         }
 
+        private void ValidateRecordsNumber()
+        {
+            if (RecordsNumber == 0)
+            {
+                RecordsNumber = 10;
+            }
+        }
+
         private async Task<bool> LoadListAsync(int page)
         {
-            var url = $"api/clients?page={page}";
+            ValidateRecordsNumber();
+            var url = $"api/clients?page={page}&recordsnumber={RecordsNumber}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
@@ -63,10 +81,10 @@ namespace InteraCoop.Frontend.Pages.Clients
 
         private async Task LoadPagesAsync()
         {
-            var url = "api/clients/totalPages";
+            var url = $"api/clients/totalPages?recordsnumber={RecordsNumber}";
             if (!string.IsNullOrEmpty(Filter))
             {
-                url += $"?filter={Filter}";
+                url += $"&filter={Filter}";
             }
 
             var responseHttp = await Repository.GetAsync<int>(url);
@@ -91,18 +109,6 @@ namespace InteraCoop.Frontend.Pages.Clients
             await LoadAsync(page);
             await SelectedPageAsync(page);
         }
-
-        //private async Task LoadAsync()
-        //{
-        //    var responseHttp = await Repository.GetAsync<List<Client>>("api/clients");
-        //    if (responseHttp.Error)
-        //    {
-        //        var message = await responseHttp.GetErrorMessageAsync();
-        //        await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
-        //        return;
-        //    }
-        //    Clients = responseHttp.Response;
-        //}
 
         private async Task DeleteAsync(Client client)
         {

@@ -14,7 +14,7 @@ namespace InteraCoop.Frontend.Pages.Products
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
-
+        [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Product>? Products { get; set; }
 
         [Parameter]
@@ -28,6 +28,14 @@ namespace InteraCoop.Frontend.Pages.Products
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
+        }
+
+        private async Task SelectedRecordsNumberAsync(int recordsnumber)
+        {
+            RecordsNumber = recordsnumber;
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
         }
 
         private async Task SelectedPageAsync(int page)
@@ -50,9 +58,18 @@ namespace InteraCoop.Frontend.Pages.Products
             }
         }
 
+        private void ValidateRecordsNumber()
+        {
+            if (RecordsNumber == 0)
+            {
+                RecordsNumber = 10;
+            }
+        }
+
         private async Task<bool> LoadListAsync(int page)
         {
-            var url = $"api/products?page={page}";
+            ValidateRecordsNumber();
+            var url = $"api/products?page={page}&recordsnumber={RecordsNumber}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
@@ -71,14 +88,10 @@ namespace InteraCoop.Frontend.Pages.Products
 
         private async Task LoadPagesAsync()
         {
-            var url = string.Empty;
-            if (string.IsNullOrEmpty(Filter))
+            var url = $"api/products/totalPages?recordsnumber={RecordsNumber}";
+            if (!string.IsNullOrEmpty(Filter))
             {
-                url = $"api/products/totalPages";
-            }
-            else
-            {
-                url = $"api/products/totalPages?filter={Filter}";
+                url += $"&filter={Filter}";
             }
 
             var response = await Repository.GetAsync<int>(url);
@@ -90,6 +103,7 @@ namespace InteraCoop.Frontend.Pages.Products
             }
             totalPages = response.Response;
         }
+
 
         private async Task Delete(int productId)
         {
