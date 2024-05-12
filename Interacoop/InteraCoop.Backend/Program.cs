@@ -3,6 +3,8 @@ using InteraCoop.Backend.Repositories.Implementations;
 using InteraCoop.Backend.Repositories.Interfaces;
 using InteraCoop.Backend.UnitsOfWork.Implementations;
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
+using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -45,6 +47,15 @@ builder.Services.AddScoped<IClientsUnitOfWork, ClientsUnitOfWork>();
 builder.Services.AddScoped<IInteractionsRepository, InteractionsRepository>();
 builder.Services.AddScoped<IInteractionsUnitOfWork, InteractionsUnitOfWork>();
 
+builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
+
+builder.Services.AddIdentity<User, IdentityRole>(x=>{ 
+    x.User.RequireUniqueEmail = true;
+    x.Password.RequireUniqueEmail = true;
+
+}).AddEntityFrameworkStores<DataContext>()
+.AddDefaultTokenProviders();
 
 var app = builder.Build();
 
