@@ -1,53 +1,120 @@
 ﻿@page "/clients"
 
-<h3>Clientes</h3>
-<div class="mb-3">
-    <a href="/create/client" class="btn btn-primary">Nuevo client</a>
+<div class="card">
+    <div class="card-header">
+        <span>
+            <MudButton StartIcon="@Icons.Material.Filled.Person4" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Clientes</MudButton>
+            <a class="float-end">
+                <MudTooltip Text="Crear cliente" Color="Color.Tertiary" Placement="Placement.Bottom">
+                    <MudFab StartIcon="@Icons.Material.Filled.Add" href="/create/client" Size="Size.Small" Color="Color.Tertiary" />
+                </MudTooltip>
+            </a>
+        </span>
+    </div>
+    <div class="card-body">
+        <div class="card-filter">
+            <MudText Typo="Typo.h6">Clientes</MudText>
+            <div class="filter-container">
+                <MudTextField Style="width: 300px; margin-right: 0.5rem;" T="string" @bind-Value="@Filter" Label="Buscar por documento" Variant="Variant.Filled"></MudTextField>
+                <MudTooltip Text="Filtrar por número de documento" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
+                </MudTooltip>
+                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
+                </MudTooltip>
+            </div>
+        </div>
+        <GenericList MyList="Clients">
+            <Body>
+                <div class="table-container container-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-secondary table-header table-row">
+                                <th class="col-1">Id</th>
+                                <th class="col-2">Nombre de cliente</th>
+                                <th class="col-3">Tipo de documento</th>
+                                <th class="col-4">Número de documento</th>
+                                <th class="col-5">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var client in Clients!)
+                            {
+                                <tr class="table-row">
+
+                                    <td class="col-1">
+                                        @client.Id
+                                    </td>
+                                    <td class="col-2">
+                                        @client.Name
+                                    </td>
+                                    <td class="col-3">
+                                        @client.DocumentType
+                                    </td>
+                                    <td class="col-4">
+                                        @client.Document
+                                    </td>
+                                    <td class="col-5">
+                                        <MudTooltip Text="Editar cliente" Color="Color.Warning" Placement="Placement.Left">
+                                            <a href="/client/edit/@client.Id" class="btn btn-light btn-sm">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        </MudTooltip>
+                                        <MudTooltip Text="Eliminar cliente" Color="Color.Error" Placement="Placement.Right">
+                                            <button class="btn btn-light btn-sm" @onclick="@(() => DeleteAsync(client))">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </MudTooltip>
+                                    </td>
+                                </tr>
+                                <tr colspan="7" id="extraRow_@client.Id" class="extra-row" style="display: none;">
+                                    <div class="card" style="width: 100%;">
+                                        <ul class="list-group list-group-flush">
+
+                                            <li class="list-group-item card-subTitle">
+                                                Información de contacto:
+                                                <div class="list-group-item subCard">
+                                                    <div>
+                                                        <span class="subtitle">Ciudad:</span>
+                                                        <span> @client.City </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Dirección:</span>
+                                                        <span> @client.Address </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Teléfono:</span>
+                                                        <span> @client.Telephone </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Email:</span>
+                                                        <span> client@email.com </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </Body>
+        </GenericList>
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"
+                    RecordNumber="SelectedRecordsNumberAsync" />
+    </div>
 </div>
 
-<div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
-    <div>
-        <input style="width: 400px;" type="text" class="form-control" id="titulo" placeholder="Buscar por nombre..." @bind-value="Filter" />
-    </div>
-    <div class="mx-1">
-        <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync"><i class="bi bi-funnel" /> Filtrar</button>
-        <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync"><i class="bi bi-x-circle" /> Limpiar</button>
-    </div>
-</div>
-<Pagination CurrentPage="currentPage"
-            TotalPages="totalPages"
-            SelectedPage="SelectedPageAsync"
-            RecordNumber="SelectedRecordsNumberAsync" />
-
-<GenericList MyList="Clients">
-    <Body>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Cliente</th>
-                    <th>Tipo de documento</th>
-                    <th>Documento</th>
-                    <th>Telefono</th>
-                    <th>Direccion</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var client in Clients!)
-                {
-                    <tr>
-                        <td>@client.Name</td>
-                        <td>@client.DocumentType</td>
-                        <td>@client.Document</td>
-                        <td>@client.Telephone</td>
-                        <td>@client.Address</td>
-                        <td>
-                            <a href="/client/edit/@client.Id" class="btn btn-warning">Editar</a>
-                            <button @onclick=@(()=> DeleteAsync(client)) class="btn btn-danger">Borrar</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </Body>
-</GenericList>
+<script>
+    function toggleExtraRow(clientId) {
+        var extraRow = document.getElementById("extraRow_" + clientId);
+        if (extraRow.style.display === "none") {
+            extraRow.style.display = "block";
+        } else {
+            extraRow.style.display = "none";
+        }
+    }
+</script>
