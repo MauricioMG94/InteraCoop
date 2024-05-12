@@ -1,4 +1,13 @@
-﻿@page "/client/edit/{Id:int}"
+﻿@page "/client/edit/{clientId:int}"
 
-<h3>ClientEdit</h3>
+
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    <ClientForm @ref="clientForm" Client="clientDto" OnValidSubmit="SaveChangesAsync" ReturnAction="Return"  />
+}
+
 
