@@ -18,6 +18,8 @@ namespace InteraCoop.Frontend.Pages.Clients
 
         protected override void OnInitialized()
         {
+            Client.AuditUpdate = DateTime.Today;
+            Client.AuditUser = "Admin";
             editContext = new(Client);
         }
 
