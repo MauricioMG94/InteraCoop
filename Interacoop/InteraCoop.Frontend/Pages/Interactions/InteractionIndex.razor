@@ -3,27 +3,30 @@
 <div class="card">
     <div class="card-header">
         <span>
-            <i class="bi bi-briefcase-fill-nav-menu"></i> Interacciones
-            <a class="btn btn-sm btn-primary float-end btn-add" href="/interaction/create" data-toggle="tooltip" title="Crear interacción">
-                <i class="bi bi-plus"></i> Interacción
+            <MudButton StartIcon="@Icons.Material.Filled.PeopleAlt" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Interacciones</MudButton>
+            <a class="float-end">
+                <MudTooltip Text="Crear interacción" Color="Color.Tertiary" Placement="Placement.Bottom">
+                    <MudFab StartIcon="@Icons.Material.Filled.Add" href="/interaction/create" Size="Size.Small" Color="Color.Tertiary"/>
+                </MudTooltip>
             </a>
         </span>
     </div>
-
     <div class="card-body">
-        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
-            <div>
-                <select class="form-select" style="width: 400px;" @bind="@Filter">
-                    <option value="">Tipo de interacción</option>
+        <div class="card-filter">
+            <MudText Typo="Typo.h6">Interacciones</MudText>
+            <div class="filter-container">
+                <MudSelect Style="width: 300px; margin-right: 0.5rem; " Dense="true" T="string" Label="Tipo de interacción" Variant="Variant.Filled" @bind-Value="@Filter">
                     @foreach (var type in InteractionTypes)
                     {
-                        <option value="@type">@type</option>
+                        <MudSelectItem Value="@type" />
                     }
-                </select>
-            </div>
-            <div class="mx-1">
-                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync" data-toggle="tooltip" title="Filtrar"><i class="bi bi-funnel" /></button>
-                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync" data-toggle="tooltip" title="Limpiar filtro"><i class="bi bi-arrow-clockwise" /></button>
+                </MudSelect>
+                <MudTooltip Text="Filtrar por tipo" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
+                </MudTooltip>
+                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
+                </MudTooltip>
             </div>
         </div>
         <GenericList MyList="Interactions">
@@ -65,15 +68,16 @@
                                         }
                                     </td>
                                     <td class="col-5">
-                                        <a href="/interaction/edit/@interaction.Id" class="btn btn-light btn-sm"
-                                           data-toggle="tooltip" title="Editar oportunidad">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-
-                                        <button class="btn btn-light btn-sm" @onclick="@(() => Delete(interaction.Id))"
-                                                data-toggle="tooltip" title="Eliminar oportunidad">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                        <MudTooltip Text="Editar interacción" Color="Color.Warning" Placement="Placement.Left">
+                                            <a href="/interaction/edit/@interaction.Id" class="btn btn-light btn-sm">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        </MudTooltip>
+                                        <MudTooltip Text="Eliminar interacción" Color="Color.Error" Placement="Placement.Right">
+                                            <button class="btn btn-light btn-sm" @onclick="@(() => Delete(interaction.Id))">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </MudTooltip>
                                     </td>
                                 </tr>
                                 <tr colspan="7" id="extraRow_@interaction.Id" class="extra-row" style="display: none;">
@@ -106,7 +110,6 @@
                                                     </div>
                                                 </div>
                                             </li>
-
                                             <li class="list-group-item card-subTitle">
                                                 Información de cliente:
                                                 @if (interaction.ClientsList != null && interaction.ClientsList.Any())
@@ -121,7 +124,8 @@
                                                                 </div>
                                                                 <div>
                                                                     <span class="subtitle">Documento:</span>
-                                                                    <span>@client.DocumentType : @client.Document </span>
+                                                                    <span class="badge badge-pill badge-success">@client.DocumentType : </span>
+                                                                    <span> @client.Document </span>
                                                                 </div>
                                                                 <div>
                                                                     <span class="subtitle">Ciudad:</span>
@@ -137,12 +141,12 @@
                                                 }
                                                 else
                                                 {
-                                                    <div class="list-group-item subCard">
+                                                    <MudTooltip Text="Añadir cliente" Color="Color.Tertiary" Placement="Placement.Top">
                                                         <a href="/interaction/edit/@interaction.Id" class="btn btn-light btn-sm">
                                                             <i class="bi bi-plus plus-icon"></i>
                                                         </a>
                                                         <span class="subtitle">Añadir cliente</span>
-                                                    </div>
+                                                    </MudTooltip>
                                                 }
                                             </li>
                                         </ul>
@@ -152,10 +156,8 @@
                         </tbody>
                     </table>
                 </div>
-
             </Body>
         </GenericList>
-
         <Pagination CurrentPage="currentPage"
                     TotalPages="totalPages"
                     SelectedPage="SelectedPageAsync"

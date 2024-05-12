@@ -3,24 +3,25 @@
 <div class="card">
     <div class="card-header">
         <span>
-            <i class="bi bi-briefcase-fill-nav-menu"></i> Oportunidades
+            <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Oportunidades</MudButton>
         </span>
     </div>
-
     <div class="card-body">
-        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
-            <div>
-                <select class="form-select" style="width: 400px;" @bind="@Filter">
-                    <option value="">Estado de oportunidad </option>
+        <div class="card-filter">
+            <MudText Typo="Typo.h6">Oportunidades</MudText>
+            <div class="filter-container">
+                <MudSelect Style="width: 300px; margin-right: 0.5rem; " Dense="true" T="string" Label="Estado de oportunidad" Variant="Variant.Filled" @bind-Value="@Filter">
                     @foreach (var status in OpportunityStatus)
                     {
-                        <option value="@status">@status</option>
+                        <MudSelectItem Value="@status" />
                     }
-                </select>
-            </div>
-            <div class="mx-1">
-                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync" data-toggle="tooltip" title="Filtrar"><i class="bi bi-funnel" /></button>
-                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync" data-toggle="tooltip" title="Limpiar filtro"><i class="bi bi-arrow-clockwise" /></button>
+                </MudSelect>
+                <MudTooltip Text="Filtrar por estado" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
+                </MudTooltip>
+                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
+                </MudTooltip>
             </div>
         </div>
         <GenericList MyList="Opportunities">
@@ -54,15 +55,16 @@
                                         <span class="badge text-bg-primary">@opportunity.Status</span>
                                     </td>
                                     <td class="col-5">
-                                        <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm"
-                                           data-toggle="tooltip" title="Editar oportunidad">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-
-                                        <button class="btn btn-light btn-sm" @onclick="@(() => Delete(opportunity.Id))"
-                                                data-toggle="tooltip" title="Eliminar oportunidad">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                        <MudTooltip Text="Editar oportunidad" Color="Color.Warning" Placement="Placement.Left">
+                                            <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        </MudTooltip>
+                                        <MudTooltip Text="Eliminar oportunidad" Color="Color.Error" Placement="Placement.Right">
+                                            <button class="btn btn-light btn-sm" @onclick="@(() => Delete(opportunity.Id))">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </MudTooltip>
                                     </td>
                                 </tr>
                                 <tr colspan="7" id="extraRow_@opportunity.Id" class="extra-row" style="display: none;">
@@ -83,14 +85,12 @@
                                                     </div>
                                                 </div>
                                             </li>
-
                                             <li class="list-group-item card-subTitle">
                                                 Información de interacción:
                                                 <div class="list-group-item subCard">
 
                                                 </div>
                                             </li>
-
                                             <li class="list-group-item card-subTitle">
                                                 Información de campaña:
                                                 @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())
@@ -131,10 +131,12 @@
                                                 else
                                                 {
                                                     <div class="list-group-item subCard">
-                                                        <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm">
-                                                            <i class="bi bi-plus plus-icon"></i>
-                                                        </a>
-                                                        <span class="subtitle">Añadir campaña</span>
+                                                        <MudTooltip Text="Añadir campaña" Color="Color.Tertiary" Placement="Placement.Top">
+                                                            <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm">
+                                                                <i class="bi bi-plus plus-icon"></i>
+                                                            </a>
+                                                            <span class="subtitle">Añadir campaña</span>
+                                                        </MudTooltip>
                                                     </div>
                                                 }
                                             </li>
@@ -145,10 +147,8 @@
                         </tbody>
                     </table>
                 </div>
-                
             </Body>
         </GenericList>
-
         <Pagination CurrentPage="currentPage"
                     TotalPages="totalPages"
                     SelectedPage="SelectedPageAsync"
@@ -161,7 +161,8 @@
         var extraRow = document.getElementById("extraRow_" + opportunityId);
         if (extraRow.style.display === "none") {
             extraRow.style.display = "block";
-        } else {
+        }
+        else {
             extraRow.style.display = "none";
         }
     }
