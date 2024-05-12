@@ -29,7 +29,7 @@ namespace InteraCoop.Backend.Data
         {
             if (!_context.Clients.Any())
             {
-                _context.Clients.Add(new Client { City = 1, Name = "Claudia", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                _context.Clients.Add(new Client { City = 1, Name = "Claudia", Document = 123496, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
                 _context.Clients.Add(new Client { City = 2, Name = "Enrique", Document = 98765, DocumentType = "CC", Telephone = 2145379, Address = "Cll 13 #101-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
                 _context.Clients.Add(new Client { City = 3, Name = "Manuel", Document = 13579, DocumentType = "CC", Telephone = 5329634, Address = "Cll 24 #50-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
                 _context.Clients.Add(new Client { City = 4, Name = "Maria", Document = 24680, DocumentType = "CC", Telephone = 2459807, Address = "Cll 50 #110-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });

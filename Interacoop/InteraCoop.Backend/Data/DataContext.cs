@@ -27,7 +27,7 @@ namespace InteraCoop.Backend.Data
             modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
             modelBuilder.Entity<City>().HasIndex(x => new { x.StateId, x.Name }).IsUnique();
             modelBuilder.Entity<State>().HasIndex(x => new { x.CountryId, x.Name }).IsUnique();
-            modelBuilder.Entity<Client>().HasIndex(x => x.Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(x => x.Document).IsUnique();
             DisableCascadingDelete(modelBuilder);
         }
 

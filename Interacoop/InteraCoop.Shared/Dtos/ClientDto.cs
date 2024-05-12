@@ -38,6 +38,6 @@ namespace InteraCoop.Shared.Dtos
 
         public DateTime RegistryDate { get; set; }
         public DateTime AuditUpdate { get; set; }
-        public String AuditUser { get; set; } = null!;
+        public string? AuditUser { get; set; }
     }
 }

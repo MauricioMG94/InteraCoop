@@ -109,7 +109,6 @@ namespace InteraCoop.Backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("AuditUser")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("City")
@@ -121,6 +120,9 @@ namespace InteraCoop.Backend.Migrations
                     b.Property<string>("DocumentType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("InteractionId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -135,8 +137,10 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Document")
                         .IsUnique();
+
+                    b.HasIndex("InteractionId");
 
                     b.ToTable("Clients");
                 });
@@ -183,9 +187,6 @@ namespace InteraCoop.Backend.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("ClientIdentifier")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -210,11 +211,10 @@ namespace InteraCoop.Backend.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Interactions");
                 });
@@ -244,6 +244,9 @@ namespace InteraCoop.Backend.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Opportunities");
                 });
@@ -332,6 +335,14 @@ namespace InteraCoop.Backend.Migrations
                     b.Navigation("State");
                 });
 
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Client", b =>
+                {
+                    b.HasOne("InteraCoop.Shared.Entities.Interaction", null)
+                        .WithMany("ClientsList")
+                        .HasForeignKey("InteractionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("InteraCoop.Shared.Entities.Product", b =>
                 {
                     b.HasOne("InteraCoop.Shared.Entities.Campaign", null)
@@ -359,6 +370,11 @@ namespace InteraCoop.Backend.Migrations
             modelBuilder.Entity("InteraCoop.Shared.Entities.Country", b =>
                 {
                     b.Navigation("States");
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Interaction", b =>
+                {
+                    b.Navigation("ClientsList");
                 });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InteraCoop.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240506012248_last")]
-    partial class last
+    [Migration("20240512010134_structuralModify")]
+    partial class structuralModify
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,7 +112,6 @@ namespace InteraCoop.Backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("AuditUser")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("City")
@@ -141,7 +140,7 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id")
+                    b.HasIndex("Document")
                         .IsUnique();
 
                     b.HasIndex("InteractionId");
