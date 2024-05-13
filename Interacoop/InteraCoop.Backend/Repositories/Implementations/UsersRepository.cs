@@ -19,7 +19,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             _userManager = userManager;
             _roleManager = roleManager;
         }
-        public async Task<IdentityResult> AddUserAsync(User user, string password) => await _userManager.CreateAsync(user, pass);
+        public async Task<IdentityResult> AddUserAsync(User user, string password) => await _userManager.CreateAsync(user, password);
 
         public async Task AddUserToRoleAsync(User user, string roleName) => await _userManager.AddToRoleAsync(user, roleName);
 

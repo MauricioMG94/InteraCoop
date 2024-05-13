@@ -3,22 +3,25 @@
 <div class="card">
     <div class="card-header">
         <span>
-            <i class="bi bi-briefcase-fill-nav-menu"></i> Campañas
-            <a class="btn btn-sm btn-primary float-end btn-add" href="/campaign/create" data-toggle="tooltip" title="Crear campaña">
-                <i class="bi bi-plus"></i> Campaña
+            <MudButton StartIcon="@Icons.Material.Filled.Work" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Campañas</MudButton>
+            <a class="float-end">
+                <MudTooltip Text="Crear campaña" Color="Color.Tertiary" Placement="Placement.Bottom">
+                    <MudFab StartIcon="@Icons.Material.Filled.Add" href="/campaign/create" Size="Size.Small" Color="Color.Tertiary" />
+                </MudTooltip>
             </a>
         </span>
     </div>
-
     <div class="card-body">
-        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
-            <div>
-                <input style="width: 400px;" type="text" class="form-control" id="titulo"
-                       placeholder="Buscar campaña..." @bind-value="Filter" />
-            </div>
-            <div class="mx-1">
-                <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync" data-toggle="tooltip" title="Filtrar"><i class="bi bi-funnel" /></button>
-                <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync" data-toggle="tooltip" title="Limpiar filtro"><i class="bi bi-arrow-clockwise" /></button>
+        <div class="card-filter">
+            <MudText Typo="Typo.h6">Interacciones</MudText>
+            <div class="filter-container">
+                <MudTextField Style="width: 300px; margin-right: 0.5rem;" T="string"  @bind-Value="@Filter" Label="Buscar campaña" Variant="Variant.Filled"></MudTextField>
+                <MudTooltip Text="Filtrar por nombre" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
+                </MudTooltip>
+                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
+                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
+                </MudTooltip>
             </div>
         </div>
         <GenericList MyList="Campaigns">
@@ -54,15 +57,16 @@
                                         </span>
                                     </td>
                                     <td class="col-5">
-                                        <a href="/campaign/edit/@campaign.Id" class="btn btn-light btn-sm"
-                                           data-toggle="tooltip" title="Editar campaña">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-
-                                        <button class="btn btn-light btn-sm" @onclick="@(() => Delete(campaign.Id))"
-                                                data-toggle="tooltip" title="Eliminar campaña">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                        <MudTooltip Text="Editar campaña" Color="Color.Warning" Placement="Placement.Left">
+                                            <a href="/campaign/edit/@campaign.Id" class="btn btn-light btn-sm">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        </MudTooltip>
+                                        <MudTooltip Text="Eliminar campaña" Color="Color.Error" Placement="Placement.Right">
+                                            <button class="btn btn-light btn-sm" @onclick="@(() => Delete(campaign.Id))">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </MudTooltip>
                                     </td>
                                 </tr>
                                 <tr colspan="7" id="extraRow_@campaign.Id" class="extra-row" style="display: none;">
@@ -108,12 +112,12 @@
                                                 }
                                                 else
                                                 {
-                                                    <div class="list-group-item subCard">
+                                                    <MudTooltip Text="Añadir producto" Color="Color.Tertiary" Placement="Placement.Top">
                                                         <a href="/campaign/edit/@campaign.Id" class="btn btn-light btn-sm">
                                                             <i class="bi bi-plus plus-icon"></i>
                                                         </a>
-                                                        <span class="subtitle">Añadir productos</span>
-                                                    </div>
+                                                        <span class="subtitle">Añadir producto</span>
+                                                    </MudTooltip>
                                                 }
                                             </li>
                                         </ul>
@@ -123,7 +127,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </Body>
         </GenericList>
 

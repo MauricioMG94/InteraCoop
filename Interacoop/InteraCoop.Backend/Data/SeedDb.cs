@@ -1,5 +1,7 @@
 ﻿using InteraCoop.Backend.Controllers;
+using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -8,10 +10,12 @@ namespace InteraCoop.Backend.Data
     public class SeedDb
     {
         private readonly DataContext _context;
+        private readonly IUsersUnitOfWork _usersUnitOfWork;
 
-        public SeedDb(DataContext context)
+        public SeedDb(DataContext context, IUsersUnitOfWork usersUnitOfWork)
         {
             _context = context;
+            _usersUnitOfWork = usersUnitOfWork;
         }
 
         public async Task SeedAsync()
@@ -22,27 +26,59 @@ namespace InteraCoop.Backend.Data
             await CheckClientsAsync();
             await CheckInteractionsAsync();
             await CheckOpportunitiesAsync();
+            await CheckRolesAsync();
+            await CheckUserAsync("1010","Harold","Aguirre", "harold@yopmail.com","3008930134","Calle Luna Calle sol", UserType.Admin);
            
+        }
+
+        private async Task<User> CheckUserAsync(string document, string firstName, string LastName, string email, string phone, string address, UserType userType)
+        {
+          var user = await _usersUnitOfWork.GetUserAsync(email);
+            if (user == null)
+            {
+                user = new User
+                {
+                    FirstName = firstName,
+                    LastName = LastName,
+                    Email = email,
+                    UserName = email,
+                    PhoneNumber = phone,
+                    Address = address,
+                    Document = document,
+                    City = _context.Cities.FirstOrDefault(),
+                    UserType = userType,
+                };
+                await _usersUnitOfWork.AddUserAsync(user, "123456");
+                await _usersUnitOfWork.AddUserToRolesAsync(user, userType.ToString());
+            }
+            return user;
+        }
+
+        private async Task CheckRolesAsync()
+        {
+            await _usersUnitOfWork.CheckRoleAsync(UserType.Admin.ToString());
+            await _usersUnitOfWork.CheckRoleAsync(UserType.Analist.ToString());
+            await _usersUnitOfWork.CheckRoleAsync(UserType.Employee.ToString());
         }
 
         private async Task CheckClientsAsync()
         {
             if (!_context.Clients.Any())
             {
-                _context.Clients.Add(new Client { City = 1, Name = "Claudia", Document = 123496, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 2, Name = "Enrique", Document = 98765, DocumentType = "CC", Telephone = 2145379, Address = "Cll 13 #101-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 3, Name = "Manuel", Document = 13579, DocumentType = "CC", Telephone = 5329634, Address = "Cll 24 #50-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 4, Name = "Maria", Document = 24680, DocumentType = "CC", Telephone = 2459807, Address = "Cll 50 #110-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                _context.Clients.Add(new Client { CityId = 1, Name = "Claudia", Document = 123496, DocumentType = DocumentType.CC, Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                _context.Clients.Add(new Client { CityId =  2, Name = "Enrique", Document = 98765, DocumentType = DocumentType.CC, Telephone = 2145379, Address = "Cll 13 #101-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId = 3, Name = "Manuel", Document = 13579, DocumentType = DocumentType.CC, Telephone = 5329634, Address = "Cll 24 #50-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =4, Name = "Maria", Document = 24680, DocumentType = DocumentType.CC, Telephone = 2459807, Address = "Cll 50 #110-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
 
-                _context.Clients.Add(new Client { City = 1, Name = "Gloria", Document = 123856, DocumentType = "CC", Telephone = 3015378, Address = "Cll 90 #120-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 2, Name = "Andrea", Document = 98065, DocumentType = "CC", Telephone = 2155379, Address = "Cll 23 #111-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 3, Name = "Andres", Document = 17579, DocumentType = "CC", Telephone = 5339634, Address = "Cll 34 #60-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 4, Name = "Julia", Document = 24630, DocumentType = "CC", Telephone = 2559807, Address = "Cll 60 #210-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =5 , Name = "Gloria", Document = 123856, DocumentType = DocumentType.CC, Telephone = 3015378, Address = "Cll 90 #120-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =6, Name = "Andrea", Document = 98065, DocumentType = DocumentType.CC, Telephone = 2155379, Address = "Cll 23 #111-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =7 , Name = "Andres", Document = 17579, DocumentType = DocumentType.CC, Telephone = 5339634, Address = "Cll 34 #60-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =8, Name = "Julia", Document = 24630, DocumentType = DocumentType.CC, Telephone = 2559807, Address = "Cll 60 #210-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
 
-                _context.Clients.Add(new Client { City = 1, Name = "Manuela", Document = 923456, DocumentType = "CC", Telephone = 3205378, Address = "Cll 70 #50-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 2, Name = "Isabela", Document = 18765, DocumentType = "CC", Telephone = 2445379, Address = "Cll 03 #91-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 3, Name = "Lorena", Document = 13379, DocumentType = "CC", Telephone = 5529634, Address = "Cll 14 #40-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
-                _context.Clients.Add(new Client { City = 4, Name = "Blanca", Document = 24480, DocumentType = "CC", Telephone = 2659807, Address = "Cll 40 #130-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =9, Name = "Manuela", Document = 923456, DocumentType = DocumentType.CC, Telephone = 3205378, Address = "Cll 70 #50-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId =10, Name = "Isabela", Document = 18765, DocumentType = DocumentType.CC, Telephone = 2445379, Address = "Cll 03 #91-03", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId = 11 , Name = "Lorena", Document = 13379, DocumentType = DocumentType.CC, Telephone = 5529634, Address = "Cll 14 #40-32", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
+                 _context.Clients.Add(new Client { CityId = 12 , Name = "Blanca", Document = 24480, DocumentType = DocumentType.CC, Telephone = 2659807, Address = "Cll 40 #130-21", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" });
 
                 await CheckCampaignProducts();
                 await CheckProductsAsync();
@@ -538,7 +574,7 @@ namespace InteraCoop.Backend.Data
 
                 var clients1 = new List<Client>
                 {
-                 new Client { City = 2, Name = "Marian", Document = 123456, DocumentType = "CC", Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" }
+                 new Client { CityId = 2, Name = "Marian", Document = 123456, DocumentType = DocumentType.CC, Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" }
                 };
 
                 _context.Interactions.Add(new Interaction { InteractionType = "Normal", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });

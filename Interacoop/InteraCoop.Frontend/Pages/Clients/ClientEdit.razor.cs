@@ -2,6 +2,7 @@
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Enums;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Clients
@@ -38,7 +39,7 @@ namespace InteraCoop.Frontend.Pages.Clients
                 Id = client.Id,
                 Name = client.Name,
                 Document = client.Document,
-                DocumentType = client.DocumentType,
+                DocumentType = DocumentType.CC.ToString(),
                 Address = client.Address,
                 AuditUpdate = client.AuditUpdate,
                 AuditUser= "Admin"
