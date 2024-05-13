@@ -39,7 +39,7 @@
                         <tbody>
                             @foreach (var product in Products!)
                             {
-                                <tr class="table-row" onclick="toggleExtraRow('@product.Id')">
+                                <tr class="table-row">
 
                                     <td class="col-1">
                                         @product.Id
@@ -51,6 +51,11 @@
                                         @product.ProductType
                                     </td>
                                     <td class="col-4">
+                                        <MudTooltip Text="Ver producto" Color="Color.Tertiary" Placement="Placement.Left">
+                                            <a onclick="toggleExtraRow('@product.Id')" class="btn btn-light btn-sm">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </MudTooltip>
                                         <MudTooltip Text="Editar producto" Color="Color.Warning" Placement="Placement.Left">
                                             <a href="/products/edit/@product.Id" class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>

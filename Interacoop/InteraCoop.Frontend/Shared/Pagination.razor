@@ -1,18 +1,32 @@
-﻿<nav>
-    <ul class="pagination">
-        @foreach (var link in links)
-        {
-            <li @onclick=@(() => InternalSelectedPage(link)) style="cursor: pointer" class="page-item @(link.Enable ? null : "disabled") @(link.Enable ? "active" : null)">
-                <a class="page-link">@link.Text</a>
-            </li>
-        }
-        <li class="mx-2">
-            <select class="form-select custom-select" @onchange="InternalRecordsNumberSelected">
-                @foreach (var option in options)
-                {
-                    <option value="@option.Value">@option.Name</option>
-                }
-            </select>
-        </li>
-    </ul>
-</nav>
+﻿<div>
+    <div class="btn-group" role="group">
+        <div class="page-options">
+            <MudText Align="Align.Center" Style="align-content: center; font-size: 12px;">Registros por página: </MudText>
+            <div class="dropdown mx-2">
+                <select class="form-select" @onchange="InternalRecordsNumberSelected">
+                    @foreach (var option in options)
+                    {
+                        <option value="@option.Value">@option.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="btn-group">
+            @foreach (var link in links)
+            {
+                <div class="btn-circle mx-2 @(link.Enable ? null : "disabled") @(link.Enable ? "active" : null)" @onclick=@(() => InternalSelectedPage(link))>
+                    @if (link.Icon != null)
+                    {
+                        <a class="btn-circle">
+                            <i class="@link.Icon"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a>@link.Text</a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

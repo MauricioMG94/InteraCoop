@@ -40,8 +40,7 @@
                         <tbody>
                             @foreach (var opportunity in Opportunities!)
                             {
-                                <tr class="table-row" onclick="toggleExtraRow('@opportunity.Id')">
-
+                                <tr class="table-row">
                                     <td class="col-1">
                                         @opportunity.Id
                                     </td>
@@ -55,7 +54,12 @@
                                         <span class="badge text-bg-primary">@opportunity.Status</span>
                                     </td>
                                     <td class="col-5">
-                                        <MudTooltip Text="Editar oportunidad" Color="Color.Warning" Placement="Placement.Left">
+                                        <MudTooltip Text="Ver oportunidad" Color="Color.Tertiary" Placement="Placement.Left">
+                                            <a onclick="toggleExtraRow('@opportunity.Id')" class="btn btn-light btn-sm">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </MudTooltip>
+                                        <MudTooltip Text="Editar oportunidad" Color="Color.Warning" Placement="Placement.Top">
                                             <a href="/opportunity/edit/@opportunity.Id" class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>
                                             </a>

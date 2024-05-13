@@ -55,6 +55,11 @@
                                         @client.Document
                                     </td>
                                     <td class="col-5">
+                                        <MudTooltip Text="Ver cliente" Color="Color.Tertiary" Placement="Placement.Left">
+                                            <a onclick="toggleExtraRow('@client.Id')" class="btn btn-light btn-sm">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </MudTooltip>
                                         <MudTooltip Text="Editar cliente" Color="Color.Warning" Placement="Placement.Left">
                                             <a href="/client/edit/@client.Id" class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>
