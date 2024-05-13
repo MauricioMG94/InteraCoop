@@ -40,7 +40,7 @@
                         <tbody>
                             @foreach (var campaign in Campaigns!)
                             {
-                                <tr class="table-row" onclick="toggleExtraRow('@campaign.Id')">
+                                <tr class="table-row">
 
                                     <td class="col-1">
                                         @campaign.CampaignId
@@ -57,6 +57,11 @@
                                         </span>
                                     </td>
                                     <td class="col-5">
+                                        <MudTooltip Text="Ver campaña" Color="Color.Tertiary" Placement="Placement.Left">
+                                            <a onclick="toggleExtraRow('@campaign.Id')" class="btn btn-light btn-sm">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </MudTooltip>
                                         <MudTooltip Text="Editar campaña" Color="Color.Warning" Placement="Placement.Left">
                                             <a href="/campaign/edit/@campaign.Id" class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>

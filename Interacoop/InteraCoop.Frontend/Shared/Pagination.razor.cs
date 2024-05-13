@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace InteraCoop.Frontend.Shared
 {
@@ -57,7 +58,7 @@ namespace InteraCoop.Frontend.Shared
 
             links.Add(new PageModel
             {
-                Text = "Anterior",
+                Icon = "bi bi-chevron-left",
                 Page = previousLinkPage,
                 Enable = previousLinkEnable
             });
@@ -99,7 +100,7 @@ namespace InteraCoop.Frontend.Shared
             var linkNextPage = CurrentPage != TotalPages ? CurrentPage + 1 : CurrentPage;
             links.Add(new PageModel
             {
-                Text = "Siguiente",
+                Icon = "bi bi-chevron-right",
                 Page = linkNextPage,
                 Enable = linkNextEnable
             });
@@ -114,6 +115,7 @@ namespace InteraCoop.Frontend.Shared
         private class PageModel
         {
             public string Text { get; set; } = null!;
+            public string? Icon { get; set; }
             public int Page { get; set; }
             public bool Enable { get; set; } = true;
             public bool Active { get; set; } = false;

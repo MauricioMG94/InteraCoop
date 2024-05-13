@@ -1,0 +1,45 @@
+﻿.btn-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: grey;
+    color: #fff;
+    font-size: 10px;
+}
+
+    .btn-circle.disabled {
+        opacity: 0.3; 
+        cursor: not-allowed; 
+    }
+
+    .btn-circle.active {
+        background-color: #1ec8a5;
+    }
+
+.form-select {
+    height: 32px;
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-size: 12px;
+    background-position: right .5rem center;
+    background-size: 14px 10px;
+    border-radius: 0.5rem;
+}
+
+.dropdown {
+    height: 30px;
+}
+
+.page-options {
+    display: flex;
+}
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: flex;
+    vertical-align: middle;
+    justify-content: end;
+}
