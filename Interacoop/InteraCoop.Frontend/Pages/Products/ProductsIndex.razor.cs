@@ -10,12 +10,17 @@ namespace InteraCoop.Frontend.Pages.Products
     {
         private int currentPage = 1;
         private int totalPages;
-
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Product>? Products { get; set; }
+        private async Task FilterCallBack(string filter)
+        {
+            Filter = filter;
+            await ApplyFilterAsync();
+            StateHasChanged();
+        }
 
         [Parameter]
         [SupplyParameterFromQuery]

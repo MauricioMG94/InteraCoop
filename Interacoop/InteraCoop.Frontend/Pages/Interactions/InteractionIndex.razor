@@ -14,20 +14,7 @@
     <div class="card-body">
         <div class="card-filter">
             <MudText Typo="Typo.h6">Interacciones</MudText>
-            <div class="filter-container">
-                <MudSelect Style="width: 300px; margin-right: 0.5rem; " Dense="true" T="string" Label="Tipo de interacción" Variant="Variant.Filled" @bind-Value="@Filter">
-                    @foreach (var type in InteractionTypes)
-                    {
-                        <MudSelectItem Value="@type" />
-                    }
-                </MudSelect>
-                <MudTooltip Text="Filtrar por tipo" Color="Color.Tertiary" Placement="Placement.Top">
-                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
-                </MudTooltip>
-                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
-                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
-                </MudTooltip>
-            </div>
+            <Filter PlaceHolder="Tipo de Interacción" Callback=@FilterCallBack OptionsList="InteractionTypes" />
         </div>
         <GenericList MyList="Interactions">
             <Body>
@@ -73,7 +60,7 @@
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                         </MudTooltip>
-                                        <MudTooltip Text="Editar interacción" Color="Color.Warning" Placement="Placement.Left">
+                                        <MudTooltip Text="Editar interacción" Color="Color.Warning" Placement="Placement.Top">
                                             <a href="/interaction/edit/@interaction.Id" class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>
                                             </a>

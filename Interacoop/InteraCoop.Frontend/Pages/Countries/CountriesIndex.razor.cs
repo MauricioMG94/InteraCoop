@@ -17,6 +17,12 @@ namespace InteraCoop.Frontend.Pages.Countries
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Country>? Countries { get; set; }
+        private async Task FilterCallBack(string filter)
+        {
+            Filter = filter;
+            await ApplyFilterAsync();
+            StateHasChanged();
+        }
 
         protected override async Task OnInitializedAsync()
         {

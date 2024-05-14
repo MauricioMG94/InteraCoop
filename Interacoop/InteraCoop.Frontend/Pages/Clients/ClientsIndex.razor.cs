@@ -17,6 +17,12 @@ namespace InteraCoop.Frontend.Pages.Clients
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         public List<Client>? Clients { get; set; }
+        private async Task FilterCallBack(string filter)
+        {
+            Filter = filter;
+            await ApplyFilterAsync();
+            StateHasChanged();
+        }
 
         protected override async Task OnInitializedAsync()
         {
