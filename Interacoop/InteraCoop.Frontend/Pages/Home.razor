@@ -1,11 +1,14 @@
 ﻿@page "/"
 
 <div class="card">
+   <AuthorizeView Roles ="Admin">
+     <Authorized>
     <div class="card-header">
         <span>
             <MudButton StartIcon="@Icons.Material.Filled.SpaceDashboard" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Dashboard</MudButton>
         </span>
-    </div>
+    </div>    
+    <p>Estas autenticado, @context.User.Identity?.Name</p>
     <div class="card-body">
         <MudTabs Elevation="4" Rounded="true" AlwaysShowScrollButtons="false" Color="@Color.Info" Class="mt-4">
             <MudTabPanel Text="Interacciones">
@@ -20,5 +23,10 @@
             </MudTabPanel>
         </MudTabs>
     </div>
-    
+     </Authorized>
+
+    <NotAuthorized>
+        <p>Estas autenticado como anonimo</p>
+    </NotAuthorized>
+    </AuthorizeView>
 </div>

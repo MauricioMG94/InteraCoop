@@ -4,6 +4,7 @@ using InteraCoop.Backend.Repositories.Interfaces;
 using InteraCoop.Backend.UnitsOfWork.Implementations;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Enums;
 using InteraCoop.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
 
@@ -91,7 +92,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 var newClient = new Client
                 {
                     Name = clientDto.Name,
-                    DocumentType = clientDto.DocumentType,
+                    DocumentType = DocumentType.CC,
                     Document = clientDto.Document,
                     Address = clientDto.Address,
                     Telephone = clientDto.Telephone,
@@ -158,7 +159,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 }
 
                     client.Name = clientDto.Name;
-                    client.DocumentType = clientDto.DocumentType;
+                    client.DocumentType = DocumentType.CC;
                     client.Document = clientDto.Document;
                     client.Address = clientDto.Address;
                     client.Telephone = clientDto.Telephone;

@@ -4,9 +4,11 @@ using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using Microsoft.AspNetCore.Components;
 using InteraCoop.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InteraCoop.Frontend.Pages.Products
 {
+    [Authorize(Roles = "Admin")]
     public partial class ProductEdit
     {
         private ProductDto? product;

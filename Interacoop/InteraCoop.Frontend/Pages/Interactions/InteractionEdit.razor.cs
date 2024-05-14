@@ -3,10 +3,12 @@ using InteraCoop.Frontend.Pages.Opportunities;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
+    [Authorize(Roles = "Employee")]
     public partial class InteractionEdit
     {
         private InteractionDto interactionDto = new()

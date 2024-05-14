@@ -18,5 +18,8 @@ namespace InteraCoop.Shared.Entities
         public String Name { get; set; } = null!;
         public int StateId { get; set; }
         public State? State { get; set; }
+
+        public ICollection<User>? Users { get; set; }
+        public ICollection<Client>? Clients { get; set; }
     }
 }

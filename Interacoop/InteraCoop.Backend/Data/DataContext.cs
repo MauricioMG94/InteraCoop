@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InteraCoop.Shared.Entities;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace InteraCoop.Backend.Data
+namespace InteraCoop.Backend.Data  
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 

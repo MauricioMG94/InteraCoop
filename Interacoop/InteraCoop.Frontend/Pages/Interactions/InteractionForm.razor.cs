@@ -5,9 +5,11 @@ using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
+    [Authorize(Roles = "Employee")]
     public partial class InteractionForm
     {
         private EditContext editContext = null!;

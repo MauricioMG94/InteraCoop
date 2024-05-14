@@ -2,10 +2,12 @@
 using InteraCoop.Frontend.Pages.Interactions;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
+    [Authorize(Roles = "Employee")]
     public partial class InteractionIndex
     {
         private int currentPage = 1;
