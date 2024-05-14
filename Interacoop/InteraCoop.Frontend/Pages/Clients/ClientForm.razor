@@ -36,10 +36,6 @@
                                 <ValidationMessage For="@(()=> Client.DocumentType)" />
                             </div>
                         </div>
-                </div>
-             </div>
-             <div class="row">
-                <div class="col-6">
                     <div class="mb-3">
                         <label>Telefono:</label>
                         <div>
@@ -47,6 +43,9 @@
                             <ValidationMessage For="@(()=> Client.Telephone)" />
                         </div>
                     </div>
+                </div>
+                <div class="col-6">
+                    <DropList></DropList>                   
                     <div class="mb-3">
                         <label>Dirección:</label>
                         <div>                            

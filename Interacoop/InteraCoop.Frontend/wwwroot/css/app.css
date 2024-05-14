@@ -179,6 +179,10 @@ code {
     color: #ffc107 !important;
 }
 
+.bi-eye::before {
+    color: #1ec8a5 !important;
+}
+
 .plus-icon {
     background-color: lightgreen;
 }
