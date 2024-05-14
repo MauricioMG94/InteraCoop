@@ -1,10 +1,12 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Opportunities
 {
+    [Authorize(Roles = "Employee")]
     public partial class OpportunitiesIndex
     {
         private int currentPage = 1;

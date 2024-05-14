@@ -3,9 +3,11 @@ using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using CurrieTechnologies.Razor.SweetAlert2;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InteraCoop.Frontend.Pages.Countries
 {
+    [Authorize(Roles = "Admin")]
     public partial class CountriesIndex
     {
         private int currentPage = 1;

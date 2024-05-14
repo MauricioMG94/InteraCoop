@@ -3,10 +3,12 @@ using InteraCoop.Frontend.Pages.Products;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Campaigns
 {
+    [Authorize(Roles = "Admin")]
     public partial class CampaignEdit
     {
         private CampaignDto campaignDto = new()

@@ -4,10 +4,12 @@ using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Products
 {
+    [Authorize(Roles = "Admin")]
     public partial class ProductCreate
     {
         private ProductForm? productForm;

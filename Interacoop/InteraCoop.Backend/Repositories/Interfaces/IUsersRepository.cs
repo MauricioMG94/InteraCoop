@@ -1,4 +1,5 @@
-﻿using InteraCoop.Shared.Entities;
+﻿using InteraCoop.Shared.Dtos;
+using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Identity;
 namespace InteraCoop.Backend.Repositories.Interfaces
 {
@@ -11,5 +12,8 @@ namespace InteraCoop.Backend.Repositories.Interfaces
         Task AddUserToRoleAsync(User user, string roleName);
         Task<bool> IsUserInRoleAsync(User user, string roleName);
 
+        Task<SignInResult> LoginAsync(LoginDto model);
+
+        Task LogoutAsync();
     }
 }

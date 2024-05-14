@@ -1,10 +1,19 @@
 ﻿<MudNavMenu Bordered="true" Color="Color.Success" Margin="Margin.Normal">
-    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/clients" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Person4">Clientes</MudNavLink>
-    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/products" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.CreditCard">Productos</MudNavLink>
-    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/campaigns" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Work">Campañas</MudNavLink>
-    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/interactions" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.PeopleAlt">Interacciones</MudNavLink>
-    <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/opportunities" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.AssignmentTurnedIn">Oportunidades</MudNavLink>
-    <MudNavGroup Class="my-2" Style="font-size: 0.9rem" Icon="@Icons.Material.Filled.AddModerator" Title="Útiles" Expanded="false">
-        <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/countries" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.SouthAmerica">Paises</MudNavLink>
-    </MudNavGroup>
+    
+    <AuthorizeView Roles ="Admin">
+        <Authorized>
+            <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/products" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.CreditCard">Productos</MudNavLink>
+            <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/campaigns" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Work">Campañas</MudNavLink>
+            <MudNavGroup Class="my-2" Style="font-size: 0.9rem" Icon="@Icons.Material.Filled.AddModerator" Title="Útiles" Expanded="false">
+                <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/countries" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.SouthAmerica">Paises</MudNavLink>
+            </MudNavGroup>
+        </Authorized>
+    </AuthorizeView>
+    <AuthorizeView Roles ="Employee">
+        <Authorized>
+            <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/clients" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Person4">Clientes</MudNavLink>
+            <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/interactions" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.PeopleAlt">Interacciones</MudNavLink>
+            <MudNavLink Class="my-2" Style="font-size: 0.9rem" Href="/opportunities" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.AssignmentTurnedIn">Oportunidades</MudNavLink>
+        </Authorized>
+    </AuthorizeView>
 </MudNavMenu>

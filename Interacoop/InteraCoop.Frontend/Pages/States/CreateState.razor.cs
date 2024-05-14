@@ -2,10 +2,12 @@
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Frontend.Shared;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.States
 {
+    [Authorize(Roles = "Admin")]
     public partial class CreateState
     {
         private State state = new();

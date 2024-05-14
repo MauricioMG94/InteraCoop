@@ -3,12 +3,14 @@ using InteraCoop.Frontend.Helpers;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 
 namespace InteraCoop.Frontend.Pages.Campaigns
 {
+    [Authorize(Roles = "Admin")]
     public partial class CampaignForm
     {
 

@@ -1,8 +1,6 @@
-﻿using InteraCoop.Backend.Controllers;
-using InteraCoop.Backend.UnitsOfWork.Interfaces;
+﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Enums;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace InteraCoop.Backend.Data

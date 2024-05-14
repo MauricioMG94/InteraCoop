@@ -1,11 +1,13 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 
 namespace InteraCoop.Frontend.Pages.Clients
 {
+    [Authorize(Roles = "Employee")]
     public partial class ClientForm
     {
         private EditContext editContext = null!;

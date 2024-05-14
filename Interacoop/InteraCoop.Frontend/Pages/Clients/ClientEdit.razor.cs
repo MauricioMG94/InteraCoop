@@ -3,10 +3,12 @@ using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Clients
 {
+    [Authorize(Roles = "Employee")]
     public partial class ClientEdit
     {
         private ClientDto clientDto;

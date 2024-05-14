@@ -1,11 +1,13 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 
 namespace InteraCoop.Frontend.Pages.Countries
 {
+    [Authorize(Roles = "Admin")]
     public partial class CountryForm
     {
         private EditContext editContext = null!;

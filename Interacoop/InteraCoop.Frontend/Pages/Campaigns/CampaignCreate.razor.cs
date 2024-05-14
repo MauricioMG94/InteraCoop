@@ -2,12 +2,14 @@ using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Campaigns
 {
+    [Authorize(Roles = "Admin")]
     public partial class CampaignCreate
-    {
+    {        
         private CampaignDto campaign = new()
         {
             ProductsIds = new List<int>()

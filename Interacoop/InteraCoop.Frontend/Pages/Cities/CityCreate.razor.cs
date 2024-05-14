@@ -2,10 +2,12 @@
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Frontend.Shared;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Cities
 {
+    [Authorize(Roles = "Admin")]
     public partial class CityCreate
     {
         private City city = new();

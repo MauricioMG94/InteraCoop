@@ -1,7 +1,13 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>InteraCoop</PageTitle>
 
-<h1>Software InteraCoop!</h1>
+<AuthorizeView Roles ="Admin">
+    <Authorized>
+        <p>Estas autenticado, @context.User.Identity?.Name</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>Estas autenticado como anonimo</p>
+    </NotAuthorized>
+</AuthorizeView>
 
-Welcome to your new app.
