@@ -9,20 +9,7 @@
     <div class="card-body">
         <div class="card-filter">
             <MudText Typo="Typo.h6">Oportunidades</MudText>
-            <div class="filter-container">
-                <MudSelect Style="width: 300px; margin-right: 0.5rem; " Dense="true" T="string" Label="Estado de oportunidad" Variant="Variant.Filled" @bind-Value="@Filter">
-                    @foreach (var status in OpportunityStatus)
-                    {
-                        <MudSelectItem Value="@status" />
-                    }
-                </MudSelect>
-                <MudTooltip Text="Filtrar por estado" Color="Color.Tertiary" Placement="Placement.Top">
-                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
-                </MudTooltip>
-                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
-                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
-                </MudTooltip>
-            </div>
+            <Filter PlaceHolder="Estado de oportunidad" Callback=@FilterCallBack OptionsList="OpportunityStatus"/>
         </div>
         <GenericList MyList="Opportunities">
             <Body>

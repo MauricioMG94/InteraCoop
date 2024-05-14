@@ -1,0 +1,21 @@
+﻿<div class="filter-container">
+    @if (OptionsList != null && OptionsList.Any())
+    {
+        <MudSelect Style="width: 300px; margin-right: 0.5rem; " Dense="true" T="string" Label="@PlaceHolder" Variant="Variant.Filled" @bind-Value="@TextToFilter">
+            @foreach (var item in @OptionsList)
+            {
+                <MudSelectItem Value="@item" />
+            }
+        </MudSelect>
+    }
+    else
+    {
+        <MudTextField Style="width: 300px; margin-right: 0.5rem;" T="string" @bind-Value="@TextToFilter" Label="@PlaceHolder" Variant="Variant.Filled"></MudTextField>
+    }
+    <MudTooltip Text="Filtrar" Color="Color.Tertiary" Placement="Placement.Top">
+        <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
+    </MudTooltip>
+    <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
+        <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
+    </MudTooltip>
+</div>

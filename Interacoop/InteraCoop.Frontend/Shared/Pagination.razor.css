@@ -13,7 +13,7 @@
 
     .btn-circle.disabled {
         opacity: 0.3; 
-        cursor: not-allowed; 
+        cursor: default; 
     }
 
     .btn-circle.active {

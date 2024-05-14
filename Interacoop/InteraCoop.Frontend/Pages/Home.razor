@@ -1,7 +1,24 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
-
-<h1>Software InteraCoop!</h1>
-
-Welcome to your new app.
+<div class="card">
+    <div class="card-header">
+        <span>
+            <MudButton StartIcon="@Icons.Material.Filled.SpaceDashboard" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Dashboard</MudButton>
+        </span>
+    </div>
+    <div class="card-body">
+        <MudTabs Elevation="4" Rounded="true" AlwaysShowScrollButtons="false" Color="@Color.Info" Class="mt-4">
+            <MudTabPanel Text="Interacciones">
+                <div class="my-2 mx-2">
+                    <InteraCoop.Frontend.Pages.Interactions.InteractionIndex />
+                </div>            
+            </MudTabPanel>
+            <MudTabPanel Text="Oportunidades">
+                <div class="my-2 mx-2">
+                    <InteraCoop.Frontend.Pages.Opportunities.OpportunitiesIndex />
+                </div>
+            </MudTabPanel>
+        </MudTabs>
+    </div>
+    
+</div>

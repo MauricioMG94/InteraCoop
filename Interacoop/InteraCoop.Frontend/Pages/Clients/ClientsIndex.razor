@@ -14,15 +14,7 @@
     <div class="card-body">
         <div class="card-filter">
             <MudText Typo="Typo.h6">Clientes</MudText>
-            <div class="filter-container">
-                <MudTextField Style="width: 300px; margin-right: 0.5rem;" T="string" @bind-Value="@Filter" Label="Buscar por documento" Variant="Variant.Filled"></MudTextField>
-                <MudTooltip Text="Filtrar por número de documento" Color="Color.Tertiary" Placement="Placement.Top">
-                    <MudIconButton Icon="@Icons.Material.Filled.FilterAlt" Style="margin-right: 0.5rem" @onclick="ApplyFilterAsync"></MudIconButton>
-                </MudTooltip>
-                <MudTooltip Text="Limpiar filtro" Color="Color.Tertiary" Placement="Placement.Top">
-                    <MudIconButton Icon="@Icons.Material.Filled.CleaningServices" @onclick="CleanFilterAsync"></MudIconButton>
-                </MudTooltip>
-            </div>
+            <Filter PlaceHolder="Nombre de cliente" Callback=@FilterCallBack />
         </div>
         <GenericList MyList="Clients">
             <Body>
@@ -60,7 +52,7 @@
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                         </MudTooltip>
-                                        <MudTooltip Text="Editar cliente" Color="Color.Warning" Placement="Placement.Left">
+                                        <MudTooltip Text="Editar cliente" Color="Color.Warning" Placement="Placement.Top">
                                             <a href="/client/edit/@client.Id" class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
