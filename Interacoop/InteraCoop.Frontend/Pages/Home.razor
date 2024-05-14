@@ -1,13 +1,32 @@
 ﻿@page "/"
 
-<PageTitle>InteraCoop</PageTitle>
+<div class="card">
+   <AuthorizeView Roles ="Admin">
+     <Authorized>
+    <div class="card-header">
+        <span>
+            <MudButton StartIcon="@Icons.Material.Filled.SpaceDashboard" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Dashboard</MudButton>
+        </span>
+    </div>    
+    <p>Estas autenticado, @context.User.Identity?.Name</p>
+    <div class="card-body">
+        <MudTabs Elevation="4" Rounded="true" AlwaysShowScrollButtons="false" Color="@Color.Info" Class="mt-4">
+            <MudTabPanel Text="Interacciones">
+                <div class="my-2 mx-2">
+                    <InteraCoop.Frontend.Pages.Interactions.InteractionIndex />
+                </div>            
+            </MudTabPanel>
+            <MudTabPanel Text="Oportunidades">
+                <div class="my-2 mx-2">
+                    <InteraCoop.Frontend.Pages.Opportunities.OpportunitiesIndex />
+                </div>
+            </MudTabPanel>
+        </MudTabs>
+    </div>
+     </Authorized>
 
-<AuthorizeView Roles ="Admin">
-    <Authorized>
-        <p>Estas autenticado, @context.User.Identity?.Name</p>
-    </Authorized>
     <NotAuthorized>
         <p>Estas autenticado como anonimo</p>
     </NotAuthorized>
-</AuthorizeView>
-
+    </AuthorizeView>
+</div>

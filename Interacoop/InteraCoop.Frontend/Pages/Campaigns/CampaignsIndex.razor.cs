@@ -19,6 +19,13 @@ namespace InteraCoop.Frontend.Pages.Campaigns
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Campaign>? Campaigns { get; set; }
         public bool FormPostedSuccessfully { get; set; } = false;
+        private async Task FilterCallBack(string filter)
+        {
+            Filter = filter;
+            await ApplyFilterAsync();
+            StateHasChanged();
+        }
+
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();

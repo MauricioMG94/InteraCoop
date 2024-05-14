@@ -23,6 +23,12 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         public bool FormPostedSuccessfully { get; set; } = false;
 
         List<string> OpportunityStatus = new List<string>();
+        private async Task FilterCallBack(string filter)
+        {
+            Filter = filter;
+            await ApplyFilterAsync();
+            StateHasChanged();
+        }
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
