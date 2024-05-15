@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace InteraCoop.Frontend.Pages.Campaigns
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Analist")]
     public partial class CampaignsIndex
     {
         private int currentPage = 1;

@@ -26,7 +26,8 @@ namespace InteraCoop.Backend.Data
             await CheckOpportunitiesAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1010","Harold","Aguirre", "harold@yopmail.com","3008930134","Calle Luna Calle sol", UserType.Admin);
-           
+            await CheckUserAsync("1011", "Andres", "Castillo", "andres@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Analist);
+
         }
 
         private async Task<User> CheckUserAsync(string document, string firstName, string LastName, string email, string phone, string address, UserType userType)
