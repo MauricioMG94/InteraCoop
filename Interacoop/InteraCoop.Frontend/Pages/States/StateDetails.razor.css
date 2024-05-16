@@ -1,4 +1,4 @@
-﻿.col-1, .col-2, .col-3{
+﻿.col-1, .col-2 {
     border-style: none;
     display: flex;
     align-items: center;
@@ -9,15 +9,11 @@
     line-height: 1.43;
     letter-spacing: .01071em;
     vertical-align: inherit;
+    width: 50%;
 }
 
-.col-1, .col-2 {
-   width: 30%;
-}
-
-.col-3 {
+.col-2 {
     gap: 1rem;
-    width: 40%;
 }
 
 .col-1 {
