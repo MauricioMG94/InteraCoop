@@ -1,4 +1,5 @@
-﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
+﻿using InteraCoop.Backend.Helpers;
+using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -15,17 +16,28 @@ namespace InteraCoop.Backend.Controllers
     {
         private readonly IUsersUnitOfWork _usersUnitOfWork;
         private readonly IConfiguration _config;
+        private readonly IFileStorage _fileStorage;
+        private readonly string _container;
 
-        public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration config)
+        public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration config, IFileStorage fileStorage)
         {
             _usersUnitOfWork = usersUnitOfWork;
             _config = config;
+            _fileStorage = fileStorage;
+            _container = "users";
         }
 
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser([FromBody] UserDto model)
         {
+
             User user = model;
+            if (!string.IsNullOrEmpty(model.Photo))
+            {
+                var photoUser = Convert.FromBase64String(model.Photo);
+                model.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", _container);
+            }
+            
             var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
             if (result.Succeeded)
             {
