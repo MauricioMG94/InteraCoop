@@ -11,12 +11,19 @@ namespace InteraCoop.Frontend.Pages.Auth
     {
         private UserDto userDto= new();
         private bool loading;
+        private string? imageUrl;
 
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private ILoginService LoginService { get; set; } = null!;
 
+
+        private void ImageSelected(string imagenBase64)
+        {
+            userDto.Photo = imagenBase64;
+            imageUrl = null;
+        }
 
         private async Task CreateUserAsync()
         {
