@@ -26,6 +26,11 @@ namespace InteraCoop.Backend.Repositories.Implementations
 
         public async Task AddUserToRoleAsync(User user, string roleName) => await _userManager.AddToRoleAsync(user, roleName);
 
+        public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword)
+        {
+            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+        }
+
         public async Task CheckRoleAsync(string roleName)
         {
             var roleExists = await _roleManager.RoleExistsAsync(roleName);
@@ -38,6 +43,11 @@ namespace InteraCoop.Backend.Repositories.Implementations
             }
         }
 
+        public Task<IdentityResult> ConfirmEmailAsync(User user, string token)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<User> GetUserAsync(string email)
         {
             var user = await _context.Users
@@ -48,7 +58,17 @@ namespace InteraCoop.Backend.Repositories.Implementations
             return user!;
         }
 
-        public async Task<bool> IsUserInRoleAsync(User user, string roleName) => await _userManager.IsInRoleAsync(user, roleName);
+        public async Task<User> GetUserAsync(Guid userId)
+        {
+            var user = await _context.Users
+                .Include(u => u.City!)
+                .ThenInclude(c => c.State!)
+                .ThenInclude(s => s.Country)
+                .FirstOrDefaultAsync(x => x.Id == userId.ToString());
+            return user!;
+        }
+
+         public async Task<bool> IsUserInRoleAsync(User user, string roleName) => await _userManager.IsInRoleAsync(user, roleName);
 
         public async Task<SignInResult> LoginAsync(LoginDto model)
         {
@@ -58,6 +78,11 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public async Task LogoutAsync()
         {
             await _signInManager.SignOutAsync();
+        }
+
+        public async Task<IdentityResult> UpdateUserAsync(User user)
+        {
+            return await _userManager.UpdateAsync(user);
         }
     }
 }

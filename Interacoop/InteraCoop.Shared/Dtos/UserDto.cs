@@ -13,14 +13,14 @@ namespace InteraCoop.Shared.Dtos
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "El campo {0} debe tener entre {2} y {1} caracteres.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El campo {0} debe tener entre {2} y {1} carácteres.")]
         public string Password { get; set; } = null!;
 
         [Compare("Password", ErrorMessage ="La constraseña y la confirmacion no son iguales")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmacion de ctraseña")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "El campo {0} debe tener entre {2} y {1} caracteres.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El campo {0} debe tener entre {2} y {1} carácteres.")]
         public string PasswordConfirm { get; set; } = null!;
     }
 }
