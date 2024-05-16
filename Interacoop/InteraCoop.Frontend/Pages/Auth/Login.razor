@@ -1,39 +1,47 @@
 ﻿@page "/Login"
 
-<div class="row">
-    <div class="col-12">
-
+<div class="row mt-5">
+    <div class="col-12" style="display: flex; justify-content: center; align-content: center;">
         <EditForm Model="loginDto" OnValidSubmit="LoginAsync">
             <DataAnnotationsValidator />
-
-            <div class="card bg-light">
-                <div class="card-header justify-content-center">
-                    <span>
-                        <i class="oi oi-account-login" /> Iniciar Sesión
-                        <button class="btn btn-sm btn-primary float-end" @onclick=@(() => LoginAsync())><i class="bi bi-box-arrow-in-right" /> Iniciar Sesión</button>
-                        @*<button class="btn btn-sm mx-1 btn-danger float-end" @onclick=@(() => CloseModalAsync())><i class="bi bi-x-circle-fill" /> Cancelar</button>*@
-                    </span>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label>Email:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@loginDto.Email" />
-                            <ValidationMessage For="@(() => loginDto.Email)" />
+            <div class="card my-3" style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-4" style="display:flex; margin:auto;">
+                        <img src="/interacoop.png" class="img-fluid rounded-start" alt="Logo de InteraCoop.">
+                    </div>
+                    <div class="col-md-8">
+                        <div style="display: flex; justify-content: center; margin-top: 2rem">
+                            <h5 style="justify-content: center; align-content: center; letter-spacing: 4px; padding-top: 13px; text-align: center; font-size: 22px">
+                                Iniciar Sesión
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div style="margin-top: 1.5rem;">
+                                <label style="margin-bottom:0.5rem; font-size: 11pt; letter-spacing: 2px">Email:</label>
+                                <InputText class="form-control" @bind-Value="@loginDto.Email" />
+                                <ValidationMessage For="@(() => loginDto.Email)" />
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <label style="margin-bottom:0.5rem; font-size: 11pt; letter-spacing: 2px">Contraseña:</label>
+                                <InputText type="password" class="form-control" @bind-Value="@loginDto.Password" />
+                                <ValidationMessage For="@(() => loginDto.Password)" />
+                            </div>
+                            <a style="color: #1EC8A5; font-size: 10pt; margin-top: 8px; display: flex; justify-content: flex-end" href="/RecoverPassword">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                            <div style="display:flex; justify-content: center; margin-top: 1.5rem;">
+                                <MudButton StartIcon="@Icons.Material.Filled.ArrowForward" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 150px" @onclick=@(() => LoginAsync())>Ingresar</MudButton>
+                            </div>
+                        </div>
+                        <div class="card-body mb-2" style="display: flex; flex-direction:column">
+                            <a style="color: #1EC8A5; font-size: 10pt; text-align: center;" href="/Register">
+                                Registrate aquí
+                            </a>
+                            <a style="color: #1EC8A5; font-size: 10pt; margin-top: 16px; text-align: center;" href="/ResendToken">
+                                Activar cuenta
+                            </a>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label>Contraseña:</label>
-                        <div>
-                            <InputText type="password" class="form-control" @bind-Value="@loginDto.Password" />
-                            <ValidationMessage For="@(() => loginDto.Password)" />
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <p><a class="btn btn-link" href="/Register">¿No eres usuario aún? Resgitrate aquí</a></p>
-                    <p><a class="btn btn-link" href="/ResendToken">Reenviar correro de activación de cuenta</a></p>
-                    <p><a class="btn btn-link" href="/RecoverPassword">¿Has olvidado tu contraseña?</a></p>
                 </div>
             </div>
         </EditForm>

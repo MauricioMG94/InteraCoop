@@ -1,10 +1,10 @@
 ﻿<AuthorizeView>
     <Authorized>
         <span>Hola, @context.User.Identity!.Name</span>
-        <a href="Logout" class="nav-link btn btn-link">Cerrar sesion</a>
+        <MudButton Href="Logout" Variant="Variant.Filled" Color="Color.Transparent" Style="color:white; margin-left: 1rem">Cerrar sesión</MudButton>
     </Authorized>
     <NotAuthorized>
-        <a href="Register" class="nav-link btn btn-link">Registro</a>
-        <a href="Login" class="nav-link btn btn-link">Iniciar sesion</a>
+        <MudButton Href="Register" Variant="Variant.Filled" Color="Color.Transparent" Style="color:white">Registro</MudButton>
+        <MudButton Href="Login" Variant="Variant.Filled" Color="Color.Transparent" Style="color:white; margin-left: 1rem">Iniciar Sesión</MudButton>
     </NotAuthorized>
 </AuthorizeView>
