@@ -1,3 +1,4 @@
+using Blazored.Modal.Services;
 using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Frontend.Services;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using System.Net;
 
-namespace InteraCoop.Frontend.Pages
+namespace InteraCoop.Frontend.Pages.Auth
 {
     [Authorize]
     public partial class EditUser
@@ -22,6 +23,7 @@ namespace InteraCoop.Frontend.Pages
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private ILoginService LoginService { get; set; } = null!;
+        [CascadingParameter] IModalService Modal { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -36,6 +38,12 @@ namespace InteraCoop.Frontend.Pages
                 user.Photo = null;
             }
         }
+
+        private void ShowModal()
+        {
+            Modal.Show<ChangePassword>();
+        }
+
         private async Task LoadUserAsyc()
         {
             var responseHttp = await Repository.GetAsync<User>($"/api/accounts");
@@ -115,7 +123,7 @@ namespace InteraCoop.Frontend.Pages
 
         private async Task SaveUserAsync()
         {
-            var responseHttp = await Repository.PutAsync<User, TokenDto>("/api/accounts", user!);
+            var responseHttp = await Repository.PutAsync<User, TokenDto>("/api/accounts", user!);//
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
@@ -127,4 +135,5 @@ namespace InteraCoop.Frontend.Pages
             NavigationManager.NavigateTo("/");
         }
     }
+
 }

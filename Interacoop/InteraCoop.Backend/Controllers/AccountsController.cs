@@ -171,7 +171,7 @@ namespace InteraCoop.Backend.Controllers
                     return Ok(BuildToken(currentUser));
                 }
 
-                return BadRequest(result.Errors.FirstOrDefault());
+                return BadRequest(result.Errors.FirstOrDefault());//
             }
             catch (Exception ex)
             {
