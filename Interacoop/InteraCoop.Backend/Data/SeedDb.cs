@@ -1,6 +1,7 @@
 ﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Enums;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace InteraCoop.Backend.Data
@@ -36,6 +37,9 @@ namespace InteraCoop.Backend.Data
           var user = await _usersUnitOfWork.GetUserAsync(email);
             if (user == null)
             {
+                var city = await _context.Cities.FirstOrDefaultAsync(x => x.Name == "Medellín");
+                city ??= await _context.Cities.FirstOrDefaultAsync();
+
                 user = new User
                 {
                     FirstName = firstName,
@@ -50,6 +54,10 @@ namespace InteraCoop.Backend.Data
                 };
                 await _usersUnitOfWork.AddUserAsync(user, "123456");
                 await _usersUnitOfWork.AddUserToRolesAsync(user, userType.ToString());
+
+                var token = await _usersUnitOfWork.GenerateEmailConfirmationTokenAsync(user);
+                await _usersUnitOfWork.ConfirmEmailAsync(user, token);
+
             }
             return user;
         }

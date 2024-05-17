@@ -88,19 +88,21 @@ namespace InteraCoop.Frontend.Pages.Auth
             cities = responseHttp.Response;
         }
         private async Task CreateUserAsync()
-        {
+        {        
             userDto.UserName = userDto.Email;
             userDto.UserType = UserType.Employee;
             loading = true;
-            var responseHttp = await Repository.PostAsync<UserDto, TokenDto>("/api/accounts/CreateUser", userDto);
+            var responseHttp = await Repository.PostAsync<UserDto>("/api/accounts/CreateUser", userDto);
             loading = false;
+
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", message,SweetAlertIcon.Error);
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
-            await LoginService.LoginAsync(responseHttp.Response!.Token);
+
+            await SweetAlertService.FireAsync("Confirmación", "Su cuenta ha sido creada con éxito. Se te ha enviado un correo electrónico con las instrucciones para activar tu usuario.", SweetAlertIcon.Info);
             NavigationManager.NavigateTo("/");
         }
     }

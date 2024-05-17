@@ -5,6 +5,9 @@ namespace InteraCoop.Backend.Repositories.Interfaces
 {
     public interface IUsersRepository
     {
+        Task<string> GenerateEmailConfirmationTokenAsync(User user);
+        Task<IdentityResult> ConfirmEmailAsync(User user, string token);
+        
         Task<User> GetUserAsync(Guid userId);
 
         Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword);
@@ -13,7 +16,7 @@ namespace InteraCoop.Backend.Repositories.Interfaces
 
         Task<User> GetUserAsync(string email);
 
-        Task<IdentityResult> ConfirmEmailAsync(User user, string token);
+       
 
         Task<IdentityResult> AddUserAsync(User user, string password);
 
