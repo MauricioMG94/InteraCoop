@@ -17,6 +17,7 @@ namespace InteraCoop.Frontend.Pages.Countries
         [EditorRequired, Parameter] public EventCallback ReturnAction { get; set; }
         [Inject] public SweetAlertService SweetAlertService { get; set; } = null!;
         public bool FormPostedSuccessfully { get; set; }
+        [Parameter] public required String FormName { get; set; }
 
         protected override void OnInitialized()
         {

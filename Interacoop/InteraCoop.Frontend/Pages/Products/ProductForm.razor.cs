@@ -21,7 +21,8 @@ namespace InteraCoop.Frontend.Pages.Products
         [Parameter] public bool IsEdit { get; set; } = false;
         [Parameter] public EventCallback AddImageAction { get; set; }
         [Parameter] public EventCallback RemoveImageAction { get; set; }
-
+        [Parameter] public required String FormName { get; set; }
+        [Parameter] public required String CardName { get; set; }
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override void OnInitialized()
