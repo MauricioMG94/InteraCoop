@@ -22,6 +22,16 @@ namespace InteraCoop.Backend.Repositories.Implementations
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(User user)
+        {
+            return await _userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string password)
+        {
+            return await _userManager.ResetPasswordAsync(user, token, password);
+        }
         public async Task<IdentityResult> AddUserAsync(User user, string password) => await _userManager.CreateAsync(user, password);
 
         public async Task AddUserToRoleAsync(User user, string roleName) => await _userManager.AddToRoleAsync(user, roleName);
