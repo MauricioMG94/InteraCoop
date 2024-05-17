@@ -2,14 +2,31 @@
 
 <EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
-    <div class="mb-3">
-    <label>Pais:</label>
-    <div>
-    <InputText class="form-control" @bind-Value="@Country.Name"/>
-            <ValidationMessage For="@(()=> Country.Name)"/>
+    <div class="card">
+        <div class="card-header">
+            <span>
+                <MudButton StartIcon="@Icons.Material.Filled.SouthAmerica" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                <a class="float-end">
+                    <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
+                        <MudFab StartIcon="@Icons.Material.Filled.Undo" @onclick="ReturnAction" Size="Size.Small" Color="Color.Tertiary" />
+                    </MudTooltip>
+                </a>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="my-3">
+                        <MudTextField @bind-Value="Country.Name" Label="Nombre" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.SouthAmerica" Clearable="true" />
+                        <ValidationMessage For="@(() => Country.Name)" />
+                    </div>
+                    <div class="my-3">
+                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Guardar cambios</button>
-    <button class="btn btn-success" @onclick="ReturnAction">Regresar</button>
 </EditForm>
 
