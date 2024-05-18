@@ -6,5 +6,12 @@
 }
 else
 {
-    <CampaignForm @ref="campaignForm" Campaign="campaignDto" selectedCampaigns="selectedCampaigns" nonSelectedCampaigns="nonSelectedCampaigns" OnValidSubmit="SaveChangesAsync" ReturnAction="Return"/>
+    <CampaignForm @ref="campaignForm" 
+        Campaign="campaignDto" 
+        selectedCampaigns="selectedCampaigns" 
+        nonSelectedCampaigns="nonSelectedCampaigns" 
+        OnValidSubmit="SaveChangesAsync" 
+        ReturnAction="Return"
+        FormName="Editar campaña"
+        CardName="Campaña"/>
 }

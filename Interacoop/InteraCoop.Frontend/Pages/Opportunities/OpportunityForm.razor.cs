@@ -22,6 +22,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         [Parameter, EditorRequired] public EventCallback ReturnAction { get; set; }
         [Parameter, EditorRequired] public List<Campaign> nonSelectedOpportunities { get; set; } = new();
         [Parameter] public List<Campaign> selectedOpportunities { get; set; } = new();
+        [Parameter] public required String FormName { get; set; }
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override void OnInitialized()

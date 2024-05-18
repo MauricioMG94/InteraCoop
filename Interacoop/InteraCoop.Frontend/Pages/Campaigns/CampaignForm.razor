@@ -3,74 +3,132 @@
 <EditForm EditContext="editContext" OnValidSubmit="OnDataAnnotationsValidatedAsync">
     <DataAnnotationsValidator />
 
+
     <div class="card">
         <div class="card-header">
             <span>
-                <i class="oi oi-star" /> Crear Nueva Campaña
-                <a class="btn btn-sm btn-success float-end" href="/campaigns"><i class="oi oi-arrow-thick-left" /> Regresar</a>
-                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+                <MudButton StartIcon="@Icons.Material.Filled.Work" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                <a class="float-end">
+                    <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
+                        <MudFab StartIcon="@Icons.Material.Filled.Undo" href="/campaigns/" Size="Size.Small" Color="Color.Tertiary" />
+                    </MudTooltip>
+                </a>
             </span>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <div class="mb-3">
-                        <label>Identificador de Campaña:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Campaign.CampaignId" />
-                            <ValidationMessage For="@(() => Campaign.CampaignId)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Campaign.CampaignId" Label="Identificador de campaña:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Grid3x3" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Campaign.CampaignId)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Nombre:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Campaign.CampaignName" />
-                            <ValidationMessage For="@(() => Campaign.CampaignName)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Campaign.CampaignName" Label="Nombre de campaña:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.DriveFileRenameOutline" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Campaign.CampaignName)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Tipo de Campaña:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Campaign.CampaignType" />
-                            <ValidationMessage For="@(() => Campaign.CampaignType)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudSelect @bind-Value="@Campaign.CampaignType" Label="Tipo de campaña:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                            <MudSelectItem Value="@("Fidelización")" />
+                            <MudSelectItem Value="@("Captación de clientes")" />
+                            <MudSelectItem Value="@("Productos financieros")" />
+                        </MudSelect>
+                        <ValidationMessage For="@(() => Campaign.CampaignType)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Estado:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Campaign.Status" />
-                            <ValidationMessage For="@(() => Campaign.Status)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudSelect @bind-Value="@Campaign.Status" Label="Estado de campaña:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.ChangeCircle" Clearable="true">
+                            <MudSelectItem Value="@("Sin asignar")" />
+                            <MudSelectItem Value="@("Asignada")" />
+                            <MudSelectItem Value="@("Vencida")" />
+                        </MudSelect>
+                        <ValidationMessage For="@(() => Campaign.Status)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Descripción</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Campaign.Description" />
-                            <ValidationMessage For="@(() => Campaign.Description)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Campaign.Description" Label="Descripción:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.NoteAlt" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Campaign.Description)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Fecha de inicio</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Campaign.StartDate" />
-                            <ValidationMessage For="@(() => Campaign.StartDate)" />
+                    <div style="display:flex">
+                        <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
+                            <label>Fecha inicio:</label>
+                            <div style="width: 95%">
+                                <InputDate class="form-control" style="height: 56px" @bind-Value="@Campaign.StartDate" />
+                                <ValidationMessage For="@(() => Campaign.StartDate)" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Fecha de finalización</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Campaign.EndDate" />
-                            <ValidationMessage For="@(() => Campaign.EndDate)" />
+                        <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
+                            <label>Fecha fin:</label>
+                            <div style="width: 100%">
+                                <InputDate class="form-control" style="height: 56px" @bind-Value="@Campaign.EndDate" />
+                                <ValidationMessage For="@(() => Campaign.EndDate)" />
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="mb-3">
-                        <label>Productos:</label>
-                        <div>
-                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
-                        </div>
+                <div class="col-3" style="display: inline-grid">
+                    <label>Productos:</label>
+                    <div>
+                        <MultipleSelector NonSelected="nonSelected" Selected="selected" />
                     </div>
+                </div>
+                <div class="col-3" >
+                    <MudCard Style="width: 100%; min-height: 200px; background-color: #eaeaea; padding: 0.5rem" Elevation="2">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <div style="display: flex; align-items: center;">
+                                    <MudIcon Icon="@Icons.Material.Filled.Work" Title="Favorite" Style="margin-right: 0.5rem" />
+                                    <MudText Typo="Typo.h6">@CardName</MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            @if (Campaign.CampaignId != null )
+                            {
+                                <MudItem>
+                                    Identificador: <b>@Campaign.CampaignId</b> 
+                                </MudItem>
+                            }
+                            @if (Campaign.CampaignName!= null)
+                            {
+                                <MudItem>
+                                    Nombre: <b>@Campaign.CampaignName</b>
+                                </MudItem>
+                            }
+                            @if (Campaign.CampaignType!= null)
+                            {
+                                <MudItem>
+                                    Tipo: <b>@Campaign.CampaignType</b>
+                                </MudItem>
+                            }
+                            @if (Campaign.Status != null)
+                            {
+                                <MudItem>
+                                    Estado: <b>@Campaign.Status</b>
+                                </MudItem>
+                            }
+                            @if (Campaign.Description != null)
+                            {
+                                <MudItem>
+                                    Descripción: <b>@Campaign.Description</b>
+                                </MudItem>
+                            }
+                            @if (Campaign.StartDate != null)
+                            {
+                                <MudItem>
+                                    Inicio: <b>@Campaign.StartDate</b>
+                                </MudItem>
+                            }
+                            @if (Campaign.EndDate != null)
+                            {
+                                <MudItem>
+                                    Fin: <b>@Campaign.EndDate</b>
+                                </MudItem>
+                            }
+                        </MudCardContent>
+                    </MudCard>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                 </div>
             </div>
         </div>

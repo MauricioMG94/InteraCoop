@@ -8,59 +8,42 @@ else
 {
     <EditForm Model="user" OnValidSubmit="SaveUserAsync">
         <DataAnnotationsValidator />
-
         <div class="card">
             <div class="card-header">
                 <span>
-                    <i class="bi bi-person" /> Editar Usuario
-                    <a class="btn btn-sm btn-secondary float-end" @onclick=@(() => ShowModal())><i class="bi bi-key" /> Cambiar Contraseña</a>
-                    <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="bi bi-floppy" /> Guardar Cambios</button>
+                    <MudButton StartIcon="@Icons.Material.Filled.Person" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Editar usuario</MudButton>
+                    <a class="float-end">
+                        <MudButton @onclick=@(() => ShowModal()) Variant="Variant.Filled" Color="Color.Tertiary" Style="color:white; margin-left: 1rem">Cambiar contraseña</MudButton>
+                    </a>
                 </span>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-6">
-                        <div class="mb-3">
-                            <label>Nombres:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@user.FirstName" />
-                                <ValidationMessage For="@(() => user.FirstName)" />
-                            </div>
+                        <div style="padding-bottom: 1rem">
+                            <MudTextField @bind-Value="user.FirstName" Label="Nombres:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.PermIdentity" Clearable="true" />
+                            <ValidationMessage For="@(() => user.FirstName)" />
                         </div>
-                        <div class="mb-3">
-                            <label>Apellidos:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@user.LastName" />
-                                <ValidationMessage For="@(() => user.LastName)" />
-                            </div>
+                        <div style="padding-bottom: 1rem">
+                            <MudTextField @bind-Value="user.LastName" Label="Apellidos:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.PermIdentity" Clearable="true" />
+                            <ValidationMessage For="@(() => user.LastName)" />
                         </div>
-                        <div class="mb-3">
-                            <label>Documento:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@user.Document" />
-                                <ValidationMessage For="@(() => user.Document)" />
-                            </div>
+                        <div style="padding-bottom: 1rem">
+                            <MudTextField @bind-Value="user.Document" Label="Documento:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.DocumentScanner" Clearable="true" />
+                            <ValidationMessage For="@(() => user.Document)" />
                         </div>
-                        <div class="mb-3">
-                            <label>Teléfono:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@user.PhoneNumber" />
-                                <ValidationMessage For="@(() => user.PhoneNumber)" />
-                            </div>
+                        <div style="padding-bottom: 1rem">
+                            <MudTextField @bind-Value="user.PhoneNumber" Label="Teléfono:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Phone" Clearable="true" />
+                            <ValidationMessage For="@(() => user.PhoneNumber)" />
                         </div>
-                        <div class="mb-3">
-                            <label>Dirección:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@user.Address" />
-                                <ValidationMessage For="@(() => user.Address)" />
-                            </div>
+                        <div style="padding-bottom: 1rem">
+                            <MudTextField @bind-Value="user.Address" Label="Dirección:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LocationOn" Clearable="true" />
+                            <ValidationMessage For="@(() => user.Address)" />
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
+                        <div style="padding-bottom: 1rem">
                             <label>País:</label>
                             <div>
-                                <select class="form-select" @onchange="CountryChangedAsync">
+                                <select class="form-select" @onchange="CountryChangedAsync" style="height: 56px;">
                                     <option value="0">-- Seleccione un país --</option>
                                     @if (countries is not null)
                                     {
@@ -72,10 +55,10 @@ else
                                 </select>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div style="padding-bottom: 1rem">
                             <label>Estado/Departamento:</label>
                             <div>
-                                <select class="form-select" @onchange="StateChangedAsync">
+                                <select class="form-select" @onchange="StateChangedAsync" style="height: 56px;">
                                     <option value="0">-- Seleccione un estado/departamento --</option>
                                     @if (states is not null)
                                     {
@@ -87,10 +70,10 @@ else
                                 </select>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div style="padding-bottom: 1rem">
                             <label>Ciudad:</label>
                             <div>
-                                <select class="form-select" @bind="user.CityId">
+                                <select class="form-select" @bind="user.CityId" style="height: 56px;">
                                     <option value="0">-- Seleccione una ciudad --</option>
                                     @if (cities is not null)
                                     {
@@ -103,9 +86,18 @@ else
                                 <ValidationMessage For="@(() => user.CityId)" />
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div style="padding-bottom: 1rem">
+                            <MudTextField @bind-Value="user.Address" Label="Dirección:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AddTask" Clearable="true" />
+                            <ValidationMessage For="@(() => user.Address)" />
+                        </div>
+                        <div style="padding-bottom: 1rem">
                             <InputImg Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mt-3 mb-2">
+                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                     </div>
                 </div>
             </div>

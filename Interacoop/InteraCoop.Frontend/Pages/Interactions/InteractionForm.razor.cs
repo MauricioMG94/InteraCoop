@@ -22,6 +22,8 @@ namespace InteraCoop.Frontend.Pages.Interactions
         [Parameter, EditorRequired] public EventCallback ReturnAction { get; set; }
         [Parameter, EditorRequired] public List<Client> nonSelectedInteractions { get; set; } = new();
         [Parameter] public List<Client> selectedInteractions { get; set; } = new();
+        [Parameter] public required String FormName { get; set; }
+        [Parameter] public required String CardName { get; set; }
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override void OnInitialized()

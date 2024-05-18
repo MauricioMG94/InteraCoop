@@ -1,0 +1,16 @@
+﻿<div class="row">
+    <div class="col-8">
+        <ol style="padding: 1rem;">
+            @foreach (var item in Selected)
+            {
+                <li class="list-group-item" @onclick=@(() => SelectClear(item)) style="background-color: #1EC8A5">@item.Value</li>
+            }
+            @foreach (var item in NonSelected)
+            {
+                <li class="list-group-item" @onclick=@(() => Select(item))>@item.Value</li>
+            }
+        </ol>
+    </div>
+</div>
+
+

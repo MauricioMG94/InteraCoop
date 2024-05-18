@@ -25,6 +25,8 @@ namespace InteraCoop.Frontend.Pages.Campaigns
         [Parameter, EditorRequired] public EventCallback ReturnAction { get; set; }
         [Parameter, EditorRequired] public List<Product> nonSelectedCampaigns { get; set; } = new();
         [Parameter] public List<Product> selectedCampaigns { get; set; } = new();
+        [Parameter] public required String FormName { get; set; }
+        [Parameter] public required String CardName { get; set; }
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override void OnInitialized()
