@@ -22,9 +22,9 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-secondary table-header table-row">
-                                <th class="col-1">Id</th>
-                                <th class="col-2">Tipo de interacción</th>
-                                <th class="col-3">Fecha de registro</th>
+                                <th class="col-1">Tipo de interacción</th>
+                                <th class="col-2">Fecha de inicio</th>
+                                <th class="col-3">Fecha de fin</th>
                                 <th class="col-4">Cliente de Interacción</th>
                                 <th class="col-5">Acciones</th>
                             </tr>
@@ -33,17 +33,16 @@
                             @foreach (var interaction in Interactions!)
                             {
                                 <tr class="table-row">
-
                                     <td class="col-1">
-                                        @interaction.Id
-                                    </td>
-                                    <td class="col-2">
                                         <span class="badge text-bg-primary">
                                             @interaction.InteractionType
                                         </span>
                                     </td>
+                                    <td class="col-2">
+                                        @interaction.StartDate.ToString("dd/MM/yyyy")
+                                    </td>
                                     <td class="col-3">
-                                        @interaction.InteractionCreationDate.ToString("dd/MM/yyyy")
+                                        @interaction.EndDate.ToString("dd/MM/yyyy")
                                     </td>
                                     <td class="col-4">
                                         @if (interaction.ClientsList!= null)
@@ -115,8 +114,11 @@
                                                                     <span>@client.Name</span>
                                                                 </div>
                                                                 <div>
+                                                                    <span class="subtitle">Tipo de documento:</span>
+                                                                    <span>@client.DocumentType</span>
+                                                                </div>
+                                                                <div>
                                                                     <span class="subtitle">Documento:</span>
-                                                                    <span class="badge badge-pill badge-success">@client.DocumentType : </span>
                                                                     <span> @client.Document </span>
                                                                 </div>
                                                                 <div>
