@@ -20,11 +20,6 @@ namespace InteraCoop.Frontend.Pages.Auth
        
         private async Task LoginAsync()
         {
-            //if (wasClose)
-            //{
-            //    NavigationManager.NavigateTo("/");
-            //    return;
-            //}
 
             var responseHttp = await Repository.PostAsync<LoginDto, TokenDto>("/api/accounts/Login", loginDto);
             if (responseHttp.Error)
