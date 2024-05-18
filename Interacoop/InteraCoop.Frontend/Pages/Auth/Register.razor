@@ -61,9 +61,7 @@ else
                                 <ValidationMessage For="@(() => userDto.CityId)" />
                             </div>
                             <div class="col-12 mb-3">
-                                <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Foto:</label>
-                                <InputText class="form-control" @bind-Value="@userDto.Photo" />
-                                <ValidationMessage For="@(() => userDto.Photo)" />
+                                 <InputImg Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
                             </div>
                             <div class="col-12 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
                                 <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Email:</label>
@@ -82,9 +80,6 @@ else
                                     <ValidationMessage For="@(() => userDto.PasswordConfirm)" />
                                 </div>
                             </div>
-                                <!--@*<div class="mb-3">
-                                <InputImg Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
-                            </div>*@-->
                         </div>
                         <div class="row">
                             <div class="col-2"></div>

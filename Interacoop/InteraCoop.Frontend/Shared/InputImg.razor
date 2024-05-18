@@ -1,8 +1,6 @@
 ﻿<div>
-    <label>@Label</label>
-    <div>
-        <InputFile OnChange="OnChange" accept=".jpg,.jpeg,.png" />
-    </div>
+    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">@Label:</label>
+    <InputFile type="img" class="form-control" OnChange="OnChange" accept=".jpg, .jpeg, .png" />
 </div>
 
 <div>
@@ -10,16 +8,15 @@
     {
         <div>
             <div style="margin: 10px">
-                <img src="data:image/jpeg;base64, @imageBase64" style="width:400px" />
+                <img src="data:image/jpeg;base64, @imageBase64" style="width:200px" />
             </div>
         </div>
     }
-
     @if (ImageURL is not null)
     {
         <div>
             <div style="margin: 10px">
-                <img src="@ImageURL" style="width:400px" />
+                <img src="@ImageURL" style="width:200px" />
             </div>
         </div>
     }
