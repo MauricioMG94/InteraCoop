@@ -6,45 +6,55 @@
     <div class="card">
         <div class="card-header">
             <span>
-                <i class="oi oi-star" /> Crear Nueva Oportunidad
-                <a class="btn btn-sm btn-success float-end" href="/opportunities"><i class="oi oi-arrow-thick-left" /> Regresar</a>
-                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+                <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                <a class="float-end">
+                    <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
+                        @if (@FormName.ToLower().Contains("editar"))
+                        {
+                            <MudFab StartIcon="@Icons.Material.Filled.Undo" href="/opportunities/" Size="Size.Small" Color="Color.Tertiary" />
+
+                        }
+                        @if (@FormName.ToLower().Contains("crear"))
+                        {
+                            <MudFab StartIcon="@Icons.Material.Filled.Undo" href="/interactions/" Size="Size.Small" Color="Color.Tertiary" />
+
+                        }
+                    </MudTooltip>
+                </a>
             </span>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <div class="mb-3">
-                        <label>Estado:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Opportunity.Status" />
-                            <ValidationMessage For="@(() => Opportunity.Status)" />
-                        </div>
+                    <div style="padding-bottom: 1rem">
+                        <MudTextField @bind-Value="Opportunity.Status" Label="Estado:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AddTask" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Opportunity.Status)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Observaciones:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Opportunity.OpportunityObservations" />
-                            <ValidationMessage For="@(() => Opportunity.OpportunityObservations)" />
-                        </div>
+                    <div style="padding-bottom: 1rem">
+                        <MudTextField @bind-Value="Opportunity.OpportunityObservations" Label="Observaciones:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.NoteAlt" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Opportunity.OpportunityObservations)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Fecha de adquisición</label>
+                    <div style="padding-bottom: 1rem">
+                        <label>Fecha estimada de adquisición:</label>
                         <div>
-                            <InputDate class="form-control" @bind-Value="@Opportunity.EstimatedAcquisitionDate" />
+                            <InputDate class="form-control" style="height: 56px" @bind-Value="@Opportunity.EstimatedAcquisitionDate" />
                             <ValidationMessage For="@(() => Opportunity.EstimatedAcquisitionDate)" />
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="mb-3">
-                        <label>Campaña:</label>
-                        <div>
-                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
-                        </div>
+                <div class="col-6" style="display: inline-grid">
+                    <label>Campaña:</label>
+                    <div>
+                        <Selector NonSelected="nonSelected" Selected="selected" />
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                 </div>
             </div>
         </div>
     </div>
+
 </EditForm>
