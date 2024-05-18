@@ -26,6 +26,8 @@ namespace InteraCoop.Backend.Data
             await CheckInteractionsAsync();
             await CheckOpportunitiesAsync();
             await CheckRolesAsync();
+            await CheckUserAsync("1001", "Muricio", "Martinez", "ivanm.martinezg@gmail.com", "30000000", "Calle Luna Calle sol", UserType.Admin);
+            await CheckUserAsync("1002", "Muricio", "Martinez", "ivanm.martinezg@outlook.com", "123456", "Calle Luna Calle sol", UserType.Analist);
             await CheckUserAsync("1010","Harold","Aguirre", "harold@yopmail.com","3008930134","Calle Luna Calle sol", UserType.Admin);
             await CheckUserAsync("1011", "Andres", "Castillo", "andres@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Analist);
             await CheckUserAsync("1011", "tatiana", "Castillo", "tatiana@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Admin);

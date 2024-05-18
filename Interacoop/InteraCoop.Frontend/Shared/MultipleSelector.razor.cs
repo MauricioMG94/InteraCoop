@@ -5,8 +5,8 @@ namespace InteraCoop.Frontend.Shared
 {
     public partial class MultipleSelector
     {
-        private string addAllText = ">>";
-        private string removeAllText = "<<";
+        //private string addAllText = ">>";
+        //private string removeAllText = "<<";
 
         [Parameter]
         public List<MultipleSelectorModel> NonSelected { get; set; } = new();
@@ -26,16 +26,16 @@ namespace InteraCoop.Frontend.Shared
             NonSelected.Add(item);
         }
 
-        private void SelectAll()
-        {
-            Selected.AddRange(NonSelected);
-            NonSelected.Clear();
-        }
+        //private void SelectAll()
+        //{
+        //    Selected.AddRange(NonSelected);
+        //    NonSelected.Clear();
+        //}
 
-        private void UnselectAll()
-        {
-            NonSelected.AddRange(Selected);
-            Selected.Clear();
-        }
+        //private void UnselectAll()
+        //{
+        //    NonSelected.AddRange(Selected);
+        //    Selected.Clear();
+        //}
     }
 }

@@ -23,13 +23,6 @@
                             <ValidationMessage For="@(() => Interaction.InteractionType)" />
                         </div>
                     </div>
-@*                     <div class="mb-3">
-                        <label>Fecha de interacccion de creacion:</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.InteractionCreationDate" />
-                            <ValidationMessage For="@(() => Interaction.InteractionCreationDate)" />
-                        </div>
-                    </div> *@
                     <div class="mb-3">
                         <label>Fecha de inicio</label>
                         <div>
@@ -65,26 +58,12 @@
                             <ValidationMessage For="@(() => Interaction.Office)" />
                         </div>
                     </div>
-@*                  <div class="mb-3">
-                        <label>Fecha de auditoria</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.AuditDate" />
-                            <ValidationMessage For="@(() => Interaction.AuditDate)" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Usuario de auditoría</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.AuditUser" />
-                            <ValidationMessage For="@(() => Interaction.AuditUser)" />
-                        </div>
-                    </div> *@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label>Cliente:</label>
                         <div>
-                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
+                            <Selector NonSelected="nonSelected" Selected="selected" />
                         </div>
                     </div>
                 </div>
