@@ -6,87 +6,115 @@
     <div class="card">
         <div class="card-header">
             <span>
-                <i class="oi oi-star" /> Crear Nueva Interacción
-                <a class="btn btn-sm btn-success float-end" href="/interactions"><i class="oi oi-arrow-thick-left" /> Regresar</a>
-                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+                <MudButton StartIcon="@Icons.Material.Filled.PeopleAlt" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                <a class="float-end">
+                    <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
+                        <MudFab StartIcon="@Icons.Material.Filled.Undo" href="/interactions/" Size="Size.Small" Color="Color.Tertiary" />
+                    </MudTooltip>
+                </a>
             </span>
         </div>
         <div class="card-body">
             <div class="row">
-
                 <div class="col-6">
-
-                    <div class="mb-3">
-                        <label>Tipo de Interacción:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Interaction.InteractionType" />
-                            <ValidationMessage For="@(() => Interaction.InteractionType)" />
+                    <div style="padding-bottom: 1rem;">
+                        <MudSelect @bind-Value="@Interaction.InteractionType" Label="Tipo de Interacción:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                            <MudSelectItem Value="@("Visita a cliente")" />
+                            <MudSelectItem Value="@("Visita en oficina")" />
+                            <MudSelectItem Value="@("Llamada entrante")" />
+                            <MudSelectItem Value="@("Llamada saliente")" />
+                        </MudSelect>
+                        <ValidationMessage For="@(() => Interaction.InteractionType)" />
+                    </div>            
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Interaction.Address" Label="Dirección:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AddLocationAlt" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Interaction.Address)" />
+                    </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Interaction.Office" Label="Oficina:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LocationCity" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Interaction.Office)" />
+                    </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Interaction.ObservationsInteraction" Label="Observaciones:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.NoteAlt" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Interaction.ObservationsInteraction)" />
+                    </div>
+                    <div style="display:flex">
+                        <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
+                            <label>Fecha inicio:</label>
+                            <div style="width: 95%">
+                                <InputDate class="form-control" style="height: 56px" @bind-Value="@Interaction.StartDate" />
+                                <ValidationMessage For="@(() => Interaction.StartDate)" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
+                            <label>Fecha fin:</label>
+                            <div style="width: 100%">
+                                <InputDate class="form-control" style="height: 56px" @bind-Value="@Interaction.EndDate" />
+                                <ValidationMessage For="@(() => Interaction.EndDate)" />
+                            </div>
                         </div>
                     </div>
-@*                     <div class="mb-3">
-                        <label>Fecha de interacccion de creacion:</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.InteractionCreationDate" />
-                            <ValidationMessage For="@(() => Interaction.InteractionCreationDate)" />
-                        </div>
-                    </div> *@
-                    <div class="mb-3">
-                        <label>Fecha de inicio</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.StartDate" />
-                            <ValidationMessage For="@(() => Interaction.StartDate)" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Fecha fin</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.EndDate" />
-                            <ValidationMessage For="@(() => Interaction.EndDate)" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Dirección</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Interaction.Address" />
-                            <ValidationMessage For="@(() => Interaction.Address)" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Observaciones de la interacción</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Interaction.ObservationsInteraction" />
-                            <ValidationMessage For="@(() => Interaction.ObservationsInteraction)" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Oficina</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Interaction.Office" />
-                            <ValidationMessage For="@(() => Interaction.Office)" />
-                        </div>
-                    </div>
-@*                  <div class="mb-3">
-                        <label>Fecha de auditoria</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.AuditDate" />
-                            <ValidationMessage For="@(() => Interaction.AuditDate)" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Usuario de auditoría</label>
-                        <div>
-                            <InputDate class="form-control" @bind-Value="@Interaction.AuditUser" />
-                            <ValidationMessage For="@(() => Interaction.AuditUser)" />
-                        </div>
-                    </div> *@
                 </div>
-                <div class="col-6">
-                    <div class="mb-3">
-                        <label>Cliente:</label>
-                        <div>
-                            <MultipleSelector NonSelected="nonSelected" Selected="selected" />
-                        </div>
+                <div class="col-3" style="display: inline-grid">
+                    <label>Cliente:</label>
+                    <div>
+                        <Selector NonSelected="nonSelected" Selected="selected" />
                     </div>
+                </div>
+                <div class="col-3" >
+                    <MudCard Style="width: 100%; min-height: 200px; background-color: #eaeaea; padding: 0.5rem" Elevation="2">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <div style="display: flex; align-items: center;">
+                                    <MudIcon Icon="@Icons.Material.Filled.CreditCard" Title="Favorite" Style="margin-right: 0.5rem" />
+                                    <MudText Typo="Typo.h6">@CardName</MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            @if (Interaction.InteractionType != null )
+                            {
+                                <MudItem>
+                                    Tipo: <b>@Interaction.InteractionType</b> 
+                                </MudItem>
+                            }
+                            @if (Interaction.Address != null)
+                            {
+                                <MudItem>
+                                    Dirección: <b>@Interaction.Address</b>
+                                </MudItem>
+                            }
+                            @if (Interaction.Office != null)
+                            {
+                                <MudItem>
+                                    Oficina: <b>@Interaction.Office</b>
+                                </MudItem>
+                            }
+                            @if (Interaction.ObservationsInteraction != null)
+                            {
+                                <MudItem>
+                                    Observaciones: <b>@Interaction.ObservationsInteraction</b>
+                                </MudItem>
+                            }
+                            @if (Interaction.StartDate != null)
+                            {
+                                <MudItem>
+                                    Inicio: <b>@Interaction.StartDate</b>
+                                </MudItem>
+                            }
+                            @if (Interaction.EndDate != null)
+                            {
+                                <MudItem>
+                                    Fin: <b>@Interaction.EndDate</b>
+                                </MudItem>
+                            }
+                        </MudCardContent>
+                    </MudCard>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                 </div>
             </div>
         </div>

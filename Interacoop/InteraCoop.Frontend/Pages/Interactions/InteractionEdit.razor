@@ -6,6 +6,13 @@
 }
 else
 {
-    <InteractionForm @ref="interactionForm" Interaction="interactionDto" selectedInteractions="selectedInteractions" nonSelectedInteractions="nonSelectedInteractions" OnValidSubmit="SaveChangesAsync" ReturnAction="Return" />
+    <InteractionForm @ref="interactionForm" 
+        Interaction="interactionDto" 
+        selectedInteractions="selectedInteractions" 
+        nonSelectedInteractions="nonSelectedInteractions" 
+        OnValidSubmit="SaveChangesAsync" 
+        ReturnAction="Return" 
+        FormName="Editar Interacción"
+        CardName="Interacción"/>
    
 }
