@@ -34,6 +34,14 @@
                         <MudTextField @bind-Value="Opportunity.OpportunityObservations" Label="Observaciones:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.NoteAlt" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Opportunity.OpportunityObservations)" />
                     </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudSelect @bind-Value="@Opportunity.Status" Label="Estado de oportunidad:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                            <MudSelectItem Value="@("Formalizada")" />
+                            <MudSelectItem Value="@("En trámite")" />
+                            <MudSelectItem Value="@("Desestimada")" />
+                        </MudSelect>
+                        <ValidationMessage For="@(() => Opportunity.Status)" />
+                    </div>
                     <div style="padding-bottom: 1rem">
                         <label>Fecha estimada de adquisición:</label>
                         <div>

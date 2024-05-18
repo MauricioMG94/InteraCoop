@@ -17,7 +17,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <div class="my-3">
+                    <div style="padding-bottom: 1rem;">
                         <MudSelect @bind-Value="@Interaction.InteractionType" Label="Tipo de Interacción:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
                             <MudSelectItem Value="@("Visita a cliente")" />
                             <MudSelectItem Value="@("Visita en oficina")" />
@@ -26,15 +26,15 @@
                         </MudSelect>
                         <ValidationMessage For="@(() => Interaction.InteractionType)" />
                     </div>            
-                    <div class="my-3">
+                    <div style="padding-bottom: 1rem;">
                         <MudTextField @bind-Value="Interaction.Address" Label="Dirección:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AddLocationAlt" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Interaction.Address)" />
                     </div>
-                    <div class="my-3">
+                    <div style="padding-bottom: 1rem;">
                         <MudTextField @bind-Value="Interaction.Office" Label="Oficina:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LocationCity" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Interaction.Office)" />
                     </div>
-                    <div class="my-3">
+                    <div style="padding-bottom: 1rem;">
                         <MudTextField @bind-Value="Interaction.ObservationsInteraction" Label="Observaciones:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.NoteAlt" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Interaction.ObservationsInteraction)" />
                     </div>
@@ -42,20 +42,17 @@
                         <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
                             <label>Fecha inicio:</label>
                             <div style="width: 95%">
-                                <InputDate class="form-control" @bind-Value="@Interaction.StartDate" />
+                                <InputDate class="form-control" style="height: 56px" @bind-Value="@Interaction.StartDate" />
                                 <ValidationMessage For="@(() => Interaction.StartDate)" />
                             </div>
                         </div>
                         <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
                             <label>Fecha fin:</label>
                             <div style="width: 100%">
-                                <InputDate class="form-control" @bind-Value="@Interaction.EndDate" />
+                                <InputDate class="form-control" style="height: 56px" @bind-Value="@Interaction.EndDate" />
                                 <ValidationMessage For="@(() => Interaction.EndDate)" />
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-10">
-                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                     </div>
                 </div>
                 <div class="col-3" style="display: inline-grid">
@@ -113,6 +110,11 @@
                             }
                         </MudCardContent>
                     </MudCard>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                 </div>
             </div>
         </div>
