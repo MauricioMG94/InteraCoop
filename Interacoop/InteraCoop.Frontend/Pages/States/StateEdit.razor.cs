@@ -17,7 +17,6 @@ namespace InteraCoop.Frontend.Pages.States
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
-
         [Parameter] public int StateId { get; set; }
 
         protected override async Task OnParametersSetAsync()

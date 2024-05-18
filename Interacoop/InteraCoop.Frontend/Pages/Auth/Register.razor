@@ -6,104 +6,113 @@
 }
 else
 {
-    <EditForm Model="userDto" OnValidSubmit="CreateUserAsync">
-        <DataAnnotationsValidator />
+    <div class="row mt-5">
+        <div class="col-12" style="display: flex; justify-content: center; align-content: center;">
+            <EditForm Model="userDto" OnValidSubmit="CreateUserAsync">
+            <DataAnnotationsValidator />
 
-        <div class="card">
-            <div class="card-header">
-                <span>
-                    <i class="bi bi-key" /> Registrar Nuevo  Usuario
-                    <button class="btn btn-sm btn-primary float-end" type="submit"><i class="bi bi-person-add" /> Registrar</button>
-                </span>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label>Nombres:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@userDto.FirstName" />
-                                <ValidationMessage For="@(() => userDto.FirstName)" />
+                <div class="card my-3 shadow rounded" style="max-width: 800px;">
+                <div class="row g-0">
+                    <div style="display: flex; justify-content: center; margin-top: 2rem">
+                        <h5 style="font-weight: 600; justify-content: center; align-content: center; letter-spacing: 4px; padding-top: 13px; text-align: center; font-size: 22px">
+                            Regístrate aquí
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Nombres:</label>
+                                        <InputText class="form-control" @bind-Value="@userDto.FirstName" />
+                                        <ValidationMessage For="@(() => userDto.FirstName)" />
+                                </div>
+                                <div class="col-6 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                        <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Apellidos:</label>
+                                        <InputText class="form-control" @bind-Value="@userDto.LastName" />
+                                        <ValidationMessage For="@(() => userDto.LastName)" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label>Apellidos:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@userDto.LastName" />
-                                <ValidationMessage For="@(() => userDto.LastName)" />
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label>Documento:</label>
-                            <div>
+                            <div class="col-12 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Documento:</label>
                                 <InputText class="form-control" @bind-Value="@userDto.Document" />
                                 <ValidationMessage For="@(() => userDto.Document)" />
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label>Teléfono:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@userDto.PhoneNumber" />
-                                <ValidationMessage For="@(() => userDto.PhoneNumber)" />
+                            <div class="row">
+                                <div class="col-6 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Teléfono:</label>
+                                    <InputText class="form-control" @bind-Value="@userDto.PhoneNumber" />
+                                    <ValidationMessage For="@(() => userDto.PhoneNumber)" />
+                                </div>
+                                <div class="col-6 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Dirección:</label>
+                                    <InputText class="form-control" @bind-Value="@userDto.Address" />
+                                    <ValidationMessage For="@(() => userDto.Address)" />
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label>Dirección:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@userDto.Address" />
-                                <ValidationMessage For="@(() => userDto.Address)" />
+
+                        <div class="col-12">
+                            <div class="row">
+                                <DropList></DropList>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label>Email:</label>
-                            <div>
+                            <div class="col-12 mb-3">
+                                <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Ciudad:</label>
+                                <InputNumber class="form-control" @bind-Value="@userDto.CityId" />
+                                <ValidationMessage For="@(() => userDto.CityId)" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Foto:</label>
+                                <InputText class="form-control" @bind-Value="@userDto.Photo" />
+                                <ValidationMessage For="@(() => userDto.Photo)" />
+                            </div>
+                            <div class="col-12 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Email:</label>
                                 <InputText class="form-control" @bind-Value="@userDto.Email" />
                                 <ValidationMessage For="@(() => userDto.Email)" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <DropList></DropList>                       
-                    <div class="mb-3">
-                        <label>Ciudad:</label>
-                        <div>
-                            <InputNumber class="form-control" @bind-Value="@userDto.CityId" />
-                            <ValidationMessage For="@(() => userDto.CityId)" />
-                        </div>
-                    </div>
-                    
-                        <div class="mb-3">
-                            <label>Contraseña:</label>
-                            <div>
-                                <InputText type="password" class="form-control" @bind-Value="@userDto.Password" />
-                                <ValidationMessage For="@(() => userDto.Password)" />
+                            <div class="row">
+                                <div class="col-6 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Contraseña:</label>
+                                    <InputText type="password" class="form-control" @bind-Value="@userDto.Password" />
+                                    <ValidationMessage For="@(() => userDto.Password)" />
+                                </div>
+                                <div class="col-6 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Confirmar Contraseña:</label>
+                                    <InputText type="password" class="form-control" @bind-Value="@userDto.PasswordConfirm" />
+                                    <ValidationMessage For="@(() => userDto.PasswordConfirm)" />
+                                </div>
                             </div>
+                                <!--@*<div class="mb-3">
+                                <InputImg Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
+                            </div>*@-->
                         </div>
-                        <div class="mb-3">
-                            <label>Confirmación de contraseña:</label>
-                            <div>
-                                <InputText type="password" class="form-control" @bind-Value="@userDto.PasswordConfirm" />
-                                <ValidationMessage For="@(() => userDto.PasswordConfirm)" />
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8" style="display:flex; justify-content: center; margin-top: 1.5rem;">
+                                <MudButton ButtonType="ButtonType.Submit" EndIcon="@Icons.Material.Filled.ArrowForward" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Registrar</MudButton>
                             </div>
+                            <div class="col-2"></div>
                         </div>
-
-                        <div class="mb-3">
-                            <InputImg Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
-                        </div>
-
-                    <!--@*<div class="mb-3">
-                            <InputImg Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
-                        </div>*@-->
+                        
                     </div>
                 </div>
             </div>
+            </EditForm>
         </div>
-    </EditForm>
+    </div>
+
+
+
+
+   
 }
 
 
 
+@* 
 
 
 
 
+
+ *@

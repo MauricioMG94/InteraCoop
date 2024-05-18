@@ -6,62 +6,102 @@
     <div class="card">
         <div class="card-header">
             <span>
-                <i class="oi oi-star" /> Crear Nuevo Producto
-                <a class="btn btn-sm btn-success float-end" href="/products"><i class="oi oi-arrow-thick-left" /> Regresar</a>
-                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Test Guardar Cambios</button>
+                <MudButton StartIcon="@Icons.Material.Filled.CreditCard" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                <a class="float-end">
+                    <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
+                        <MudFab StartIcon="@Icons.Material.Filled.Undo" href="/products/" Size="Size.Small" Color="Color.Tertiary" />
+                    </MudTooltip>
+                </a>
             </span>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <div class="mb-3">
-                        <label>Nombre:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Product.Name" />
-                            <ValidationMessage For="@(() => Product.Name)" />
-                        </div>
+                    <div class="my-3">
+                        <MudTextField @bind-Value="Product.Name" Label="Nombre" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.CreditCard" Clearable="true" />
+                        <ValidationMessage For="@(() => Product.Name)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Tipo de Producto:</label>
-                        <div>
-                            <InputSelect class="form-control" @bind-Value="@Product.ProductType">
-                                <option value="Activo">Activo</option>
-                                <option value="Pasivo">Pasivo</option>
-                                <option value="Transaccional">Transaccional</option>
-                            </InputSelect>
-                            <ValidationMessage For="@(() => Product.ProductType)" />
-                        </div>
+                    <div class="my-3">
+                        <MudSelect @bind-Value="@Product.ProductType" Label="Tipo de producto" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                            <MudSelectItem Value="@("Activo")" />
+                            <MudSelectItem Value="@("Pasivo")" />
+                            <MudSelectItem Value="@("Transaccional")" />
+                        </MudSelect>
+                        <ValidationMessage For="@(() => Product.ProductType)" />
                     </div>
-
-                    <div class="mb-3">
-                        <label>Cupo:</label>
-                        <div>
-                            <InputNumber class="form-control" @bind-Value="@Product.Quota" />
-                            <ValidationMessage For="@(() => Product.Quota)" />
-                        </div>
+                    <div class="my-3">
+                        <MudNumericField @bind-Value="Product.Term" Label="Plazo en años" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AccessTime" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Product.Term)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Plazo en años:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Product.Term" />
-                            <ValidationMessage For="@(() => Product.Term)" />
-                        </div>
+                    <div class="my-3">
+                        <MudNumericField @bind-Value="Product.Quota" Label="Cupo" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Product.Quota)"/>
                     </div>
-                    <div class="mb-3">
-                        <label>Valor:</label>
-                        <div>
-                            <InputNumber class="form-control" @bind-Value="@Product.Value" />
-                            <ValidationMessage For="@(() => Product.Value)" />
-                        </div>
+                    <div class="my-3">
+                        <MudNumericField @bind-Value="Product.Value" Label="Valor" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Product.Value)" />
                     </div>
-                    <div class="mb-3">
-                        <label>Tasa:</label>
-                        <div>
-                            <InputNumber class="form-control" @bind-Value="@Product.Rate" />
-                            <ValidationMessage For="@(() => Product.Rate)" />
-                        </div>
+                    <div class="my-3">
+                        <MudNumericField @bind-Value="Product.Rate" Label="Tasa" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Percent" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Product.Rate)" />
+                    </div>
+                    <div class="my-3">
+                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                     </div>
                 </div>
+
+                <div class="col-1"></div>
+                <div class="col-4" >
+                    <MudCard Style="width: 100%; min-height: 200px; background-color: #eaeaea; padding: 0.5rem" Elevation="2">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <div style="display: flex; align-items: center;">
+                                    <MudIcon Icon="@Icons.Material.Filled.CreditCard" Title="Favorite" Style="margin-right: 0.5rem" />
+                                    <MudText Typo="Typo.h6">@CardName</MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            @if (Product.Name != null )
+                            {
+                                <MudItem>
+                                    Nombre de producto: <b>@Product.Name</b> 
+                                </MudItem>
+                            }
+                             @if(Product.ProductType != null)
+                            {
+                                <MudItem>
+                                    Tipo de producto: <b>@Product.ProductType</b>
+                                </MudItem>
+                            }
+                            @if (Product.Term != null)
+                            {
+                                <MudItem>
+                                    Cupo: <b>@Product.Term</b>
+                                </MudItem>
+                            }
+                            @if (Product.Quota != 0)
+                            {
+                                <MudItem>
+                                    Cupo: <b>$ @Product.Quota</b>
+                                </MudItem>
+                            }
+                            @if (Product.Value != null)
+                            {
+                                <MudItem>
+                                    Valor: <b>$ @Product.Value</b>
+                                </MudItem>
+                            }
+                            @if (Product.Rate != null)
+                            {
+                                <MudItem>
+                                    Tasa: <b>$ @Product.Rate</b>
+                                </MudItem>
+                            }
+                        </MudCardContent>
+                    </MudCard>
+                </div>
+                <div class="col-1"></div>
             </div>
         </div>
     </div>

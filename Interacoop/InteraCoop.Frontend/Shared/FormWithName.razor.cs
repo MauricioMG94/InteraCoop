@@ -14,6 +14,8 @@ namespace InteraCoop.Frontend.Shared
         [EditorRequired, Parameter] public string Label { get; set; } = null!;
         [EditorRequired, Parameter] public EventCallback OnValidSubmit { get; set; }
         [EditorRequired, Parameter] public EventCallback ReturnAction { get; set; }
+        [Parameter] public string? FormName { get; set; }
+        [Parameter] public string? IconName { get; set; }
         [Inject] public SweetAlertService SweetAlertService { get; set; } = null!;
         public bool FormPostedSuccessfully { get; set; }
 
