@@ -21,15 +21,26 @@ namespace InteraCoop.Backend.Data
         {
             await _context.Database.EnsureCreatedAsync();
 
+            await CheckCountriesFullAsync();
             await CheckCountriesAsync();
             await CheckClientsAsync();
             await CheckInteractionsAsync();
             await CheckOpportunitiesAsync();
             await CheckRolesAsync();
+            await CheckUserAsync("1010", "Cristian", "Jaimes", "cristianfj@yopmail.com", "3008930134", "Calle Luna Calle sol", UserType.Admin);
             await CheckUserAsync("1010","Harold","Aguirre", "harold@yopmail.com","3008930134","Calle Luna Calle sol", UserType.Admin);
             await CheckUserAsync("1011", "Andres", "Castillo", "andres@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Analist);
             await CheckUserAsync("1011", "tatiana", "Castillo", "tatiana@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Admin);
 
+        }
+
+        private async Task CheckCountriesFullAsync()
+        {
+            if (!_context.Countries.Any())
+            {
+                var countriesStatesCitiesSQLScript = File.ReadAllText("Data\\CountriesStatesCities.sql");
+                await _context.Database.ExecuteSqlRawAsync(countriesStatesCitiesSQLScript);
+            }
         }
 
         private async Task<User> CheckUserAsync(string document, string firstName, string LastName, string email, string phone, string address, UserType userType)

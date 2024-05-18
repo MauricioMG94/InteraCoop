@@ -48,11 +48,16 @@ namespace InteraCoop.Backend.Controllers
                 token = myToken
             }, HttpContext.Request.Scheme, _config["Url Frontend"]);
 
-            var response = _mailHelper.SendMail(user.FullName, user.Email!,
-                $"Interacoop - Recuperación de contraseña",
-                $"<h1>Interacoop - Recuperación de contraseña</h1>" +
-                $"<p>Para recuperar su contraseña, por favor hacer clic 'Recuperar Contraseña':</p>" +
-                $"<b><a href ={tokenLink}>Recuperar Contraseña</a></b>");
+            var response = _mailHelper.SendMail
+                (user.FullName, user.Email!,
+                "Interacoop - Recuperación de Contraseña",
+                $"<h1>Interacoop - Recuperación de Contraseña</h1>" +
+                $"<p>Estimado/a {user.FullName},</p>" +
+                $"<p>Recibió este correo electrónico porque se solicitó la recuperación de su contraseña en Interacoop.</p>" +
+                $"<p>Por favor, haga clic en el siguiente enlace para recuperar su contraseña:</p>" +
+                $"<p><a href=\"{tokenLink}\" style=\"font-weight: bold; text-decoration: underline; color: blue;\">Recuperar Contraseña</a></p>" +
+                $"<p>Si no solicitó esta acción, puede ignorar este correo electrónico de forma segura.</p>" +
+                $"<p>Gracias,<br/>El equipo de Interacoop</p>");
 
             if (response.WasSuccess)
             {
