@@ -6,7 +6,7 @@
             <MudButton StartIcon="@Icons.Material.Filled.SouthAmerica" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Paises</MudButton>
             <a class="float-end">
                 <MudTooltip Text="Crear país" Color="Color.Tertiary" Placement="Placement.Bottom">
-                    <MudFab StartIcon="@Icons.Material.Filled.Add" href="/countries/create" Size="Size.Small" Color="Color.Tertiary" />
+                    <MudFab StartIcon="@Icons.Material.Filled.Add" @onclick=@(() => ShowModalAsync()) Size="Size.Small" Color="Color.Tertiary" />
                 </MudTooltip>
             </a>
         </span>
@@ -44,7 +44,7 @@
                                             </a>
                                         </MudTooltip>
                                         <MudTooltip Text="Editar país" Color="Color.Warning" Placement="Placement.Top">
-                                            <a href="/countries/edit/@country.Id" class="btn btn-light btn-sm">
+                                            <a @onclick=@(() => ShowModalAsync(country.Id, true)) class="btn btn-light btn-sm">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
                                         </MudTooltip>

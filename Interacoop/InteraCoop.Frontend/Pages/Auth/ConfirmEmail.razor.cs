@@ -28,7 +28,8 @@ namespace InteraCoop.Frontend.Pages.Auth
                 return;
             }
 
-            await SweetAlertService.FireAsync("Confirmación", "Gracias por confirmar su email, ahora puedes ingresar al sistema.", SweetAlertIcon.Info);
+            await SweetAlertService.FireAsync("Confirmación", "Gracias por confirmar su email, ahora puedes ingresar al sistema.", 
+                SweetAlertIcon.Info);
             Modal.Show<Login>();
         }
 

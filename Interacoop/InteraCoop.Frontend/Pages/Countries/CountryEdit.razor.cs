@@ -1,4 +1,6 @@
-﻿using CurrieTechnologies.Razor.SweetAlert2;
+﻿using Blazored.Modal;
+using Blazored.Modal.Services;
+using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +18,7 @@ namespace InteraCoop.Frontend.Pages.Countries
         [Inject] public IRepository repository { get; set; } = null!;
         [Inject] public SweetAlertService sweetAlertService { get; set; } = null!;
         [Inject] public NavigationManager navigationManager { get; set; } = null!;
-
+        [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
         [EditorRequired, Parameter] public int Id { get; set; }
 
         protected async override Task OnParametersSetAsync()
@@ -48,8 +50,10 @@ namespace InteraCoop.Frontend.Pages.Countries
                 await sweetAlertService.FireAsync("Error",message);
                 return;
             }
-
+            
+            await BlazoredModal.CloseAsync(ModalResult.Ok());
             Return();
+            
             var toast = sweetAlertService.Mixin(new SweetAlertOptions
             {
                 Toast = true,

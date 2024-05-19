@@ -1,4 +1,7 @@
-﻿using CurrieTechnologies.Razor.SweetAlert2;
+﻿using Blazored.Modal;
+using Blazored.Modal.Services;
+using CurrieTechnologies.Razor.SweetAlert2;
+using InteraCoop.Frontend.Pages.States;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -20,6 +23,7 @@ namespace InteraCoop.Frontend.Pages.Countries
         [Parameter] public int CountryId { get; set; }
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
+        [CascadingParameter] IModalService Modal { get; set; } = default!;
         private async Task FilterCallBack(string filter)
         {
             Filter = filter;
@@ -30,6 +34,26 @@ namespace InteraCoop.Frontend.Pages.Countries
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
+        }
+
+        private async Task ShowModalAsync(int id = 0, bool isEdit = false)
+        {
+            IModalReference modalReference;
+
+            if (isEdit)
+            {
+                modalReference = Modal.Show<StateEdit>(string.Empty, new ModalParameters().Add("StateId", id));
+            }
+            else
+            {
+                modalReference = Modal.Show<CreateState>(string.Empty, new ModalParameters().Add("CountryId", CountryId));
+            }
+
+            var result = await modalReference.Result;
+            if (result.Confirmed)
+            {
+                await LoadAsync();
+            }
         }
 
         private async Task SelectedPageAsync(int page)

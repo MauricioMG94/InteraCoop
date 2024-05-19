@@ -15,7 +15,7 @@ else
                         <MudFab StartIcon="@Icons.Material.Filled.Undo" href=@($"/countries/details/{state.CountryId}") Size="Size.Small" Color="Color.Tertiary" />
                     </MudTooltip>
                     <MudTooltip Text="Adicionar ciudad" Color="Color.Tertiary" Placement="Placement.Bottom">
-                        <MudFab StartIcon="@Icons.Material.Filled.Add" href=@($"/cities/create/{state.Id}") Size="Size.Small" Color="Color.Tertiary" />
+                        <MudFab StartIcon="@Icons.Material.Filled.Add" @onclick=@(() => ShowModalAsync()) Size="Size.Small" Color="Color.Tertiary" />
                     </MudTooltip>
                 </a>
             </span>
@@ -44,7 +44,7 @@ else
                                         </td>
                                         <td class="col-2">
                                             <MudTooltip Text="Editar Ciudad" Color="Color.Warning" Placement="Placement.Top">
-                                                <a href="/cities/edit/@city.Id" class="btn btn-light btn-sm">
+                                                <a @onclick=@(() => ShowModalAsync(city.Id, true)) class="btn btn-light btn-sm">
                                                     <i class="bi bi-pencil"></i>
                                                 </a>
                                             </MudTooltip>

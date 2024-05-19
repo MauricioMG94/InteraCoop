@@ -4,6 +4,8 @@ using InteraCoop.Shared.Entities;
 using CurrieTechnologies.Razor.SweetAlert2;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using Blazored.Modal.Services;
+using Blazored.Modal;
 
 namespace InteraCoop.Frontend.Pages.Countries
 {
@@ -19,6 +21,7 @@ namespace InteraCoop.Frontend.Pages.Countries
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Country>? Countries { get; set; }
+        [CascadingParameter] IModalService Modal { get; set; } = default!;
         private async Task FilterCallBack(string filter)
         {
             Filter = filter;
@@ -29,6 +32,27 @@ namespace InteraCoop.Frontend.Pages.Countries
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
+        }
+
+        private async Task ShowModalAsync(int id = 0, bool isEdit = false)
+        {
+            IModalReference modalReference;
+
+            if (isEdit)
+            {
+                modalReference = Modal.Show<CountryEdit>(string.Empty, new ModalParameters().Add("Id", id));
+            }
+
+            else
+            {
+                modalReference = Modal.Show<CountryCreate>();
+            }
+
+            var result = await modalReference.Result;
+            if (result.Confirmed)
+            {
+                await LoadAsync();
+            }
         }
 
         private async Task SelectedRecordsNumberAsync(int recordsnumber)

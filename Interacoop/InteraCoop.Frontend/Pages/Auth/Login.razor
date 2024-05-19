@@ -31,10 +31,11 @@
                             </a>
                             <div style="display:flex; justify-content: center; margin-top: 1.5rem;">
                                 <MudButton StartIcon="@Icons.Material.Filled.ArrowForward" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%" @onclick=@(() => LoginAsync())>Ingresar</MudButton>
+                                <MudButton StartIcon="@Icons.Material.Filled.ExitToApp" Variant="Variant.Filled" Color="Color.Error" Size="Size.Large" Style="width: 100%" @onclick=@(() => CloseModalAsync())>Salir</MudButton>
                             </div>
                         </div>
                         <div class="card-body mb-2" style="display: flex; flex-direction:column">
-                            <a style="color: #1EC8A5; font-size: 10pt; text-align: center;" href="/Register">
+                            <a style="color: #1EC8A5; font-size: 10pt; text-align: center;" href="/Register"> 
                                 Registrate aquí
                             </a>
                             <a style="color: #1EC8A5; font-size: 10pt; margin-top: 16px; text-align: center;" href="/ResendToken">

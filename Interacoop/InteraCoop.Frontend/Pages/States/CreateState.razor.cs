@@ -28,6 +28,7 @@ namespace InteraCoop.Frontend.Pages.States
                 await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
+
             Return();
             var toast = SweetAlertService.Mixin(new SweetAlertOptions
             {
