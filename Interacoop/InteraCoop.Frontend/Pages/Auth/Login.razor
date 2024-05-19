@@ -14,6 +14,7 @@
                             <h5 style="font-weight: 600; justify-content: center; align-content: center; letter-spacing: 4px; padding-top: 13px; text-align: center; font-size: 22px">
                                 Iniciar Sesión
                             </h5>
+                            <MudFab Style="position: absolute; top: 5px; right: 5px;" StartIcon="@Icons.Material.Filled.Close" @onclick=@(() => CloseModalAsync()) Size="Size.Small" Color="Color.Error" />
                         </div>
                         <div class="card-body">
                             <div style="margin-top: 1.5rem;">
@@ -26,19 +27,18 @@
                                 <InputText type="password" class="form-control" @bind-Value="@loginDto.Password" />
                                 <ValidationMessage For="@(() => loginDto.Password)" />
                             </div>
-                            <a style="color: #1EC8A5; font-size: 10pt; margin-top: 8px; display: flex; justify-content: flex-end" href="/RecoverPassword">
+                            <a style="color: #1EC8A5; font-size: 10pt; margin-top: 8px; display: flex; justify-content: flex-end; cursor: pointer" @onclick=@(() => ShowModalRecover())>
                                 ¿Olvidaste tu contraseña?
                             </a>
                             <div style="display:flex; justify-content: center; margin-top: 1.5rem;">
                                 <MudButton StartIcon="@Icons.Material.Filled.ArrowForward" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%" @onclick=@(() => LoginAsync())>Ingresar</MudButton>
-                                <MudButton StartIcon="@Icons.Material.Filled.ExitToApp" Variant="Variant.Filled" Color="Color.Error" Size="Size.Large" Style="width: 100%" @onclick=@(() => CloseModalAsync())>Salir</MudButton>
                             </div>
                         </div>
                         <div class="card-body mb-2" style="display: flex; flex-direction:column">
-                            <a style="color: #1EC8A5; font-size: 10pt; text-align: center;" href="/Register"> 
+                            <a style="color: #1EC8A5; font-size: 10pt; text-align: center; cursor: pointer" @onclick=@(() => ShowModalRegister())>
                                 Registrate aquí
                             </a>
-                            <a style="color: #1EC8A5; font-size: 10pt; margin-top: 16px; text-align: center;" href="/ResendToken">
+                            <a style="color: #1EC8A5; font-size: 10pt; margin-top: 16px; text-align: center; cursor: pointer" @onclick=@(() => ShowModalActivate())>
                                 Activar cuenta
                             </a>
                         </div>

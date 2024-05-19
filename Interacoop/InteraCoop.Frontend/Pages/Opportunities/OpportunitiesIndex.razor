@@ -4,12 +4,18 @@
     <div class="card-header">
         <span>
             <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Oportunidades</MudButton>
+            <a class="float-end">
+                <MudTooltip Text="Crear interacción" Color="Color.Tertiary" Placement="Placement.Bottom">
+                    <MudFab StartIcon="@Icons.Material.Filled.Add" href="/opportunity/create" Size="Size.Small" Color="Color.Tertiary" />
+                </MudTooltip>
+            </a>
         </span>
     </div>
     <div class="card-body">
         <div class="card-filter">
             <MudText Typo="Typo.h6">Oportunidades</MudText>
             <Filter PlaceHolder="Estado de oportunidad" Callback=@FilterCallBack OptionsList="OpportunityStatus"/>
+
         </div>
         <GenericList MyList="Opportunities">
             <Body>
@@ -76,12 +82,12 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item card-subTitle">
+                                           @*  <li class="list-group-item card-subTitle">
                                                 Información de interacción:
                                                 <div class="list-group-item subCard">
 
                                                 </div>
-                                            </li>
+                                            </li> *@
                                             <li class="list-group-item card-subTitle">
                                                 Información de campaña:
                                                 @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())

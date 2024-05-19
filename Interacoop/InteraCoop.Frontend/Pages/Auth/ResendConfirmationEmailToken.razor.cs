@@ -1,3 +1,5 @@
+using Blazored.Modal;
+using Blazored.Modal.Services;
 using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
@@ -9,10 +11,12 @@ namespace InteraCoop.Frontend.Pages.Auth
     {
         private EmailDTO emailDTO = new();
         private bool loading;
+        private bool wasClose;
 
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
+        [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
 
         private async Task ResendConfirmationEmailTokenAsync()
         {
@@ -29,6 +33,11 @@ namespace InteraCoop.Frontend.Pages.Auth
 
             await SweetAlertService.FireAsync("Confirmación", "Se te ha enviado un correo electrónico con las instrucciones para activar tu usuario.", SweetAlertIcon.Info);
             NavigationManager.NavigateTo("/");
+        }
+        private async Task CloseModalAsync()
+        {
+            wasClose = true;
+            await BlazoredModal.CloseAsync(ModalResult.Ok());
         }
     }
 }
