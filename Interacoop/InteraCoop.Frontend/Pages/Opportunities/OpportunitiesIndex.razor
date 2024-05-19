@@ -23,11 +23,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-secondary table-header table-row">
-                                <th class="col-1">Id Oportunidad</th>
-                                <th class="col-2">Nombre de cliente</th>
-                                <th class="col-3">Fecha de registro</th>
-                                <th class="col-4">Estado de oportunidad</th>
-                                <th class="col-5">Acciones</th>
+                                <th class="col-1">Estado de oportunidad</th>
+                                <th class="col-2">Fecha de registro</th>
+                                <th class="col-3">Nombre de campaña</th>
+                                <th class="col-4">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,18 +34,18 @@
                             {
                                 <tr class="table-row">
                                     <td class="col-1">
-                                        @opportunity.Id
-                                    </td>
-                                    <td class="col-2">
-                                        Cliente temporal
-                                    </td>
-                                    <td class="col-3">
-                                        @opportunity.RecordDate.ToString("dd/MM/yyyy")
-                                    </td>
-                                    <td class="col-4">
                                         <span class="badge text-bg-primary">@opportunity.Status</span>
                                     </td>
-                                    <td class="col-5">
+                                    <td class="col-2">
+                                        @opportunity.RecordDate.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td class="col-3">
+                                        @foreach (var campaign in opportunity.CampaingsList)
+                                        {
+                                            @campaign.CampaignName
+                                        }
+                                    </td>
+                                    <td class="col-4">
                                         <MudTooltip Text="Ver oportunidad" Color="Color.Tertiary" Placement="Placement.Left">
                                             <a onclick="toggleExtraRow('@opportunity.Id')" class="btn btn-light btn-sm">
                                                 <i class="bi bi-eye"></i>
