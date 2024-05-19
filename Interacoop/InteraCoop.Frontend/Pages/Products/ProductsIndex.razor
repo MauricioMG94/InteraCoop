@@ -22,27 +22,22 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-secondary table-header table-row">
-                                <th class="col-1">Id</th>
-                                <th class="col-2">Nombre de producto</th>
-                                <th class="col-3">Tipo de producto</th>
-                                <th class="col-4">Acciones</th>
+                                <th class="col-1">Nombre de producto</th>
+                                <th class="col-2">Tipo de producto</th>
+                                <th class="col-3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var product in Products!)
                             {
                                 <tr class="table-row">
-
                                     <td class="col-1">
-                                        @product.Id
-                                    </td>
-                                    <td class="col-2">
                                         @product.Name
                                     </td>
-                                    <td class="col-3">
+                                    <td class="col-2">
                                         @product.ProductType
                                     </td>
-                                    <td class="col-4">
+                                    <td class="col-3">
                                         <MudTooltip Text="Ver producto" Color="Color.Tertiary" Placement="Placement.Left">
                                             <a onclick="toggleExtraRow('@product.Id')" class="btn btn-light btn-sm">
                                                 <i class="bi bi-eye"></i>
@@ -69,20 +64,32 @@
                                                 <div class="list-group-item subCard">
                                                     <span class="badge badge-pill badge-success">@product.ProductType</span>
                                                     <div>
-                                                        <span class="subtitle">Cupo:</span>
-                                                        <span> @product.Quota </span>
+                                                        @if (product.Quota != 0)
+                                                        {
+                                                            <span class="subtitle">Cupo:</span>
+                                                            <span> $ @product.Quota </span>
+                                                        }
                                                     </div>
                                                     <div>
-                                                        <span class="subtitle">Plazo:</span>
-                                                        <span> @product.Term </span>
+                                                        @if (product.Term != null)
+                                                        {
+                                                            <span class="subtitle">Plazo:</span>
+                                                            <span> @product.Term </span>
+                                                        }
                                                     </div>
                                                     <div>
-                                                        <span class="subtitle">Valor:</span>
-                                                        <span> @product.Value </span>
+                                                        @if (product.Value != null)
+                                                        {
+                                                            <span class="subtitle">Valor:</span>
+                                                            <span> $ @product.Value </span>
+                                                        }
                                                     </div>
                                                     <div>
-                                                        <span class="subtitle">Tasa:</span>
-                                                        <span> @product.Rate </span>
+                                                        @if (product.Rate != null)
+                                                        {
+                                                            <span class="subtitle">Tasa:</span>
+                                                            <span> @product.Rate % </span>
+                                                        }
                                                     </div>
                                                 </div>
                                             </li>
