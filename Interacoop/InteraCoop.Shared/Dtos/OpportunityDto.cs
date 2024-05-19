@@ -16,7 +16,7 @@ namespace InteraCoop.Shared.Dtos
 
         [Display(Name = " Observaciones de la oportunidad")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [MaxLength(250, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         public string OpportunityObservations
         { get; set; } = null!;
 
