@@ -17,12 +17,7 @@ namespace InteraCoop.Frontend.Pages.Auth
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private ILoginService LoginService { get; set; } = null!;
         [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
-
-        private async Task CloseModalAsync()
-        {
-            wasClose = true;
-            await BlazoredModal.CloseAsync(ModalResult.Ok());
-        }
+        [CascadingParameter] IModalService Modal { get; set; } = default!;
 
         private async Task LoginAsync()
         {
@@ -42,5 +37,27 @@ namespace InteraCoop.Frontend.Pages.Auth
             await LoginService.LoginAsync(responseHttp.Response!.Token);
             NavigationManager.NavigateTo("/");
         }
+
+        private void ShowModalRecover()
+        {
+            Modal.Show<RecoverPassword>();
+        }
+
+        private void ShowModalRegister()
+        {
+            Modal.Show<Register>();
+        }
+
+        private void ShowModalActivate()
+        {
+            Modal.Show<ResendConfirmationEmailToken>();
+        }
+
+        private async Task CloseModalAsync()
+        {
+            wasClose = true;
+            await BlazoredModal.CloseAsync(ModalResult.Ok());
+        }
+
     }
 }
