@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InteraCoop.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace InteraCoop.Shared.Dtos
 
         [Display(Name = "Ciudad")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public int City { get; set; }
+        public int CityId { get; set; }
 
         [Display(Name = "Nombre cliente")]
         [MaxLength(150, ErrorMessage = "El campo {0} no puede tener mas de {1} caracteres.")]
@@ -26,7 +27,7 @@ namespace InteraCoop.Shared.Dtos
 
         [Display(Name = "Tipo documento")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public String DocumentType { get; set; } = null!;
+        public String? DocumentType { get; set; }
 
         [Display(Name = "Telefono")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
