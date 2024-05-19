@@ -203,8 +203,6 @@ namespace InteraCoop.Backend.Data
             }
         }
 
-
-
         private async Task CheckCountriesAsync()
         {
             if (!_context.Countries.Any())
@@ -549,81 +547,7 @@ namespace InteraCoop.Backend.Data
 		await _context.SaveChangesAsync();
 		}
 
-        private async Task CheckOpportunitiesAsync()
-        {
-            if (!_context.Opportunities.Any())
-            {
-                var products1 = new List<Product>
-                {
-                    new Product { ProductType = "Tarjeta de crédito", Name = "Tarjeta Visa", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
-                    new Product { ProductType = "Tarjeta de crédito", Name = "Tarjeta Mastercard", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 }
-                };
-
-                var campaign1 = new List<Campaign>
-                {
-                     new Campaign { CampaignId= "CAM001", CampaignName = "Campaña de Tarjetas de Crédito", Status = "Activa", CampaignType = "Promoción", Description = "¡Solicita tu tarjeta de crédito con beneficios exclusivos!", StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(30), ProductsList = products1 }
-                };
-
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Contactar el 30 de mayo.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 25), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Pendiente", OpportunityObservations = "Visitar en oficina el 20 de mayo.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 26), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Cliente interesado en crédito hipotecario.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 27), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Cerrada", OpportunityObservations = "Cliente aceptó.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 28), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Desestimada", OpportunityObservations = "Cliente no deacuerdo con oferta.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 29), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Volver a llamar mañana.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 30), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Confirmar intereses para cliente.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 05, 31), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Cerrada", OpportunityObservations = "Oportunidad vencida.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 01), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Concretada", OpportunityObservations = "Pendiente de firma de pagares.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 02), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Concretada", OpportunityObservations = "Agendar firma de documentos.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 03), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Contactar el 01 de junio", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 04) });
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Ver posibiidad de tarjeta de crédito.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 05), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Cerrada", OpportunityObservations = "No interesado.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 06), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Abierta", OpportunityObservations = "Ninguna.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 07), CampaingsList = campaign1 });
-                _context.Opportunities.Add(new Opportunity { Status = "Desestimada", OpportunityObservations = "Cliente se cambió de país.", RecordDate = DateTime.Now, EstimatedAcquisitionDate = new DateTime(2024, 06, 08), CampaingsList = campaign1 });
-                await _context.SaveChangesAsync();
-            }
-
-        }
-
-        private async Task CheckInteractionsAsync()
-        {
-                    
-
-            if (!_context.Interactions.Any())
-            {
-
-                var clients1 = new List<Client>
-                {
-                 new Client { CityId = 20334, Name = "Jorge Garcia", Document = 123456, DocumentType = DocumentType.CC, Telephone = 3005378, Address = "Cll 80 #110-14", RegistryDate = new DateTime(2024, 04, 27), AuditUpdate = new DateTime(2024, 04, 27), AuditUser = "System" }
-                };
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Llamada a la oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Oficina", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita a la oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 3", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Cristian", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 1", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita a la oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Llamada al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 2", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 4", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Cristian", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Llamada a la oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 3", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Llamada al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita a la oficina", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Oficina", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Cristian", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Visita al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Modulo 1", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Harol", ClientsList = clients1 });
-
-                _context.Interactions.Add(new Interaction { InteractionType = "Llamada al cliente", InteractionCreationDate = DateTime.Now, StartDate = new DateTime(2024, 06, 08), EndDate = new DateTime(2024, 06, 08), Address = "Home 3", ObservationsInteraction = "Funcion", Office = "Home", AuditDate = new DateTime(2024, 06, 08), AuditUser = "Ivan", ClientsList = clients1 });
-                await _context.SaveChangesAsync();
-            }
-        }
+        
 
     }
 }
