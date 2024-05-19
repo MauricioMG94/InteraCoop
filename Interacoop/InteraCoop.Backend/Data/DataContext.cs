@@ -17,6 +17,7 @@ namespace InteraCoop.Backend.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Interaction> Interactions { get; set; }
         public DbSet<Opportunity> Opportunities { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,7 @@ namespace InteraCoop.Backend.Data
             modelBuilder.Entity<City>().HasIndex(x => new { x.StateId, x.Name }).IsUnique();
             modelBuilder.Entity<State>().HasIndex(x => new { x.CountryId, x.Name }).IsUnique();
             modelBuilder.Entity<Client>().HasIndex(x => x.Document).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(x => x.Id).IsUnique();
             DisableCascadingDelete(modelBuilder);
         }
 

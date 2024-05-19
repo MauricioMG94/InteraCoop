@@ -1,5 +1,6 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Shared.Dtos;
+using InteraCoop.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -21,6 +22,7 @@ namespace InteraCoop.Frontend.Pages.Clients
         protected override void OnInitialized()
         {
             Client.AuditUpdate = DateTime.Today;
+            Client.CityId = 42322;
             Client.AuditUser = "Admin";
             editContext = new(Client);
         }

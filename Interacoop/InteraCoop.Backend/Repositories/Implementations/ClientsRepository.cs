@@ -65,8 +65,6 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<Client>> GetAsync(int id)
         {
             var client = await _context.Clients
-                /*.Include(x => x.ProductCategories!)
-                .ThenInclude(x => x.Category)*/
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (client == null)
@@ -92,7 +90,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 var newClient = new Client
                 {
                     Name = clientDto.Name,
-                    DocumentType = DocumentType.CC,
+                    DocumentType = DocumentType.CC.ToString(),
                     Document = clientDto.Document,
                     Address = clientDto.Address,
                     Telephone = clientDto.Telephone,
@@ -100,22 +98,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                     AuditUser = "Admin"
                 };
 
-                /*foreach (var productImage in productDTO.ProductImages!)
-                {
-                    var photoProduct = Convert.FromBase64String(productImage);
-                    newProduct.ProductImages.Add(new ProductImage { Image = await _fileStorage.SaveFileAsync(photoProduct, ".jpg", "products") });
-                }
-
-                foreach (var productCategoryId in productDTO.ProductCategoryIds!)
-                {
-                    var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == productCategoryId);
-                    if (category != null)
-                    {
-                        newClient.ProductCategories.Add(new ProductCategory { Category = category });
-                    }
-                }*/
-
-                _context.Add(newClient);
+                 _context.Add(newClient);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Client>
                 {
@@ -159,24 +142,13 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 }
 
                     client.Name = clientDto.Name;
-                    client.DocumentType = DocumentType.CC;
+                    client.DocumentType = DocumentType.CC.ToString();
                     client.Document = clientDto.Document;
                     client.Address = clientDto.Address;
                     client.Telephone = clientDto.Telephone;
                     client.AuditUpdate = DateTime.Today;
                     client.AuditUser = "Admin";
 
-                /* _context.ProductCategories.RemoveRange(product.ProductCategories!);
-                 product.ProductCategories = new List<ProductCategory>();
-
-                 foreach (var productCategoryId in productDTO.ProductCategoryIds!)
-                 {
-                     var category = await _context.Categories.FindAsync(productCategoryId);
-                     if (category != null)
-                     {
-                         _context.ProductCategories.Add(new ProductCategory { CategoryId = category.Id, ProductId = product.Id });
-                     }
-                 }*/
 
                 _context.Update(client);
                 await _context.SaveChangesAsync();

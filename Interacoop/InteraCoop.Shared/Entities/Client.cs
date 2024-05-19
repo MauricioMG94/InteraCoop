@@ -24,7 +24,7 @@ namespace InteraCoop.Shared.Entities
 
         [Display(Name = "Tipo documento")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public DocumentType DocumentType { get; set; }
+        public string? DocumentType { get; set; }
 
         [Display(Name = "Telefono")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
