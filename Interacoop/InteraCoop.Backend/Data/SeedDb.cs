@@ -1,7 +1,9 @@
-﻿using InteraCoop.Backend.UnitsOfWork.Interfaces;
+﻿using InteraCoop.Backend.Helpers;
+using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace InteraCoop.Backend.Data
@@ -10,11 +12,13 @@ namespace InteraCoop.Backend.Data
     {
         private readonly DataContext _context;
         private readonly IUsersUnitOfWork _usersUnitOfWork;
+        private readonly IFileStorage _fileStorage;
 
-        public SeedDb(DataContext context, IUsersUnitOfWork usersUnitOfWork)
+        public SeedDb(DataContext context, IUsersUnitOfWork usersUnitOfWork, IFileStorage fileStorage)
         {
             _context = context;
             _usersUnitOfWork = usersUnitOfWork;
+            _fileStorage = fileStorage;
         }
 
         public async Task SeedAsync()
@@ -27,8 +31,18 @@ namespace InteraCoop.Backend.Data
             await CheckInteractionsAsync();
             await CheckOpportunitiesAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Cristian", "Jaimes", "cristianfj@yopmail.com", "3008930134", "Calle Luna Calle sol", UserType.Admin);
-
+            await CheckUserAsync("1010", "Cristian", "Jaimes", "cristianjaimes@yopmail.com", "3008930134", "Calle Luna Calle sol", "User-1.png", UserType.Admin);
+            await CheckUserAsync("1011", "Andres", "Castillo", "andrescastillol@yopmail.com", "3108940135", "Avenida Siempre Viva", "User-2.png", UserType.Admin);
+            await CheckUserAsync("1012", "Harold", "Aguirre", "haroldaguirre@yopmail.com", "3208950136", "Carrera Estrella", "User-3.png", UserType.Analist);
+            await CheckUserAsync("1013", "Mauricio", "Martinez", "mauriciomartinez@yopmail.com", "3308960137", "Calle Primavera", "User-4.png", UserType.Analist);
+            await CheckUserAsync("1014", "Jorge", "Hernandez", "jorgeh@yopmail.com", "3408970138", "Calle Lluvia", "User-5.png", UserType.Employee);
+            await CheckUserAsync("1015", "Marta", "Sanchez", "martas@yopmail.com", "3508980139", "Avenida Sol", "User-6.png", UserType.Employee);
+            await CheckUserAsync("1016", "Luis", "Perez", "luiperez@yopmail.com", "3608990140", "Calle Viento", "User-7.png", UserType.Employee);
+            await CheckUserAsync("1017", "Paula", "Rodriguez", "paular@yopmail.com", "3709000141", "Calle Nieve", "User-8.png", UserType.Employee);
+            await CheckUserAsync("1018", "Carlos", "Gonzalez", "carlosg@yopmail.com", "3809010142", "Calle Estrella", "User-9.png", UserType.Employee);
+            await CheckUserAsync("1019", "Ana", "Ramirez", "anar@yopmail.com", "3909020143", "Calle Luna", "User-10.png", UserType.Employee);
+            await CheckUserAsync("1020", "Jose", "Torres", "joset@yopmail.com", "4009030144", "Avenida Sol", "User-11.png", UserType.Employee);
+            await CheckUserAsync("1021", "Lucia", "Moreno", "luciam@yopmail.com", "4109040145", "Calle Viento", "User-12.png", UserType.Employee);
         }
 
         private async Task CheckCountriesFullAsync()
@@ -40,13 +54,17 @@ namespace InteraCoop.Backend.Data
             }
         }
 
-        private async Task<User> CheckUserAsync(string document, string firstName, string LastName, string email, string phone, string address, UserType userType)
+        private async Task<User> CheckUserAsync(string document, string firstName, string LastName, string email, string phone, string address, string image, UserType userType)
         {
           var user = await _usersUnitOfWork.GetUserAsync(email);
             if (user == null)
             {
                 var city = await _context.Cities.FirstOrDefaultAsync(x => x.Name == "Medellín");
                 city ??= await _context.Cities.FirstOrDefaultAsync();
+
+                var filePath = $"{Environment.CurrentDirectory}\\Images\\users\\{image}";
+                var fileBytes = File.ReadAllBytes(filePath);
+                var imagePath = await _fileStorage.SaveFileAsync(fileBytes, "jpg", "users");
 
                 user = new User
                 {
@@ -59,6 +77,7 @@ namespace InteraCoop.Backend.Data
                     Document = document,
                     City = _context.Cities.FirstOrDefault(),
                     UserType = userType,
+                    Photo = imagePath,
                 };
                 await _usersUnitOfWork.AddUserAsync(user, "123456");
                 await _usersUnitOfWork.AddUserToRolesAsync(user, userType.ToString());
