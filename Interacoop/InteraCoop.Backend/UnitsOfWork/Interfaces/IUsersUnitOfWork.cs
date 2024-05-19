@@ -1,5 +1,6 @@
 ﻿using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Responses;
 using Microsoft.AspNetCore.Identity;
 
 namespace InteraCoop.Backend.UnitsOfWork.Interfaces
@@ -26,5 +27,10 @@ namespace InteraCoop.Backend.UnitsOfWork.Interfaces
         Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword);
 
         Task<IdentityResult> UpdateUserAsync(User user);
+
+        Task<ActionResponse<IEnumerable<User>>> GetAsync(PaginationDTO pagination);
+        Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
+        Task<ActionResponse<User>> AddFullAsync(UserDto userDto);
+        Task<ActionResponse<User>> UpdateFullAsync(UserDto userDto);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Responses;
 using Microsoft.AspNetCore.Identity;
 namespace InteraCoop.Backend.Repositories.Interfaces
 {
@@ -16,9 +17,7 @@ namespace InteraCoop.Backend.Repositories.Interfaces
 
         Task<IdentityResult> UpdateUserAsync(User user);
 
-        Task<User> GetUserAsync(string email);
-
-       
+        Task<User> GetUserAsync(string email);       
 
         Task<IdentityResult> AddUserAsync(User user, string password);
 
@@ -29,5 +28,12 @@ namespace InteraCoop.Backend.Repositories.Interfaces
         Task<SignInResult> LoginAsync(LoginDto model);
 
         Task LogoutAsync();
+
+        Task<ActionResponse<IEnumerable<User>>> GetAsync(PaginationDTO pagination);
+        Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
+
+        Task<ActionResponse<User>> AddFullAsync(UserDto userDto);
+
+        Task<ActionResponse<User>> UpdateFullAsync(UserDto userDto);
     }
 }

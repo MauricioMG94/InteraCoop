@@ -29,7 +29,7 @@ namespace InteraCoop.Backend.Data
             await CheckRolesAsync();
             await CheckUserAsync("1010", "Cristian", "Jaimes", "cristianfj@yopmail.com", "3008930134", "Calle Luna Calle sol", UserType.Admin);
             await CheckUserAsync("1010","Harold","Aguirre", "harold@yopmail.com","3008930134","Calle Luna Calle sol", UserType.Admin);
-            await CheckUserAsync("1011", "Andres", "Castillo", "andres@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Analist);
+            await CheckUserAsync("1011", "Andres", "Castillo", "andres@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Employee);
             await CheckUserAsync("1011", "tatiana", "Castillo", "tatiana@yopmail.com", "3008930134", "Calle sol Calle luna", UserType.Admin);
 
         }

@@ -1,9 +1,13 @@
 ﻿using InteraCoop.Backend.Data;
+using InteraCoop.Backend.Helpers;
 using InteraCoop.Backend.Repositories.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Enums;
+using InteraCoop.Shared.Responses;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace InteraCoop.Backend.Repositories.Implementations
 {
@@ -99,6 +103,133 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public async Task<IdentityResult> UpdateUserAsync(User user)
         {
             return await _userManager.UpdateAsync(user);
+        }
+
+
+        public async Task<ActionResponse<IEnumerable<User>>> GetAsync(PaginationDTO pagination)
+        {
+            var queryable = _context.Users.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(pagination.Filter))
+            {
+                queryable = queryable.Where(x => x.FirstName.ToLower().Contains(pagination.Filter.ToLower()));
+            }
+
+            return new ActionResponse<IEnumerable<User>>
+            {
+                WasSuccess = true,
+                Result = await queryable
+                    .OrderBy(x => x.FirstName)
+                    .Paginate(pagination)
+                    .ToListAsync()
+            };
+        }
+
+        public async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination)
+        {
+            var queryable = _context.Users.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(pagination.Filter))
+            {
+                queryable = queryable.Where(x => x.FirstName.ToLower().Contains(pagination.Filter.ToLower()));
+            }
+
+            double count = await queryable.CountAsync();
+            int totalPages = (int)Math.Ceiling(count / pagination.RecordsNumber);
+            return new ActionResponse<int>
+            {
+                WasSuccess = true,
+                Result = totalPages
+            };
+        }
+
+        public async Task<ActionResponse<User>> AddFullAsync(UserDto userDto)
+        {
+            try
+            {
+                var newUser= new User
+                {
+                    FirstName = userDto.FirstName,
+                    Document = userDto.Document,
+                    LastName = userDto.LastName,
+                    Address = userDto.Address,
+                    UserType = userDto.UserType
+                };
+
+                _context.Add(newUser);
+                await _context.SaveChangesAsync();
+                return new ActionResponse<User>
+                {
+                    WasSuccess = true,
+                    Result = newUser
+                };
+            }
+            catch (DbUpdateException)
+            {
+                return new ActionResponse<User>
+                {
+                    WasSuccess = false,
+                    Message = "Ya existe un usuario con el mismo nombre."
+                };
+            }
+            catch (Exception exception)
+            {
+                return new ActionResponse<User>
+                {
+                    WasSuccess = false,
+                    Message = exception.Message
+                };
+            }
+        }
+
+        public async Task<ActionResponse<User>> UpdateFullAsync(UserDto userDto)
+        {
+            try
+            {
+                var user = await _context.Users
+                    /* .Include(x => x.ProductCategories!)
+                     .ThenInclude(x => x.Category)*/
+                    .FirstOrDefaultAsync(x => x.Id == userDto.Id);
+                if (user == null)
+                {
+                    return new ActionResponse<User>
+                    {
+                        WasSuccess = false,
+                        Message = "Usuario no existe"
+                    };
+                }
+
+                user.FirstName = userDto.FirstName;
+                user.Document = userDto.Document;
+                user.LastName = userDto.LastName;
+                user.Address = userDto.Address;
+                user.UserType = userDto.UserType;
+
+
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+                return new ActionResponse<User>
+                {
+                    WasSuccess = true,
+                    Result = user
+                };
+            }
+            catch (DbUpdateException)
+            {
+                return new ActionResponse<User>
+                {
+                    WasSuccess = false,
+                    Message = "Ya existe un usuario con el mismo documento."
+                };
+            }
+            catch (Exception exception)
+            {
+                return new ActionResponse<User>
+                {
+                    WasSuccess = false,
+                    Message = exception.Message
+                };
+            }
         }
     }
 }

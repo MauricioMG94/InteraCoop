@@ -1,4 +1,5 @@
 ﻿using InteraCoop.Backend.Helpers;
+using InteraCoop.Backend.UnitsOfWork.Implementations;
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
@@ -232,6 +233,8 @@ namespace InteraCoop.Backend.Controllers
             }
         }
 
+        
+
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetAsync()
@@ -284,5 +287,28 @@ namespace InteraCoop.Backend.Controllers
                 Expiration = expiration
             };
         }
+
+        [HttpGet("full")]
+        public async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+        {
+            var response = await _usersUnitOfWork.GetAsync(pagination);
+            if (response.WasSuccess)
+            {
+                return Ok(response.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("totalPages")]
+        public async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _usersUnitOfWork.GetTotalPagesAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
     }
 }
