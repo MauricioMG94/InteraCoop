@@ -19,6 +19,8 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         [Parameter, EditorRequired] public EventCallback OnValidSubmit { get; set; }
         [Parameter, EditorRequired] public EventCallback ReturnAction { get; set; }
         [Parameter] public required String FormName { get; set; }
+        [Parameter] public required String CardName { get; set; }
+        [Parameter] public int InteractionId { get; set; }
         public List<Campaign> Campaigns { get; set; } = new();        
         public bool FormPostedSuccessfully { get; set; } = false;
 

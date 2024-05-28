@@ -23,6 +23,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
             var opportunity = await _context.Opportunities
                 .Include(x => x.Campaign!)
                 .Include(x => x.Interaction!)
+                .Include(x => x.Interaction.Client!)
+                .Include(x => x.Campaign.ProductsList!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (opportunity == null)
@@ -57,6 +59,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
             var queryable = _context.Opportunities
                 .Include(x => x.Campaign)
                 .Include(x => x.Interaction)
+                .Include(x => x.Interaction.Client!)
+                .Include(x => x.Campaign.ProductsList!)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
@@ -197,10 +201,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
 
         public override async Task<ActionResponse<Opportunity>> DeleteAsync(int id)
         {
-            var opportunity = await _context.Opportunities
-                .Include(x => x.Campaign)
-                .Include(x => x.Interaction)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var opportunity = await _context.Opportunities.FirstOrDefaultAsync(x => x.Id == id);
             if (opportunity == null)
             {
                 return new ActionResponse<Opportunity>
@@ -211,7 +212,6 @@ namespace InteraCoop.Backend.Repositories.Implementations
             }
             try
             {
-                _context.Campaigns.RemoveRange(opportunity.Campaign!);
                 _context.Opportunities.Remove(opportunity);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Opportunity>

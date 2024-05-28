@@ -4,11 +4,11 @@
     <div class="card-header">
         <span>
             <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Oportunidades</MudButton>
-            <a class="float-end">
+@*             <a class="float-end">
                 <MudTooltip Text="Crear oportunidad" Color="Color.Tertiary" Placement="Placement.Bottom">
                     <MudFab StartIcon="@Icons.Material.Filled.Add" href="/opportunity/create" Size="Size.Small" Color="Color.Tertiary" />
                 </MudTooltip>
-            </a>
+            </a> *@
         </span>
     </div>
     <div class="card-body">
@@ -26,7 +26,8 @@
                                 <th class="col-1">Estado de oportunidad</th>
                                 <th class="col-2">Fecha de registro</th>
                                 <th class="col-3">Nombre de campaña</th>
-                                <th class="col-4">Acciones</th>
+                                <th class="col-4">Nombre de cliente</th>
+                                <th class="col-5">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,11 +41,12 @@
                                         @opportunity.RecordDate.ToString("dd/MM/yyyy")
                                     </td>
                                     <td class="col-3">
-
-                                            @opportunity.Campaign.CampaignName
-
+                                        @opportunity.Campaign.CampaignName
                                     </td>
                                     <td class="col-4">
+                                        @opportunity.Interaction.Client.Name
+                                    </td>
+                                    <td class="col-5">
                                         <MudTooltip Text="Ver oportunidad" Color="Color.Tertiary" Placement="Placement.Left">
                                             <a onclick="toggleExtraRow('@opportunity.Id')" class="btn btn-light btn-sm">
                                                 <i class="bi bi-eye"></i>
@@ -69,7 +71,7 @@
                                             <li class="list-group-item card-subTitle">
                                                  Información de oportunidad:
                                                 <div class="list-group-item subCard">
-                                                <span class="badge badge-pill badge-success">@opportunity.Status</span>
+                                                    <span class="badge badge-pill badge-success">@opportunity.Status</span>
                                                     <div>
                                                         <span class="subtitle">Fecha estimada de adquisición:</span>
                                                         <span> @opportunity.EstimatedAcquisitionDate.ToString("dd/MM/yyyy")</span>
@@ -80,50 +82,51 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                           @*  <li class="list-group-item card-subTitle">
+                                            <li class="list-group-item card-subTitle">
                                                 Información de interacción:
                                                 <div class="list-group-item subCard">
-
+                                                    <span class="badge badge-pill badge-success">@opportunity.Interaction.InteractionType</span>
+                                                    <div>
+                                                        <span class="subtitle">Cliente:</span>
+                                                        <span> @opportunity.Interaction.Client.Name</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="subtitle">Observaciones:</span>
+                                                        <span> @opportunity.Interaction.ObservationsInteraction</span>
+                                                    </div>
                                                 </div>
-                                            </li> *@
+                                            </li>
                                             <li class="list-group-item card-subTitle">
                                                 Información de campaña:
-                                                @* @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())
-                                                {
-                                                    <div class="list-group">
-                                                        @foreach (var campaign in opportunity.CampaingsList)
-                                                        {
-                                                            <div class="list-group-item subCard">
-                                                                <span class="badge badge-pill badge-success">@campaign.Status</span>
+                                                @if (opportunity.Campaign != null) {
+                                                    <div class="list-group-item subCard">
+                                                        <span class="badge badge-pill badge-success">@opportunity.Campaign.Status</span>
+                                                        <div>
+                                                            <span class="subtitle">Campaña:</span>
+                                                            <span> @opportunity.Campaign.CampaignName</span>
+                                                        </div>
+                                                        <div>
+                                                            @if (opportunity.Campaign.ProductsList!= null && opportunity.Campaign.ProductsList.Any())
+                                                            {
+                                                                @foreach (var product in opportunity.Campaign.ProductsList)
+                                                                {
+                                                                    <div>
+                                                                        <span class="subtitle">Producto:</span>
+                                                                        <span>@product.Name</span>
+                                                                    </div>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
                                                                 <div>
-                                                                    <span class="subtitle">Campaña:</span>
-                                                                    <span>@campaign.CampaignName</span>
+                                                                    <span class="subtitle">Producto:</span>
+                                                                    <span>No hay productos.</span>
                                                                 </div>
-                                                                <div>
-                                                                    @if (campaign.ProductsList != null && campaign.ProductsList.Any())
-                                                                    {
-                                                                       
-                                                                        @foreach (var product in campaign.ProductsList)
-                                                                            {
-                                                                            <div>
-                                                                                <span class="subtitle">Producto:</span>
-                                                                                <span>@product.Name</span>
-                                                                            </div>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <div>
-                                                                            <span class="subtitle">Producto:</span>
-                                                                            <span>No hay productos.</span>
-                                                                        </div>
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        }
+                                                            }
+                                                        </div>
                                                     </div>
-                                                } *@
-                                                @* else
+                                                } 
+                                                else
                                                 {
                                                     <div class="list-group-item subCard">
                                                         <MudTooltip Text="Añadir campaña" Color="Color.Tertiary" Placement="Placement.Top">
@@ -133,7 +136,7 @@
                                                             <span class="subtitle">Añadir campaña</span>
                                                         </MudTooltip>
                                                     </div>
-                                                } *@
+                                                } 
                                             </li>
                                         </ul>
                                     </div>

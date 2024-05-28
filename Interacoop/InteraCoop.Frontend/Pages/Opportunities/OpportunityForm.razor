@@ -7,6 +7,10 @@
         <div class="card-header">
             <span>
                 <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                @if (@FormName.ToLower().Contains("crear"))
+                {
+                    <span>Para la interacción: @InteractionId</span>
+                }
                 <a class="float-end">
                     <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
                         @if (@FormName.ToLower().Contains("editar"))
@@ -27,7 +31,7 @@
             <div class="row">
                 <div class="col-6">
                     <div style="padding-bottom: 1rem;">
-                        <MudSelect @bind-Value="@Opportunity.Status" Label="Estado de oportunidad:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                        <MudSelect @bind-Value="@Opportunity.Status" Placeholder="Seleccione estado" Label="Estado de oportunidad:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
                             <MudSelectItem Value="@("Formalizada")" />
                             <MudSelectItem Value="@("En trámite")" />
                             <MudSelectItem Value="@("Desestimada")" />
@@ -46,30 +50,63 @@
                         </div>
                     </div>
                     <div style="padding-bottom: 1rem;">
-                        <MudForm>
-                            <MudSelect @bind-Value="Opportunity.CampaignId" Label="Campaña:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                        <label>Campaña:</label>
+                        <div>
+                            <select id="campaign" class="form-select" @bind="Opportunity.CampaignId" style="height: 56px">
+                                <option value="">Seleccione campaña</option>
                                 @foreach (var camp in Campaigns)
                                 {
-                                    <MudSelectItem Value="@camp.Id">@camp.CampaignName</MudSelectItem>
+                                    <option value="@camp.Id">@camp.CampaignName</option>
                                 }
-                            </MudSelect>
-                        </MudForm>
-                        <ValidationMessage For="@(() => Opportunity.CampaignId)" />
-
-                        <select id="campaign" class="form-control" @bind="Opportunity.CampaignId">
-                            <option value="">Seleccione una campaña</option>
-                            @foreach (var camp in Campaigns)
-                            {
-                                <option value="@camp.Id">@camp.CampaignName</option>
-                            }
-                        </select>
+                            </select>
+                            <ValidationMessage For="@(() => Opportunity.CampaignId)" />
+                        </div>
+                    </div>
+                    <div style="padding-bottom: 1rem">
+                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6 mb-2">
-                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
+
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <MudCard Style="width: 100%; min-height: 200px; background-color: #eaeaea; padding: 0.5rem" Elevation="2">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <div style="display: flex; align-items: center;">
+                                    <MudIcon Icon="@Icons.Material.Filled.AssignmentTurnedIn" Title="Favorite" Style="margin-right: 0.5rem" />
+                                    <MudText Typo="Typo.h6">@CardName</MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            @if (Opportunity.Status!= null)
+                            {
+                                <MudItem>
+                                    Estado de oportunidad: <b>@Opportunity.Status</b>
+                                </MudItem>
+                            }
+                            @if (Opportunity.OpportunityObservations != null)
+                            {
+                                <MudItem>
+                                    Observaciones: <b>@Opportunity.OpportunityObservations</b>
+                                </MudItem>
+                            }
+                            @if (Opportunity.EstimatedAcquisitionDate != null)
+                            {
+                                <MudItem>
+                                    Fecha de adquisición: <b>@Opportunity.EstimatedAcquisitionDate.ToString("dd/MM/yyyy")</b>
+                                </MudItem>
+                            }
+                            @if (Opportunity?.CampaignId != null && Opportunity?.CampaignId != 0)
+                            {
+                                    <MudItem>
+                                        Campaña: <b>@Campaigns?.FirstOrDefault(x => x.Id == Opportunity?.CampaignId)?.CampaignName</b>
+                                    </MudItem>
+                            }
+                        </MudCardContent>
+                    </MudCard>
                 </div>
+                <div class="col-1"></div>
             </div>
         </div>
     </div>

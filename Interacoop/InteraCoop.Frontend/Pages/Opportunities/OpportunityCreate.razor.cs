@@ -16,6 +16,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
 
         private bool loading = true;
         public List<Campaign> Campaigns { get; set; } = new();
+        [Parameter] public int InteractionId { get; set; }
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;

@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-6">
                     <div style="padding-bottom: 1rem;">
-                        <MudSelect @bind-Value="@Interaction.InteractionType" Label="Tipo de Interacción:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                        <MudSelect @bind-Value="@Interaction.InteractionType" Placeholder="Seleccione estado" Label="Tipo de Interacción:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
                             <MudSelectItem Value="@("Visita a cliente")" />
                             <MudSelectItem Value="@("Visita en oficina")" />
                             <MudSelectItem Value="@("Llamada entrante")" />
@@ -38,7 +38,7 @@
                         <MudTextField @bind-Value="Interaction.ObservationsInteraction" Label="Observaciones:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.NoteAlt" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Interaction.ObservationsInteraction)" />
                     </div>
-                    <div style="display:flex">
+                    <div style="display:flex; padding-bottom: 1rem;">
                         <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start">
                             <label>Fecha inicio:</label>
                             <div style="width: 95%">
@@ -55,16 +55,24 @@
                         </div>
                     </div>
                     <div style="padding-bottom: 1rem;">
-                      <select id="campaign" class="form-control" @bind="Interaction.ClientId">
-                            <option value="">Seleccione un cliente</option>
-                            @foreach (var cli in Clients)
-                            {
-                                <option value="@cli.Id">@cli.Name</option>
-                            }
-                        </select>
+                        <label>Campaña:</label>
+                        <div>
+                            <select id="campaign" class="form-select" @bind="Interaction.ClientId" style="height: 56px">
+                                <option value="">Seleccione cliente</option>
+                                @foreach (var cli in Clients)
+                                {
+                                    <option value="@cli.Id">@cli.Name</option>
+                                }
+                            </select>
+                            <ValidationMessage For="@(() => Interaction.ClientId)" />
+                        </div>
+                    </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
                     </div>
                 </div>
-                <div class="col-6" >
+                <div class="col-1"></div>
+                <div class="col-4">
                     <MudCard Style="width: 100%; min-height: 200px; background-color: #eaeaea; padding: 0.5rem" Elevation="2">
                         <MudCardHeader>
                             <CardHeaderContent>
@@ -114,12 +122,9 @@
                         </MudCardContent>
                     </MudCard>
                 </div>
+                <div class="col-1"></div>
             </div>
-            <div class="row">
-                <div class="col-6 mb-2">
-                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
-                </div>
-            </div>
+  
         </div>
     </div>
 </EditForm>

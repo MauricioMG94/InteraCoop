@@ -98,35 +98,34 @@
                                                 </div>
                                             </li>
                                             <li class="list-group-item card-subTitle">
-                                                @* Información de cliente:
-                                                @if (interaction.ClientsList != null && interaction.ClientsList.Any())
+                                                Información de cliente:
+                                                @if (interaction.Client != null)
                                                 {
                                                     <div class="list-group">
-                                                        @foreach (var client in interaction.ClientsList)
-                                                        {
+
                                                             <div class="list-group-item subCard">
                                                                 <div>
                                                                     <span class="subtitle">Nombre:</span>
-                                                                    <span>@client.Name</span>
+                                                                    <span>@interaction.Client.Name</span>
                                                                 </div>
                                                                 <div>
                                                                     <span class="subtitle">Tipo de documento:</span>
-                                                                    <span>@client.DocumentType</span>
+                                                                <span>@interaction.Client.DocumentType</span>
                                                                 </div>
                                                                 <div>
                                                                     <span class="subtitle">Documento:</span>
-                                                                    <span> @client.Document </span>
+                                                                <span> @interaction.Client.Document </span>
                                                                 </div>
                                                                 <div>
                                                                     <span class="subtitle">Ciudad:</span>
-                                                                    <span>@client.City</span>
+                                                                <span>@interaction.Client.City</span>
                                                                 </div>
                                                                 <div>
                                                                     <span class="subtitle">Teléfono:</span>
-                                                                    <span>@client.Telephone</span>
+                                                                    <span>@interaction.Client.Telephone</span>
                                                                 </div>
                                                             </div>
-                                                        }
+                                                        
                                                     </div>
                                                 }
                                                 else
@@ -137,7 +136,7 @@
                                                         </a>
                                                         <span class="subtitle">Añadir cliente</span>
                                                     </MudTooltip>
-                                                } *@
+                                                }
                                             </li>
                                         </ul>
                                     </div>

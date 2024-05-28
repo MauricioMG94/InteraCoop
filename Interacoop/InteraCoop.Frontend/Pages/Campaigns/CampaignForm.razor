@@ -113,13 +113,13 @@
                             @if (Campaign.StartDate != null)
                             {
                                 <MudItem>
-                                    Inicio: <b>@Campaign.StartDate</b>
+                                    Inicio: <b>@Campaign.StartDate.ToString("dd/MM/yyyy")</b>
                                 </MudItem>
                             }
                             @if (Campaign.EndDate != null)
                             {
                                 <MudItem>
-                                    Fin: <b>@Campaign.EndDate</b>
+                                    Fin: <b>@Campaign.EndDate.ToString("dd/MM/yyyy")</b>
                                 </MudItem>
                             }
                         </MudCardContent>
