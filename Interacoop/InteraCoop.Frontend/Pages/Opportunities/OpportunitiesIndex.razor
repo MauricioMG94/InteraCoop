@@ -40,10 +40,9 @@
                                         @opportunity.RecordDate.ToString("dd/MM/yyyy")
                                     </td>
                                     <td class="col-3">
-                                        @foreach (var campaign in opportunity.CampaingsList)
-                                        {
-                                            @campaign.CampaignName
-                                        }
+
+                                            @opportunity.Campaign.CampaignName
+
                                     </td>
                                     <td class="col-4">
                                         <MudTooltip Text="Ver oportunidad" Color="Color.Tertiary" Placement="Placement.Left">
@@ -89,7 +88,7 @@
                                             </li> *@
                                             <li class="list-group-item card-subTitle">
                                                 Información de campaña:
-                                                @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())
+                                                @* @if (opportunity.CampaingsList != null && opportunity.CampaingsList.Any())
                                                 {
                                                     <div class="list-group">
                                                         @foreach (var campaign in opportunity.CampaingsList)
@@ -123,8 +122,8 @@
                                                             </div>
                                                         }
                                                     </div>
-                                                }
-                                                else
+                                                } *@
+                                                @* else
                                                 {
                                                     <div class="list-group-item subCard">
                                                         <MudTooltip Text="Añadir campaña" Color="Color.Tertiary" Placement="Placement.Top">
@@ -134,7 +133,7 @@
                                                             <span class="subtitle">Añadir campaña</span>
                                                         </MudTooltip>
                                                     </div>
-                                                }
+                                                } *@
                                             </li>
                                         </ul>
                                     </div>

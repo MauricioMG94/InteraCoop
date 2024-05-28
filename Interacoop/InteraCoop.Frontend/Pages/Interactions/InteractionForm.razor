@@ -54,14 +54,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-3" style="display: inline-grid">
-                    <label>Cliente:</label>
-                    <div>
-                        <Selector NonSelected="nonSelected" Selected="selected" />
+                    <div style="padding-bottom: 1rem;">
+                      <select id="campaign" class="form-control" @bind="Interaction.ClientId">
+                            <option value="">Seleccione un cliente</option>
+                            @foreach (var cli in Clients)
+                            {
+                                <option value="@cli.Id">@cli.Name</option>
+                            }
+                        </select>
                     </div>
                 </div>
-                <div class="col-3" >
+                <div class="col-6" >
                     <MudCard Style="width: 100%; min-height: 200px; background-color: #eaeaea; padding: 0.5rem" Elevation="2">
                         <MudCardHeader>
                             <CardHeaderContent>

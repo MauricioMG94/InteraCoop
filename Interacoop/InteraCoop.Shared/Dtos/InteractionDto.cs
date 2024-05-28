@@ -62,8 +62,6 @@ namespace InteraCoop.Shared.Dtos
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         public string AuditUser
         { get; set; } = null!;
-        public List<int>? ClientsIds { get; set; }
-        // public ICollection<User>? UserIds { get; set; }//
-
+        public int ClientId { get; set; }
     }
 }

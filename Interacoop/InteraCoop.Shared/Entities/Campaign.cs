@@ -8,7 +8,7 @@ namespace InteraCoop.Shared.Entities
 
         [Display(Name = "Identificador de producto")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public string CampaignId { get; set; } = null!;
+        public string CampaignIdentifier { get; set; } = null!;
 
         [Display(Name = "Nombre de la campaña")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
@@ -36,6 +36,5 @@ namespace InteraCoop.Shared.Entities
 
         [Display(Name = "Productos")]
         public ICollection<Product>? ProductsList { get; set; }
-
     }
 }

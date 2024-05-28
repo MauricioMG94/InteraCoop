@@ -1,6 +1,6 @@
 ﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
 
-<EditForm EditContext="editContext" OnValidSubmit="OnDataAnnotationsValidatedAsync">
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
     <div class="card">
@@ -45,11 +45,24 @@
                             <ValidationMessage For="@(() => Opportunity.EstimatedAcquisitionDate)" />
                         </div>
                     </div>
-                </div>
-                <div class="col-6" style="display: inline-grid">
-                    <label>Campaña:</label>
-                    <div>
-                        <Selector NonSelected="nonSelected" Selected="selected" />
+                    <div style="padding-bottom: 1rem;">
+                        <MudForm>
+                            <MudSelect @bind-Value="Opportunity.CampaignId" Label="Campaña:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                                @foreach (var camp in Campaigns)
+                                {
+                                    <MudSelectItem Value="@camp.Id">@camp.CampaignName</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </MudForm>
+                        <ValidationMessage For="@(() => Opportunity.CampaignId)" />
+
+                        <select id="campaign" class="form-control" @bind="Opportunity.CampaignId">
+                            <option value="">Seleccione una campaña</option>
+                            @foreach (var camp in Campaigns)
+                            {
+                                <option value="@camp.Id">@camp.CampaignName</option>
+                            }
+                        </select>
                     </div>
                 </div>
             </div>

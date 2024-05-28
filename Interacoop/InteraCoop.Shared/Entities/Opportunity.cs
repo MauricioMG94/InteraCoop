@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 
 namespace InteraCoop.Shared.Entities
 {
@@ -30,7 +31,12 @@ namespace InteraCoop.Shared.Entities
         { get; set; }
 
         [Display(Name = "Campaña")]
-        public ICollection<Campaign>? CampaingsList { get; set; }
+        public int CampaignId { get; set; }
+        public Campaign Campaign { get; set; } = null!;
+
+        [Display(Name = "Interacción")]
+        public int InteractionId { get; set; }
+        public Interaction Interaction { get; set; } = null!;
 
     }
 }

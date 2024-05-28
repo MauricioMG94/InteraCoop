@@ -6,7 +6,6 @@ using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace InteraCoop.Backend.Repositories.Implementations
 {
@@ -22,7 +21,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<Opportunity>> GetAsync(int id)
         {
             var opportunity = await _context.Opportunities
-                .Include(x => x.CampaingsList!)
+                .Include(x => x.Campaign!)
+                .Include(x => x.Interaction!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (opportunity == null)
@@ -55,7 +55,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Opportunities
-                .Include(x => x.CampaingsList)
+                .Include(x => x.Campaign)
+                .Include(x => x.Interaction)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
@@ -92,28 +93,33 @@ namespace InteraCoop.Backend.Repositories.Implementations
         {
             try
             {
+                var campaign = await _context.Campaigns.FirstOrDefaultAsync(c => c.Id == opportunityDto.CampaignId);
+                var interaction = await _context.Interactions.FirstOrDefaultAsync(i => i.Id == opportunityDto.InteractionId);
+
                 var newOpportunity = new Opportunity
                 {
                     Status = opportunityDto.Status,
                     OpportunityObservations = opportunityDto.OpportunityObservations,
                     RecordDate = opportunityDto.RecordDate,
                     EstimatedAcquisitionDate = opportunityDto.EstimatedAcquisitionDate,
-                    CampaingsList = new List<Campaign>(),
+                    CampaignId = opportunityDto.CampaignId,
+                    Campaign = campaign,
+                    InteractionId = opportunityDto.InteractionId,
+                    Interaction = interaction
                 };
-                foreach (var campaingId in opportunityDto.CampaingsIds!)
-                {
-                    var campaing = await _context.Campaigns.FirstOrDefaultAsync(x => x.Id == campaingId);
-                    if (campaing != null)
-                    {
-                        newOpportunity.CampaingsList.Add(campaing);
-                    }
-                }
+
                 _context.Add(newOpportunity);
                 await _context.SaveChangesAsync();
+
+                var loadedOpportunity = await _context.Opportunities
+                    .Include(o => o.Campaign)
+                    .Include(o => o.Interaction)
+                    .FirstOrDefaultAsync(o => o.Id == newOpportunity.Id);
+
                 return new ActionResponse<Opportunity>
                 {
                     WasSuccess = true,
-                    Result = newOpportunity
+                    Result = loadedOpportunity
                 };
             }
             catch (DbUpdateException)
@@ -138,8 +144,12 @@ namespace InteraCoop.Backend.Repositories.Implementations
         {
             try
             {
+                var campaign = await _context.Campaigns.FirstOrDefaultAsync(c => c.Id == opportunityDto.CampaignId);
+                var interaction = await _context.Interactions.FirstOrDefaultAsync(i => i.Id == opportunityDto.InteractionId);
+
                 var opportunity = await _context.Opportunities
-                    .Include(x => x.CampaingsList)
+                    .Include(x => x.Campaign)
+                    .Include(o => o.Interaction)
                     .FirstOrDefaultAsync(x => x.Id == opportunityDto.Id);
                 if (opportunity == null)
                 {
@@ -154,18 +164,11 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 opportunity.OpportunityObservations = opportunityDto.OpportunityObservations;
                 opportunity.RecordDate = opportunityDto.RecordDate;
                 opportunity.EstimatedAcquisitionDate = opportunityDto.EstimatedAcquisitionDate;
-                opportunity.CampaingsList = new List<Campaign>();
-                if (opportunityDto.CampaingsIds != null)
-                {
-                    foreach (var campaingId in opportunityDto.CampaingsIds)
-                    {
-                        var campaign = await _context.Campaigns.FindAsync(campaingId);
-                        if (campaign != null)
-                        {
-                            opportunity.CampaingsList.Add(campaign);
-                        }
-                    }
-                }
+                opportunity.CampaignId = opportunityDto.CampaignId;
+                opportunity.Campaign = campaign;
+                opportunity.InteractionId = opportunityDto.InteractionId;
+                opportunity.Interaction = interaction;
+
                 _context.Update(opportunity);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Opportunity>
@@ -195,7 +198,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<Opportunity>> DeleteAsync(int id)
         {
             var opportunity = await _context.Opportunities
-                .Include(x => x.CampaingsList)
+                .Include(x => x.Campaign)
+                .Include(x => x.Interaction)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (opportunity == null)
             {
@@ -207,7 +211,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             }
             try
             {
-                _context.Campaigns.RemoveRange(opportunity.CampaingsList!);
+                _context.Campaigns.RemoveRange(opportunity.Campaign!);
                 _context.Opportunities.Remove(opportunity);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Opportunity>

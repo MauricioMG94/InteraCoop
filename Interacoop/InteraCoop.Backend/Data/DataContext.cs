@@ -2,6 +2,8 @@
 using InteraCoop.Shared.Entities;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Reflection.Metadata;
+using Microsoft.Extensions.Hosting;
 
 namespace InteraCoop.Backend.Data  
 {
@@ -31,6 +33,21 @@ namespace InteraCoop.Backend.Data
             modelBuilder.Entity<State>().HasIndex(x => new { x.CountryId, x.Name }).IsUnique();
             modelBuilder.Entity<Client>().HasIndex(x => x.Document).IsUnique();
             modelBuilder.Entity<User>().HasIndex(x => x.Id).IsUnique();
+            modelBuilder.Entity<Opportunity>()
+                .HasOne(e => e.Campaign)
+                .WithMany()
+                .HasForeignKey(e => e.CampaignId)
+                .IsRequired();
+            modelBuilder.Entity<Interaction>()
+                .HasOne(e => e.Opportunity)
+                .WithOne(e => e.Interaction)
+                .HasForeignKey<Opportunity>(e => e.InteractionId)
+                .IsRequired();
+            modelBuilder.Entity<Interaction>()
+               .HasOne(i => i.Client)
+               .WithMany()
+               .HasForeignKey(i => i.ClientId)
+               .IsRequired();
             DisableCascadingDelete(modelBuilder);
         }
 

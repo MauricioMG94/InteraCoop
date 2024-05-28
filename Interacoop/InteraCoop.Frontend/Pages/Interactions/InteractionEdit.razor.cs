@@ -1,5 +1,4 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
-using InteraCoop.Frontend.Pages.Opportunities;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
@@ -11,14 +10,10 @@ namespace InteraCoop.Frontend.Pages.Interactions
     [Authorize(Roles = "Employee")]
     public partial class InteractionEdit
     {
-        private InteractionDto interactionDto = new()
-        {
-            ClientsIds = new List<int>(),
-        };
+        private InteractionDto interactionDto = new() {};
 
         private InteractionForm? interactionForm;
-        private List<Client> selectedInteractions = new();
-        private List<Client> nonSelectedInteractions = new();
+
         private bool loading = true;
         private Interaction? interaction;
         [Parameter] public int InteractionId { get; set; }
@@ -29,7 +24,6 @@ namespace InteraCoop.Frontend.Pages.Interactions
         protected override async Task OnInitializedAsync()
         {
             await LoadInteractionAsync();
-            await LoadClientsAsync();
         }
 
         private async Task LoadInteractionAsync()
@@ -64,39 +58,9 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 Office = interaction.Office,
                 AuditDate = interaction.AuditDate,
                 AuditUser = interaction.AuditUser,
-                ClientsIds = interaction.ClientsList!.Select(x => x.Id).ToList()
+                ClientId = interaction.ClientId,
             };
         }
-
-        private async Task LoadClientsAsync()
-        {
-            loading = true;
-            var httpActionResponse = await Repository.GetAsync<List<Client>>("/api/clients");
-
-            if (httpActionResponse.Error)
-            {
-                loading = false;
-                var message = await httpActionResponse.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
-                return;
-            }
-
-            var clients = httpActionResponse.Response!;
-            foreach (var client in clients!)
-            {
-                var found = interaction?.ClientsList?.FirstOrDefault(x => x.Id == client.Id);
-                if (found == null)
-                {
-                    nonSelectedInteractions.Add(client);
-                }
-                else
-                {
-                    selectedInteractions.Add(client);
-                }
-            }
-            loading = false;
-        }
-
        
         private async Task SaveChangesAsync()
         {

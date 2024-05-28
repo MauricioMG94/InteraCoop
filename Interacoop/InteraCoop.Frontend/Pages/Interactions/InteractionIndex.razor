@@ -47,13 +47,7 @@
 @*                                         - @interaction.EndDate.ToString("hh:mm tt")
  *@                                    </td>
                                     <td class="col-4">
-                                        @if (interaction.ClientsList!= null)
-                                        {
-                                            @foreach (var client in interaction.ClientsList)
-                                            {
-                                                @client.Name
-                                            }
-                                        }
+                                        @interaction.Client.Name
                                     </td>
                                     <td class="col-5">
                                         <MudTooltip Text="Ver interacción" Color="Color.Tertiary" Placement="Placement.Left">
@@ -104,7 +98,7 @@
                                                 </div>
                                             </li>
                                             <li class="list-group-item card-subTitle">
-                                                Información de cliente:
+                                                @* Información de cliente:
                                                 @if (interaction.ClientsList != null && interaction.ClientsList.Any())
                                                 {
                                                     <div class="list-group">
@@ -143,7 +137,7 @@
                                                         </a>
                                                         <span class="subtitle">Añadir cliente</span>
                                                     </MudTooltip>
-                                                }
+                                                } *@
                                             </li>
                                         </ul>
                                     </div>

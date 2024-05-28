@@ -9,7 +9,7 @@ namespace InteraCoop.Shared.Dtos
 
         [Display(Name = "Identificador de campaña")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        public string CampaignId { get; set; } = null!;
+        public string CampaignIdentifier { get; set; } = null!;
 
         [Display(Name = "Nombre de campaña")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
@@ -36,7 +36,6 @@ namespace InteraCoop.Shared.Dtos
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         //[DateGreaterThan(nameof(StartDate), ErrorMessage = "La fecha de fin debe ser posterior a la fecha de inicio.")]
         public DateTime EndDate { get; set; }
-
         public List<int>? ProductsIds { get; set; }
     }
 }
