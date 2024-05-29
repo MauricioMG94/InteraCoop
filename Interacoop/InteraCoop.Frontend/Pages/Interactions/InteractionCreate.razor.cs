@@ -4,6 +4,8 @@ using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using Microsoft.VisualBasic;
+using System.Text.Json;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
@@ -45,14 +47,26 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 return;
             }
 
-            Return();
+            var data = httpActionResponse.HttpResponseMessage.Content.ReadAsStringAsync().Result;
+            using (JsonDocument doc = JsonDocument.Parse(data))
+            {
+                int newId = doc.RootElement.GetProperty("id").GetInt32();
+                Return();
+                RedirectToOpportunity(newId);
+            }
+            
         }
 
         private void Return()
         {
             interactionForm!.FormPostedSuccessfully = true;
-            NavigationManager.NavigateTo($"/interactions");
         }
+
+        private void RedirectToOpportunity(int objectId)
+        {
+            NavigationManager.NavigateTo($"/interaction/opportunity/create/{objectId}");
+        }
+
 
     }
 }

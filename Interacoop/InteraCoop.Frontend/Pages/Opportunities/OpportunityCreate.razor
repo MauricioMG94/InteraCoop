@@ -1,5 +1,4 @@
-﻿@* @page "/interaction/opportunity/create/{InteractionId:int}" *@
-@page "/opportunity/create"
+﻿@page "/interaction/opportunity/create/{InteractionId:int}"
 
 @if (loading)
 {
@@ -12,6 +11,6 @@ else
         OnValidSubmit="CreateAsync" 
         ReturnAction="Return" 
         InteractionId="InteractionId"
-        FormName="Crear oportunidad"
+        FormName=@formName
         CardName="Nueva Oportunidad"/>
 }

@@ -7,10 +7,6 @@
         <div class="card-header">
             <span>
                 <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
-                @if (@FormName.ToLower().Contains("crear"))
-                {
-                    <span>Para la interacción: @InteractionId</span>
-                }
                 <a class="float-end">
                     <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
                         @if (@FormName.ToLower().Contains("editar"))
