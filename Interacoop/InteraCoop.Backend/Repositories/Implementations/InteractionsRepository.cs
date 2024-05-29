@@ -21,7 +21,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<Interaction>> GetAsync(int id)
         {
             var interaction = await _context.Interactions
-                .Include(x => x.ClientsList!)
+                .Include(x => x.Client!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (interaction == null)
@@ -53,7 +53,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public override async Task<ActionResponse<IEnumerable<Interaction>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.Interactions
-                .Include(x => x.ClientsList)
+                .Include(x => x.Client)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
@@ -90,6 +90,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
         {
             try
             {
+                var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == interactionDto.ClientId);
+
                 var newInteraction = new Interaction
                 {
                     InteractionType = interactionDto.InteractionType,
@@ -101,22 +103,15 @@ namespace InteraCoop.Backend.Repositories.Implementations
                     Office = interactionDto.Office,
                     AuditDate = interactionDto.AuditDate,
                     AuditUser = interactionDto.AuditUser,
-                    ClientsList = new List<Client>(),
+                    ClientId = interactionDto.ClientId,
+                    Client = client,
                 };
-                foreach (var clientId in interactionDto.ClientsIds!)
-                {
-                    var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == clientId);
-                    if (client != null)
-                    {
-                        newInteraction.ClientsList.Add(client);
-                    }
-                }
                 _context.Add(newInteraction);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Interaction>
                 {
                     WasSuccess = true,
-                    Result = newInteraction
+                    Result = newInteraction,
                 };
             }
             catch (DbUpdateException)
@@ -136,12 +131,15 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 };
             }
         }
+
         public async Task<ActionResponse<Interaction>> UpdateAsync(InteractionDto interactionDto)
         {
             try
             {
+                var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == interactionDto.ClientId);
+
                 var interaction = await _context.Interactions
-                    .Include(x => x.ClientsList)
+                    .Include(x => x.Client)
                     .FirstOrDefaultAsync(x => x.Id == interactionDto.Id);
                 if (interaction == null)
                 {
@@ -151,7 +149,6 @@ namespace InteraCoop.Backend.Repositories.Implementations
                         Message = "La Interacción no existe"
                     };
                 }
-                //Duda
                 interaction.InteractionType = interactionDto.InteractionType;
                 interaction.InteractionCreationDate = interactionDto.InteractionCreationDate;
                 interaction.StartDate = interactionDto.StartDate;
@@ -161,18 +158,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 interaction.Office = interactionDto.Office;
                 interaction.AuditDate = interactionDto.AuditDate;
                 interaction.AuditUser = interactionDto.AuditUser;
-                interaction.ClientsList = new List<Client>();
-                if (interactionDto.ClientsIds != null)
-                {
-                    foreach (var clientId in interactionDto.ClientsIds)
-                    {
-                        var client = await _context.Clients.FindAsync(clientId);
-                        if (client != null)
-                        {
-                            interaction.ClientsList.Add(client);
-                        }
-                    }
-                }
+                interaction.ClientId = interactionDto.ClientId;
+                interaction.Client = client;
                 _context.Update(interaction);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Interaction>
@@ -201,9 +188,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
 
         public override async Task<ActionResponse<Interaction>> DeleteAsync(int id)
         {
-            var interaction = await _context.Interactions
-                .Include(x => x.ClientsList)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var interaction = await _context.Interactions.FirstOrDefaultAsync(x => x.Id == id);
             if (interaction == null)
             {
                 return new ActionResponse<Interaction>
@@ -214,7 +199,6 @@ namespace InteraCoop.Backend.Repositories.Implementations
             }
             try
             {
-                _context.Clients.RemoveRange(interaction.ClientsList!);
                 _context.Interactions.Remove(interaction);
                 await _context.SaveChangesAsync();
                 return new ActionResponse<Interaction>

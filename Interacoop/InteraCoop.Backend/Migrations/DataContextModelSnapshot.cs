@@ -30,7 +30,7 @@ namespace InteraCoop.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CampaignId")
+                    b.Property<string>("CampaignIdentifier")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -117,8 +117,9 @@ namespace InteraCoop.Backend.Migrations
                     b.Property<int>("Document")
                         .HasColumnType("int");
 
-                    b.Property<int>("DocumentType")
-                        .HasColumnType("int");
+                    b.Property<string>("DocumentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("InteractionId")
                         .HasColumnType("int");
@@ -201,8 +202,8 @@ namespace InteraCoop.Backend.Migrations
 
                     b.Property<string>("ObservationsInteraction")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Office")
                         .IsRequired()
@@ -228,13 +229,17 @@ namespace InteraCoop.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CampaignId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("EstimatedAcquisitionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("OpportunityObservations")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime>("RecordDate")
                         .HasColumnType("datetime2");
@@ -245,6 +250,9 @@ namespace InteraCoop.Backend.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CampaignId")
+                        .IsUnique();
 
                     b.HasIndex("Id")
                         .IsUnique();
@@ -401,6 +409,9 @@ namespace InteraCoop.Backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -581,6 +592,17 @@ namespace InteraCoop.Backend.Migrations
                     b.Navigation("City");
                 });
 
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>
+                {
+                    b.HasOne("InteraCoop.Shared.Entities.Campaign", "Campaign")
+                        .WithOne("Opportunity")
+                        .HasForeignKey("InteraCoop.Shared.Entities.Opportunity", "CampaignId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Campaign");
+                });
+
             modelBuilder.Entity("InteraCoop.Shared.Entities.Product", b =>
                 {
                     b.HasOne("InteraCoop.Shared.Entities.Campaign", null)
@@ -664,6 +686,8 @@ namespace InteraCoop.Backend.Migrations
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Campaign", b =>
                 {
+                    b.Navigation("Opportunity");
+
                     b.Navigation("ProductsList");
                 });
 

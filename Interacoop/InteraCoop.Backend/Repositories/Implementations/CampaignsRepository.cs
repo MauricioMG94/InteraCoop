@@ -97,7 +97,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             {
                 var newCampaign = new Campaign
                 {
-                    CampaignId = campaignDto.CampaignId,
+                    CampaignIdentifier = campaignDto.CampaignIdentifier,
                     CampaignName = campaignDto.CampaignName,
                     CampaignType = campaignDto.CampaignType,
                     Status = campaignDto.Status,
@@ -162,7 +162,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                     };
                 }
 
-                campaign.CampaignId = campaignDto.CampaignId;
+                campaign.CampaignIdentifier = campaignDto.CampaignIdentifier;
                 campaign.CampaignName = campaignDto.CampaignName;
                 campaign.CampaignType = campaignDto.CampaignType;
                 campaign.Status = campaignDto.Status;

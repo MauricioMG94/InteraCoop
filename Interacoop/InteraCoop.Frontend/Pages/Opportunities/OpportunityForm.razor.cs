@@ -1,11 +1,11 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
-using InteraCoop.Frontend.Helpers;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Authorization;
+using InteraCoop.Frontend.Repositories;
 
 namespace InteraCoop.Frontend.Pages.Opportunities
 {
@@ -13,16 +13,15 @@ namespace InteraCoop.Frontend.Pages.Opportunities
     public partial class OpportunityForm
     {
         private EditContext editContext = null!;
-
-        private List<MultipleSelectorModel> selected { get; set; } = new();
-        private List<MultipleSelectorModel> nonSelected { get; set; } = new();
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+        [Inject] private IRepository Repository { get; set; } = null!;
         [Parameter, EditorRequired] public OpportunityDto Opportunity { get; set; } = null!;
         [Parameter, EditorRequired] public EventCallback OnValidSubmit { get; set; }
         [Parameter, EditorRequired] public EventCallback ReturnAction { get; set; }
-        [Parameter, EditorRequired] public List<Campaign> nonSelectedOpportunities { get; set; } = new();
-        [Parameter] public List<Campaign> selectedOpportunities { get; set; } = new();
         [Parameter] public required String FormName { get; set; }
+        [Parameter] public required String CardName { get; set; }
+        [Parameter] public int InteractionId { get; set; }
+        public List<Campaign> Campaigns { get; set; } = new();        
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override void OnInitialized()
@@ -31,14 +30,31 @@ namespace InteraCoop.Frontend.Pages.Opportunities
 
             Opportunity.RecordDate = DateTime.Today;
             Opportunity.EstimatedAcquisitionDate = DateTime.Today;
+        }
 
-            selected = selectedOpportunities.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.CampaignName)).ToList();
-            nonSelected = nonSelectedOpportunities.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.CampaignName)).ToList();
+        protected override async Task OnInitializedAsync()
+        {
+            await LoadListAsync();
+        }
+
+
+        private async Task<bool> LoadListAsync()
+        {
+            var url = $"api/campaigns";
+
+            var responseHttp = await Repository.GetAsync<List<Campaign>>(url);
+            if (responseHttp.Error)
+            {
+                var message = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+                return false;
+            }
+            Campaigns = responseHttp.Response;
+            return true;
         }
 
         private async Task OnDataAnnotationsValidatedAsync()
         {
-            Opportunity.CampaingsIds = selected.Select(x => int.Parse(x.Key)).ToList();
             await OnValidSubmit.InvokeAsync();
         }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InteraCoop.Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUsers : Migration
+    public partial class initialDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,7 +49,7 @@ namespace InteraCoop.Backend.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ObservationsInteraction = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ObservationsInteraction = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Office = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     AuditDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AuditUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
@@ -57,22 +57,6 @@ namespace InteraCoop.Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Interactions", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Opportunities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Status = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    OpportunityObservations = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    RecordDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EstimatedAcquisitionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Opportunities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,32 +101,6 @@ namespace InteraCoop.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Campaigns",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CampaignId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CampaignName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CampaignType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OpportunityId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Campaigns", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Campaigns_Opportunities_OpportunityId",
-                        column: x => x.OpportunityId,
-                        principalTable: "Opportunities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -158,31 +116,6 @@ namespace InteraCoop.Backend.Migrations
                         name: "FK_Cities_States_StateId",
                         column: x => x.StateId,
                         principalTable: "States",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Quota = table.Column<int>(type: "int", nullable: false),
-                    Term = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Value = table.Column<double>(type: "float", nullable: true),
-                    Rate = table.Column<double>(type: "float", nullable: true),
-                    CampaignId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Campaigns_CampaignId",
-                        column: x => x.CampaignId,
-                        principalTable: "Campaigns",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -234,7 +167,7 @@ namespace InteraCoop.Backend.Migrations
                     CityId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Document = table.Column<int>(type: "int", nullable: false),
-                    DocumentType = table.Column<int>(type: "int", nullable: false),
+                    DocumentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telephone = table.Column<int>(type: "int", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RegistryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -344,6 +277,74 @@ namespace InteraCoop.Backend.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Campaigns",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CampaignIdentifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CampaignName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CampaignType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OpportunityId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Campaigns", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Opportunities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    OpportunityObservations = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    RecordDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstimatedAcquisitionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CampaignId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Opportunities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Opportunities_Campaigns_CampaignId",
+                        column: x => x.CampaignId,
+                        principalTable: "Campaigns",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Quota = table.Column<int>(type: "int", nullable: false),
+                    Term = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<double>(type: "float", nullable: true),
+                    Rate = table.Column<double>(type: "float", nullable: true),
+                    CampaignId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Campaigns_CampaignId",
+                        column: x => x.CampaignId,
+                        principalTable: "Campaigns",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -380,6 +381,12 @@ namespace InteraCoop.Backend.Migrations
                 name: "IX_AspNetUsers_CityId",
                 table: "AspNetUsers",
                 column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Id",
+                table: "AspNetUsers",
+                column: "Id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -434,6 +441,12 @@ namespace InteraCoop.Backend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Opportunities_CampaignId",
+                table: "Opportunities",
+                column: "CampaignId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Opportunities_Id",
                 table: "Opportunities",
                 column: "Id",
@@ -455,11 +468,23 @@ namespace InteraCoop.Backend.Migrations
                 table: "States",
                 columns: new[] { "CountryId", "Name" },
                 unique: true);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Campaigns_Opportunities_OpportunityId",
+                table: "Campaigns",
+                column: "OpportunityId",
+                principalTable: "Opportunities",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Campaigns_Opportunities_OpportunityId",
+                table: "Campaigns");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -491,19 +516,19 @@ namespace InteraCoop.Backend.Migrations
                 name: "Interactions");
 
             migrationBuilder.DropTable(
-                name: "Campaigns");
-
-            migrationBuilder.DropTable(
                 name: "Cities");
-
-            migrationBuilder.DropTable(
-                name: "Opportunities");
 
             migrationBuilder.DropTable(
                 name: "States");
 
             migrationBuilder.DropTable(
                 name: "Countries");
+
+            migrationBuilder.DropTable(
+                name: "Opportunities");
+
+            migrationBuilder.DropTable(
+                name: "Campaigns");
         }
     }
 }

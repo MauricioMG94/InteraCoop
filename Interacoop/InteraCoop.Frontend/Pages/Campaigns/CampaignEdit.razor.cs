@@ -55,7 +55,7 @@ namespace InteraCoop.Frontend.Pages.Campaigns
             return new CampaignDto
             {
                 Id = campaign.Id,
-                CampaignId = campaign.CampaignId,
+                CampaignIdentifier = campaign.CampaignIdentifier,
                 CampaignName = campaign.CampaignName,
                 CampaignType = campaign.CampaignType,
                 Description = campaign.Description!,

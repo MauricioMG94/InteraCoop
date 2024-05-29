@@ -10,16 +10,13 @@ namespace InteraCoop.Frontend.Pages.Opportunities
     [Authorize(Roles = "Employee")]
     public partial class OpportunityCreate
     {
-        private OpportunityDto opportunity = new()
-        {
-            CampaingsIds = new List<int>()
-        };
+        private OpportunityDto opportunity = new() {};
 
         private OpportunityForm? opportunityForm;
-        private List<Campaign> selectedOpportunities = new();
-        private List<Campaign> nonSelectedOpportunities = new();
-        private bool loading = true;
 
+        private bool loading = true;
+        public List<Campaign> Campaigns { get; set; } = new();
+        [Parameter] public int InteractionId { get; set; }
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
@@ -36,7 +33,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
                 return;
             }
 
-            nonSelectedOpportunities = httpActionResponse.Response!;
+            Campaigns = httpActionResponse.Response!;
         }
 
         private async Task CreateAsync()

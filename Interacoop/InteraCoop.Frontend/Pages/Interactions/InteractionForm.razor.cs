@@ -1,11 +1,11 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
-using InteraCoop.Frontend.Helpers;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Authorization;
+using InteraCoop.Frontend.Repositories;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
@@ -13,17 +13,14 @@ namespace InteraCoop.Frontend.Pages.Interactions
     public partial class InteractionForm
     {
         private EditContext editContext = null!;
-
-        private List<MultipleSelectorModel> selected { get; set; } = new();
-        private List<MultipleSelectorModel> nonSelected { get; set; } = new();
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+        [Inject] private IRepository Repository { get; set; } = null!;
         [Parameter, EditorRequired] public InteractionDto Interaction { get; set; } = null!;
         [Parameter, EditorRequired] public EventCallback OnValidSubmit { get; set; }
         [Parameter, EditorRequired] public EventCallback ReturnAction { get; set; }
-        [Parameter, EditorRequired] public List<Client> nonSelectedInteractions { get; set; } = new();
-        [Parameter] public List<Client> selectedInteractions { get; set; } = new();
         [Parameter] public required String FormName { get; set; }
         [Parameter] public required String CardName { get; set; }
+        public List<Client> Clients { get; set; } = new();
         public bool FormPostedSuccessfully { get; set; } = false;
 
         protected override void OnInitialized()
@@ -35,14 +32,30 @@ namespace InteraCoop.Frontend.Pages.Interactions
             Interaction.EndDate = DateTime.Today;
             Interaction.AuditDate = DateTime.Today;
             Interaction.AuditUser = "Admin";
+        }
 
-            selected = selectedInteractions.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.Name)).ToList();
-            nonSelected = nonSelectedInteractions.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.Name)).ToList();
+        protected override async Task OnInitializedAsync()
+        {
+            await LoadListAsync();
+        }
+
+        private async Task<bool> LoadListAsync()
+        {
+            var url = $"api/clients";
+
+            var responseHttp = await Repository.GetAsync<List<Client>>(url);
+            if (responseHttp.Error)
+            {
+                var message = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+                return false;
+            }
+            Clients = responseHttp.Response;
+            return true;
         }
 
         private async Task OnDataAnnotationsValidatedAsync()
         {
-            Interaction.ClientsIds = selected.Select(x => int.Parse(x.Key)).ToList();
             await OnValidSubmit.InvokeAsync();
         }
 

@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-6">
                     <div style="padding-bottom: 1rem;">
-                        <MudTextField @bind-Value="Campaign.CampaignId" Label="Identificador de campaña:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Grid3x3" Clearable="true" HideSpinButtons="true" />
-                        <ValidationMessage For="@(() => Campaign.CampaignId)" />
+                        <MudTextField @bind-Value="Campaign.CampaignIdentifier" Label="Identificador de campaña:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Grid3x3" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Campaign.CampaignIdentifier)" />
                     </div>
                     <div style="padding-bottom: 1rem;">
                         <MudTextField @bind-Value="Campaign.CampaignName" Label="Nombre de campaña:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.DriveFileRenameOutline" Clearable="true" HideSpinButtons="true" />
@@ -80,10 +80,10 @@
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent>
-                            @if (Campaign.CampaignId != null )
+                            @if (Campaign.CampaignIdentifier != null)
                             {
                                 <MudItem>
-                                    Identificador: <b>@Campaign.CampaignId</b> 
+                                    Identificador: <b>@Campaign.CampaignIdentifier</b>
                                 </MudItem>
                             }
                             @if (Campaign.CampaignName!= null)
@@ -113,13 +113,13 @@
                             @if (Campaign.StartDate != null)
                             {
                                 <MudItem>
-                                    Inicio: <b>@Campaign.StartDate</b>
+                                    Inicio: <b>@Campaign.StartDate.ToString("dd/MM/yyyy")</b>
                                 </MudItem>
                             }
                             @if (Campaign.EndDate != null)
                             {
                                 <MudItem>
-                                    Fin: <b>@Campaign.EndDate</b>
+                                    Fin: <b>@Campaign.EndDate.ToString("dd/MM/yyyy")</b>
                                 </MudItem>
                             }
                         </MudCardContent>

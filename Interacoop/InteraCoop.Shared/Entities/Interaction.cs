@@ -9,7 +9,6 @@ namespace InteraCoop.Shared.Entities
 {
     public class Interaction
     {
-
         public int Id
         { get; set; }
 
@@ -64,8 +63,7 @@ namespace InteraCoop.Shared.Entities
         { get; set; } = null!;
 
         [Display(Name = "Cliente")]
-        public ICollection<Client>? ClientsList { get; set; }
-
-        // public ICollection<Campaign>? UserList { get; set; }//
+        public int ClientId { get; set; }
+        public Client Client { get; set; } = null!;
     }
 }
