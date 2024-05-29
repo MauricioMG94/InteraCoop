@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
@@ -114,10 +115,11 @@ namespace InteraCoop.Frontend.Pages.Products
 
         private async Task Delete(int productId)
         {
+            var product = Products.FirstOrDefault(x => x.Id == productId);
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
                 Title = "Confirmación",
-                Text = "¿Esta seguro que quieres borrar el registro?",
+                Text = $"¿Esta seguro que quieres borrar el producto: {product.Name}?",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true
             });
@@ -157,6 +159,17 @@ namespace InteraCoop.Frontend.Pages.Products
             int page = 1;
             await LoadAsync(page);
             await SelectedPageAsync(page);
+        }
+
+        private string GetBadgeStyle(string propertyToColor)
+        {
+            return propertyToColor switch
+            {
+                "Pasivo" => "background-color:olivedrab",
+                "Activo" => "background-color:#7E6FFF",
+                "Transaccional" => "background-color:goldenrod",
+                _ => "background-color:cornflowerblue"
+            };
         }
     }
 }

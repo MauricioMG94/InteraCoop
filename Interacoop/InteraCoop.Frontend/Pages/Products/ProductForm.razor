@@ -30,7 +30,7 @@
                         <ValidationMessage For="@(() => Product.ProductType)" />
                     </div>
                     <div class="my-3">
-                        <MudNumericField @bind-Value="Product.Term" Label="Plazo en años" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AccessTime" Clearable="true" HideSpinButtons="true" />
+                        <MudTextField @bind-Value="Product.Term" Label="Plazo en años" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AccessTime" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Product.Term)" />
                     </div>
                     <div class="my-3">

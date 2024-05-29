@@ -182,5 +182,17 @@ namespace InteraCoop.Frontend.Pages.Interactions
             });
             await toast.FireAsync(icon: SweetAlertIcon.Success, message: "Registro borrado con éxito.");
         }
+
+        private string GetBadgeStyle(string propertyToColor)
+        {
+            return propertyToColor switch
+            {
+                "Visita a cliente" => "background-color:olivedrab",
+                "Visita en oficina" => "background-color:goldenrod",
+                "Llamada entrante" => "background-color:cornflowerblue",
+                "Llamada saliente" => "background-color: #7E6FFF",
+                _ => "background-color:cornflowerblue"
+            };
+        }
     }
 }

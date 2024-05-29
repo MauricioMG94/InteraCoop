@@ -34,7 +34,7 @@
                             {
                                 <tr class="table-row">
                                     <td class="col-1">
-                                        <span class="badge text-bg-primary">
+                                        <span class="badge text-bg-primary" style="@GetBadgeStyle(interaction.InteractionType)">
                                             @interaction.InteractionType
                                         </span>
                                     </td>
@@ -74,7 +74,9 @@
                                             <li class="list-group-item card-subTitle">
                                                 Información de Interacción:
                                                 <div class="list-group-item subCard">
-                                                    <span class="badge badge-pill badge-success">@interaction.InteractionType</span>
+                                                    <span class="badge badge-pill badge-success" style="@GetBadgeStyle(interaction.InteractionType)">
+                                                        @interaction.InteractionType
+                                                    </span>
                                                     <div>
                                                         <span class="subtitle">Fecha de inicio:</span>
                                                         <span> @interaction.StartDate.ToString("dd/MM/yyyy")</span>

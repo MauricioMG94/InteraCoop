@@ -111,10 +111,11 @@ namespace InteraCoop.Frontend.Pages.Campaigns
 
         private async Task Delete(int campaignId)
         {
+            var campaign = Campaigns.FirstOrDefault(x => x.Id == campaignId);
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
                 Title = "Confirmación",
-                Text = "¿Esta seguro que quieres borrar el registro?",
+                Text = $"¿Esta seguro que quieres borrar la campaña: {campaign.CampaignName}?",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true
             });
@@ -154,6 +155,17 @@ namespace InteraCoop.Frontend.Pages.Campaigns
             int page = 1;
             await LoadAsync(page);
             await SelectedPageAsync(page);
+        }
+
+        private string GetBadgeStyle(string propertyToColor)
+        {
+            return propertyToColor switch
+            {
+                "Sin asignar" => "background-color:olivedrab",
+                "Asignada" => "background-color:#7E6FFF",
+                "Vencida" => "background-color:goldenrod",
+                _ => "background-color:cornflowerblue"
+            };
         }
     }
 }

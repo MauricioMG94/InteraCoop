@@ -35,7 +35,9 @@
                                         @product.Name
                                     </td>
                                     <td class="col-2">
-                                        @product.ProductType
+                                        <span class="badge text-bg-primary" style="@GetBadgeStyle(product.ProductType)">
+                                            @product.ProductType
+                                        </span>
                                     </td>
                                     <td class="col-3">
                                         <MudTooltip Text="Ver producto" Color="Color.Tertiary" Placement="Placement.Left">
@@ -62,7 +64,9 @@
                                             <li class="list-group-item card-subTitle">
                                                 Información de producto:
                                                 <div class="list-group-item subCard">
-                                                    <span class="badge badge-pill badge-success">@product.ProductType</span>
+                                                    <span class="badge badge-pill badge-success" style="@GetBadgeStyle(product.ProductType)">
+                                                        @product.ProductType
+                                                    </span>
                                                     <div>
                                                         @if (product.Quota != 0)
                                                         {

@@ -127,49 +127,49 @@ namespace InteraCoop.Backend.Data
             {
                 var products1 = new List<Product>
         {
-            new Product { ProductType = "Tarjeta de crédito", Name = "Tarjeta Visa", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
-            new Product { ProductType = "Tarjeta de crédito", Name = "Tarjeta Mastercard", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 }
+            new Product { ProductType = "Activo", Name = "Tarjeta Visa", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
+            new Product { ProductType = "Activo", Name = "Tarjeta Mastercard", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 }
         };
                 var products2 = new List<Product>
         {
-            new Product { ProductType = "Crédito hipotecario", Name = "Crédito Hipotecario Banco X", Quota = 0, Term = "20 años", Value = 5000000, Rate = 5.5 },
-            new Product { ProductType = "Crédito hipotecario", Name = "Crédito Hipotecario Banco Y", Quota = 0, Term = "25 años", Value = 6000000, Rate = 6.0 }
+            new Product { ProductType = "Pasivo", Name = "Crédito Hipotecario Banco X", Quota = 0, Term = "20 años", Value = 5000000, Rate = 5.5 },
+            new Product { ProductType = "Pasivo", Name = "Crédito Hipotecario Banco Y", Quota = 0, Term = "25 años", Value = 6000000, Rate = 6.0 }
         };
                 var products3 = new List<Product>
         {
-            new Product { ProductType = "Leasing habitacional", Name = "Leasing Habitacional Banco Z", Quota = 0, Term = "15 años", Value = 7000000, Rate = 6.5 },
-            new Product { ProductType = "Leasing habitacional", Name = "Leasing Habitacional Banco W", Quota = 0, Term = "10 años", Value = 8000000, Rate = 7.0 }
+            new Product { ProductType = "Pasivo", Name = "Leasing Habitacional Banco Z", Quota = 0, Term = "15 años", Value = 7000000, Rate = 6.5 },
+            new Product { ProductType = "Pasivo", Name = "Leasing Habitacional Banco W", Quota = 0, Term = "10 años", Value = 8000000, Rate = 7.0 }
         };
                 var products4 = new List<Product>
         {
-            new Product { ProductType = "Cuenta de ahorros", Name = "Cuenta de Ahorros Banco A", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
-            new Product { ProductType = "Fondo de inversión", Name = "Fondo de Inversión Banco B", Quota = 0, Term = "5 años", Value = 10000000, Rate = 8.0 }
+            new Product { ProductType = "Transaccional", Name = "Cuenta de Ahorros Banco A", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
+            new Product { ProductType = "Transaccional", Name = "Fondo de Inversión Banco B", Quota = 0, Term = "5 años", Value = 10000000, Rate = 8.0 }
         };
                 var products5 = new List<Product>
         {
-            new Product { ProductType = "Seguro de vida", Name = "Seguro de Vida ABC", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
-            new Product { ProductType = "Seguro vehicular", Name = "Seguro Vehicular DEF", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 }
+            new Product { ProductType = "Activo", Name = "Seguro de Vida ABC", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 },
+            new Product { ProductType = "Activo", Name = "Seguro Vehicular DEF", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 }
         };
 
                 var products6 = new List<Product>
         {
-            new Product { ProductType = "Depósito a plazo", Name = "Depósito a Plazo Banco C", Quota = 0, Term = "1 año", Value = 5000000, Rate = 4.5 },
-            new Product { ProductType = "Fondo mutuo", Name = "Fondo Mutuo Banco D", Quota = 0, Term = "3 años", Value = 15000000, Rate = 7.0 }
+            new Product { ProductType = "Transaccional", Name = "Depósito a Plazo Banco C", Quota = 0, Term = "1 año", Value = 5000000, Rate = 4.5 },
+            new Product { ProductType = "Transaccional", Name = "Fondo Mutuo Banco D", Quota = 0, Term = "3 años", Value = 15000000, Rate = 7.0 }
         };
-                var product7 = new Product { ProductType = "Cuenta de ahorros", Name = "Cuenta de Ahorros Banco A", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 };
-                var product8 = new Product { ProductType = "Seguro de vida", Name = "Seguro de Vida ABC", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 };
-                var product9 = new Product { ProductType = "Depósito a plazo", Name = "Depósito a Plazo Banco C", Quota = 0, Term = "1 año", Value = 5000000, Rate = 4.5 };
-                var product10 = new Product { ProductType = "Fondo mutuo", Name = "Fondo Mutuo Banco D", Quota = 0, Term = "3 años", Value = 15000000, Rate = 7.0 };
-                AddCampaigns("CAM001", "Campaña de Tarjetas de Crédito", "Activa", "Promoción", "¡Solicita tu tarjeta de crédito con beneficios exclusivos!", DateTime.Now, DateTime.Now.AddDays(30), products1);
-                AddCampaigns("CAM002", "Campaña de Créditos Hipotecarios", "Activa", "Promoción", "¡Adquiere tu casa propia con nuestras opciones de crédito hipotecario!", DateTime.Now.AddDays(35), DateTime.Now.AddDays(65), products2);
-                AddCampaigns("CAM003", "Campaña de Leasing Habitacional", "Activa", "Promoción", "¡Haz realidad el sueño de tu hogar con nuestro leasing habitacional!", DateTime.Now.AddDays(70), DateTime.Now.AddDays(100), products3);
-                AddCampaigns("CAM007", "Campaña de Productos de Ahorro e Inversión", "Activa", "Promoción", "¡Descubre nuestras opciones para hacer crecer tu dinero!", DateTime.Now.AddDays(105), DateTime.Now.AddDays(135), products4);
-                AddCampaigns("CAM008", "Campaña de Seguros", "Activa", "Promoción", "¡Protege lo que más importa con nuestros seguros!", DateTime.Now.AddDays(140), DateTime.Now.AddDays(170), products5);
-                AddCampaigns("CAM009", "Campaña de Inversiones", "Activa", "Promoción", "¡Haz crecer tu dinero con nuestras opciones de inversión!", DateTime.Now.AddDays(175), DateTime.Now.AddDays(205), products6);
-                AddCampaigns("CAM004", "Campaña de Cuenta de Ahorros", "Activa", "Promoción", "¡Abre una cuenta de ahorros y empieza a ahorrar hoy mismo!", DateTime.Now, DateTime.Now.AddDays(30), products1 );
-                AddCampaigns("CAM005", "Campaña de Seguro de Vida", "Activa", "Promoción", "¡Protege a tus seres queridos con nuestro seguro de vida!", DateTime.Now.AddDays(35), DateTime.Now.AddDays(65), products3);
-                AddCampaigns("CAM006", "Campaña de Depósito a Plazo", "Activa", "Promoción", "¡Haz crecer tu dinero con nuestro depósito a plazo!", DateTime.Now.AddDays(70), DateTime.Now.AddDays(100), products4 );
-                AddCampaigns("CAM007", "Campaña de Fondo Mutuo", "Activa", "Promoción", "¡Invierte en nuestro fondo mutuo y alcanza tus metas financieras!", DateTime.Now.AddDays(105), DateTime.Now.AddDays(135), products6 );
+                var product7 = new Product { ProductType = "Activo", Name = "Cuenta de Ahorros Banco A", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 };
+                var product8 = new Product { ProductType = "Pasivo", Name = "Seguro de Vida ABC", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 };
+                var product9 = new Product { ProductType = "Transaccional", Name = "Depósito a Plazo Banco C", Quota = 0, Term = "1 año", Value = 5000000, Rate = 4.5 };
+                var product10 = new Product { ProductType = "Transaccional", Name = "Fondo Mutuo Banco D", Quota = 0, Term = "3 años", Value = 15000000, Rate = 7.0 };
+                AddCampaigns("CAM001", "Campaña de Tarjetas de Crédito", "Sin asignar", "Fidelización", "¡Solicita tu tarjeta de crédito con beneficios exclusivos!", DateTime.Now, DateTime.Now.AddDays(30), products1);
+                AddCampaigns("CAM002", "Campaña de Créditos Hipotecarios", "Sin asignar", "Fidelización", "¡Adquiere tu casa propia con nuestras opciones de crédito hipotecario!", DateTime.Now.AddDays(35), DateTime.Now.AddDays(65), products2);
+                AddCampaigns("CAM003", "Campaña de Leasing Habitacional", "Sin asignar", "Fidelización", "¡Haz realidad el sueño de tu hogar con nuestro leasing habitacional!", DateTime.Now.AddDays(70), DateTime.Now.AddDays(100), products3);
+                AddCampaigns("CAM007", "Campaña de Productos de Ahorro e Inversión", "Asignada", "Fidelización", "¡Descubre nuestras opciones para hacer crecer tu dinero!", DateTime.Now.AddDays(105), DateTime.Now.AddDays(135), products4);
+                AddCampaigns("CAM008", "Campaña de Seguros", "Asignada", "Captación de clientes", "¡Protege lo que más importa con nuestros seguros!", DateTime.Now.AddDays(140), DateTime.Now.AddDays(170), products5);
+                AddCampaigns("CAM009", "Campaña de Inversiones", "Asignada", "Captación de clientes", "¡Haz crecer tu dinero con nuestras opciones de inversión!", DateTime.Now.AddDays(175), DateTime.Now.AddDays(205), products6);
+                AddCampaigns("CAM004", "Campaña de Cuenta de Ahorros", "Asignada", "Captación de clientes", "¡Abre una cuenta de ahorros y empieza a ahorrar hoy mismo!", DateTime.Now, DateTime.Now.AddDays(30), products1 );
+                AddCampaigns("CAM005", "Campaña de Seguro de Vida", "Vencida", "Captación de clientes", "¡Protege a tus seres queridos con nuestro seguro de vida!", DateTime.Now.AddDays(35), DateTime.Now.AddDays(65), products3);
+                AddCampaigns("CAM006", "Campaña de Depósito a Plazo", "Vencida", "Productos financieros", "¡Haz crecer tu dinero con nuestro depósito a plazo!", DateTime.Now.AddDays(70), DateTime.Now.AddDays(100), products4 );
+                AddCampaigns("CAM007", "Campaña de Fondo Mutuo", "Vencida", "Productos financieros", "¡Invierte en nuestro fondo mutuo y alcanza tus metas financieras!", DateTime.Now.AddDays(105), DateTime.Now.AddDays(135), products6 );
                 await _context.SaveChangesAsync();
             }
         }
@@ -198,31 +198,31 @@ namespace InteraCoop.Backend.Data
         {
             if (!_context.Products.Any())
             {
-                _context.Products.Add(new Product { ProductType = "Tarjeta de crédito", Name = "Tarjeta Visa", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Tarjeta de crédito", Name = "Tarjeta Mastercard", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Crédito hipotecario", Name = "Crédito Hipotecario Banco X", Quota = 0, Term = "20 años", Value = 5000000, Rate = 5.5 });
-                _context.Products.Add(new Product { ProductType = "Leasing habitacional", Name = "Leasing Habitacional Banco Y", Quota = 0, Term = "10 años", Value = 7000000, Rate = 6.0 });
-                _context.Products.Add(new Product { ProductType = "Cuenta de ahorros", Name = "Cuenta de Ahorros Banco Z", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Fondo de inversión", Name = "Fondo de Inversión XYZ", Quota = 0, Term = "5 años", Value = 10000000, Rate = 8.0 });
-                _context.Products.Add(new Product { ProductType = "Seguro de vida", Name = "Seguro de Vida ABC", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Seguro vehicular", Name = "Seguro Vehicular DEF", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Fondo de pensiones", Name = "Fondo de Pensiones GHI", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Tarjeta de débito", Name = "Tarjeta Débito Banco W", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Crédito de consumo", Name = "Crédito de Consumo Banco V", Quota = 0, Term = "5 años", Value = 2000000, Rate = 9.0 });
-                _context.Products.Add(new Product { ProductType = "Cuenta corriente", Name = "Cuenta Corriente Banco U", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Depósito a plazo", Name = "Depósito a Plazo Banco T", Quota = 0, Term = "1 año", Value = 5000000, Rate = 4.5 });
-                _context.Products.Add(new Product { ProductType = "Seguro médico", Name = "Seguro Médico Empresa S", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Fondo mutuo", Name = "Fondo Mutuo Empresa R", Quota = 0, Term = "3 años", Value = 15000000, Rate = 7.0 });
-                _context.Products.Add(new Product { ProductType = "Tarjeta prepagada", Name = "Tarjeta Prepagada Banco Q", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Crédito automotriz", Name = "Crédito Automotriz Banco P", Quota = 0, Term = "5 años", Value = 4000000, Rate = 6.5 });
-                _context.Products.Add(new Product { ProductType = "Crédito educativo", Name = "Crédito Educativo Banco O", Quota = 0, Term = "10 años", Value = 3000000, Rate = 5.0 });
-                _context.Products.Add(new Product { ProductType = "Seguro de hogar", Name = "Seguro de Hogar Empresa N", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Plan de ahorro", Name = "Plan de Ahorro Banco M", Quota = 0, Term = "5 años", Value = 2000000, Rate = 3.0 });
-                _context.Products.Add(new Product { ProductType = "Microcrédito", Name = "Microcrédito Banco L", Quota = 0, Term = "3 años", Value = 1000000, Rate = 12.0 });
-                _context.Products.Add(new Product { ProductType = "Crédito agrícola", Name = "Crédito Agrícola Banco K", Quota = 0, Term = "7 años", Value = 8000000, Rate = 4.0 });
-                _context.Products.Add(new Product { ProductType = "Seguro de viaje", Name = "Seguro de Viaje Empresa J", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Fondo de emergencia", Name = "Fondo de Emergencia Banco I", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
-                _context.Products.Add(new Product { ProductType = "Bono de inversión", Name = "Bono de Inversión Empresa H", Quota = 0, Term = "10 años", Value = 5000000, Rate = 5.5 });
+                _context.Products.Add(new Product { ProductType = "Activo", Name = "Tarjeta Visa", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Activo", Name = "Tarjeta Mastercard", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Crédito Hipotecario Banco X", Quota = 0, Term = "20 años", Value = 5000000, Rate = 5.5 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Leasing Habitacional Banco Y", Quota = 0, Term = "10 años", Value = 7000000, Rate = 6.0 });
+                _context.Products.Add(new Product { ProductType = "Activo", Name = "Cuenta de Ahorros Banco Z", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Fondo de Inversión XYZ", Quota = 0, Term = "5 años", Value = 10000000, Rate = 8.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Seguro de Vida ABC", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Seguro Vehicular DEF", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Fondo de Pensiones GHI", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Tarjeta Débito Banco W", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Crédito de Consumo Banco V", Quota = 0, Term = "5 años", Value = 2000000, Rate = 9.0 });
+                _context.Products.Add(new Product { ProductType = "Activo", Name = "Cuenta Corriente Banco U", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Depósito a Plazo Banco T", Quota = 0, Term = "1 año", Value = 5000000, Rate = 4.5 });
+                _context.Products.Add(new Product { ProductType = "Activo", Name = "Seguro Médico Empresa S", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Fondo Mutuo Empresa R", Quota = 0, Term = "3 años", Value = 15000000, Rate = 7.0 });
+                _context.Products.Add(new Product { ProductType = "Activo", Name = "Tarjeta Prepagada Banco Q", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Crédito Automotriz Banco P", Quota = 0, Term = "5 años", Value = 4000000, Rate = 6.5 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Crédito Educativo Banco O", Quota = 0, Term = "10 años", Value = 3000000, Rate = 5.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Seguro de Hogar Empresa N", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Plan de Ahorro Banco M", Quota = 0, Term = "5 años", Value = 2000000, Rate = 3.0 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Microcrédito Banco L", Quota = 0, Term = "3 años", Value = 1000000, Rate = 12.0 });
+                _context.Products.Add(new Product { ProductType = "Pasivo", Name = "Crédito Agrícola Banco K", Quota = 0, Term = "7 años", Value = 8000000, Rate = 4.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Seguro de Viaje Empresa J", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Fondo de Emergencia Banco I", Quota = 0, Term = "N/A", Value = 0.0, Rate = 0.0 });
+                _context.Products.Add(new Product { ProductType = "Transaccional", Name = "Bono de Inversión Empresa H", Quota = 0, Term = "10 años", Value = 5000000, Rate = 5.5 });
                 await _context.SaveChangesAsync();
             }
         }
