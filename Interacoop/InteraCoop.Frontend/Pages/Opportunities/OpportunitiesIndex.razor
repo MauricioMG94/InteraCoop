@@ -4,11 +4,11 @@
     <div class="card-header">
         <span>
             <MudButton StartIcon="@Icons.Material.Filled.AssignmentTurnedIn" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Oportunidades</MudButton>
-@*             <a class="float-end">
+            <a class="float-end">
                 <MudTooltip Text="Crear oportunidad" Color="Color.Tertiary" Placement="Placement.Bottom">
                     <MudFab StartIcon="@Icons.Material.Filled.Add" href="/opportunity/create" Size="Size.Small" Color="Color.Tertiary" />
                 </MudTooltip>
-            </a> *@
+            </a>
         </span>
     </div>
     <div class="card-body">
@@ -23,30 +23,30 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-secondary table-header table-row">
-                                <th class="col-1">Estado de oportunidad</th>
-                                <th class="col-2">Fecha de registro</th>
-                                <th class="col-3">Nombre de campaña</th>
-                                <th class="col-4">Nombre de cliente</th>
-                                <th class="col-5">Acciones</th>
+                                <th class="col-1" style="width: 20%">Estado de oportunidad</th>
+                                <th class="col-2" style="width: 20%">Fecha de registro</th>
+                                <th class="col-3" style="width: 20%">Nombre de campaña</th>
+                                <th class="col-4" style="width: 20%">Nombre de cliente</th>
+                                <th class="col-5" style="width: 20%">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var opportunity in Opportunities!)
                             {
                                 <tr class="table-row">
-                                    <td class="col-1">
+                                    <td class="col-1" style="width: 20%">
                                         <span class="badge text-bg-primary">@opportunity.Status</span>
                                     </td>
-                                    <td class="col-2">
+                                    <td class="col-2" style="width: 20%">
                                         @opportunity.RecordDate.ToString("dd/MM/yyyy")
                                     </td>
-                                    <td class="col-3">
+                                    <td class="col-3" style="width: 20%">
                                         @opportunity.Campaign.CampaignName
                                     </td>
-                                    <td class="col-4">
+                                    <td class="col-4" style="width: 20%">
                                         @opportunity.Interaction.Client.Name
                                     </td>
-                                    <td class="col-5">
+                                    <td class="col-5" style="width: 20%; gap: 0.725rem">
                                         <MudTooltip Text="Ver oportunidad" Color="Color.Tertiary" Placement="Placement.Left">
                                             <a onclick="toggleExtraRow('@opportunity.Id')" class="btn btn-light btn-sm">
                                                 <i class="bi bi-eye"></i>

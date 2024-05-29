@@ -38,11 +38,9 @@ namespace InteraCoop.Backend.Data
                 .WithMany()
                 .HasForeignKey(e => e.CampaignId)
                 .IsRequired();
-            modelBuilder.Entity<Interaction>()
-                .HasOne(e => e.Opportunity)
-                .WithOne(e => e.Interaction)
-                .HasForeignKey<Opportunity>(e => e.InteractionId)
-                .IsRequired();
+            modelBuilder.Entity<Opportunity>()
+        .HasOne(e => e.Interaction)
+        .WithOne();
             modelBuilder.Entity<Interaction>()
                .HasOne(i => i.Client)
                .WithMany()

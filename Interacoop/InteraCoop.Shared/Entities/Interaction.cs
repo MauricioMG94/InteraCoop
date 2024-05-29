@@ -65,6 +65,5 @@ namespace InteraCoop.Shared.Entities
         [Display(Name = "Cliente")]
         public int ClientId { get; set; }
         public Client Client { get; set; } = null!;
-        public Opportunity? Opportunity { get; set; }
     }
 }
