@@ -123,7 +123,7 @@ namespace InteraCoop.Frontend.Pages.Clients
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
                 Title = "Confirmacion",
-                Text = $"¿Estas seguro de eliminar el cliente:{client.Name}?",
+                Text = $"¿Estas seguro de eliminar el cliente: {client.Name}?",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true
             });

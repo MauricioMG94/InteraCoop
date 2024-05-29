@@ -35,7 +35,9 @@
                             {
                                 <tr class="table-row">
                                     <td class="col-1" style="width: 20%">
-                                        <span class="badge text-bg-primary">@opportunity.Status</span>
+                                        <span class="badge text-bg-primary" style="@GetBadgeStyle(opportunity.Status)">
+                                            @opportunity.Status
+                                        </span>
                                     </td>
                                     <td class="col-2" style="width: 20%">
                                         @opportunity.RecordDate.ToString("dd/MM/yyyy")
@@ -71,7 +73,9 @@
                                             <li class="list-group-item card-subTitle">
                                                  Información de oportunidad:
                                                 <div class="list-group-item subCard">
-                                                    <span class="badge badge-pill badge-success">@opportunity.Status</span>
+                                                    <span class="badge badge-pill badge-success" style="@GetBadgeStyle(opportunity.Status)">
+                                                        @opportunity.Status
+                                                    </span>
                                                     <div>
                                                         <span class="subtitle">Fecha estimada de adquisición:</span>
                                                         <span> @opportunity.EstimatedAcquisitionDate.ToString("dd/MM/yyyy")</span>
@@ -85,7 +89,9 @@
                                             <li class="list-group-item card-subTitle">
                                                 Información de interacción:
                                                 <div class="list-group-item subCard">
-                                                    <span class="badge badge-pill badge-success">@opportunity.Interaction.InteractionType</span>
+                                                    <span class="badge badge-pill badge-success" style="@GetBadgeStyle(opportunity.Interaction.InteractionType)">
+                                                        @opportunity.Interaction.InteractionType
+                                                    </span>
                                                     <div>
                                                         <span class="subtitle">Cliente:</span>
                                                         <span> @opportunity.Interaction.Client.Name</span>
@@ -100,7 +106,9 @@
                                                 Información de campaña:
                                                 @if (opportunity.Campaign != null) {
                                                     <div class="list-group-item subCard">
-                                                        <span class="badge badge-pill badge-success">@opportunity.Campaign.Status</span>
+                                                        <span class="badge badge-pill badge-success" style="@GetBadgeStyle(opportunity.Campaign.Status)">
+                                                            @opportunity.Campaign.Status
+                                                        </span>
                                                         <div>
                                                             <span class="subtitle">Campaña:</span>
                                                             <span> @opportunity.Campaign.CampaignName</span>

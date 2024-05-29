@@ -3,6 +3,7 @@ using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using System.ComponentModel;
 
 namespace InteraCoop.Frontend.Pages.Opportunities
 {
@@ -23,6 +24,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
         public bool FormPostedSuccessfully { get; set; } = false;
 
         List<string> OpportunityStatus = new List<string>();
+
         private async Task FilterCallBack(string filter)
         {
             Filter = filter;
@@ -180,6 +182,24 @@ namespace InteraCoop.Frontend.Pages.Opportunities
                 Timer = 3000
             });
             await toast.FireAsync(icon: SweetAlertIcon.Success, message: "Registro borrado con éxito.");
+        }
+
+        private string GetBadgeStyle(string propertyToColor)
+        {
+            return propertyToColor switch
+            {
+                "Formalizada" => "background-color:olivedrab",
+                "Desestimada" => "background-color:goldenrod",
+                "En trámite" => "background-color:cornflowerblue",
+                "Visita a cliente" => "background-color:olivedrab",
+                "Visita en oficina" => "background-color:goldenrod",
+                "Llamada entrante" => "background-color:cornflowerblue",
+                "Llamada saliente" => "background-color: #7E6FFF",
+                "Sin asignar" => "background-color:olivedrab",
+                "Asignada" => "background-color:olivedrab",
+                "Vencida" => "background-color:goldenrod",
+                _ => "background-color:cornflowerblue"
+            };
         }
     }
 }
