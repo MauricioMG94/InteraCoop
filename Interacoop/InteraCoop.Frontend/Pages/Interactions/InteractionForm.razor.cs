@@ -28,10 +28,14 @@ namespace InteraCoop.Frontend.Pages.Interactions
             editContext = new(Interaction);
 
             Interaction.InteractionCreationDate = DateTime.Today;
-            Interaction.StartDate = DateTime.Today;
-            Interaction.EndDate = DateTime.Today;
             Interaction.AuditDate = DateTime.Today;
             Interaction.AuditUser = "Admin";
+
+            if (FormName.Contains("Crear"))
+            {
+                Interaction.StartDate = DateTime.Today;
+                Interaction.EndDate = DateTime.Today;
+            }
         }
 
         protected override async Task OnInitializedAsync()
