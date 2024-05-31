@@ -45,6 +45,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public async override Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync()
         {
             var opportunities = await _context.Opportunities
+                .Include(x => x.Campaign)
                 .OrderBy(c => c.Status)
                 .ToListAsync();
             return new ActionResponse<IEnumerable<Opportunity>>

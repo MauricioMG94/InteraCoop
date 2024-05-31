@@ -5,7 +5,9 @@
 <MudLayout>
     <MudAppBar style="background-color: #375A89" Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
-        <MudText Typo="Typo.h5" Class="ml-3">InteraCoop</MudText>
+        <MudLink Href="/" Underline="Underline.None">
+            <MudText Typo="Typo.h5" Class="ml-3" Style="color: #FFFFFF">InteraCoop</MudText>
+        </MudLink>
         <MudSpacer />
         <AuthLinks />
     </MudAppBar>

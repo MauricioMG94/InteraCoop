@@ -12,11 +12,9 @@ namespace InteraCoop.Frontend.Pages.Opportunities
     {
         private int currentPage = 1;
         private int totalPages;
-
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
-
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<Opportunity>? Opportunities { get; set; }
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
