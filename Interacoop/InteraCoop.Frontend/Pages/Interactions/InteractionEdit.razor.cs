@@ -57,7 +57,6 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 ObservationsInteraction = interaction.ObservationsInteraction,
                 Office = interaction.Office,
                 AuditDate = interaction.AuditDate,
-                AuditUser = interaction.AuditUser,
                 ClientId = interaction.ClientId,
             };
         }

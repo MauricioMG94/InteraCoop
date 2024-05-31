@@ -22,6 +22,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         {
             var interaction = await _context.Interactions
                 .Include(x => x.Client!)
+                .Include(x => x.User!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (interaction == null)
@@ -54,6 +55,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         {
             var queryable = _context.Interactions
                 .Include(x => x.Client)
+                .Include(x => x.User)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
@@ -91,6 +93,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             try
             {
                 var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == interactionDto.ClientId);
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == interactionDto.UserDocument);
 
                 var newInteraction = new Interaction
                 {
@@ -102,7 +105,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
                     ObservationsInteraction = interactionDto.ObservationsInteraction,
                     Office = interactionDto.Office,
                     AuditDate = interactionDto.AuditDate,
-                    AuditUser = interactionDto.AuditUser,
+                    UserDocument = interactionDto.UserDocument,
+                    User = user,
                     ClientId = interactionDto.ClientId,
                     Client = client,
                 };
@@ -137,6 +141,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
             try
             {
                 var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == interactionDto.ClientId);
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == interactionDto.UserDocument);
 
                 var interaction = await _context.Interactions
                     .Include(x => x.Client)
@@ -157,7 +162,8 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 interaction.ObservationsInteraction = interactionDto.ObservationsInteraction;
                 interaction.Office = interactionDto.Office;
                 interaction.AuditDate = interactionDto.AuditDate;
-                interaction.AuditUser = interactionDto.AuditUser;
+                interaction.UserDocument = interactionDto.UserDocument;
+                interaction.User = user;
                 interaction.ClientId = interactionDto.ClientId;
                 interaction.Client = client;
                 _context.Update(interaction);

@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Authorization;
 using InteraCoop.Frontend.Repositories;
+using System.Net;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
     [Authorize(Roles = "Employee")]
     public partial class InteractionForm
     {
+        private User? user;
         private EditContext editContext = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
@@ -29,7 +31,6 @@ namespace InteraCoop.Frontend.Pages.Interactions
 
             Interaction.InteractionCreationDate = DateTime.Today;
             Interaction.AuditDate = DateTime.Today;
-            Interaction.AuditUser = "Admin";
 
             if (FormName.Contains("Crear"))
             {
@@ -41,6 +42,21 @@ namespace InteraCoop.Frontend.Pages.Interactions
         protected override async Task OnInitializedAsync()
         {
             await LoadListAsync();
+            await LoadUserAsyc();
+        }
+
+        private async Task LoadUserAsyc()
+
+        {
+            var responseHttp = await Repository.GetAsync<User>($"/api/accounts");
+            if (responseHttp.Error)
+            {
+                var messageError = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", messageError, SweetAlertIcon.Error);
+                return;
+            }
+            user = responseHttp.Response;
+            Interaction.UserDocument = user.Document;
         }
 
         private async Task<bool> LoadListAsync()
