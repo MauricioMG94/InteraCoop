@@ -29,7 +29,7 @@ else
                             <ValidationMessage For="@(() => user.LastName)" />
                         </div>
                         <div style="padding-bottom: 1rem">
-                            <MudTextField @bind-Value="user.Document" Label="Documento:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.DocumentScanner" Clearable="true" />
+                            <MudTextField @bind-Value="user.Document" Label="Documento:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.DocumentScanner" Disabled="true" />
                             <ValidationMessage For="@(() => user.Document)" />
                         </div>
                         <div style="padding-bottom: 1rem">

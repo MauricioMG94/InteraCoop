@@ -24,6 +24,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 .Include(x => x.Campaign!)
                 .Include(x => x.Interaction!)
                 .Include(x => x.Interaction.Client!)
+                .Include(x => x.Interaction.User!)
                 .Include(x => x.Campaign.ProductsList!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -61,6 +62,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 .Include(x => x.Campaign)
                 .Include(x => x.Interaction)
                 .Include(x => x.Interaction.Client!)
+                .Include(x => x.Interaction.User!)
                 .Include(x => x.Campaign.ProductsList!)
                 .AsQueryable();
 
