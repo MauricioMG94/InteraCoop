@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InteraCoop.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240528000619_initialDB")]
-    partial class initialDB
+    [Migration("20240601212846_reports")]
+    partial class reports
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,9 +52,6 @@ namespace InteraCoop.Backend.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OpportunityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -66,8 +63,6 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasIndex("Id")
                         .IsUnique();
-
-                    b.HasIndex("OpportunityId");
 
                     b.ToTable("Campaigns");
                 });
@@ -124,9 +119,6 @@ namespace InteraCoop.Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("InteractionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -144,8 +136,6 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasIndex("Document")
                         .IsUnique();
-
-                    b.HasIndex("InteractionId");
 
                     b.ToTable("Clients");
                 });
@@ -187,10 +177,8 @@ namespace InteraCoop.Backend.Migrations
                     b.Property<DateTime>("AuditDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("AuditUser")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -216,10 +204,18 @@ namespace InteraCoop.Backend.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserDocument")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("Id")
                         .IsUnique();
+
+                    b.HasIndex("UserDocument");
 
                     b.ToTable("Interactions");
                 });
@@ -232,12 +228,14 @@ namespace InteraCoop.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CampaignId")
-                        .IsRequired()
+                    b.Property<int>("CampaignId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EstimatedAcquisitionDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("InteractionId")
+                        .HasColumnType("int");
 
                     b.Property<string>("OpportunityObservations")
                         .IsRequired()
@@ -254,10 +252,12 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CampaignId")
-                        .IsUnique();
+                    b.HasIndex("CampaignId");
 
                     b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.HasIndex("InteractionId")
                         .IsUnique();
 
                     b.ToTable("Opportunities");
@@ -413,7 +413,7 @@ namespace InteraCoop.Backend.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.HasIndex("Id")
+                    b.HasIndex("Document")
                         .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
@@ -560,14 +560,6 @@ namespace InteraCoop.Backend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("InteraCoop.Shared.Entities.Campaign", b =>
-                {
-                    b.HasOne("InteraCoop.Shared.Entities.Opportunity", null)
-                        .WithMany("CampaingsList")
-                        .HasForeignKey("OpportunityId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("InteraCoop.Shared.Entities.City", b =>
                 {
                     b.HasOne("InteraCoop.Shared.Entities.State", "State")
@@ -587,23 +579,46 @@ namespace InteraCoop.Backend.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("InteraCoop.Shared.Entities.Interaction", null)
-                        .WithMany("ClientsList")
-                        .HasForeignKey("InteractionId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.Navigation("City");
+                });
+
+            modelBuilder.Entity("InteraCoop.Shared.Entities.Interaction", b =>
+                {
+                    b.HasOne("InteraCoop.Shared.Entities.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("InteraCoop.Shared.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserDocument")
+                        .HasPrincipalKey("Document")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>
                 {
                     b.HasOne("InteraCoop.Shared.Entities.Campaign", "Campaign")
-                        .WithOne("Opportunity")
-                        .HasForeignKey("InteraCoop.Shared.Entities.Opportunity", "CampaignId")
+                        .WithMany()
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("InteraCoop.Shared.Entities.Interaction", "Interaction")
+                        .WithOne()
+                        .HasForeignKey("InteraCoop.Shared.Entities.Opportunity", "InteractionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Campaign");
+
+                    b.Navigation("Interaction");
                 });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Product", b =>
@@ -689,8 +704,6 @@ namespace InteraCoop.Backend.Migrations
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.Campaign", b =>
                 {
-                    b.Navigation("Opportunity");
-
                     b.Navigation("ProductsList");
                 });
 
@@ -704,16 +717,6 @@ namespace InteraCoop.Backend.Migrations
             modelBuilder.Entity("InteraCoop.Shared.Entities.Country", b =>
                 {
                     b.Navigation("States");
-                });
-
-            modelBuilder.Entity("InteraCoop.Shared.Entities.Interaction", b =>
-                {
-                    b.Navigation("ClientsList");
-                });
-
-            modelBuilder.Entity("InteraCoop.Shared.Entities.Opportunity", b =>
-                {
-                    b.Navigation("CampaingsList");
                 });
 
             modelBuilder.Entity("InteraCoop.Shared.Entities.State", b =>

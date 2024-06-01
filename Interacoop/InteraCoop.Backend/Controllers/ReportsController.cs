@@ -1,4 +1,5 @@
-﻿using InteraCoop.Backend.Repositories.Interfaces;
+﻿using InteraCoop.Backend.Repositories.Implementations;
+using InteraCoop.Backend.Repositories.Interfaces;
 using InteraCoop.Backend.UnitsOfWork.Implementations;
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
@@ -13,14 +14,26 @@ namespace InteraCoop.Backend.Controllers
     {
         private readonly IReportsRepository _reportsRepository;
 
-        public ReportsController(IGenericUnitOfWork<ReportDto> unitOfWork) : base(unitOfWork)
+        public ReportsController(IGenericUnitOfWork<ReportDto> unitOfWork, IReportsRepository reportsRepository) : base(unitOfWork)
         {
+            _reportsRepository = reportsRepository;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetReport(PaginationDTO pagination, int id)
+        [HttpGet("interactionsReports")]   
+        public async Task<IActionResult> GetInteractionsReport([FromQuery] PaginationDTO pagination)
         {
-            var action = await _reportsRepository.GetInteractionsReportAsync(pagination, id);
+            var action = await _reportsRepository.GetInteractionsReportAsync(pagination);
+            if (action.WasSuccess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest(action);
+        }
+
+        [HttpGet("opportunitiesReports")]
+        public async Task<IActionResult> GetOpportunitiesReport([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _reportsRepository.GetOpportunitiesReportAsync(pagination);
             if (action.WasSuccess)
             {
                 return Ok(action.Result);

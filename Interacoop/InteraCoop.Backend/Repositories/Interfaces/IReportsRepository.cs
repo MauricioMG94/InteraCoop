@@ -5,6 +5,7 @@ namespace InteraCoop.Backend.Repositories.Interfaces
 {
     public interface IReportsRepository
     {
-        Task<ActionResponse<IEnumerable<ReportDto>>> GetInteractionsReportAsync(PaginationDTO paginationDTO, int id);
+        Task<ActionResponse<IEnumerable<ReportDto>>> GetInteractionsReportAsync(PaginationDTO paginationDTO);
+        Task<ActionResponse<IEnumerable<ReportDto>>> GetOpportunitiesReportAsync(PaginationDTO paginationDTO);
     }
 }

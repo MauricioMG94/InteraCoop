@@ -9,7 +9,8 @@ namespace InteraCoop.Shared.Dtos
     public class ReportDto
     {
         public string UserName { get; set; } = null!;
-        public string InteractionType { get; set; } = null!;
-        public int InteractionCount { get; set; }
+        public string FullName { get; set; } = null!;
+        public string Type { get; set; } = null!;
+        public int TypeCount { get; set; }
     }
 }

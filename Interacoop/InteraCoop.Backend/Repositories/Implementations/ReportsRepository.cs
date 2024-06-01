@@ -17,11 +17,9 @@ namespace InteraCoop.Backend.Repositories.Implementations
             _context = context;
         }
 
-        public  async Task <ActionResponse<IEnumerable<ReportDto>>> GetInteractionsReportAsync(PaginationDTO pagination, int id)
+        public async Task<ActionResponse<IEnumerable<ReportDto>>> GetInteractionsReportAsync(PaginationDTO pagination)
         {
-            var queryable = _context.Interactions
-            .Where(x => x.UserId == id)
-            .AsQueryable();
+            var queryable = _context.Interactions.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
             {
@@ -29,17 +27,49 @@ namespace InteraCoop.Backend.Repositories.Implementations
             }
 
             var reportsQuery = queryable
-                .GroupBy(x => new { x.user.UserName, x.InteractionType })
+                .GroupBy(x => new { x.User.UserName, FullName = x.User.FirstName + " " + x.User.LastName, x.InteractionType })
                 .Select(g => new ReportDto
                 {
                     UserName = g.Key.UserName,
-                    InteractionType = g.Key.InteractionType,
-                    InteractionCount = g.Count()
+                    FullName = g.Key.FullName,
+                    Type = g.Key.InteractionType,
+                    TypeCount = g.Count()
                 });
 
             var paginatedReports = await reportsQuery
-                .OrderBy(r => r.UserName).ThenBy(r => r.InteractionType) 
-                .Paginate(pagination) 
+                .OrderBy(r => r.FullName).ThenBy(r => r.Type)
+                .Paginate(pagination)
+                .ToListAsync();
+
+            return new ActionResponse<IEnumerable<ReportDto>>
+            {
+                WasSuccess = true,
+                Result = paginatedReports
+            };
+        }
+
+        public async Task<ActionResponse<IEnumerable<ReportDto>>> GetOpportunitiesReportAsync(PaginationDTO pagination)
+        {
+            var queryable = _context.Opportunities.Include(o => o.Interaction).ThenInclude(i => i.User).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(pagination.Filter))
+            {
+                queryable = queryable.Where(x => x.Status.ToLower().Contains(pagination.Filter.ToLower()));
+            }
+
+            var reportsQuery = queryable
+                .GroupBy(x => new { x.Interaction.User.UserName, FullName = x.Interaction.User.FirstName + " " + x.Interaction.User.LastName, x.Status })
+                .Select(g => new ReportDto
+                {
+                    UserName = g.Key.UserName,
+                    FullName = g.Key.FullName,
+                    Type = g.Key.Status,
+                    TypeCount = g.Count()
+                });
+
+            var paginatedReports = await reportsQuery
+                .OrderBy(r => r.UserName).ThenBy(r => r.Type)
+                .Paginate(pagination)
                 .ToListAsync();
 
             return new ActionResponse<IEnumerable<ReportDto>>

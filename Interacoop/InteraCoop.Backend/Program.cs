@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using InteraCoop.Backend.Helpers;
+using InteraCoop.Shared.Dtos;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -92,6 +93,9 @@ builder.Services.AddScoped<IInteractionsUnitOfWork, InteractionsUnitOfWork>();
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
+
+builder.Services.AddScoped<IReportsRepository, ReportsRepository>();
+builder.Services.AddScoped<IGenericUnitOfWork<ReportDto>, GenericUnitOfWork<ReportDto>>();
 
 builder.Services.AddIdentity<User, IdentityRole>(x=>{
     x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
