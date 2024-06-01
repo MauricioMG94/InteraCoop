@@ -71,6 +71,11 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 queryable = queryable.Where(x => x.Status.ToLower().Contains(pagination.Filter.ToLower()));
             }
 
+            if (!string.IsNullOrWhiteSpace(pagination.UserDocument))
+            {
+                queryable = queryable.Where(x => x.Interaction.UserDocument.Contains(pagination.UserDocument));
+            }
+
             return new ActionResponse<IEnumerable<Opportunity>>
             {
                 WasSuccess = true,
@@ -85,6 +90,11 @@ namespace InteraCoop.Backend.Repositories.Implementations
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
             {
                 queryable = queryable.Where(x => x.Status.ToLower().Contains(pagination.Filter.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(pagination.UserDocument))
+            {
+                queryable = queryable.Where(x => x.Interaction.UserDocument.Contains(pagination.UserDocument));
             }
 
             double count = await queryable.CountAsync();

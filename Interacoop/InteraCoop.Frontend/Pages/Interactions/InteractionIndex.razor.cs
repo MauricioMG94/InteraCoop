@@ -12,7 +12,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
     {
         private int currentPage = 1;
         private int totalPages;
-
+        private User? user;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private IRepository Repository { get; set; } = null!;
@@ -20,6 +20,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         [Parameter, SupplyParameterFromQuery] public string Page { get; set; } = string.Empty;
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
+        [SupplyParameterFromQuery] public string Document { get; set; } = string.Empty;
         public bool FormPostedSuccessfully { get; set; } = false;
 
         List<string> InteractionTypes = new List<string>();
@@ -30,8 +31,22 @@ namespace InteraCoop.Frontend.Pages.Interactions
             StateHasChanged();
         }
         protected override async Task OnInitializedAsync()
-        {                             
+        {
+            await LoadUserAsyc();
             await LoadAsync();
+        }
+
+        private async Task LoadUserAsyc()
+        {
+            var responseHttp = await Repository.GetAsync<User>($"/api/accounts");
+            if (responseHttp.Error)
+            {
+                var messageError = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", messageError, SweetAlertIcon.Error);
+                return;
+            }
+            user = responseHttp.Response;
+            Document = user.Document;
         }
 
         private async Task SelectedPageAsync(int page)
@@ -77,6 +92,10 @@ namespace InteraCoop.Frontend.Pages.Interactions
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
+            }
+            if (!string.IsNullOrEmpty(Document))
+            {
+                url += $"&userDocument={Document}";
             }
 
             var responseHttp = await Repository.GetAsync<List<Interaction>>(url);

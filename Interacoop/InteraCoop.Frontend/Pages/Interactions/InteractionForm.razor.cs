@@ -46,7 +46,6 @@ namespace InteraCoop.Frontend.Pages.Interactions
         }
 
         private async Task LoadUserAsyc()
-
         {
             var responseHttp = await Repository.GetAsync<User>($"/api/accounts");
             if (responseHttp.Error)
