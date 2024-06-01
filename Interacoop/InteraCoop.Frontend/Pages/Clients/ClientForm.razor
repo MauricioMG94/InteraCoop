@@ -1,61 +1,55 @@
-﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
 
 <EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
-   <div class="card">
+    <div class="card">
         <div class="card-header">
             <span>
-                <i class="oi oi-star" /> Crear Nuevo Cliente
-                <a class="btn btn-sm btn-success float-end" href="/clients"><i class="oi oi-arrow-thick-left" /> Regresar</a>
-                <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+                <MudButton StartIcon="@Icons.Material.Filled.People" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">@FormName</MudButton>
+                <a class="float-end">
+                    <MudTooltip Text="Regresar" Color="Color.Tertiary" Placement="Placement.Bottom">
+                        <MudFab StartIcon="@Icons.Material.Filled.Undo" href="/clients/" Size="Size.Small" Color="Color.Tertiary" />
+                    </MudTooltip>
+                </a>
             </span>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <div class="mb-3">
-                        <label>Nombre:</label>
-                        <div>
-                            <InputText class="form-control" @bind-Value="@Client.Name" />
-                            <ValidationMessage For="@(()=> Client.Name)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Client.Name" Label="Nombre completo:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.DriveFileRenameOutline" Clearable="true"/>
+                        <ValidationMessage For="@(() => Client.Name)" />
                     </div>
-        
-                         <div class="mb-3">
-                            <label>Documento:</label>
-                            <div>
-                                <InputNumber class="form-control" @bind-Value="@Client.Document" />
-                                <ValidationMessage For="@(()=> Client.Document)" />
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label>tipo de documento:</label>
-                            <div>
-                                <InputText class="form-control" @bind-Value="@Client.DocumentType" />
-                                <ValidationMessage For="@(()=> Client.DocumentType)" />
-                            </div>
-                        </div>
-                    <div class="mb-3">
-                        <label>Telefono:</label>
-                        <div>
-                            <InputNumber class="form-control" @bind-Value="@Client.Telephone" />
-                            <ValidationMessage For="@(()=> Client.Telephone)" />
-                        </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudSelect @bind-Value="@Client.DocumentType" Placeholder="Seleccione tipo de documento" Label="Tipo de Documento:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
+                            <MudSelectItem Value="@("Cedula")" />
+                            <MudSelectItem Value="@("Pasaporte")" />
+                            <MudSelectItem Value="@("RUT")" />
+                            <MudSelectItem Value="@("NIT")" />
+                        </MudSelect>
+                        <ValidationMessage For="@(() => Client.DocumentType)" />
                     </div>
-                </div>
-                <div class="col-6">
-                    <DropList></DropList>                   
-                    <div class="mb-3">
-                        <label>Dirección:</label>
-                        <div>                            
-                            <InputText class="form-control" @bind-Value="@Client.Address" />
-                            <ValidationMessage For="@(()=> Client.Address)" />
-                        </div> 
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Client.Document" Label="Documento:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Numbers" Clearable="true" />
+                        <ValidationMessage For="@(() => Client.Document)" />
                     </div>
-                </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudNumericField @bind-Value="Client.Telephone" Label="Téléfono:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Call" Clearable="true" HideSpinButtons="true" />
+                        <ValidationMessage For="@(() => Client.Telephone)" />
+                    </div>
+                    <div>
+                        <DropList ComponentName="Clientes"></DropList>   
+                    </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudTextField @bind-Value="Client.Address" Label="Dirección:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AddLocationAlt" Clearable="true" />
+                        <ValidationMessage For="@(() => Client.Address)" />
+                    </div>
+                    <div style="padding-bottom: 1rem;">
+                        <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.Filled.Save" Variant="Variant.Filled" Color="Color.Tertiary" Size="Size.Large" Style="width: 100%">Guardar</MudButton>
+                    </div>
+                </div
             </div>
         </div>
-    </div> 
+    </div>
 </EditForm>
-
