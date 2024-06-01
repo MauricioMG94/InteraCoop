@@ -26,6 +26,16 @@ namespace InteraCoop.Backend.Controllers
             return Ok(await _productsUnitOfWork.GetAllAsync());
         }
 
+        private int GetUserId()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return userId;
+            }
+
+            throw new Exception("User ID claim not found or invalid.");
+        }
 
         [HttpGet("full")]
         public override async Task<IActionResult> GetAsync()
