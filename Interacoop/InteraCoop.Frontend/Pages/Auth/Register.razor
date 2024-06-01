@@ -17,7 +17,13 @@ else
                         <h5 style="font-weight: 600; justify-content: center; align-content: center; letter-spacing: 4px; padding-top: 13px; text-align: center; font-size: 22px">
                             Regístrate aquí
                         </h5>
+                        @if(!IsAdmin){
                             <MudFab Style="position: absolute; top: 5px; right: 5px;" StartIcon="@Icons.Material.Filled.Close" @onclick=@(() => CloseModalAsync()) Size="Size.Small" Color="Color.Error" />
+                        }
+                        @if (IsAdmin)
+                        {
+                        <MudFab Style="position: absolute; top: 5px; right: 5px;" StartIcon="@Icons.Material.Filled.Undo" Href="/users" Size="Size.Small" Color="Color.Tertiary" />
+                        }
                     </div>
                     <div class="card-body">
                         <div class="col-12">
@@ -54,7 +60,7 @@ else
 
                         <div class="col-12">
                             <div class="row">
-                                <DropList></DropList>
+                                <DropList ComponentName="Register"></DropList>
                             </div>
                             <div class="col-12 mb-3">
                                 <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Código postal:</label>

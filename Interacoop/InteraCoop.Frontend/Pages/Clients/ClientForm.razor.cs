@@ -17,6 +17,7 @@ namespace InteraCoop.Frontend.Pages.Clients
         [EditorRequired, Parameter] public EventCallback OnValidSubmit { get; set; }
         [EditorRequired, Parameter] public EventCallback ReturnAction { get; set; }
         [Inject] public SweetAlertService SweetAlertService { get; set; } = null!;
+        [Parameter] public required String FormName { get; set; }
         public bool FormPostedSuccessfully { get; set; }
 
         protected override void OnInitialized()

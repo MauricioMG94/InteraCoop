@@ -23,7 +23,8 @@ namespace InteraCoop.Frontend.Pages.Auth
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
-        [Inject] private ILoginService LoginService { get; set; } = null!;
+        //[Inject] private ILoginService LoginService { get; set; } = null!;
+        [Parameter, SupplyParameterFromQuery] public bool IsAdmin { get; set; }
         [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
@@ -95,6 +96,12 @@ namespace InteraCoop.Frontend.Pages.Auth
         {        
             userDto.UserName = userDto.Email;
             userDto.UserType = UserType.Employee;
+
+            if (IsAdmin)
+            {
+                userDto.UserType = UserType.Admin;
+            }
+
             loading = true;
             var responseHttp = await Repository.PostAsync<UserDto>("/api/accounts/CreateUser", userDto);
             loading = false;
