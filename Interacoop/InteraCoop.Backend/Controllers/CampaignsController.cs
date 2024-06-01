@@ -31,7 +31,6 @@ namespace InteraCoop.Backend.Controllers
             return NoContent();
         }
 
-
         [HttpGet("full")]
         public override async Task<IActionResult> GetAsync()
         {
@@ -66,6 +65,7 @@ namespace InteraCoop.Backend.Controllers
             return BadRequest();
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public override async Task<IActionResult> GetAsync(int id)
         {

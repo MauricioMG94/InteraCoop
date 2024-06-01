@@ -2,6 +2,7 @@
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InteraCoop.Backend.Controllers
@@ -28,6 +29,7 @@ namespace InteraCoop.Backend.Controllers
             return NoContent();
         }
 
+        [AllowAnonymous]
         [HttpGet("full")]
         public override async Task<IActionResult> GetAsync()
         {

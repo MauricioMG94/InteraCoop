@@ -24,6 +24,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 .Include(x => x.Campaign!)
                 .Include(x => x.Interaction!)
                 .Include(x => x.Interaction.Client!)
+                .Include(x => x.Interaction.User!)
                 .Include(x => x.Campaign.ProductsList!)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -45,6 +46,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
         public async override Task<ActionResponse<IEnumerable<Opportunity>>> GetAsync()
         {
             var opportunities = await _context.Opportunities
+                .Include(x => x.Campaign)
                 .OrderBy(c => c.Status)
                 .ToListAsync();
             return new ActionResponse<IEnumerable<Opportunity>>
@@ -60,6 +62,7 @@ namespace InteraCoop.Backend.Repositories.Implementations
                 .Include(x => x.Campaign)
                 .Include(x => x.Interaction)
                 .Include(x => x.Interaction.Client!)
+                .Include(x => x.Interaction.User!)
                 .Include(x => x.Campaign.ProductsList!)
                 .AsQueryable();
 

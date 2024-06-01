@@ -1,0 +1,27 @@
+﻿<div style="display: flex; justify-content: center; align-content: center;">
+    @if (Opportunities != null)
+    {
+         <div style="display: flex; justify-content: center; flex-direction:column">
+            <div class="mb-4">
+                <h5 style="font-weight: 600; justify-content: center; align-content: center; letter-spacing: 4px; text-align: center; font-size: 22px">
+                    Popularidad de las Campañas
+                </h5>
+            </div>
+            <div class="mt-5">
+                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@CampaignsPercent.ToArray()" InputLabels="@CombinedLabels.ToArray()" LegendPosition="Position.Right">
+                    <CustomGraphics>
+                        <text class="donut-inner-text" x="47%" y="35%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="2">Top</text>
+                        <text class="donut-inner-text" x="47%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="5">@CampaignsNames.Count().ToString()</text>
+                    </CustomGraphics>
+                </MudChart>
+            </div>
+        </div> 
+    }
+    else
+    {
+        <div style="display: flex; justify-content: center; padding-top: 100%">
+            <Loading />
+        </div>
+    }
+</div>
+

@@ -26,9 +26,31 @@
      </Authorized>
 
     <NotAuthorized>
-            <div class="col-md-4" style="display:flex; margin:auto;">
-                <img src="/interacoop.png" class="img-fluid rounded-start" alt="Logo de InteraCoop.">
-            </div>
+            <span>
+                <MudButton StartIcon="@Icons.Material.Filled.SpaceDashboard" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">InteraCoop Reportes</MudButton>
+            </span>
+            <MudCarousel Class="mud-width-full" Style="height:500px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+                <MudCarouselItem Transition="transition" Style="background-color: #EAEAEA">
+                    <div class="d-flex" style="height:100%; display: flex; justify-content: center; align-content: center;">
+                        <img src="/interacoop.png" class="img-fluid rounded-start" style="height: 50%; margin:auto" alt="Logo de InteraCoop.">
+                    </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="transition" Style="background-color: #B6E0D8">
+                    <div class="d-flex" style="height:100%; justify-content: center">
+                       <InteraCoop.Frontend.Pages.Widgets.OpportunitiesChart/>
+                    </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="transition" Style="background-color: #B6D1E0">
+                    <div class="d-flex" style="height:100%; justify-content: center">
+                        <InteraCoop.Frontend.Pages.Widgets.InteractionsChart />
+                    </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="transition" Style="background-color: #EBE6E0">
+                    <div class="d-flex" style="height:100%; justify-content: center">
+                        <InteraCoop.Frontend.Pages.Widgets.CampaignsChart />
+                    </div>
+                </MudCarouselItem>
+            </MudCarousel>
     </NotAuthorized>
     </AuthorizeView>
 </div>

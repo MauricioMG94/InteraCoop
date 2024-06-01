@@ -13,7 +13,7 @@ namespace InteraCoop.Frontend.Shared
         private List<State>? states;
         private List<City>? cities;
         private bool loading;
-
+        [Parameter] public required String ComponentName { get; set; }
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
 

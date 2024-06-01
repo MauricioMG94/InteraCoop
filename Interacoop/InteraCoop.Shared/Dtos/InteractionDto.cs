@@ -57,11 +57,7 @@ namespace InteraCoop.Shared.Dtos
         public DateTime AuditDate
         { get; set; }
 
-        [Display(Name = "Usuario de auditoría")]
-        [Required(ErrorMessage = "El campo {0} es requerido.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
-        public string AuditUser
-        { get; set; } = null!;
         public int ClientId { get; set; }
+        public string UserDocument { get; set; } = null!;
     }
 }

@@ -1,0 +1,17 @@
+﻿.col-1, .col-2, .col-3 .col-4, .col-5 {
+    border-style: none;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    font-size: .875rem;
+    text-align: start;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: .01071em;
+    vertical-align: inherit;
+    width: 20%;
+}
+
+.col-1 {
+    padding-left: 2rem;
+}
