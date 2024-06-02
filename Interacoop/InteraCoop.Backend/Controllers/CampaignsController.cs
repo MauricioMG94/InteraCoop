@@ -50,7 +50,7 @@ namespace InteraCoop.Backend.Controllers
             {
                 return Ok(action.Result);
             }
-            return BadRequest(action);
+            return BadRequest();
         }
 
 
