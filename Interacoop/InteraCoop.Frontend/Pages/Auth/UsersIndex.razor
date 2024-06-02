@@ -28,30 +28,30 @@ else
                         <table class="table table-hover">
                             <thead>
                                 <tr class="table-secondary table-header table-row">
-                                    <th class="col-1">Imagen</th>
-                                    <th class="col-2">Nombre</th>
-                                    <th class="col-3">Documento</th>
-                                    <th class="col-4">Email</th>
-                                    <th class="col-5">Tipo</th>
+                                    <th class="col-1" style="width: 20%;">Imagen</th>
+                                    <th class="col-2" style="width: 20%;">Nombre</th>
+                                    <th class="col-3" style="width: 20%;">Documento</th>
+                                    <th class="col-4" style="width: 20%;">Email</th>
+                                    <th class="col-5" style="width: 20%;">Tipo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var user in Users!)
                                 {
                                     <tr class="table-row">
-                                        <td class="col-1">
+                                        <td class="col-1" style="width: 20%;">
                                             <img src="@user.Photo" width="80" height="80" style="border-radius:50%" />
                                         </td>
-                                        <td class="col-2">
+                                        <td class="col-2" style="width: 20%;">
                                             @user.FullName
                                         </td>
-                                        <td class="col-3">
+                                        <td class="col-3" style="width: 20%;">
                                            @user.Document
                                         </td>
-                                        <td class="col-4">
+                                        <td class="col-4" style="width: 20%;">
                                             @user.Email
                                         </td>
-                                        <td class="col-5">
+                                        <td class="col-5" style="width: 20%;">
                                                 @Helpers.EnumHelper.GetEnumDescription(user.UserType)
                                         </td>
                                     </tr>

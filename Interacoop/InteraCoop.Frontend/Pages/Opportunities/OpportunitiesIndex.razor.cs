@@ -1,6 +1,7 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
@@ -94,7 +95,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
             {
                 url += $"&filter={Filter}";
             }
-            if (!string.IsNullOrEmpty(Document))
+            if (!string.IsNullOrEmpty(Document) && user.UserType == UserType.Employee)
             {
                 url += $"&userDocument={Document}";
             }
@@ -133,6 +134,10 @@ namespace InteraCoop.Frontend.Pages.Opportunities
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
+            }
+            if (!string.IsNullOrEmpty(Document) && user.UserType == UserType.Employee)
+            {
+                url += $"&userDocument={Document}";
             }
 
             var responseHttp = await Repository.GetAsync<int>(url);
