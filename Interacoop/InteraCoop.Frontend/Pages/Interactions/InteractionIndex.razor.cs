@@ -2,6 +2,7 @@
 using InteraCoop.Frontend.Pages.Interactions;
 using InteraCoop.Frontend.Repositories;
 using InteraCoop.Shared.Entities;
+using InteraCoop.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
@@ -93,7 +94,7 @@ namespace InteraCoop.Frontend.Pages.Interactions
             {
                 url += $"&filter={Filter}";
             }
-            if (!string.IsNullOrEmpty(Document))
+            if (!string.IsNullOrEmpty(Document) && user.UserType == UserType.Employee)
             {
                 url += $"&userDocument={Document}";
             }
@@ -117,6 +118,10 @@ namespace InteraCoop.Frontend.Pages.Interactions
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
+            }
+            if (!string.IsNullOrEmpty(Document) && user.UserType == UserType.Employee)
+            {
+                url += $"&userDocument={Document}";
             }
 
             var responseHttp = await Repository.GetAsync<int>(url);
