@@ -11,6 +11,7 @@ namespace InteraCoop.Tests.Repositories
     {
         private DataContext _context = null!;
         private CampaignsRepository _repository = null!;
+
         [TestInitialize]
         public void Setup()
         {
@@ -87,9 +88,9 @@ namespace InteraCoop.Tests.Repositories
             var response = await _repository.GetAsync(pagination);
             // Assert
             Assert.IsTrue(response.WasSuccess);
-            var categories = response.Result!.ToList();
-            Assert.AreEqual(1, categories.Count);
-            Assert.AreEqual("Campaña de prueba", categories.First().CampaignName);
+            var campaigns = response.Result!.ToList();
+            Assert.AreEqual(1, campaigns.Count);
+            Assert.AreEqual("Campaña de prueba", campaigns.First().CampaignName);
         }
 
         [TestMethod]
