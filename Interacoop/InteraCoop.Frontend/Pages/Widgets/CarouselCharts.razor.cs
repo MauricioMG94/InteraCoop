@@ -1,8 +1,8 @@
 ﻿using MudBlazor;
 
-namespace InteraCoop.Frontend.Pages
+namespace InteraCoop.Frontend.Pages.Widgets
 {
-    public partial class Home
+    public partial class CarouselCharts
     {
         private bool arrows = true;
         private bool bullets = true;
