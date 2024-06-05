@@ -1,6 +1,5 @@
 ﻿using InteraCoop.Backend.Repositories.Implementations;
 using InteraCoop.Backend.Repositories.Interfaces;
-using InteraCoop.Backend.UnitsOfWork.Implementations;
 using InteraCoop.Backend.UnitsOfWork.Interfaces;
 using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
@@ -10,11 +9,11 @@ namespace InteraCoop.Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReportsController : GenericController<ReportDto>
+    public class InteractionsReportController : GenericController<ReportDto>
     {
-        private readonly IReportsRepository _reportsRepository;
+        private readonly IInteractionsReportsRepository _reportsRepository;
 
-        public ReportsController(IGenericUnitOfWork<ReportDto> unitOfWork, IReportsRepository reportsRepository) : base(unitOfWork)
+        public InteractionsReportController(IGenericUnitOfWork<ReportDto> unitOfWork, IInteractionsReportsRepository reportsRepository) : base(unitOfWork)
         {
             _reportsRepository = reportsRepository;
         }
@@ -30,15 +29,16 @@ namespace InteraCoop.Backend.Controllers
             return BadRequest(action);
         }
 
-        [HttpGet("opportunitiesReports")]
-        public async Task<IActionResult> GetOpportunitiesReport([FromQuery] PaginationDTO pagination)
+        [HttpGet("totalPages")]
+        public override async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
         {
-            var action = await _reportsRepository.GetOpportunitiesReportAsync(pagination);
+            var action = await _reportsRepository.GetTotalPagesAsync(pagination);
             if (action.WasSuccess)
             {
                 return Ok(action.Result);
             }
-            return BadRequest(action);
+            return BadRequest();
         }
+
     }
 }

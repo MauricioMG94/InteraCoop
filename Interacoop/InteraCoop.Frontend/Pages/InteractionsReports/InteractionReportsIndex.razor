@@ -1,0 +1,50 @@
+﻿@page "/interactionReports"
+
+<div class="card">
+    <div class="card-header">
+        <span>
+            <MudButton StartIcon="@Icons.Material.Filled.CreditCard" Variant="Variant.Text" Color="Color.Default" Size="Size.Large">Reportes</MudButton>
+        </span>
+    </div>
+    <div class="card-body">
+        <div class="card-filter">
+            <MudText Typo="Typo.h6">Reportes</MudText>
+            <Filter PlaceHolder="Tipo" Callback=@FilterCallBack />
+        </div>
+        <GenericList MyList="Reports">
+            <Body>
+                <div class="table-container container-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-secondary table-header table-row">
+                                <th class="col-1">Total</th>
+                                <th class="col-2">Nombre Funcionario</th>
+                                <th class="col-3">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var report in Reports!)
+                            {
+                                <tr class="table-row">
+                                    <td class="col-1">
+                                        @report.TypeCount
+                                    </td>
+                                    <td class="col-2">
+                                        @report.FullName
+                                    </td>
+                                    <td class="col-3">
+                                        @report.Type
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </Body>
+        </GenericList>
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectedPage="SelectedPageAsync"
+                    RecordNumber="SelectedRecordsNumberAsync" />
+    </div>
+</div>

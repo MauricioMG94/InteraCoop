@@ -94,7 +94,8 @@ builder.Services.AddScoped<IInteractionsUnitOfWork, InteractionsUnitOfWork>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
 
-builder.Services.AddScoped<IReportsRepository, ReportsRepository>();
+builder.Services.AddScoped<IInteractionsReportsRepository, InteractionsReportsRepository>();
+builder.Services.AddScoped<IOpportunitiesReportRepository, OpportunitiesReportRepository>();
 builder.Services.AddScoped<IGenericUnitOfWork<ReportDto>, GenericUnitOfWork<ReportDto>>();
 
 builder.Services.AddIdentity<User, IdentityRole>(x=>{

@@ -3,9 +3,10 @@ using InteraCoop.Shared.Responses;
 
 namespace InteraCoop.Backend.Repositories.Interfaces
 {
-    public interface IReportsRepository
+    public interface IInteractionsReportsRepository
     {
         Task<ActionResponse<IEnumerable<ReportDto>>> GetInteractionsReportAsync(PaginationDTO paginationDTO);
-        Task<ActionResponse<IEnumerable<ReportDto>>> GetOpportunitiesReportAsync(PaginationDTO paginationDTO);
+        Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
+
     }
 }
