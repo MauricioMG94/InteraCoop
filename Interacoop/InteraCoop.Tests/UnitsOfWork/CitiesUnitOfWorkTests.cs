@@ -69,7 +69,7 @@ namespace InteraCoop.Tests.UnitsOfWork
             var result = await _unitOfWork.GetComboAsync(stateId);
             // Assert
             Assert.AreEqual(expectedCities, result);
-            _mockCitiesRepository.Verify(x => x.GetComboAsync(stateId), Times.Once);
+            _mockCitiesRepository.Verify(x => x.GetComboAsync(stateId), Times.Once);//
         }
 
     }

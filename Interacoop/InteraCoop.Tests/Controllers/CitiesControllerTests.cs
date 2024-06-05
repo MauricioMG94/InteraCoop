@@ -100,7 +100,7 @@ namespace InteraCoop.Tests.Controllers
             // Assert
             var badRequestResult = result as BadRequestResult;
             Assert.IsNotNull(badRequestResult);
-            _mockCitiesUnitOfWork.Verify(x => x.GetTotalPagesAsync(pagination), Times.Once());
+            _mockCitiesUnitOfWork.Verify(x => x.GetTotalPagesAsync(pagination), Times.Once());//
         }
 
     }

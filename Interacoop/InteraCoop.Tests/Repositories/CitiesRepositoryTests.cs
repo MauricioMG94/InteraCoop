@@ -82,7 +82,7 @@ namespace InteraCoop.Tests.Repositories
         [TestCleanup]
         public void Cleanup()
         {
-            _context.Database.EnsureDeleted();
+            _context.Database.EnsureDeleted();//
             _context.Dispose();
         }
 
