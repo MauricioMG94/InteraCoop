@@ -17,22 +17,22 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-secondary table-header table-row">
-                                <th class="col-1" style="33.33%">Total</th>
-                                <th class="col-2" style="33.33%">Nombre Funcionario</th>
-                                <th class="col-3" style="33.33%">Tipo</th>
+                                <th class="col-1" style="width: 33.33%">Total</th>
+                                <th class="col-2" style="width: 33.33%">Nombre Funcionario</th>
+                                <th class="col-3" style="width: 33.33%">Tipo</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var report in Reports!)
                             {
                                 <tr class="table-row">
-                                    <td class="col-1" style="33.33%">
+                                    <td class="col-1" style="width: 33.33%">
                                         @report.TypeCount
                                     </td>
-                                    <td class="col-2" style="33.33%">
+                                    <td class="col-2" style="width: 33.33%">
                                         @report.FullName
                                     </td>
-                                    <td class="col-3" style="33.33%">
+                                    <td class="col-3" style="width: 33.33%">
                                         @report.Type
                                     </td>
                                 </tr>
