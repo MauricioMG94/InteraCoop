@@ -14,6 +14,7 @@ namespace InteraCoop.Frontend.Pages.OpportunityReports
         [Inject] private IRepository Repository { get; set; } = null!;
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<ReportDto>? Reports { get; set; }
+        public List<string> OpportunityStatus = ["Formalizada", "En trámite", "Desestimada"];
 
         private async Task FilterCallBack(string filter)
         {

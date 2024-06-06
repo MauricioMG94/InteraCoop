@@ -161,9 +161,9 @@ namespace InteraCoop.Frontend.Pages.Campaigns
         {
             return propertyToColor switch
             {
-                "Sin asignar" => "background-color:olivedrab",
-                "Asignada" => "background-color:#7E6FFF",
-                "Vencida" => "background-color:goldenrod",
+                "Sin asignar" => "background-color: #36B3E0",
+                "Asignada" => "background-color: olivedrab",
+                "Vencida" => "background-color: #E6443E",
                 _ => "background-color:cornflowerblue"
             };
         }

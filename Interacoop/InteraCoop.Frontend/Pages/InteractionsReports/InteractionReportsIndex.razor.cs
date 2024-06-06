@@ -14,6 +14,7 @@ namespace InteraCoop.Frontend.Pages.InteractionsReports
         [Inject] private IRepository Repository { get; set; } = null!;
         [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
         public List<ReportDto>? Reports { get; set; }
+        public List<string> InteractionTypes = ["Visita a cliente", "Visita en oficina", "Llamada entrante", "Llamada saliente"];
 
         private async Task FilterCallBack(string filter)
         {

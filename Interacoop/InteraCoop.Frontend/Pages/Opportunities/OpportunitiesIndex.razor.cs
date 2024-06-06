@@ -4,7 +4,6 @@ using InteraCoop.Shared.Entities;
 using InteraCoop.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
-using System.ComponentModel;
 
 namespace InteraCoop.Frontend.Pages.Opportunities
 {
@@ -212,7 +211,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
             return propertyToColor switch
             {
                 "Formalizada" => "background-color:olivedrab",
-                "Desestimada" => "background-color:goldenrod",
+                "Desestimada" => "background-color: #E6443E",
                 "En trámite" => "background-color:cornflowerblue",
                 "Visita a cliente" => "background-color:olivedrab",
                 "Visita en oficina" => "background-color:goldenrod",
@@ -220,7 +219,7 @@ namespace InteraCoop.Frontend.Pages.Opportunities
                 "Llamada saliente" => "background-color: #7E6FFF",
                 "Sin asignar" => "background-color:olivedrab",
                 "Asignada" => "background-color:olivedrab",
-                "Vencida" => "background-color:goldenrod",
+                "Vencida" => "background-color: #E6443E",
                 _ => "background-color:cornflowerblue"
             };
         }

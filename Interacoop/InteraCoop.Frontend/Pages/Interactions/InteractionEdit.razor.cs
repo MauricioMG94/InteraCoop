@@ -4,6 +4,7 @@ using InteraCoop.Shared.Dtos;
 using InteraCoop.Shared.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using System.Runtime.InteropServices;
 
 namespace InteraCoop.Frontend.Pages.Interactions
 {
@@ -20,6 +21,9 @@ namespace InteraCoop.Frontend.Pages.Interactions
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+        public int? Document { get; set; }
+        public string? clientName;
+        public Client? client;
 
         protected override async Task OnInitializedAsync()
         {
@@ -58,6 +62,8 @@ namespace InteraCoop.Frontend.Pages.Interactions
                 Office = interaction.Office,
                 AuditDate = interaction.AuditDate,
                 ClientId = interaction.ClientId,
+                clientName = interaction.Client.Name,
+                Document = interaction.Client.Document,
             };
         }
        

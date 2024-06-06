@@ -59,5 +59,8 @@ namespace InteraCoop.Shared.Dtos
 
         public int ClientId { get; set; }
         public string UserDocument { get; set; } = null!;
+
+        public string? clientName;
+        public int? Document { get; set; }
     }
 }

@@ -24,6 +24,10 @@ namespace InteraCoop.Frontend.Pages.Interactions
         [Parameter] public required String CardName { get; set; }
         public List<Client> Clients { get; set; } = new();
         public bool FormPostedSuccessfully { get; set; } = false;
+        public int? Document { get; set; }
+        public string? clientName;
+        public Client? client;
+
 
         protected override void OnInitialized()
         {
@@ -36,6 +40,10 @@ namespace InteraCoop.Frontend.Pages.Interactions
             {
                 Interaction.StartDate = DateTime.Today;
                 Interaction.EndDate = DateTime.Today;
+            }
+            if (FormName.Contains("Editar")) {
+                clientName = Interaction.clientName;
+                Document = Interaction.Document;
             }
         }
 
@@ -72,6 +80,38 @@ namespace InteraCoop.Frontend.Pages.Interactions
             Clients = responseHttp.Response;
             return true;
         }
+
+        private async Task OnDocumentChanged(int? newValue)
+        {
+            Document = newValue;
+            if (Document.HasValue)
+            {
+                await GetClientByDocument(Document.Value);
+            }
+            else
+            {
+                clientName = "";
+                Interaction.ClientId = 0;
+            }
+        }
+
+        private async Task<bool> GetClientByDocument(int? document)
+        {
+            client = Clients.FirstOrDefault(x => x.Document == document.Value);
+
+            if (client != null)
+            {
+                clientName = client.Name;
+                Interaction.ClientId = client.Id;
+                return true;
+            }
+            else
+            {
+                clientName = "Cliente no existe.";
+                return false;
+            }
+        }
+
 
         private async Task OnDataAnnotationsValidatedAsync()
         {
