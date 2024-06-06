@@ -24,7 +24,7 @@
                     <div style="padding-bottom: 1rem;">
                         <MudSelect @bind-Value="@Client.DocumentType" Placeholder="Seleccione tipo de documento" Label="Tipo de Documento:" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.LibraryAddCheck" Clearable="true">
                             <MudSelectItem Value="@("Cedula")" />
-                            <MudSelectItem Value="@("Pasaporte")" />
+                            @* <MudSelectItem Value="@("Cedula")" /> *@
                             <MudSelectItem Value="@("RUT")" />
                             <MudSelectItem Value="@("NIT")" />
                         </MudSelect>
