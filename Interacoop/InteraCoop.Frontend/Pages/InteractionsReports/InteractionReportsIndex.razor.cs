@@ -117,5 +117,17 @@ namespace InteraCoop.Frontend.Pages.InteractionsReports
             totalPages = response.Response;
         }
 
+        private string GetBadgeStyle(string propertyToColor)
+        {
+            return propertyToColor switch
+            {
+                "Visita a cliente" => "background-color:olivedrab",
+                "Visita en oficina" => "background-color:goldenrod",
+                "Llamada entrante" => "background-color:cornflowerblue",
+                "Llamada saliente" => "background-color: #7E6FFF",
+                _ => "background-color:cornflowerblue"
+            };
+        }
+
     }
 }

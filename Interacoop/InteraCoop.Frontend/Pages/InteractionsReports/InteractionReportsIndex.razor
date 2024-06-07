@@ -33,7 +33,9 @@
                                         @report.FullName
                                     </td>
                                     <td class="col-3" style="width: 33.33%">
-                                        @report.Type
+                                        <span class="badge text-bg-primary" style="@GetBadgeStyle(report.Type)">
+                                            @report.Type
+                                        </span>
                                     </td>
                                 </tr>
                             }

@@ -117,5 +117,16 @@ namespace InteraCoop.Frontend.Pages.OpportunityReports
             }
             totalPages = response.Response;
         }
+
+        private string GetBadgeStyle(string propertyToColor)
+        {
+            return propertyToColor switch
+            {
+                "Formalizada" => "background-color:olivedrab",
+                "Desestimada" => "background-color: #E6443E",
+                "En trámite" => "background-color:cornflowerblue",
+                _ => "background-color:cornflowerblue"
+            };
+        }
     }
 }
