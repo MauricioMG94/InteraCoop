@@ -67,12 +67,12 @@ namespace InteraCoop.Backend.Repositories.Implementations
                     TypeCount = g.Count()
                 });
 
-            var totalReports = await reportsQuery.CountAsync();
-
+            double totalReports = await reportsQuery.CountAsync();
+            int totalPages = (int)Math.Ceiling(totalReports / pagination.RecordsNumber);
             return new ActionResponse<int>
             {
                 WasSuccess = true,
-                Result = totalReports
+                Result = totalPages
             };
 
         }
