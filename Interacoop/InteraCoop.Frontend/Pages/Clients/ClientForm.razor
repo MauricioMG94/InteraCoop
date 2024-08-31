@@ -38,9 +38,56 @@
                         <MudNumericField @bind-Value="Client.Telephone" Label="Téléfono:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Call" Clearable="true" HideSpinButtons="true" />
                         <ValidationMessage For="@(() => Client.Telephone)" />
                     </div>
+                    <div class="col-12">
+                                <div div class="col-12 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">País:</label>
+                                    <select class="form-select" @onchange="CountryChangeAsync">
+                                        <option value="0">Seleccione país</option>
+                                        @if (countries is not null)
+                                        {
+                                            @foreach (var country in countries)
+                                            {
+                                                <option value="@country.Id">@country.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div div class="col-12 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Departamento:</label>
+                                    <select class="form-select" @onchange="StateChangedAsync">
+                                        <option value="0">Seleccione departamento</option>
+                                        @if (states is not null)
+                                        {
+                                            @foreach (var state in states)
+                                            {
+                                                <option value="@state.Id">@state.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div div class="col-12 mb-3" style="display: flex; flex-direction: column; align-items:flex-start">
+                                    <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Ciudad:</label>
+                                    <select class="form-select" @bind="Client.CityId">
+                                        <option value="0">Seleccione una ciudad</option>
+                                        @if (cities is not null)
+                                        {
+                                            @foreach (var city in cities)
+                                            {
+                                                <option value="@city.Id">@city.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <ValidationMessage For="@(() => Client.CityId)" />
+                                </div>
+                            </div>
+                           @* <div class="col-12 mb-3">
+                                <label style="margin-bottom:0.25rem; font-size: 11pt; letter-spacing: 2px">Código postal:</label>
+                                <InputNumber class="form-control" @bind-Value="@Client.CityId" />
+                                      <ValidationMessage For="@(() => Client.CityId)" />
+                             </div>
                     <div>
                         <DropList ComponentName="Clientes"></DropList>   
-                    </div>
+                    </div>*@
                     <div style="padding-bottom: 1rem;">
                         <MudTextField @bind-Value="Client.Address" Label="Dirección:" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AddLocationAlt" Clearable="true" />
                         <ValidationMessage For="@(() => Client.Address)" />

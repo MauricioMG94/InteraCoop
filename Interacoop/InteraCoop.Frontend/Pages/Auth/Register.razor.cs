@@ -50,6 +50,27 @@ namespace InteraCoop.Frontend.Pages.Auth
             countries = responseHttp.Response;
         }
 
+        private async Task CountryChangeAsync(ChangeEventArgs e)
+        {
+            var selectedCountry = Convert.ToInt32(e.Value!);
+            states = null;
+            cities = null;
+            userDto.CityId = 0;
+            await LoadStatesAsync(selectedCountry);
+        }
+
+        private async Task LoadStatesAsync(int countryId)
+        {
+            var responseHttp = await Repository.GetAsync<List<State>>($"/api/states/combo/{countryId}");
+            if (responseHttp.Error)
+            {
+                var message = await responseHttp.GetErrorMessageAsync();
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+                return;
+            }
+            states = responseHttp.Response;
+        }
+
         private async Task CountryChangedAsync(ChangeEventArgs e)
         {
             var selectedCountry = Convert.ToInt32(e.Value!);
